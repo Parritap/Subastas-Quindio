@@ -5,5 +5,7 @@ import java.util.ArrayList;
 import exceptions.CRUDExceptions;
 
 public interface Ordenable<T> {
-	ArrayList<T> listar(String atributo, TipoOrden orden)  throws CRUDExceptions; 
+	//cambie uno de los parametros para obtener el valor del atributo
+	//mediante un lambda
+	ArrayList<T> listar(IObtenerAtributo atributo, TipoOrden orden)  throws CRUDExceptions; 
 }

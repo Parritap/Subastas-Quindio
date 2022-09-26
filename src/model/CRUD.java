@@ -29,10 +29,12 @@ public interface CRUD<T> extends Ordenable<T>, Paginable<T> {
 	 * MÉTODO QUE PERMITE CREAR UN OBJETO DE TIPO T
 	 * @param obj
 	 */
-	void actualizar(T obj)  throws CRUDExceptions; 
+	//hice un cambio en los parametros originales
+	void actualizar(Integer id,T obj)  throws CRUDExceptions; 
 	/**
 	 * MÉTODO QUE PERMITE ELIMINAR UN OBJETO DE TIPO T
 	 * @param obj
 	 */
-	void Eliminar(T obj)  throws CRUDExceptions; 
+	//aqui tambien hice un cambio
+	void Eliminar(Integer id)  throws CRUDExceptions; 
 }
