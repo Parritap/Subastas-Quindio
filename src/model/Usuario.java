@@ -1,19 +1,31 @@
 package model;
 
+import lombok.Data;
+
+import java.util.ArrayList;
+
+@Data
 public class Usuario {
-	String nombre;
-	Integer edad;
-	String cedula;
-	String correo;
-	Integer cantAnuncios; 
-	Puja puja;
-	
-	public Usuario(String nombre, Integer edad, String cedula, String correo, Integer cantAnuncios, Puja puja) {
-		this.nombre = nombre;
-	    this.edad = edad;
+	private String name;
+	private Integer age;
+	private String cedula;
+	private String correo;
+	private Integer cantAnuncios;
+
+	private ArrayList<Puja> listaPujas;
+	private static Integer idAux = 0;
+
+	private Integer id;
+	public Usuario(String name, Integer age, String cedula, String correo, Integer cantAnuncios, Puja puja) {
+		this.name = name;
+	    this.age = age;
 	    this.cedula = cedula;
 	    this.correo = correo;
 	    this.cantAnuncios = cantAnuncios;
-	    this.puja = puja;
+		id = ++idAux;
 	}
+
+
+
+
 }

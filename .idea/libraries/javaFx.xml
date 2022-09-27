@@ -2,6 +2,7 @@
   <library name="javaFx">
     <CLASSES>
       <root url="file://$USER_HOME$/Desktop/javafx-sdk-19/lib" />
+      <root url="jar://$USER_HOME$/Desktop/javaLibraries/lombok.jar!/" />
     </CLASSES>
     <JAVADOC />
     <NATIVE>

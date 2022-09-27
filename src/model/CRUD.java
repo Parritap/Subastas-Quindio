@@ -33,8 +33,10 @@ public interface CRUD<T> extends Ordenable<T>, Paginable<T> {
 	void actualizar(Integer id,T obj)  throws CRUDExceptions; 
 	/**
 	 * MÉTODO QUE PERMITE ELIMINAR UN OBJETO DE TIPO T
-	 * @param obj
 	 */
 	//aqui tambien hice un cambio
-	void Eliminar(Integer id)  throws CRUDExceptions; 
+	void Eliminar(Integer id)  throws CRUDExceptions;
+
+	ArrayList<T> listar(String campo, TipoOrden dir) throws CRUDExceptions;
+
 }
