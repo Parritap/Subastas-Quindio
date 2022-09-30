@@ -1,11 +1,14 @@
 package model;
 
-import lombok.Data;
+
+import lombok.Getter;
+import lombok.Setter;
 import java.awt.Image;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-@Data
+@Getter
+@Setter
 public class Anuncio {
 	private LocalDate fecha;
 	private String nombreAnunciante;
@@ -60,5 +63,9 @@ public class Anuncio {
 
 	public boolean compararId(Integer id) {
 		return this.id.compareTo(id) == 0;
+	}
+
+	public void setEstado(Estado estado){
+		this.estado = estado;
 	}
 }

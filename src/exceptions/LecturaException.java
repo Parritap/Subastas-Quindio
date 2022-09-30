@@ -1,4 +1,4 @@
-package model.Exceptions;
+package exceptions;
 
 public class LecturaException extends CRUDExceptions{
     public LecturaException(String mensaje) {

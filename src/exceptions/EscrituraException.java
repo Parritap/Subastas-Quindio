@@ -1,4 +1,4 @@
-package model.Exceptions;
+package exceptions;
 
 public class EscrituraException extends CRUDExceptions{
 

@@ -1,9 +1,12 @@
 package model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 
-@Data
+@Getter
+@Setter
 public class Usuario {
 	private String name;
 	private Integer age;
@@ -24,7 +27,17 @@ public class Usuario {
 		id = ++idAux;
 	}
 
+	//NO ELIMINAR ESTOS GETTERS, SI NO NO COMPILA EL CODIGO
+	public Integer getAge(){
+		return age;
+	}
 
+	public String  getName(){
+		return name;
+	}
 
+	public String getCedula(){
+		return cedula;
+	}
 
 }

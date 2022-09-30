@@ -3,8 +3,8 @@ package model;
 
 import java.util.ArrayList;
 import exceptions.CRUDExceptions;
-import model.Exceptions.EscrituraException;
-import model.Exceptions.LecturaException;
+import exceptions.EscrituraException;
+import exceptions.LecturaException;
 
 public class IAnuncio implements CRUD<Anuncio> {
 
@@ -43,7 +43,7 @@ public class IAnuncio implements CRUD<Anuncio> {
 	}
 
 	//METODO QUE VERIFICA SI EXISTE UN ANUNCIO ANTES DE CREARLO
-	private boolean noExisteAnuncio(Anuncio anuncio){
+	private boolean noExisteAnuncio(Anuncio anuncio) throws EscrituraException {
 		for (Anuncio aux: listaAnuncios){
 			if(aux.equals(anuncio)) throw new EscrituraException("Ya existe un anuncio con esas caracteristicas");
 		}
