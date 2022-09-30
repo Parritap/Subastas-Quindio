@@ -43,6 +43,7 @@ public class App extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/FrameInicial.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
 

@@ -19,8 +19,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FrameInicialController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#111111" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -143,7 +142,7 @@
                               </LinearGradient>
                            </fill>
                         </Rectangle>
-                        <TextField alignment="CENTER" layoutX="123.0" layoutY="102.0" prefHeight="13.0" prefWidth="150.0" promptText="JHON DOE" style="-fx-background-color: Transparent;" AnchorPane.bottomAnchor="272.0" AnchorPane.leftAnchor="123.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="102.0">
+                        <TextField fx:id="txtName" alignment="CENTER" layoutX="123.0" layoutY="102.0" prefHeight="13.0" prefWidth="150.0" promptText="JHON DOE" style="-fx-background-color: Transparent;" AnchorPane.bottomAnchor="272.0" AnchorPane.leftAnchor="123.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="102.0">
                            <font>
                               <Font name="Times New Roman" size="10.0" />
                            </font>
@@ -193,7 +192,7 @@
                               </LinearGradient>
                            </fill>
                         </Rectangle>
-                        <TextField alignment="CENTER" layoutX="121.0" layoutY="154.0" prefHeight="13.0" prefWidth="150.0" promptText="XXX - XXX - XXX" style="-fx-background-color: Transparent;">
+                        <TextField fx:id="txtPassword" alignment="CENTER" layoutX="121.0" layoutY="154.0" prefHeight="13.0" prefWidth="150.0" promptText="XXX - XXX - XXX" style="-fx-background-color: Transparent;">
                            <font>
                               <Font name="Times New Roman" size="10.0" />
                            </font>
@@ -243,17 +242,17 @@
                               </LinearGradient>
                            </fill>
                         </Rectangle>
-                        <TextField alignment="CENTER" layoutX="123.0" layoutY="201.0" prefHeight="13.0" prefWidth="150.0" promptText="A123@something.co" style="-fx-background-color: Transparent;">
+                        <TextField fx:id="txtEmail" alignment="CENTER" layoutX="123.0" layoutY="201.0" prefHeight="13.0" prefWidth="150.0" promptText="A123@something.co" style="-fx-background-color: Transparent;">
                            <font>
                               <Font name="Times New Roman" size="10.0" />
                            </font>
                         </TextField>
-                        <CheckBox layoutX="70.0" layoutY="254.0" mnemonicParsing="false" text="I agree terms and conditions" textFill="WHITE">
+                        <CheckBox fx:id="checkAcept" layoutX="70.0" layoutY="254.0" mnemonicParsing="false" text="I agree terms and conditions" textFill="WHITE">
                            <font>
                               <Font name="Times New Roman" size="13.0" />
                            </font>
                         </CheckBox>
-                        <Button layoutX="124.0" layoutY="302.0" mnemonicParsing="false" style="-fx-background-color: Transparent; -fx-border-color: WHITE; -fx-border-radius: 5;" text="Next" textFill="WHITE">
+                        <Button layoutX="124.0" layoutY="302.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: Transparent; -fx-border-color: WHITE; -fx-border-radius: 5;" text="Next" textFill="WHITE">
                            <effect>
                               <Bloom />
                            </effect>
@@ -261,7 +260,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="32.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: Transparent;" text="Log in at Subastas Quindio" textFill="WHITE" underline="true">
+                        <Button layoutX="32.0" layoutY="353.0" mnemonicParsing="false" onAction="#logIn" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: Transparent;" text="Log in at Subastas Quindio" textFill="WHITE" underline="true">
                            <font>
                               <Font name="Times New Roman" size="13.0" />
                            </font>
