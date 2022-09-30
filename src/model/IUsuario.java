@@ -13,6 +13,7 @@ import lombok.Data;
 public class IUsuario implements CRUD<Usuario> {
 	private ArrayList<Usuario> listaUsuarios;
 
+
 	public 	IUsuario(){
 		listaUsuarios = new ArrayList<>();
 	}
@@ -40,20 +41,16 @@ public class IUsuario implements CRUD<Usuario> {
 	//METODO QUE CREA UN ANUNCIO PERO ANTES VERIFICA SI EXISTE, SI EXISTE LO CREA SI NO LANZA UNA EXCEPCION
 	@Override
 	public void crear(Usuario usuario) throws EscrituraException {
-		if(noExisteUsuario(usuario)) {
+		if(existeUsuario(usuario)) {
 			usuario.setEstado(Estado.NUEVO);
 			listaUsuarios.add(usuario);
+		}else{
+			throw new EscrituraException("Ya existe un usuario con esas caracteristicas");
 		}
 
 	}
 
-	//METODO QUE VERIFICA SI EXISTE UN ANUNCIO ANTES DE CREARLO
-	private boolean noExisteUsuario(Usuario usuario) throws EscrituraException {
-		for (Usuario aux: listaUsuarios){
-			if(aux.equals(usuario)) throw new EscrituraException("Ya existe un usuario con esas caracteristicas");
-		}
-		return true;
-	}
+
 
 	@Override
 	public void actualizar(Integer id, Usuario nuevoUsuario) throws EscrituraException {
@@ -95,7 +92,7 @@ public class IUsuario implements CRUD<Usuario> {
 
 	@Override
 	public void add(Usuario obj) throws CRUDExceptions {
-		if(noExisteUsuario(obj)){
+		if(!existeUsuario(obj)){
 			listaUsuarios.add(obj);
 		}
 	}

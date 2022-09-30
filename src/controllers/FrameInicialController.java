@@ -39,6 +39,62 @@ public class FrameInicialController {
         System.out.println(" log in "  );
     }
 
+    public EmpresaSubasta getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(EmpresaSubasta empresa) {
+        this.empresa = empresa;
+    }
+
+    public ResourceBundle getResources() {
+        return resources;
+    }
+
+    public void setResources(ResourceBundle resources) {
+        this.resources = resources;
+    }
+
+    public URL getLocation() {
+        return location;
+    }
+
+    public void setLocation(URL location) {
+        this.location = location;
+    }
+
+    public CheckBox getCheckAcept() {
+        return checkAcept;
+    }
+
+    public void setCheckAcept(CheckBox checkAcept) {
+        this.checkAcept = checkAcept;
+    }
+
+    public TextField getTxtEmail() {
+        return txtEmail;
+    }
+
+    public void setTxtEmail(TextField txtEmail) {
+        this.txtEmail = txtEmail;
+    }
+
+    public TextField getTxtName() {
+        return txtName;
+    }
+
+    public void setTxtName(TextField txtName) {
+        this.txtName = txtName;
+    }
+
+    public TextField getTxtPassword() {
+        return txtPassword;
+    }
+
+    public void setTxtPassword(TextField txtPassword) {
+        this.txtPassword = txtPassword;
+    }
+
     @FXML
     void signUp(ActionEvent event) {
         obtenerInstancia();

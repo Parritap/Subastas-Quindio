@@ -72,6 +72,11 @@ public class IAnuncio implements CRUD<Anuncio> {
 		return null;
 	}
 
+	@Override
+	public void add(Anuncio obj) throws CRUDExceptions {
+
+	}
+
 
 	public ArrayList<Anuncio> listar(IObtenerAtributo atributo, TipoOrden orden) throws CRUDExceptions {
 		ArrayList<Anuncio> anuncios = this.listar();

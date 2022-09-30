@@ -2,6 +2,9 @@ package model;
 
 import java.util.Objects;
 
+/**
+ * SINGLETON
+ */
 public class ModelFactoryController {
 
     private static EmpresaSubasta empresaSubasta;

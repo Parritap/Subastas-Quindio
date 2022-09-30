@@ -51,4 +51,76 @@ public class Usuario {
 	}
 
 	public boolean compararId(Integer id) {return this.id.compareTo(id) == 0;}
+
+	public void setName(String name){
+		this.name =name;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public Integer getCantAnuncios() {
+		return cantAnuncios;
+	}
+
+	public void setCantAnuncios(Integer cantAnuncios) {
+		this.cantAnuncios = cantAnuncios;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public ArrayList<Puja> getListaPujas() {
+		return listaPujas;
+	}
+
+	public void setListaPujas(ArrayList<Puja> listaPujas) {
+		this.listaPujas = listaPujas;
+	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+	public static Integer getIdAux() {
+		return idAux;
+	}
+
+	public static void setIdAux(Integer idAux) {
+		Usuario.idAux = idAux;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 }
