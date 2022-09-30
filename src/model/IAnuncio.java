@@ -2,56 +2,69 @@ package model;
 
 
 import java.util.ArrayList;
-
-import java.util.HashMap;
-import java.util.Iterator;
 import exceptions.CRUDExceptions;
+import model.Exceptions.EscrituraException;
+import model.Exceptions.LecturaException;
 
 public class IAnuncio implements CRUD<Anuncio> {
-	//cada anuncio esta relacionado a un id de tipo entero
-	//ya que solo vamos a manejar una lista de anuncios podemos hacerlo static
-	public static HashMap<Integer, Anuncio> listaAnuncios =
-			new HashMap<>();
-	//cada vez que se crea un anuncio se le pone como id el
-	//valor de esta variable, la cual va aumentar cada vez
-	//que creemos un anuncio
-	static Integer idDisponible = 000;
 
+	//SE CAMBIA EL HASHMAP POR UN ARRAYLIST, DEBIDO A QUE SE INVIRTIO LA DEPENDENCIA DEL ID
+	public static ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
+
+	//METODO QUE DEVUELVE LA LISTA ANUNCIO
 	@Override
-	public ArrayList<Anuncio> listar() throws CRUDExceptions {
-		//crea un arraylist que tendra lo que retorna la funcion
-		ArrayList<Anuncio> resultado = new ArrayList<>();
-		//crea un iterador para recorrer el conjunto de llaves
-		Iterator<Integer> iterador = listaAnuncios.keySet().iterator();
+	public ArrayList<Anuncio> listar() throws LecturaException {
 
-		//recorre el set de llaves
-		while (iterador.hasNext()) {
-			resultado.add(listaAnuncios.get(iterador.next()));
+		if(listaAnuncios.size() == 0){
+			throw new LecturaException("No hay Anuncios para listar");
 		}
-		return resultado;
+		return listaAnuncios;
 	}
 
-
+	//METODO QUE BUSCA POR EL ID, SI NO LO ENCUENTRA LANZA UNA EXCEPCION
 	@Override
-	public Anuncio buscarId(Integer id) throws CRUDExceptions {
-		return listaAnuncios.get(id);
+	public Anuncio buscarId(Integer id) throws LecturaException {
+		for (Anuncio listaAnuncio : listaAnuncios) {
+			if (listaAnuncio.compararId(id)) {
+				return listaAnuncio;
+			}
+		}
+		throw new LecturaException("No se encontró el anuncio con ese ID");
+	}
+
+	//METODO QUE CREA UN ANUNCIO PERO ANTES VERIFICA SI EXISTE, SI EXISTE LO CREA SI NO LANZA UNA EXCEPCION
+	@Override
+	public void crear(Anuncio anuncio) throws EscrituraException {
+		if(noExisteAnuncio(anuncio)) {
+			anuncio.setEstado(Estado.NUEVO);
+			listaAnuncios.add(anuncio);
+		}
+
+	}
+
+	//METODO QUE VERIFICA SI EXISTE UN ANUNCIO ANTES DE CREARLO
+	private boolean noExisteAnuncio(Anuncio anuncio){
+		for (Anuncio aux: listaAnuncios){
+			if(aux.equals(anuncio)) throw new EscrituraException("Ya existe un anuncio con esas caracteristicas");
+		}
+		return true;
 	}
 
 	@Override
-	public void crear(Anuncio anuncio) throws CRUDExceptions {
-		IAnuncio.listaAnuncios.put(IAnuncio.idDisponible, anuncio);
-		//se aumenta en 1 para no repetir id's
-		IAnuncio.idDisponible++;
+	public void actualizar(Integer id, Anuncio nuevoAnuncio) throws EscrituraException {
+
 	}
 
 	@Override
-	public void actualizar(Integer id, Anuncio nuevoAnuncio) throws CRUDExceptions {
-		listaAnuncios.put(id, nuevoAnuncio);
-	}
-
-	@Override
-	public void Eliminar(Integer id) throws CRUDExceptions {
-		listaAnuncios.remove(id);
+	public void Eliminar(Integer id) throws EscrituraException {
+		boolean flag = false;
+		for (Anuncio listaAnuncio : listaAnuncios) {
+			if (listaAnuncio.compararId(id)) {
+				listaAnuncio.setEstado(Estado.ELIMINADO);
+				flag = true;
+			}
+		}
+		if(!flag) throw new EscrituraException("No se ha podido eliminar el anuncio");
 	}
 
 	@Override
@@ -66,23 +79,23 @@ public class IAnuncio implements CRUD<Anuncio> {
 		System.out.println(anuncios.size());
 		//indice en el que vamos a insertar cada elemento al ordenar
 		int ind = 0;
-		for (int i = 0; i < anuncios.size(); i++) {
+		for (Anuncio anuncio : anuncios) {
 			for (int j = 0; j < anunciosOrdenados.size(); j++) {
 				ind = j;
-				if (orden == TipoOrden.ASCENDENTE && !esMayorA(atributo.obtenerAttr(anuncios.get(i))
+				if (orden == TipoOrden.ASCENDENTE && !esMayorA(atributo.obtenerAttr(anuncio)
 						, atributo.obtenerAttr(anunciosOrdenados.get(j)))) break;
-				if (orden == TipoOrden.DESCENDENTE && esMayorA(atributo.obtenerAttr(anuncios.get(i))
+				if (orden == TipoOrden.DESCENDENTE && esMayorA(atributo.obtenerAttr(anuncio)
 						, atributo.obtenerAttr(anunciosOrdenados.get(j)))) break;
 			}
-			if (ind >= anunciosOrdenados.size() - 1) anunciosOrdenados.add(anuncios.get(i));
-			anunciosOrdenados.add(ind, anuncios.get(i));
+			if (ind >= anunciosOrdenados.size() - 1) anunciosOrdenados.add(anuncio);
+			anunciosOrdenados.add(ind, anuncio);
 		}
 
 		return anunciosOrdenados;
 	}
 
 	//es necesario crear mas de estos para cada tipo de los
-	//atributos de anuncio, LocalDate, Strin, etc... 
+	//atributos de anuncio, LocalDate, String, etc...
 	public Boolean esMayorA(Integer valor1, Integer valor2) {
 		return valor1 > valor2;
 	}
