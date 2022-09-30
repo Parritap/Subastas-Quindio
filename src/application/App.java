@@ -1,17 +1,20 @@
 package application;
 
-import exceptions.CRUDExceptions;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Anuncio;
-import model.IAnuncio;
-import model.TipoOrden;
+import lombok.Data;
+import model.EmpresaSubasta;
+import model.ModelFactoryController;
+
+@Data
+
 
 public class App extends Application {
 
+    private static EmpresaSubasta empresaSubasta;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -35,6 +38,9 @@ public class App extends Application {
     	TipoOrden ord = TipoOrden.ASCENDENTE;
     	System.out.println(ord == TipoOrden.DESCENDENTE);
     	*/
+
+        empresaSubasta = ModelFactoryController.getInstance();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/FrameInicial.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
