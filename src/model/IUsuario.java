@@ -41,9 +41,10 @@ public class IUsuario implements CRUD<Usuario> {
 	//METODO QUE CREA UN ANUNCIO PERO ANTES VERIFICA SI EXISTE, SI EXISTE LO CREA SI NO LANZA UNA EXCEPCION
 	@Override
 	public void crear(Usuario usuario) throws EscrituraException {
-		if(existeUsuario(usuario)) {
+		if(!existeUsuario(usuario)) {
 			usuario.setEstado(Estado.NUEVO);
 			listaUsuarios.add(usuario);
+			System.out.println(usuario.toString());
 		}else{
 			throw new EscrituraException("Ya existe un usuario con esas caracteristicas");
 		}

@@ -107,6 +107,7 @@ public class FrameInicialController {
             empresa.crearUsuario(usuario);
         } catch (EscrituraException e) {
             System.out.println("e = " + e);
+            e.printStackTrace();
         }
         if(empresa.existeUsuario(usuario)){
             cargarStageOnNewWindow("FrameCliente");
