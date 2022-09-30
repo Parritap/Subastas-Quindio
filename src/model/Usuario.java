@@ -14,9 +14,15 @@ public class Usuario {
 	private String correo;
 	private Integer cantAnuncios;
 
-	private ArrayList<Puja> listaPujas;
-	private static Integer idAux = 0;
+	private String password;
 
+	private ArrayList<Puja> listaPujas;
+
+	//Este atributo permite conocer si el cliente actual esta activo en la app
+	private boolean activo;
+	private static Integer idAux = 0;
+	//Este atributo permite saber el estado del usuario, Eliminado, Nuevo, Actualizado
+	private Estado estado;
 	private Integer id;
 	public Usuario(String name, Integer age, String cedula, String correo, Integer cantAnuncios, Puja puja) {
 		this.name = name;
@@ -40,4 +46,9 @@ public class Usuario {
 		return cedula;
 	}
 
+	public void setEstado(Estado nuevo) {
+		estado = nuevo;
+	}
+
+	public boolean compararId(Integer id) {return this.id.compareTo(id) == 0;}
 }

@@ -2,12 +2,19 @@ package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import exceptions.EscrituraException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import model.EmpresaSubasta;
+import model.ModelFactoryController;
+import model.Usuario;
 
 public class FrameInicialController {
+
+    private EmpresaSubasta empresa;
 
     @FXML
     private ResourceBundle resources;
@@ -34,7 +41,29 @@ public class FrameInicialController {
 
     @FXML
     void signUp(ActionEvent event) {
-        System.out.println(" Sign up");
+        obtenerInstancia();
+        Usuario usuario = new Usuario("Alejandro", 20, "10032", "alejo1@", 0, null);
+        usuario.setName(txtName.getText());
+        usuario.setCorreo(txtEmail.getText());
+        usuario.setPassword(txtPassword.getText());
+        usuario.setId(-1);
+        try {
+            empresa.crearUsuario(usuario);
+        } catch (EscrituraException e) {
+            System.out.println("e = " + e);
+        }
+        if(empresa.existeUsuario(usuario)){
+            cargarStageOnNewWindow("FrameCliente");
+        }else{
+
+        }
+    }
+
+    private void cargarStageOnNewWindow(String frameCliente) {
+    }
+
+    private void obtenerInstancia() {
+        empresa = ModelFactoryController.getInstance();
     }
 
     @FXML

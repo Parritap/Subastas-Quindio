@@ -1,51 +1,75 @@
 package model;
 
-
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import exceptions.CRUDExceptions;
+import exceptions.EscrituraException;
+import exceptions.LecturaException;
+import lombok.Data;
 
 //los mismos metodos y atributos que IAnuncio
 //pero para Usuarios
+@Data
 public class IUsuario implements CRUD<Usuario> {
-	public static HashMap<Integer, Usuario> listaUsuarios =
-			new HashMap<>();
-	public static Integer idDisponible = 0;
+	private ArrayList<Usuario> listaUsuarios;
 
+	public 	IUsuario(){
+		listaUsuarios = new ArrayList<>();
+	}
 
 	@Override
-	public ArrayList<Usuario> listar() throws CRUDExceptions {
-		ArrayList<Usuario> resultado = new ArrayList<>();
+	public ArrayList<Usuario> listar() throws LecturaException {
 
-		for (Integer integer : listaUsuarios.keySet()) {
-			resultado.add(listaUsuarios.get(integer));
+		if(listaUsuarios.size() == 0){
+			throw new LecturaException("No hay Anuncios para listar");
 		}
-		return resultado;
+		return listaUsuarios;
+	}
+
+	//METODO QUE BUSCA POR EL ID, SI NO LO ENCUENTRA LANZA UNA EXCEPCION
+	@Override
+	public Usuario buscarId(Integer id) throws LecturaException {
+		for (Usuario usuarioAux : listaUsuarios) {
+			if (usuarioAux.compararId(id)) {
+				return usuarioAux;
+			}
+		}
+		throw new LecturaException("No se encontró el usuario con ese ID");
+	}
+
+	//METODO QUE CREA UN ANUNCIO PERO ANTES VERIFICA SI EXISTE, SI EXISTE LO CREA SI NO LANZA UNA EXCEPCION
+	@Override
+	public void crear(Usuario usuario) throws EscrituraException {
+		if(noExisteUsuario(usuario)) {
+			usuario.setEstado(Estado.NUEVO);
+			listaUsuarios.add(usuario);
+		}
+
+	}
+
+	//METODO QUE VERIFICA SI EXISTE UN ANUNCIO ANTES DE CREARLO
+	private boolean noExisteUsuario(Usuario usuario) throws EscrituraException {
+		for (Usuario aux: listaUsuarios){
+			if(aux.equals(usuario)) throw new EscrituraException("Ya existe un usuario con esas caracteristicas");
+		}
+		return true;
 	}
 
 	@Override
-	public Usuario buscarId(Integer id) throws CRUDExceptions {
-
-
-
-		return listaUsuarios.get(id);
-	}
-
-	@Override
-	public void crear(Usuario usr) throws CRUDExceptions {
-		IUsuario.listaUsuarios.put(IUsuario.idDisponible, usr);
-		IUsuario.idDisponible++;
-	}
-
-	@Override
-	public void actualizar(Integer id, Usuario nuevoUsr) throws CRUDExceptions {
-		listaUsuarios.put(id, nuevoUsr);
+	public void actualizar(Integer id, Usuario nuevoUsuario) throws EscrituraException {
 
 	}
 
 	@Override
-	public void Eliminar(Integer id) throws CRUDExceptions {
-		listaUsuarios.remove(id);
+	public void Eliminar(Integer id) throws EscrituraException {
+		boolean flag = false;
+		for (Usuario usuarioAux : listaUsuarios) {
+			if (usuarioAux.compararId(id)) {
+				usuarioAux.setEstado(Estado.ELIMINADO);
+				flag = true;
+			}
+		}
+		if(!flag) throw new EscrituraException("No se ha podido eliminar el usuario");
 	}
 
 	/**
@@ -69,16 +93,18 @@ public class IUsuario implements CRUD<Usuario> {
 		return listaOrdenada;
 	}
 
+	@Override
+	public void add(Usuario obj) throws CRUDExceptions {
+		if(noExisteUsuario(obj)){
+			listaUsuarios.add(obj);
+		}
+	}
+
 	/**
 	 * Este metodo me devuelve todos los elementos contenidos en el hashMap
 	 */
 	private ArrayList<Usuario> obtenerListaUsuarios() {
-		ArrayList<Usuario> usuarios = new ArrayList<>();
-
-		for (int i = 0; i < idDisponible; i++) {
-			usuarios.add(listaUsuarios.get(i));
-		}
-		return usuarios;
+		return listaUsuarios;
 	}
 
 
@@ -93,4 +119,11 @@ public class IUsuario implements CRUD<Usuario> {
 		return resultado;
 	}
 
+
+	public boolean existeUsuario(Usuario usuario) {
+		for (Usuario aux: listaUsuarios){
+			if(aux.equals(usuario)) return true;
+		}
+		return false;
+	}
 }

@@ -39,4 +39,6 @@ public interface CRUD<T> extends Ordenable<T>, Paginable<T> {
 
 	ArrayList<T> listar(String campo, TipoOrden dir) throws CRUDExceptions;
 
+	void add(T obj) throws CRUDExceptions;
+
 }
