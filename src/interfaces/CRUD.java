@@ -1,7 +1,8 @@
-package model;
+package interfaces;
 
 import java.util.ArrayList;
 import exceptions.CRUDExceptions;
+import model.TipoOrden;
 
 public interface CRUD<T> extends Ordenable<T>, Paginable<T> {
 	

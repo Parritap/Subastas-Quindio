@@ -7,7 +7,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
-import model.IApplication;
+import interfaces.IApplication;
 
 public class CrearCuentaController implements IApplication {
 

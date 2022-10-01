@@ -10,7 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
-import model.IApplication;
+import interfaces.IApplication;
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
 import persistencia.ArchivoUtil;
