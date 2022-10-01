@@ -15,4 +15,9 @@ public class EmpresaException extends RuntimeException{
         fecha= LocalDate.now();
     }
 
+    public EmpresaException (){
+        super();
+        fecha = LocalDate.now();
+    }
+
 }
