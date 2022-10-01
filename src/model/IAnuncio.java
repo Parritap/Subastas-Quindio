@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
+import interfaces.CRUD;
+import interfaces.IObtenerAtributo;
 
 public class IAnuncio implements CRUD<Anuncio>, Serializable {
 

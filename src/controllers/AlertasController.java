@@ -4,7 +4,7 @@ import application.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import model.IApplication;
+import interfaces.IApplication;
 
 public class AlertasController implements IApplication {
 

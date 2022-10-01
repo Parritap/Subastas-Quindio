@@ -12,7 +12,7 @@ import javafx.stage.StageStyle;
 import lombok.Getter;
 import lombok.Setter;
 import model.EmpresaSubasta;
-import model.IApplication;
+import interfaces.IApplication;
 import model.ModelFactoryController;
 
 import java.io.IOException;
@@ -105,7 +105,6 @@ public class App extends Application {
         alertaController.setLabel(mensaje);
         Scene scene = new Scene(root);
         stageAlerta.setScene(scene);
-        stageAlerta.initStyle(StageStyle.UNDECORATED);
         stageAlerta.show();
     }
 
@@ -119,11 +118,11 @@ public class App extends Application {
 
     /**
      * Este metodo abre una ventana sin importar si hay más abiertas
-     * @param frame el nombre del frame que se quiere mostrar
+     * @param ruta el nombre del frame que se quiere mostrar
      */
-    public void showStage(String frame) {
+    public void showStage(String ruta) {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get(frame)));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get(ruta)));
         try {
             Parent root = loader.load();
             //IApplication es una interfaz que implementa los metodos setApplication y getApplication
@@ -134,8 +133,6 @@ public class App extends Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     /**

@@ -29,7 +29,7 @@ public class Usuario implements Serializable {
 	    this.correo = correo;
 	    this.cantAnuncios = cantAnuncios;
 		id = ++idAux;
-
+		estado = Estado.NUEVO;
 	}
 
 	//NO ELIMINAR ESTOS GETTERS, SI NO NO COMPILA EL CODIGO

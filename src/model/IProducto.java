@@ -1,6 +1,7 @@
 package model;
 
 import exceptions.CRUDExceptions;
+import interfaces.CRUD;
 
 import java.io.Serializable;
 import java.util.ArrayList;

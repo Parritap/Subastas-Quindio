@@ -17,6 +17,11 @@ public class EmpresaSubasta implements Runnable, Serializable {
         iAnuncio = new IAnuncio();
         iProducto = new IProducto();
         iUsuario = new IUsuario();
+        try {
+            iUsuario.crear(new Usuario("a", null, null, null, null, null));
+        } catch (EscrituraException e) {
+            throw new RuntimeException(e);
+        }
         iTransaccion = new ITransaccion();
     }
 

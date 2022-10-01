@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
+import interfaces.CRUD;
 import lombok.Data;
 
 /**
