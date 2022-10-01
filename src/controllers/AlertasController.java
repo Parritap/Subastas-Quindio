@@ -4,8 +4,9 @@ import application.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import model.IApplication;
 
-public class AlertasController {
+public class AlertasController implements IApplication {
 
     private App application;
     @FXML
@@ -20,6 +21,12 @@ public class AlertasController {
         lblMensaje.setText(text);
     }
 
+    @Override
+    public App getApplication() {
+        return null;
+    }
+
+    @Override
     public void setApplication(App application){
         this.application = application;
     }

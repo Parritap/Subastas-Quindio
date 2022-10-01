@@ -12,6 +12,7 @@ import javafx.stage.StageStyle;
 import lombok.Getter;
 import lombok.Setter;
 import model.EmpresaSubasta;
+import model.IApplication;
 import model.ModelFactoryController;
 
 import java.io.IOException;
@@ -22,14 +23,28 @@ import java.util.HashMap;
 
 public class App extends Application {
 
+    //Instancia del singleton
     private static EmpresaSubasta empresaSubasta;
-
+    //Contiene las rutas de todos los frames, la llave es el frame a mostrar
+    //retorna la ruta de ese frame
     private HashMap<String, String> rutas = new HashMap<>();
 
     private Stage stageAlerta = new Stage();
 
-    private App application = this;
 
+    /**
+     * Main
+     * @param args args
+     */
+    public static void main(String[] args) {
+        launch();
+    }
+
+    /**
+     * Inicializa el programa
+     * @param stage ventana inicial
+     * @throws Exception exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -60,23 +75,33 @@ public class App extends Application {
         Scene scene = new Scene(root);
         stage.setResizable(false);
         stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        cargarRutas();
         stage.show();
 
     }
 
-    public static void main(String[] args) {
-        launch();
+    /**
+     * Metodo que inicializa las rutas en el hashMap, de esta
+     * manera solo se le da el nombre de la ventana al hashMap y él devuelve la ruta
+     */
+    private void cargarRutas() {
+        rutas.put("frame inicial", "../view/FrameInicial.fxml");
+        rutas.put("crear cuenta", "../view/Login.fxml");
+        rutas.put("alerta", "../view/Alertas.fxml");
     }
+
+
 
     /**
      * METODO QUE CARGA UN STAGE CON UN MENSAJE
      * @param mensaje MENSAJE PARA MOSTRAR
      */
     public void showAlert(String mensaje) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Alertas.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get("alerta")));
         Parent root = loader.load();
         AlertasController alertaController = loader.getController();
-        alertaController.setApplication(application);
+        alertaController.setApplication(this);
         alertaController.setLabel(mensaje);
         Scene scene = new Scene(root);
         stageAlerta.setScene(scene);
@@ -89,5 +114,37 @@ public class App extends Application {
      */
     public void cerrarAlerta() {
         if(stageAlerta != null) stageAlerta.close();
+    }
+
+
+    /**
+     * Este metodo abre una ventana sin importar si hay más abiertas
+     * @param frame el nombre del frame que se quiere mostrar
+     */
+    public void showStage(String frame) {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get(frame)));
+        try {
+            Parent root = loader.load();
+            //IApplication es una interfaz que implementa los metodos setApplication y getApplication
+            //de esta manera obligo a los controladores a implementar al menos una instancia de Application
+            //para que puedan, desde ahí cerrar y abrir nuevas ventanas
+            IApplication controller= loader.getController();
+            controller.setApplication(this);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    /**
+     * Este metodo abre una ventana y cierra todas las demás ventanas activas
+     * @param frame el frame qeu se quiere mostrar
+     */
+    public void showStageCloseAll(String frame) {
+
+
+
     }
 }

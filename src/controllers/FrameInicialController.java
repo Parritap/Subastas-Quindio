@@ -10,12 +10,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import model.IApplication;
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
-import model.Usuario;
 import persistencia.Persistencia;
 
-public class FrameInicialController {
+public class FrameInicialController implements IApplication {
 
     private EmpresaSubasta empresa;
     private  App application;
@@ -39,7 +39,9 @@ public class FrameInicialController {
 
     @FXML
     void logIn(ActionEvent event) {
-        System.out.println(" log in ");
+
+        application.showStage("Crear cuenta");
+
     }
 
     public EmpresaSubasta getEmpresa() {
@@ -112,22 +114,18 @@ public class FrameInicialController {
             application.showAlert(e.getMessage());
         }
         if (empresa.existeUsuario(null)) {
-            cargarStageOnNewWindow("FrameCliente");
+            application.showStageCloseAll("frame cliente");
         } else {
             application.showAlert("El usuario no se ha encontrado");
         }
     }
 
-    private void cargarStageOnNewWindow(String frameCliente) {
-    }
 
     private void obtenerInstancia() {
         empresa = ModelFactoryController.getInstance();
     }
 
-    public void setApplication(App application){
-        this.application = application;
-    }
+
     @FXML
     public void cerrarApp(ActionEvent e){
         Persistencia.serializar();
@@ -142,5 +140,10 @@ public class FrameInicialController {
         assert txtPassword != null : "fx:id=\"txtPassword\" was not injected: check your FXML file 'FrameInicial.fxml'.";
 
     }
-
+    @Override
+    public App getApplication() {return application;}
+    @Override
+    public void setApplication(App application){
+        this.application = application;
+    }
 }

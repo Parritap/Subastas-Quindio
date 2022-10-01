@@ -1,3 +1,13 @@
-.Button{
-	-fx-background-color: rgba(255, 255, 255, 0,5);
+#myLabel{
+	-fx-padding: 18px;
+	-fx-font-family: "Times New Roman";
+	-fx-font-size: 20px;
+
+}
+
+#metodoPago{
+	-fx-padding: 13px;
+	-fx-font-family: "Times New Roman";
+	-fx-font-size: 17px;
+
 }

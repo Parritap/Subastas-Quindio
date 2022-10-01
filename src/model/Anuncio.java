@@ -4,12 +4,13 @@ package model;
 import lombok.Getter;
 import lombok.Setter;
 import java.awt.Image;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Getter
 @Setter
-public class Anuncio {
+public class Anuncio implements Serializable {
 	private LocalDate fecha;
 	private String nombreAnunciante;
 	private Image foto;

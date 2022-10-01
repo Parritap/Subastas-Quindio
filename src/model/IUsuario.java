@@ -2,11 +2,15 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import lombok.Data;
-import lombok.NonNull;
+
+/**
+ * Implementación de usuarios, en esta clase solo se gestionan las acciones
+ * disponibles para un usuario
+ * @Author Anubis Haxard, Juan Esteban Parra, Alejandro Arias
+ */
 
 //los mismos metodos y atributos que IAnuncio
 //pero para Usuarios
@@ -164,7 +168,6 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
 
     /**
      * Metodo que verifica si un usuario pasado por parametro existe en lista usuarios
-     *
      * @param usuario el usuario a buscar
      * @return true || false
      */
