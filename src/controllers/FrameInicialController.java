@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import model.IApplication;
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
-import persistencia.Persistencia;
+import persistencia.ArchivoUtil;
 
 public class FrameInicialController implements IApplication {
 
@@ -128,7 +128,7 @@ public class FrameInicialController implements IApplication {
 
     @FXML
     public void cerrarApp(ActionEvent e){
-        Persistencia.serializar();
+        ArchivoUtil.guardar();
         System.exit(0);
     }
 

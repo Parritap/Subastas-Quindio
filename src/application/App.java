@@ -105,7 +105,6 @@ public class App extends Application {
         alertaController.setLabel(mensaje);
         Scene scene = new Scene(root);
         stageAlerta.setScene(scene);
-        stageAlerta.initStyle(StageStyle.UNDECORATED);
         stageAlerta.show();
     }
 
