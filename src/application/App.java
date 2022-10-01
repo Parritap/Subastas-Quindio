@@ -1,14 +1,21 @@
 package application;
 
+
+import controllers.AlertasController;
+import controllers.FrameInicialController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import lombok.Getter;
 import lombok.Setter;
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
+
+import java.io.IOException;
+import java.util.HashMap;
 
 @Getter
 @Setter
@@ -16,6 +23,12 @@ import model.ModelFactoryController;
 public class App extends Application {
 
     private static EmpresaSubasta empresaSubasta;
+
+    private HashMap<String, String> rutas = new HashMap<>();
+
+    private Stage stageAlerta = new Stage();
+
+    private App application = this;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -42,6 +55,8 @@ public class App extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/FrameInicial.fxml"));
         Parent root = loader.load();
+        FrameInicialController frameInicialController = loader.getController();
+        frameInicialController.setApplication(this);
         Scene scene = new Scene(root);
         stage.setResizable(false);
         stage.setScene(scene);
@@ -52,6 +67,27 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-    
 
+    /**
+     * METODO QUE CARGA UN STAGE CON UN MENSAJE
+     * @param mensaje MENSAJE PARA MOSTRAR
+     */
+    public void showAlert(String mensaje) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Alertas.fxml"));
+        Parent root = loader.load();
+        AlertasController alertaController = loader.getController();
+        alertaController.setApplication(application);
+        alertaController.setLabel(mensaje);
+        Scene scene = new Scene(root);
+        stageAlerta.setScene(scene);
+        stageAlerta.initStyle(StageStyle.UNDECORATED);
+        stageAlerta.show();
+    }
+
+    /**
+     * METODO QUE CIERRA EL STAGE DE LA ALERTA
+     */
+    public void cerrarAlerta() {
+        if(stageAlerta != null) stageAlerta.close();
+    }
 }

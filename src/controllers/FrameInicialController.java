@@ -1,8 +1,10 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.App;
 import exceptions.EscrituraException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,11 +13,12 @@ import javafx.scene.control.TextField;
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
 import model.Usuario;
+import persistencia.Persistencia;
 
 public class FrameInicialController {
 
     private EmpresaSubasta empresa;
-
+    private  App application;
     @FXML
     private ResourceBundle resources;
 
@@ -36,7 +39,7 @@ public class FrameInicialController {
 
     @FXML
     void logIn(ActionEvent event) {
-        System.out.println(" log in "  );
+        System.out.println(" log in ");
     }
 
     public EmpresaSubasta getEmpresa() {
@@ -96,23 +99,22 @@ public class FrameInicialController {
     }
 
     @FXML
-    void signUp(ActionEvent event) {
+    void signUp(ActionEvent event) throws IOException {
         obtenerInstancia();
-        Usuario usuario = new Usuario("Alejandro", 20, "10032", "alejo1@", 0, null);
+        /*Usuario usuario = new Usuario("Alejandro", 20, "10032", "alejo1@", 0, null);
         usuario.setName(txtName.getText());
         usuario.setCorreo(txtEmail.getText());
         usuario.setPassword(txtPassword.getText());
-        usuario.setId(-1);
+        usuario.setId(-1);*/
         try {
-            empresa.crearUsuario(usuario);
+            empresa.crearUsuario(null);
         } catch (EscrituraException e) {
-            System.out.println("e = " + e);
-            e.printStackTrace();
+            application.showAlert(e.getMessage());
         }
-        if(empresa.existeUsuario(usuario)){
+        if (empresa.existeUsuario(null)) {
             cargarStageOnNewWindow("FrameCliente");
-        }else{
-
+        } else {
+            application.showAlert("El usuario no se ha encontrado");
         }
     }
 
@@ -121,6 +123,15 @@ public class FrameInicialController {
 
     private void obtenerInstancia() {
         empresa = ModelFactoryController.getInstance();
+    }
+
+    public void setApplication(App application){
+        this.application = application;
+    }
+    @FXML
+    public void cerrarApp(ActionEvent e){
+        Persistencia.serializar();
+        System.exit(0);
     }
 
     @FXML

@@ -1,9 +1,6 @@
 package model;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.ArrayList;
 @Data
 public class Usuario {
@@ -30,6 +27,7 @@ public class Usuario {
 	    this.correo = correo;
 	    this.cantAnuncios = cantAnuncios;
 		id = ++idAux;
+
 	}
 
 	//NO ELIMINAR ESTOS GETTERS, SI NO NO COMPILA EL CODIGO
@@ -122,4 +120,12 @@ public class Usuario {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+    public void actualizarAtributos(Usuario nuevoUsuario) {
+		this.name = nuevoUsuario.getName();
+		this.age = nuevoUsuario.getAge();
+		this.cedula=nuevoUsuario.getCedula();
+		this.correo = nuevoUsuario.getCorreo();
+		this.password = nuevoUsuario.getPassword();
+    }
 }

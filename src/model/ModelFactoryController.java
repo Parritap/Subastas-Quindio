@@ -14,4 +14,5 @@ public class ModelFactoryController {
         return Objects.requireNonNullElseGet(empresaSubasta, () -> empresaSubasta = new EmpresaSubasta());
     }
 
+
 }

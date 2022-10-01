@@ -1,12 +1,13 @@
 package model;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
 
-public class IAnuncio implements CRUD<Anuncio> {
+public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
 	//SE CAMBIA EL HASHMAP POR UN ARRAYLIST, DEBIDO A QUE SE INVIRTIO LA DEPENDENCIA DEL ID
 	public static ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
