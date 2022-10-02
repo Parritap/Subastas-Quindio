@@ -11,3 +11,30 @@
 	-fx-font-size: 17px;
 
 }
+
+#btnExit:hover{
+	-fx-background-color: #383838;
+	-fx-scale-y: 1.1;
+}
+
+#btnRedondo{
+	-fx-background-color: Transparent;
+	-fx-border-color: WHITE;
+	-fx-border-radius: 50;
+	-fx-text-fill: WHITE;
+	-fx-cursor: HAND;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+	-fx-background-color: 383838;
+}
+
+.tab-pane .tab:selected
+{
+	-fx-background-color: F3765B;
+}
+.tab-pane
+{
+	-fx-background-color: BLACK;
+	-fx-color-label-visible: WHITE;
+}

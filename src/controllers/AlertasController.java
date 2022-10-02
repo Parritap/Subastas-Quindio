@@ -5,11 +5,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import interfaces.IApplication;
+import lombok.Data;
 
 /**
  * ESTA CLASE PERMITE CONTROLAS LAS ACCIONES
  * DE LAS ALERTAS
  */
+@Data
 public class AlertasController implements IApplication {
 
     //VARIABLES GLOBALES

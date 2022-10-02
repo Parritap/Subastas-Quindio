@@ -7,6 +7,7 @@ import application.App;
 import exceptions.EscrituraException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import interfaces.IApplication;
@@ -50,11 +51,9 @@ public class FrameInicialController implements IApplication {
      */
     @FXML
     void logIn(ActionEvent ignoredEvent) {
-
         //LA CLASE APP ES LA ENCARGADA DE GESTIONAR LAS VENTANAS, AL INVOCAR A SHOW STAGE
         //CARGA UNA VENTANA CON LAS OPCIONES DE CREAR CUENTA
-        application.showStage("Crear cuenta");
-
+        application.showStage("crear cuenta");
     }
 
 
@@ -66,18 +65,16 @@ public class FrameInicialController implements IApplication {
      * @throws IOException EL METODO GENERA UN EXCEPCION POR SI NO SE PUEDE ACCEDER A LA EMPRESA
      */
     @FXML
-     void signUp(ActionEvent ignoredEvent) throws IOException {
-        obtenerInstancia();
-        try {
-            empresa.crearUsuario(null);
-        } catch (EscrituraException e) {
-            application.showAlert(e.getMessage());
+     void signUp(ActionEvent ignoredEvent){
+
+        String name = txtName.getText();
+        String passWord = txtPassword.getText();
+        String correo = txtEmail.getText();
+
+        if(name.equals("admin") && passWord.equals("admin") && correo.equals("admin")) {
+            application.showStageCloseAll("frame admin");
         }
-        if (empresa.existeUsuario(null)) {
-            application.showStageCloseAll("frame cliente");
-        } else {
-            application.showAlert("El usuario no se ha encontrado");
-        }
+
     }
 
     /**
@@ -110,7 +107,6 @@ public class FrameInicialController implements IApplication {
         assert txtPassword != null : "fx:id=\"txtPassword\" was not injected: check your FXML file 'FrameInicial.fxml'.";
 
     }
-
     /**
      * METODOS IMPLEMENTADOS POR LA INTERFAZ, PERMITEN EL POLIMORFISMO A
      * LA HORA DE HACER LOS STAGES

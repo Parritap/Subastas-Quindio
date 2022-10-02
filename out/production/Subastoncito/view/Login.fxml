@@ -78,12 +78,12 @@
                         <Insets top="25.0" />
                      </VBox.margin>
                   </TextField>
-                  <Spinner fx:id="spinnerEdad" prefHeight="26.0" prefWidth="206.0">
+                  <Spinner fx:id="spinnerEdad" editable="true" prefHeight="26.0" prefWidth="206.0">
                      <VBox.margin>
                         <Insets top="25.0" />
                      </VBox.margin>
                      <cursor>
-                        <Cursor fx:constant="DISAPPEAR" />
+                        <Cursor fx:constant="HAND" />
                      </cursor>
                      <effect>
                         <Blend mode="RED" />
@@ -106,7 +106,7 @@
                   </PasswordField>
                   <SplitMenuButton fx:id="txtmetodoPago" mnemonicParsing="false" prefHeight="26.0" prefWidth="208.0" text="Formato pago">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Efectivo">
+                        <MenuItem fx:id="efectivo" mnemonicParsing="false" onAction="#setValueFormaPago" text="Efectivo">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -115,7 +115,7 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
-                        <MenuItem mnemonicParsing="false" text="MasterCard">
+                        <MenuItem fx:id="mastercard" mnemonicParsing="false" onAction="#setValueFormaPago" text="MasterCard">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -124,7 +124,7 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
-                      <MenuItem mnemonicParsing="false" onAction="#setValueFormaPago" text="Paypal">
+                      <MenuItem fx:id="paypal" mnemonicParsing="false" onAction="#setValueFormaPago" text="Paypal">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -133,7 +133,7 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
-                      <MenuItem mnemonicParsing="false" onAction="#setValueFormaPago" text="Visa">
+                      <MenuItem fx:id="visa" mnemonicParsing="false" onAction="#setValueFormaPago" text="Visa">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

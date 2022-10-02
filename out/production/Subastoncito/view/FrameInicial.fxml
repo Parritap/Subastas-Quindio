@@ -69,9 +69,8 @@
                         </AnchorPane>
                      </children>
                   </VBox>
-                  <AnchorPane prefHeight="200.0" prefWidth="300.0">
+                  <AnchorPane prefHeight="200.0" prefWidth="300.0" stylesheets="@styles.css">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#171717" height="400.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="303.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" />
                         <Line endX="-163.0" layoutX="163.0" layoutY="113.0" startX="-163.0" startY="-112.99999237060547" />
                         <Line endX="-149.50003051757812" endY="280.89703369140625" layoutX="150.0" layoutY="114.0" startX="-149.50003051757812" startY="-114.49998474121094" stroke="WHITE" />
                         <Label layoutX="120.0" layoutY="25.0" text="SIGN UP" textFill="RED">
@@ -268,7 +267,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="273.0" layoutY="3.0" mnemonicParsing="false" onAction="#cerrarApp" prefWidth="23.0" style="-fx-background-color: Red;" text="X" textFill="WHITE">
+                        <Button id="btnExit" layoutX="273.0" layoutY="3.0" minHeight="23.0" mnemonicParsing="false" onAction="#cerrarApp" prefWidth="23.0" style="-fx-background-color: Red;" stylesheets="@styles.css" text="X" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

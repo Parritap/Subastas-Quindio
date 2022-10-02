@@ -12,6 +12,7 @@ public class Usuario implements Serializable {
 	private String correo;
 	private Integer cantAnuncios;
 
+	private String direccion;
 	private String password;
 
 	private ArrayList<Puja> listaPujas;
@@ -28,6 +29,17 @@ public class Usuario implements Serializable {
 	    this.cedula = cedula;
 	    this.correo = correo;
 	    this.cantAnuncios = cantAnuncios;
+		id = ++idAux;
+		estado = Estado.NUEVO;
+	}
+
+	public Usuario(String name, Integer age, String cedula, String correo, String password, String direccion ) {
+		this.name = name;
+		this.age = age;
+		this.cedula = cedula;
+		this.correo = correo;
+		this.direccion = direccion;
+		this.password = password;
 		id = ++idAux;
 		estado = Estado.NUEVO;
 	}
