@@ -53,11 +53,26 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		return true;
 	}
 
+	/**
+	 * METODO QUE PERMITE ACTUALIZAR UN ANUNCIO DADO UN NUEVO
+	 * ANUNCIO CON LOS NUEVOS ATRIBUTOS Y EL ID DEL ANUNCIO
+	 * QUE SE VA A ACTUALIZAR
+	 * @param id ID DEL ANUNCIO A ACTUALIZAR
+	 * @param nuevoAnuncio ANUNCIO QUE CONTIENE LOS NUEVOS ATRIBUTOS
+	 * @throws EscrituraException LANZA UNA EXCEPCION SI NO ENCUENTRA EL ANUNCIO
+	 */
 	@Override
 	public void actualizar(Integer id, Anuncio nuevoAnuncio) throws EscrituraException {
 
 	}
 
+	/**
+	 * METODO QUE PERMITE CAMBIAR EL ESTADO DE UN ANUNCIO
+	 * A ELIMINADO
+	 * @param id ANUNCIO QUE SE DESEA ELIMINAR
+	 * @throws EscrituraException SI NO SE ENCUENTRA EL ANUNCIO SE LANZA
+	 * UNA EXCEPCION
+	 */
 	@Override
 	public void Eliminar(Integer id) throws EscrituraException {
 		boolean flag = false;
@@ -70,22 +85,41 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		if(!flag) throw new EscrituraException("No se ha podido eliminar el anuncio");
 	}
 
+	/**
+	 * PERMITE LISTAR CON UN ORDEN
+	 * @param campo ATRIBUTO POR EL QUE SE DESEA LISTAR
+	 * @param dir ASCENDENTE O DESCENDENTE
+	 * @return UNA LISTA CON LOS OBJETOS ORDENADOS
+	 * @throws CRUDExceptions PUEDEN SUCEDER ERRORES DE LECTURA
+	 * @throws CRUDExceptions PUEDEN SUCEDER ERRORES DE LECTURA
+	 */
 	@Override
 	public ArrayList<Anuncio> listar(String campo, TipoOrden dir) throws CRUDExceptions {
 		return null;
 	}
 
+	/**
+	 * METODO QUE PERMITE AGREGAR UN ANUNCIO A LA EMPRESA
+	 * @param obj ANUNCIO A AGREGAR
+	 * @throws CRUDExceptions SI NO PUEDE AGREGAR MAS ANUNCIO LANZA UNA EXCEPCION
+	 */
 	@Override
 	public void add(Anuncio obj) throws CRUDExceptions {
 
 	}
 
-
+	/**
+	 * METODO QUE PERMITE ORDENAR DADO UN ATRIBUTO Y UN ORDEN
+	 * @param atributo POR EL QUE SE DESEA ORDENAR
+	 * @param orden ASCENDENTE O DESCENDENTE
+	 * @return UN ARRAYLIST CON LOS OBJETOS ORDENADOS
+	 * @throws CRUDExceptions PUEDEN OCURRIR ERRORES DE LECTURA
+	 */
 	public ArrayList<Anuncio> listar(IObtenerAtributo atributo, TipoOrden orden) throws CRUDExceptions {
 		ArrayList<Anuncio> anuncios = this.listar();
 		ArrayList<Anuncio> anunciosOrdenados = new ArrayList<>();
 		System.out.println(anuncios.size());
-		//indice en el que vamos a insertar cada elemento al ordenar
+		//índice en el que vamos a insertar cada elemento al ordenar
 		int ind = 0;
 		for (Anuncio anuncio : anuncios) {
 			for (int j = 0; j < anunciosOrdenados.size(); j++) {
@@ -102,7 +136,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		return anunciosOrdenados;
 	}
 
-	//es necesario crear mas de estos para cada tipo de los
+	//es necesario crear más de estos para cada tipo de los
 	//atributos de anuncio, LocalDate, String, etc...
 	public Boolean esMayorA(Integer valor1, Integer valor2) {
 		return valor1 > valor2;

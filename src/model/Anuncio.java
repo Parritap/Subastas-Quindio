@@ -1,15 +1,12 @@
 package model;
 
-
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import java.awt.Image;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-@Getter
-@Setter
+@Data
 public class Anuncio implements Serializable {
 	private LocalDate fecha;
 	private String nombreAnunciante;
@@ -62,11 +59,14 @@ public class Anuncio implements Serializable {
 		//que creemos un anuncio
 	}
 
+	/**
+	 * METODO QUE PERMITE COMPARAR IDS DADO UNO POR PARAMETRO
+	 * @param id CON EL QUE SE DESEA COMPARAR
+	 * @return TRUE || FALSE
+	 */
 	public boolean compararId(Integer id) {
 		return this.id.compareTo(id) == 0;
 	}
 
-	public void setEstado(Estado estado){
-		this.estado = estado;
-	}
+
 }

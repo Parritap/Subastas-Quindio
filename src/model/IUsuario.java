@@ -154,7 +154,7 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
      * @param campo atributo pot el que se va a ordenar
      * @param a     objeto uno
      * @param b     objeto dos
-     * @return retorna un in con la comparacion
+     * @return retorna un int con la comparacion
      */
     public static int ordenar(String campo, Usuario a, Usuario b) {
         int resultado = 0;

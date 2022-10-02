@@ -3,7 +3,6 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import application.App;
 import exceptions.EscrituraException;
 import javafx.event.ActionEvent;
@@ -11,12 +10,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import interfaces.IApplication;
+import lombok.Data;
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
 import persistencia.ArchivoUtil;
 
+/**
+ * CLASE QUE CONTROLA EL PRIMER FRAME
+ */
+@Data
 public class FrameInicialController implements IApplication {
 
+
+    //ATRIBUTOS DE LAS VENTANAS
     private EmpresaSubasta empresa;
     private  App application;
     @FXML
@@ -37,77 +43,31 @@ public class FrameInicialController implements IApplication {
     @FXML
     private TextField txtPassword;
 
+    /**
+     * METODO QUE PERMITE CREAR UNA CUENTA AL HACER CLIC, DEBE ABRIR UN NUEVO STAGE CON
+     * LAS OPCIONES DE CREAR CUENTA
+     * @param ignoredEvent ES EL EVENTO GENERADO AL HACER CLICK EN CREAR CUENTA
+     */
     @FXML
-    void logIn(ActionEvent event) {
+    void logIn(ActionEvent ignoredEvent) {
 
+        //LA CLASE APP ES LA ENCARGADA DE GESTIONAR LAS VENTANAS, AL INVOCAR A SHOW STAGE
+        //CARGA UNA VENTANA CON LAS OPCIONES DE CREAR CUENTA
         application.showStage("Crear cuenta");
 
     }
 
-    public EmpresaSubasta getEmpresa() {
-        return empresa;
-    }
 
-    public void setEmpresa(EmpresaSubasta empresa) {
-        this.empresa = empresa;
-    }
 
-    public ResourceBundle getResources() {
-        return resources;
-    }
-
-    public void setResources(ResourceBundle resources) {
-        this.resources = resources;
-    }
-
-    public URL getLocation() {
-        return location;
-    }
-
-    public void setLocation(URL location) {
-        this.location = location;
-    }
-
-    public CheckBox getCheckAcept() {
-        return checkAcept;
-    }
-
-    public void setCheckAcept(CheckBox checkAcept) {
-        this.checkAcept = checkAcept;
-    }
-
-    public TextField getTxtEmail() {
-        return txtEmail;
-    }
-
-    public void setTxtEmail(TextField txtEmail) {
-        this.txtEmail = txtEmail;
-    }
-
-    public TextField getTxtName() {
-        return txtName;
-    }
-
-    public void setTxtName(TextField txtName) {
-        this.txtName = txtName;
-    }
-
-    public TextField getTxtPassword() {
-        return txtPassword;
-    }
-
-    public void setTxtPassword(TextField txtPassword) {
-        this.txtPassword = txtPassword;
-    }
-
+    /**
+     * ESTE METODO PERMITE INICIAR SESION EN LA EMPRESA CUANDO SE DA CLICK EN
+     * LA INTERFAZ
+     * @param ignoredEvent EVENTO GENERADO POR EL BOTON
+     * @throws IOException EL METODO GENERA UN EXCEPCION POR SI NO SE PUEDE ACCEDER A LA EMPRESA
+     */
     @FXML
-    void signUp(ActionEvent event) throws IOException {
+     void signUp(ActionEvent ignoredEvent) throws IOException {
         obtenerInstancia();
-        /*Usuario usuario = new Usuario("Alejandro", 20, "10032", "alejo1@", 0, null);
-        usuario.setName(txtName.getText());
-        usuario.setCorreo(txtEmail.getText());
-        usuario.setPassword(txtPassword.getText());
-        usuario.setId(-1);*/
         try {
             empresa.crearUsuario(null);
         } catch (EscrituraException e) {
@@ -120,18 +80,28 @@ public class FrameInicialController implements IApplication {
         }
     }
 
-
+    /**
+     * ESTE METODO PERMITE OBTENER LA INSTANCIA DE LA EMPRESA, DEBE EJECUTARSE ANTES
+     * DE CUALQUIER STAGE. SIRVE PARA QUE EL CONTROLADOR SE COMUNIQUE CON LA EMPRESA
+     */
     private void obtenerInstancia() {
         empresa = ModelFactoryController.getInstance();
     }
 
-
+    /**
+     * Este metodo permite detener la application, recibe el evento de nuestra propia
+     * x, pero antes serializa la empresa
+     * @param ignoredE evento al hacer clic en nuestra propia x
+     */
     @FXML
-    public void cerrarApp(ActionEvent e){
+    public void cerrarApp(ActionEvent ignoredE){
         ArchivoUtil.guardar();
         System.exit(0);
     }
 
+    /**
+     * METODO QUE PERMITE INICIALIZAR LOS OBJETOS QUE APARECEN EN LA VENTANA
+     */
     @FXML
     void initialize() {
         assert checkAcept != null : "fx:id=\"checkAcept\" was not injected: check your FXML file 'FrameInicial.fxml'.";
@@ -140,10 +110,18 @@ public class FrameInicialController implements IApplication {
         assert txtPassword != null : "fx:id=\"txtPassword\" was not injected: check your FXML file 'FrameInicial.fxml'.";
 
     }
+
+    /**
+     * METODOS IMPLEMENTADOS POR LA INTERFAZ, PERMITEN EL POLIMORFISMO A
+     * LA HORA DE HACER LOS STAGES
+     * @return application la instancia de application en la clase
+     */
     @Override
     public App getApplication() {return application;}
     @Override
     public void setApplication(App application){
         this.application = application;
     }
+
+
 }

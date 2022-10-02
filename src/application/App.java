@@ -28,10 +28,8 @@ public class App extends Application {
     //Contiene las rutas de todos los frames, la llave es el frame a mostrar
     //retorna la ruta de ese frame
     private HashMap<String, String> rutas = new HashMap<>();
-
+    //Stage que carga ina alerta con un mensaje
     private Stage stageAlerta = new Stage();
-
-
     /**
      * Main
      * @param args args
@@ -65,9 +63,9 @@ public class App extends Application {
     	TipoOrden ord = TipoOrden.ASCENDENTE;
     	System.out.println(ord == TipoOrden.DESCENDENTE);
     	*/
-
+        //El singleton crea la instancia de Empresa
         empresaSubasta = ModelFactoryController.getInstance();
-
+        //CARGO EL FRAME PRINCIPAL
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/FrameInicial.fxml"));
         Parent root = loader.load();
         FrameInicialController frameInicialController = loader.getController();
@@ -78,7 +76,6 @@ public class App extends Application {
         stage.initStyle(StageStyle.UNDECORATED);
         cargarRutas();
         stage.show();
-
     }
 
     /**
@@ -89,6 +86,7 @@ public class App extends Application {
         rutas.put("frame inicial", "../view/FrameInicial.fxml");
         rutas.put("crear cuenta", "../view/Login.fxml");
         rutas.put("alerta", "../view/Alertas.fxml");
+        rutas.put("frameCliente", "../view/Alertas.fxml");
     }
 
 
