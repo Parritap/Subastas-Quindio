@@ -3,6 +3,7 @@ package application;
 
 import controllers.AlertasController;
 import controllers.FrameInicialController;
+import controllers.SubastaController;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -57,33 +58,15 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         inicializarApp();
     	//pruebas de codigo, por favor no borrarlas
-    	/*
-    	IAnuncio anuncio = new IAnuncio();
-    	Anuncio ad = new Anuncio();
-    	anuncio.crear(ad);
-    	anuncio.crear(new Anuncio());
-    	System.out.println(anuncio.listar().get(0));
-    	System.out.println(anuncio.buscarId(1));
-    	anuncio.actualizar(1, new Anuncio());
-    	System.out.println(anuncio.buscarId(1));
-    	System.out.println(anuncio.listar((obj)->{return obj.tiempoActivo;}, TipoOrden.ASCENDENTE));
-    	Anuncio ad = new Anuncio();
-    
-    	System.out.println(e->{return ad.nombreAnunciante}());
-    	TipoOrden ord = TipoOrden.ASCENDENTE;
-    	System.out.println(ord == TipoOrden.DESCENDENTE);
-    	*/
         //CARGO EL FRAME PRINCIPAL
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get("frame inicial")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get("subasta")));
         Parent root = loader.load();
-        FrameInicialController frameInicialController = loader.getController();
+        SubastaController frameInicialController = loader.getController();
         frameInicialController.setApplication(this);
         Scene scene = new Scene(root);
         stage.setResizable(false);
         stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
         cargarRutas();
-        desplazarStage(root, stage);
         listStage.add(stage);
         stage.show();
     }
@@ -125,6 +108,7 @@ public class App extends Application {
         rutas.put("alerta", "../view/Alertas.fxml");
         rutas.put("frameCliente", "../view/FrameCliente.fxml");
         rutas.put("frame admin", "../view/FrameAdmin.fxml");
+        rutas.put("subasta", "../view/Subastas.fxml");
     }
 
 
