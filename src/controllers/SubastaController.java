@@ -2,7 +2,6 @@ package controllers;
 
 import application.App;
 import interfaces.IApplication;
-import interfaces.MyListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -16,28 +15,12 @@ import javafx.scene.layout.VBox;
 import model.Anuncio;
 import model.ModelFactoryController;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
 public class SubastaController implements IApplication{
 
     private App application;
-
-    @Override
-    public App getApplication() {
-        return application;
-    }
-
-    @Override
-    public void setApplication(App application) {
-        this.application = application;
-    }
-
-
-
-
     @FXML
     private VBox chosenFruitCard;
     @FXML
@@ -52,7 +35,6 @@ public class SubastaController implements IApplication{
     private GridPane grid;
     private ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
     private Image image;
-    private MyListener myListener;
 
 
 
@@ -60,31 +42,38 @@ public class SubastaController implements IApplication{
         return  ModelFactoryController.getInstance().getListaAnuncios();
     }
 
-    private void setChosenFruit(Anuncio anuncio) {
+    private void loadFirstAd(Anuncio anuncio) {
         this.fruitNameLable.setText(anuncio.getName());
         this.fruitPriceLabel.setText("$" + anuncio.getValorInicial());
-        this.image = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream(anuncio.getFoto().toString())));
+        this.image = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream(anuncio.getImageSrc())));
         this.fruitImg.setImage(this.image);
-        //this.chosenFruitCard.setStyle("-fx-background-color: #" + fruit.getColor() + ";\n    -fx-background-radius: 30;");
     }
 
-    public void initialize(URL location, ResourceBundle resources) {
-        this.listaAnuncios.addAll(ModelFactoryController.getInstance().getListaAnuncios());
+    @FXML
+    public void initialize() {
+        inicializar();
+
+    }
+
+    private void inicializar() {
+        
+        
+        
+        this.listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios());
         if (this.listaAnuncios.size() > 0) {
-            this.setChosenFruit(this.listaAnuncios.get(0));
-            this.myListener = this::setChosenFruit;
+            this.loadFirstAd(this.listaAnuncios.get(0));
         }
 
         int column = 0;
         int row = 1;
 
         try {
-            for (Anuncio listaAnuncio : this.listaAnuncios) {
+            for (Anuncio anuncio : this.listaAnuncios) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(this.getClass().getResource("/views/item.fxml"));
+                fxmlLoader.setLocation(this.getClass().getResource("../view/AnuncioItem.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
                 ItemController itemController = fxmlLoader.getController();
-                itemController.setData(listaAnuncio, myListener);
+                itemController.setData(anuncio);
                 if (column == 3) {
                     column = 0;
                     ++row;
@@ -103,6 +92,21 @@ public class SubastaController implements IApplication{
             var9.printStackTrace();
         }
 
+
     }
+
+
+    @Override
+    public App getApplication() {
+        return application;
+    }
+
+    @Override
+    public void setApplication(App application) {
+        this.application = application;
+    }
+
+
+
 
 }

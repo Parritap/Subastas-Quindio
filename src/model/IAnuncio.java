@@ -3,8 +3,6 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
-
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
@@ -126,6 +124,22 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	@Override
 	public void add(Anuncio obj) throws CRUDExceptions {
 
+		if(!existeAnuncio(obj)) listaAnuncios.add(obj);
+		else throw new EscrituraException("No se ha podido crear el anuncio");
+	}
+
+	/**
+	 * METODO QUE VERIFICA SI EXISTE UN ANUNCIO
+	 * @param obj OBJETO A VERIFICAR
+	 * @return TRUE || FALSE
+	 */
+	private boolean existeAnuncio(Anuncio obj) {
+
+		for (Anuncio listaAnuncio : listaAnuncios) {
+			if (listaAnuncio.equals(obj)) return true;
+		}
+
+		return false;
 	}
 
 	/**

@@ -2,7 +2,6 @@ package model;
 
 import javafx.scene.image.Image;
 import lombok.Data;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -13,10 +12,10 @@ public class Anuncio implements Serializable {
 	private String name;
 	private LocalDate fecha;
 	private String nombreAnunciante;
-	private Image foto;
+	private String imageSrc; //Es necesario cambiar la imagen a String, y contener solo la ruta para tener flexibilidad
 	private LocalDate fechaPublicacion;
 	private LocalDate fechaTerminacion;
-	private Integer valorInicial;
+	private Double valorInicial;
 	private ArrayList<Puja> listaPujas;
 	private Double tiempoActivo;
 
@@ -41,12 +40,12 @@ public class Anuncio implements Serializable {
 	}
 	
 	//constructor completo
-	public Anuncio(LocalDate fecha, String nombreAnunciante, Image foto, LocalDate fechaTerminacion,
-				   Integer valorInicial, Double tiempoActivo, Boolean fueMostrado) {
+	public Anuncio(LocalDate fecha, String nombreAnunciante, String imageSrc, LocalDate fechaTerminacion,
+				   Double valorInicial, Double tiempoActivo, Boolean fueMostrado) {
 		
 		this.fecha = fecha;
 	    this.nombreAnunciante = nombreAnunciante;
-	    this.foto = foto;
+	    this.imageSrc = imageSrc;
 	    //la fecha en la que se crea el objeto es la fecha del anuncio
 	    this.fechaPublicacion = LocalDate.now();
 	    this.fechaTerminacion = fechaTerminacion;
@@ -61,6 +60,19 @@ public class Anuncio implements Serializable {
 		//valor de esta variable, la cual va aumentar cada vez
 		//que creemos un anuncio
 	}
+
+
+	/**
+	 * CONSTRUCTOR NECESARIO PARA PRUEBAS
+	 */
+
+	public Anuncio(String name, Double valorInicial, String imageSrc){
+		this.name = name;
+		this.valorInicial = valorInicial;
+		this.imageSrc = imageSrc;
+	}
+
+
 
 
 

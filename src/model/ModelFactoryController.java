@@ -2,6 +2,8 @@ package model;
 
 import exceptions.CRUDExceptions;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -27,4 +29,7 @@ public class ModelFactoryController {
     }
 
 
+    public static ArrayList<Anuncio> getlistaAnuncios() {
+        return getInstance().getListaAnuncios();
+    }
 }
