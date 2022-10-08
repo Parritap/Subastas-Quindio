@@ -1,13 +1,16 @@
 package model;
 
+import javafx.scene.image.Image;
 import lombok.Data;
-import java.awt.Image;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Data
 public class Anuncio implements Serializable {
+
+	private String name;
 	private LocalDate fecha;
 	private String nombreAnunciante;
 	private Image foto;
@@ -58,6 +61,8 @@ public class Anuncio implements Serializable {
 		//valor de esta variable, la cual va aumentar cada vez
 		//que creemos un anuncio
 	}
+
+
 
 	/**
 	 * METODO QUE PERMITE COMPARAR IDS DADO UNO POR PARAMETRO

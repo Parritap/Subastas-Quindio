@@ -3,6 +3,8 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
@@ -166,4 +168,11 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		return valor1 > valor2;
 	}
 
+	/**
+	 * Devuelve la lista de anuncios almacenados en la empresa
+	 * @return listaAnuncios
+	 */
+    public ArrayList<Anuncio> getListaAnuncio() {
+		return listaAnuncios;
+    }
 }

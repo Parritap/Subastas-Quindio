@@ -1,9 +1,14 @@
 package model;
 
+import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
+import javafx.scene.image.Image;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Data
 public class EmpresaSubasta implements Runnable, Serializable {
@@ -17,11 +22,12 @@ public class EmpresaSubasta implements Runnable, Serializable {
     /**
      * CONSTRUCTOR
      */
-    public EmpresaSubasta() {
+    public EmpresaSubasta() throws CRUDExceptions {
         iAnuncio = new IAnuncio();
         iProducto = new IProducto();
         iUsuario = new IUsuario();
         iTransaccion = new ITransaccion();
+
     }
 
     /**
@@ -50,5 +56,10 @@ public class EmpresaSubasta implements Runnable, Serializable {
     @Override
     public void run() {
 
+    }
+
+    public ArrayList<Anuncio> getListaAnuncios() {
+
+        return iAnuncio.getListaAnuncio();
     }
 }

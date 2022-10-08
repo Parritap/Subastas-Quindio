@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.CRUDExceptions;
+
 import java.util.Objects;
 
 /**
@@ -15,7 +17,13 @@ public class ModelFactoryController {
      * @return LA INSTANCIA DE LA EMPRESA
      */
     public static EmpresaSubasta getInstance(){
-        return Objects.requireNonNullElseGet(empresaSubasta, () -> empresaSubasta = new EmpresaSubasta());
+        return Objects.requireNonNullElseGet(empresaSubasta, () -> {
+            try {
+                return empresaSubasta = new EmpresaSubasta();
+            } catch (CRUDExceptions e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
 

@@ -2,15 +2,14 @@ package application;
 
 
 import controllers.AlertasController;
-import controllers.FrameInicialController;
 import controllers.SubastaController;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -19,8 +18,8 @@ import lombok.Setter;
 import model.EmpresaSubasta;
 import interfaces.IApplication;
 import model.ModelFactoryController;
-
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -64,7 +63,6 @@ public class App extends Application {
         SubastaController frameInicialController = loader.getController();
         frameInicialController.setApplication(this);
         Scene scene = new Scene(root);
-        stage.setResizable(false);
         stage.setScene(scene);
         cargarRutas();
         listStage.add(stage);
@@ -95,6 +93,7 @@ public class App extends Application {
         cargarRutas();
         //El singleton crea la instancia de Empresa
         empresaSubasta = ModelFactoryController.getInstance();
+
     }
 
 
@@ -119,7 +118,7 @@ public class App extends Application {
      */
     public void showAlert(String mensaje){
         FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get("alerta")));
-        Parent root = null;
+        Parent root;
         try {
             root = loader.load();
         } catch (IOException e) {

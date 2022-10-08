@@ -2,11 +2,15 @@ package controllers;
 
 import application.App;
 import interfaces.IApplication;
+import interfaces.MyListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import model.Anuncio;
+
+import java.util.Objects;
 
 public class ItemController implements IApplication {
 
@@ -29,7 +33,7 @@ public class ItemController implements IApplication {
     private Label priceLable;
     @FXML
     private ImageView img;
-    private Fruit fruit;
+    private Anuncio anuncio;
     private MyListener myListener;
 
     public ItemController() {
@@ -37,15 +41,15 @@ public class ItemController implements IApplication {
 
     @FXML
     private void click(MouseEvent mouseEvent) {
-        this.myListener.onClickListener(this.fruit);
+        this.myListener.onClickListener(this.anuncio);
     }
 
-    public void setData(Fruit fruit, MyListener myListener) {
-        this.fruit = fruit;
+    public void setData(Anuncio anuncio, MyListener myListener) {
+        this.anuncio = anuncio;
         this.myListener = myListener;
-        this.nameLabel.setText(fruit.getName());
-        this.priceLable.setText("$" + fruit.getPrice());
-        Image image = new Image(this.getClass().getResourceAsStream(fruit.getImgSrc()));
+        this.nameLabel.setText(anuncio.getName());
+        this.priceLable.setText("$" + anuncio.getValorInicial());
+        Image image = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream(anuncio.getFoto().toString())));
         this.img.setImage(image);
     }
 }
