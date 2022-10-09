@@ -1,5 +1,6 @@
 package model;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import exceptions.CRUDExceptions;
 
@@ -37,7 +38,7 @@ public interface CRUD<T> extends Ordenable<T>, Paginable<T> {
 	//aqui tambien hice un cambio
 	void Eliminar(Integer id)  throws CRUDExceptions;
 
-	ArrayList<T> listar(String campo, TipoOrden dir) throws CRUDExceptions;
+	ArrayList<T> listar(String campo, TipoOrden dir) throws CRUDExceptions, NoSuchMethodException, InvocationTargetException, IllegalAccessException;
 
 	void add(T obj) throws CRUDExceptions;
 

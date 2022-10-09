@@ -33,10 +33,11 @@ public class Anuncio {
 	private static int idAux;
 	private Integer id;
 	//constructor sencillo util para hacer pruebas;
-	public Anuncio() {
+	public Anuncio(Integer id) {
 			//fecha actual
 			this.fechaPublicacion = LocalDate.now();
 			this.tiempoActivo = 24.0;
+			this.id = id;
 	}
 	
 	//constructor completo
