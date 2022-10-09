@@ -13,6 +13,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+/**
+ *Esta clase se encarga de manejar los eventos y funcionalidades de la vista de cuenta
+ */
 public class CuentaController implements IApplication {
 
     //Instancia de application
@@ -22,7 +25,7 @@ public class CuentaController implements IApplication {
     private ImageView image;
     //metodo que permite cargar una imagen en la cuenta
     @FXML
-    void cargarPerfil(MouseEvent event) {
+    void cargarPerfil(MouseEvent ignoredEvent) {
         //el file chooser permite abrir el explorador
         FileChooser dc = new FileChooser();
         File file = dc.showOpenDialog(new Stage());

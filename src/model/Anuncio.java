@@ -1,6 +1,5 @@
 package model;
 
-import javafx.scene.image.Image;
 import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -32,12 +31,6 @@ public class Anuncio implements Serializable {
 	*/
 	private static int idAux;
 	private Integer id;
-	//constructor sencillo util para hacer pruebas;
-	public Anuncio() {
-			//fecha actual
-			this.fechaPublicacion = LocalDate.now();
-			this.tiempoActivo = 24.0;
-	}
 	
 	//constructor completo
 	public Anuncio(LocalDate fecha, String nombreAnunciante, String imageSrc, LocalDate fechaTerminacion,
@@ -57,7 +50,7 @@ public class Anuncio implements Serializable {
 		//SE AGREGA EL ID
 		id = ++idAux;
 		//cada vez que se crea un anuncio se le pone como id el
-		//valor de esta variable, la cual va aumentar cada vez
+		//valor de esta variable, la cual va a aumentar cada vez
 		//que creemos un anuncio
 	}
 

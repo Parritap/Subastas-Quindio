@@ -29,14 +29,11 @@ public class App extends Application {
 
     /**
      * Main
-     *
      * @param args args
      */
     public static void main(String[] args) {
         launch();
     }
-
-
 
     /**
      * Inicializa el programa
@@ -61,8 +58,6 @@ public class App extends Application {
     }
 
 
-
-
     /**
      * Metodo que inicializa datos necesarios en la app
      */
@@ -71,7 +66,6 @@ public class App extends Application {
         cargarRutas();
         //El singleton crea la instancia de Empresa
         empresaSubasta = ModelFactoryController.getInstance();
-
     }
 
 
@@ -87,15 +81,14 @@ public class App extends Application {
     }
 
 
+    //TODO
+
     /**
      * Este metodo permite que al hacer clic en algún anuncio
      * se actualice el pane de la barra lateral izquierda
      * @param anuncio EL ANUNCIO QUE SE VA A ACTUALIZAR
      */
-    public void setProductSelected(Anuncio anuncio) {
-
-
-    }
+    public void setProductSelected(Anuncio anuncio) {}
 
     /**
      * Este metodo permite cambiar el scene del stage global

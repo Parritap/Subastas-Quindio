@@ -27,7 +27,6 @@ public class SubastaController implements IApplication{
     //Variables globales
     private App application;
 
-
     @FXML
     private Label adSelected;
 
@@ -36,6 +35,8 @@ public class SubastaController implements IApplication{
 
     @FXML
     private GridPane grid;
+
+    //Contiene los anuncios de la empresa en un momento dado
     private final ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
 
 
@@ -65,17 +66,17 @@ public class SubastaController implements IApplication{
 
     }
 
+    /**
+     * Contiene lo necesario para que los anuncios se puedan mostrar
+     */
     private void inicializar() {
         //obtengo la lista de anuncios disponibles en la empresa
         this.listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios());
         //si existe al menos un anuncio selecciono el primero como anuncio por defecto
         //para ser mostrado en la barra lateral
         if (this.listaAnuncios.size() > 0)this.loadFirstAd(this.listaAnuncios.get(0));
-
         //metodo que permite recorrer los anuncios y cargarlos en el pane scroll
         cargarAnuncioAlScroll();
-
-
     }
 
     /**

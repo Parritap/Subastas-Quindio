@@ -23,9 +23,6 @@ public class ItemController implements IApplication {
     @FXML
     private Label priceLable;
 
-    @FXML
-    private AnchorPane pane;
-
     private App application;
 
     private Anuncio anuncio;
