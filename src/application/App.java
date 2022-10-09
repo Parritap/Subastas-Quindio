@@ -53,8 +53,13 @@ public class App extends Application {
         Scene scene = new Scene(root);
         this.stage = stage;
         stage.setScene(scene);
+        stage.setFullScreenExitHint("");
+        stage.setFullScreen(true);
+        stage.minWidthProperty();
         cargarRutas();
         stage.show();
+        System.out.println("Height" + stage.getHeight());
+        System.out.println("Width" + stage.getWidth());
     }
 
 
@@ -104,6 +109,9 @@ public class App extends Application {
             IApplication controller = loader.getController();
             controller.setApplication(this);
             this.stage.setScene(scene);
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("");
+            stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

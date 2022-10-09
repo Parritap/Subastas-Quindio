@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.ByteArrayInputStream;
@@ -22,7 +24,8 @@ public class CuentaController implements IApplication {
     private App application;
     //imagen de la cuenta
     @FXML
-    private ImageView image;
+    private Circle circleImage;
+
     //metodo que permite cargar una imagen en la cuenta
     @FXML
     void cargarPerfil(MouseEvent ignoredEvent) {
@@ -35,12 +38,16 @@ public class CuentaController implements IApplication {
             //cargo la imagen al pane
             btImagen = Files.readAllBytes(file.toPath());
             Image img = new Image(new ByteArrayInputStream(btImagen), 199, 199, false, false);
-            image.setImage(img);
+            circleImage.setFill(new ImagePattern(img));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
+    @FXML
+    void initialize() {
+        circleImage.setFill(new ImagePattern(new Image("/resources/profile.png")));
+    }
 
     /**
      * Metodos implementados debido a la interfaz

@@ -82,10 +82,76 @@
 
 .createlbl{
     -fx-alignment: Center;
+    -fx-fill: White;
 }
 
 .border-image{
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
     -fx-border-radius: 50%;
+}
+
+.labelCreateSpecial{
+    -fx-font-size: 30;
+    -fx-margin: 30, 30, 30, 30;
+    -fx-text-fill: White;
+}
+
+.bordePane{
+    -fx-background-color: #252525;
+    -fx-background-radius: 30 0 0 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8),10, 0, 0,0);
+    -fx-border-radius: 50%;
+    -fx-border-color: #252525;
+}
+
+.bordePane2{
+    -fx-background-color: #252525;
+    -fx-background-radius: 0 30 0 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8),10, 0, 5, 0);
+    -fx-border-radius: 50%;
+}
+
+.styleTextField{
+    -fx-background-color: #B0B0B0;
+    -fx-prompt-text-fill: White;
+    -fx-prompt-alignment: Center;
+    -fx-font-size: 15;
+    -fx-font-family: Arial;
+}
+.styleTextField:focused{
+    -fx-focus-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-background-color: #E7E7E7;
+    -fx-wrap-text: true;
+}
+
+.bordePane3{
+    -fx-background-color: #252525;
+    -fx-background-radius: 20 0 0 30;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8),10, 0, 0,10);
+    -fx-border-radius: 50%;
+    -fx-border-color: #252525;
+}
+
+.bordePane4{
+    -fx-background-color: #252525;
+    -fx-background-radius: 0 0 30 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8),10, 0, 5,10);
+    -fx-border-radius: 50%;
+    -fx-border-color: #252525;
+}
+
+.btnCrearCuenta{
+    -fx-background-color: #95EC85;
+    -fx-background-radius: 10;
+
+}
+
+.btnActualizarCuenta{
+    -fx-background-color: RGB(241, 90, 90);
+    -fx-text-fill: WHITE;
+    -fx-background-radius: 10;
 }
 
