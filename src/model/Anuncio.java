@@ -36,7 +36,14 @@ public class Anuncio implements Serializable {
 			this.fechaPublicacion = LocalDate.now();
 			this.tiempoActivo = 24.0;
 	}
-	
+
+
+	public Anuncio(Integer id) {
+		//fecha actual
+		this.fechaPublicacion = LocalDate.now();
+		this.tiempoActivo = 24.0;
+		this.id = id;
+	}
 	//constructor completo
 	public Anuncio(LocalDate fecha, String nombreAnunciante, Image foto, LocalDate fechaTerminacion,
 				   Integer valorInicial, Double tiempoActivo, Boolean fueMostrado) {

@@ -15,9 +15,8 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import lombok.Getter;
 import lombok.Setter;
-import model.EmpresaSubasta;
+import model.*;
 import interfaces.IApplication;
-import model.ModelFactoryController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -56,23 +55,42 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         inicializarApp();
+
     	//pruebas de codigo, por favor no borrarlas
-    	/*
+        /*
     	IAnuncio anuncio = new IAnuncio();
-    	Anuncio ad = new Anuncio();
+    	Anuncio ad = new Anuncio(25);
     	anuncio.crear(ad);
-    	anuncio.crear(new Anuncio());
-    	System.out.println(anuncio.listar().get(0));
-    	System.out.println(anuncio.buscarId(1));
-    	anuncio.actualizar(1, new Anuncio());
-    	System.out.println(anuncio.buscarId(1));
-    	System.out.println(anuncio.listar((obj)->{return obj.tiempoActivo;}, TipoOrden.ASCENDENTE));
-    	Anuncio ad = new Anuncio();
-    
-    	System.out.println(e->{return ad.nombreAnunciante}());
-    	TipoOrden ord = TipoOrden.ASCENDENTE;
-    	System.out.println(ord == TipoOrden.DESCENDENTE);
-    	*/
+    	anuncio.crear(new Anuncio(60));
+        anuncio.crear(new Anuncio(34) );
+        anuncio.crear(new Anuncio(27) );
+        anuncio.crear(new Anuncio(11) );
+        anuncio.crear(new Anuncio(45) );
+    	///System.out.println(anuncio.listar().get(0));
+    	//System.out.println(anuncio.buscarId(1));
+    	//anuncio.actualizar(1, new Anuncio());
+    	//System.out.println(anuncio.buscarId(100000));
+        /*Comparar<Anuncio> compararAnuncio = (obj1, obj2)->{return obj1.getId() > obj2.getId();};
+        for(int i=0; i<anuncio.listar().size(); i++) {
+            System.out.println(anuncio.listar(compararAnuncio, TipoOrden.ASCENDENTE).get(i).getId());
+        }*/
+
+        //los que tengan el id cuyos digitos sumen mas van primero
+        /*
+        Comparar<Integer> comparar = (a,  b)->{return a/10+a%10<b/10+b%10;};
+        for(int i=0; i<anuncio.listar().size(); i++) {
+            System.out.println(anuncio.listar("id", TipoOrden.ASCENDENTE, comparar).get(i).getId());
+        }*/
+
+        //System.out.println(anuncio.listar((obj1, obj2)->{return obj1.getId() > obj2.getId();}, TipoOrden.ASCENDENTE).get(1).getId());
+        //System.out.println(anuncio.listar((obj1, obj2)->{return obj1.getId() > obj2.getId();}, TipoOrden.ASCENDENTE).get(2).getId());
+        //System.out.println(anuncio.listar((obj1, obj2)->{return obj1.getId() > obj2.getId();}, TipoOrden.ASCENDENTE).get(3).getId());
+    	//System.out.println(e->{return ad.getNombreAnunciante()}.g());
+    	//TipoOrden ord = TipoOrden.ASCENDENTE;
+    	//System.out.println(ord == TipoOrden.DESCENDENTE);
+
+
+
         //CARGO EL FRAME PRINCIPAL
         FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get("frame inicial")));
         Parent root = loader.load();

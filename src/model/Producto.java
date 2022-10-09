@@ -8,9 +8,11 @@ public abstract class Producto implements Serializable {
 
     //VARIABLES GLOBALES
     private Integer id;
+    private Integer precioInicial;
     private static int idAux;
     private String descripcion;
     private String nombre;
+    private Estado estado;
 
     /**
      * CONSTRUCTOR
@@ -23,6 +25,8 @@ public abstract class Producto implements Serializable {
         this.descripcion = descripcion;
     }
 
-
+    public boolean compararId(Integer id){
+        return this.id.compareTo(id) == 0;
+    }
 
 }

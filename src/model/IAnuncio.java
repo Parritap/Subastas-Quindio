@@ -2,6 +2,8 @@ package model;
 
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
@@ -83,7 +85,11 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 */
 	@Override
 	public void actualizar(Integer id, Anuncio nuevoAnuncio) throws EscrituraException {
-
+		for(int i=0; i<listaAnuncios.size(); i++){
+			if(listaAnuncios.get(i).getId() == id){
+				listaAnuncios.set(i,nuevoAnuncio);
+			}
+		}
 	}
 
 	/**
@@ -103,6 +109,23 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		if(!flag) throw new EscrituraException("No se ha podido eliminar el anuncio");
 	}
 
+	/**compara los elementos y ns dice si uno es mayor que el otro
+	 * @param campo atributo por el cual se van a comparar los elementos
+	 * @param anuncio1 anuncio a comparar
+	 * @param anuncio2 anuncion a comparar
+	 * */
+
+	public static int ordenar(String campo, Anuncio anuncio1, Anuncio anuncio2) {
+		int resultado = 0;
+
+		switch (campo) {
+			case "nombreAnunciante" -> resultado = anuncio1.getNombreAnunciante().compareTo(anuncio2.getNombreAnunciante());
+			case "tiempoActivo" -> resultado = anuncio1.getTiempoActivo().compareTo(anuncio2.getTiempoActivo());
+			case "valorInicial" -> resultado = anuncio1.getValorInicial().compareTo(anuncio2.getValorInicial());
+		}
+		return resultado;
+	}
+
 	/**
 	 * PERMITE LISTAR CON UN ORDEN
 	 * @param campo ATRIBUTO POR EL QUE SE DESEA LISTAR
@@ -111,59 +134,100 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 * @throws CRUDExceptions PUEDEN SUCEDER ERRORES DE LECTURA
 	 * @throws CRUDExceptions PUEDEN SUCEDER ERRORES DE LECTURA
 	 */
+
+
 	@Override
 	public ArrayList<Anuncio> listar(String campo, TipoOrden dir) throws CRUDExceptions {
-		return null;
+		ArrayList<Anuncio> listaOrdenada = listaAnuncios;
+		listaOrdenada.sort((a, b) -> {
+			int resultado = 0;
+			if (dir == TipoOrden.ASCENDENTE) {
+				resultado = ordenar(campo, a, b);
+			} else if (dir == TipoOrden.DESCENDENTE) {
+				resultado = ordenar(campo, b, a);
+			}
+			return resultado;
+		});
+		return listaOrdenada;
+	}
+
+
+	/**metodo alternativo para listar utilizando reflexion y los getters de Lombok
+	 * @param campo nombre del atributo por el cual vamos a comparar los anuncios
+	 * @param dir si se ordena de anera ascendente o descendente
+	 * @param comparar lambda con la funcion por la cual vamos a comparar los valores del atributo*/
+	public ArrayList<Anuncio> listar(String campo, TipoOrden dir, Comparar comparar) throws CRUDExceptions, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InvocationTargetException {
+		String nombreMetodo ="get"+Character.toUpperCase(campo.charAt(0))+campo.substring(1);
+		Method getter = Anuncio.class.getDeclaredMethod(nombreMetodo);
+		ArrayList<Anuncio> anuncios = this.listar();
+		ArrayList<Anuncio> anunciosOrdenados = new ArrayList<>();
+		//indice en el que vamos a insertar cada elemento al ordenar
+		int ind = 0;
+		Boolean esMayor;
+		for (Anuncio anuncio : anuncios) {
+			for (int j = 0; j < anunciosOrdenados.size(); j++) {
+				ind = j;
+				esMayor = comparar.esMayor(getter.invoke(anuncio), getter.invoke(anunciosOrdenados.get(j)));
+				if (dir == TipoOrden.ASCENDENTE && !esMayor) break;
+				if (dir == TipoOrden.DESCENDENTE && esMayor) break;
+			}
+			if (ind >= anunciosOrdenados.size() - 1) anunciosOrdenados.add(anuncio);
+			anunciosOrdenados.add(ind, anuncio);
+		}
+		return anunciosOrdenados;
 	}
 
 	/**
 	 * METODO QUE PERMITE AGREGAR UN ANUNCIO A LA EMPRESA
-	 * @param obj ANUNCIO A AGREGAR
+	 * @param anuncio ANUNCIO A AGREGAR
 	 * @throws CRUDExceptions SI NO PUEDE AGREGAR MAS ANUNCIO LANZA UNA EXCEPCION
 	 */
 	@Override
-	public void add(Anuncio obj) throws CRUDExceptions {
-
+	public void add(Anuncio anuncio) throws CRUDExceptions {
+		if (noExisteAnuncio(anuncio)) {
+			listaAnuncios.add(anuncio);
+		}
 	}
+
+
+	/**Agrega N anuncios a la lista
+	 toma N argumentos
+	 @param anuncios una lista de argumentos que son los anuncios a agregar
+	 */
+	public void crearN(Anuncio... anuncios) throws LecturaException, EscrituraException {
+		for(Anuncio anuncio: anuncios){
+			if(noExisteAnuncio(anuncio)){
+				anuncio.setEstado(Estado.NUEVO);
+				listaAnuncios.add(anuncio);
+			}
+		}
+	}
+
 
 	/**
 	 * METODO QUE PERMITE ORDENAR DADO UN ATRIBUTO Y UN ORDEN
-	 * @param atributo POR EL QUE SE DESEA ORDENAR
+	 * @param criterio LAMBDA CON EL CRITETIO POR EL QUE SE DESEA ORDENAR
 	 * @param orden ASCENDENTE O DESCENDENTE
 	 * @return UN ARRAYLIST CON LOS OBJETOS ORDENADOS
 	 * @throws CRUDExceptions PUEDEN OCURRIR ERRORES DE LECTURA
 	 */
-	public ArrayList<Anuncio> listar(IObtenerAtributo atributo, TipoOrden orden) throws CRUDExceptions {
+
+	public ArrayList<Anuncio> listar(Comparar criterio, TipoOrden orden) throws CRUDExceptions {
 		ArrayList<Anuncio> anuncios = this.listar();
 		ArrayList<Anuncio> anunciosOrdenados = new ArrayList<>();
-		System.out.println(anuncios.size());
-		System.out.println(anuncios.size()); //Imprime la cantidad de anuncios.
-
-		//índice en el que vamos a insertar cada elemento al ordenar
+		//indice en el que vamos a insertar cada elemento al ordenar
 		int ind = 0;
 		for (Anuncio anuncio : anuncios) {
 			for (int j = 0; j < anunciosOrdenados.size(); j++) {
 				ind = j;
-				if (orden == TipoOrden.ASCENDENTE && !esMayorA(atributo.obtenerAttr(anuncio)
-						, atributo.obtenerAttr(anunciosOrdenados.get(j)))) break; //Un break omg!
-				if (orden == TipoOrden.DESCENDENTE && esMayorA(atributo.obtenerAttr(anuncio)
-						, atributo.obtenerAttr(anunciosOrdenados.get(j)))) break;
+				if (orden == TipoOrden.ASCENDENTE && !criterio.esMayor(anuncio, anunciosOrdenados.get(j))) break;
+				if (orden == TipoOrden.DESCENDENTE && criterio.esMayor(anuncio, anunciosOrdenados.get(j))) break;
 			}
 			if (ind >= anunciosOrdenados.size() - 1) anunciosOrdenados.add(anuncio);
 			anunciosOrdenados.add(ind, anuncio);
 		}
 
 		return anunciosOrdenados;
-	}
-
-	//es necesario crear más de estos para cada tipo de los
-	//atributos de anuncio, LocalDate, String, etc...
-	public Boolean esMayorA(Integer valor1, Integer valor2) {
-		return valor1 > valor2;
-	}
-
-	public Boolean esMayorA(Double valor1, Double valor2) {
-		return valor1 > valor2;
 	}
 
 }
