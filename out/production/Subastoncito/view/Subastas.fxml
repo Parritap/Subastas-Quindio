@@ -20,204 +20,189 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0"
-            prefWidth="1315.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.SubastaController">
-   <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../resources/style.css"
-               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-               AnchorPane.topAnchor="0.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SubastaController">
+   <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../resources/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <left>
-         <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../resources/style.css"
-               BorderPane.alignment="CENTER">
+         <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../resources/style.css" BorderPane.alignment="CENTER">
             <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                <Label prefHeight="50.0" prefWidth="164.0" text="Subastas" textFill="#fff9f9">
                   <font>
-                     <Font name="Cambria Bold" size="40.0"/>
+                     <Font name="Cambria Bold" size="40.0" />
                   </font>
                </Label>
                <Label text="Quindío" textFill="WHITE">
                   <font>
-                     <Font name="Cambria" size="40.0"/>
+                     <Font name="Cambria" size="40.0" />
                   </font>
                </Label>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" stylesheets="@../resources/style.css"
-                  VBox.vgrow="NEVER">
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" stylesheets="@../resources/style.css" VBox.vgrow="NEVER">
                <VBox.margin>
-                  <Insets left="30.0" right="30.0"/>
+                  <Insets left="30.0" right="30.0" />
                </VBox.margin>
                <styleClass>
-                  <String fx:value="search-box"/>
-                  <String fx:value="shadow"/>
+                  <String fx:value="search-box" />
+                  <String fx:value="shadow" />
                </styleClass>
-               <TextField prefHeight="40.0" prefWidth="235.0" promptText="Type here to search"
-                          styleClass="transparent" stylesheets="@../resources/style.css">
+               <TextField prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../resources/style.css">
                   <HBox.margin>
-                     <Insets left="20.0"/>
+                     <Insets left="20.0" />
                   </HBox.margin>
                   <font>
-                     <Font name="Cambria" size="18.0"/>
+                     <Font name="Cambria" size="18.0" />
                   </font>
                </TextField>
-               <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button"
-                       stylesheets="@../resources/style.css" text="Search" textFill="WHITE"/>
+               <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../resources/style.css" text="Search" textFill="WHITE" />
             </HBox>
-            <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS"/>
-            <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="535.0" prefWidth="100.0"
-                  stylesheets="@../resources/style.css">
+            <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+            <VBox alignment="CENTER" prefHeight="535.0" prefWidth="100.0" stylesheets="@../resources/style.css">
                <VBox.margin>
-                  <Insets left="50.0" right="50.0"/>
+                  <Insets left="50.0" right="50.0" />
                </VBox.margin>
                <styleClass>
-                  <String fx:value="chosen-fruit-card"/>
-                  <String fx:value="shadow"/>
+                  <String fx:value="chosen-fruit-card" />
+                  <String fx:value="shadow" />
                </styleClass>
                <HBox prefHeight="60.0" prefWidth="335.0">
                   <VBox.margin>
-                     <Insets left="20.0" top="30.0"/>
+                     <Insets left="20.0" top="30.0" />
                   </VBox.margin>
-                  <Label fx:id="fruitNameLable" prefHeight="48.0" prefWidth="276.0" text="Peach"
-                         textFill="WHITE">
+                  <Label fx:id="adSelected" prefHeight="48.0" prefWidth="276.0" text="Peach" textFill="WHITE">
                      <font>
-                        <Font name="Cambria" size="36.0"/>
+                        <Font name="Cambria" size="36.0" />
                      </font>
                   </Label>
-                  <Label fx:id="fruitPriceLabel" prefHeight="57.0" prefWidth="171.0" text="\$2.99"
-                         textFill="WHITE">
+                  <Label fx:id="fruitPriceLabel" prefHeight="49.0" prefWidth="270.0" text="\$2.99" textFill="WHITE">
                      <font>
-                        <Font name="Cambria" size="36.0"/>
+                        <Font name="Cambria" size="36.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets right="25.0" />
+                     </HBox.margin>
                   </Label>
                </HBox>
-               <ImageView fx:id="fruitImg" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true"
-                          preserveRatio="true">
+               <ImageView fx:id="adSelectedImage" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
                   <VBox.margin>
-                     <Insets top="20.0"/>
+                     <Insets top="20.0" />
                   </VBox.margin>
                </ImageView>
                <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
                   <VBox.margin>
-                     <Insets top="20.0"/>
+                     <Insets top="20.0" />
                   </VBox.margin>
-                  <Label prefHeight="53.0" prefWidth="167.0" text="Kg" textFill="WHITE">
+                  <Label prefHeight="53.0" prefWidth="167.0" text="Pujar" textFill="WHITE">
                      <font>
-                        <Font name="Cambria" size="24.0"/>
+                        <Font name="Cambria" size="24.0" />
                      </font>
                   </Label>
-                  <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="1" styleClass="comboBox"
-                            stylesheets="@../resources/style.css"/>
+                  <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="1" styleClass="comboBox" stylesheets="@../resources/style.css" />
                </HBox>
                <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
                   <VBox.margin>
-                     <Insets bottom="20.0" top="20.0"/>
+                     <Insets bottom="20.0" top="20.0" />
                   </VBox.margin>
-                  <Separator prefHeight="0.0" prefWidth="118.0"/>
+                  <Separator prefHeight="0.0" prefWidth="118.0" />
                   <Label alignment="CENTER" prefHeight="45.0" prefWidth="64.0" text="or" textFill="WHITE">
                      <font>
-                        <Font name="Cambria" size="24.0"/>
+                        <Font name="Cambria" size="24.0" />
                      </font>
                   </Label>
-                  <Separator prefHeight="0.0" prefWidth="118.0"/>
+                  <Separator prefHeight="0.0" prefWidth="118.0" />
                </HBox>
                <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
-                  <Label prefHeight="53.0" prefWidth="167.0" text="Kg" textFill="WHITE">
+                  <Label prefHeight="42.0" prefWidth="142.0" text="Pujar" textFill="WHITE">
                      <font>
-                        <Font name="Cambria" size="24.0"/>
+                        <Font name="Cambria" size="24.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
                   </Label>
-                  <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="selected" styleClass="comboBox"
-                            stylesheets="@../resources/style.css"/>
+                  <TextField promptText="Type here" styleClass="pujaTextfield" stylesheets="@../resources/style.css" />
                </HBox>
-               <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn"
-                       stylesheets="@../resources/style.css" text="ADD TO CART" textFill="#828282">
+               <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../resources/style.css" text="Realizar oferta" textFill="#828282">
                   <VBox.margin>
-                     <Insets bottom="20.0" top="30.0"/>
+                     <Insets bottom="20.0" top="30.0" />
                   </VBox.margin>
                   <font>
-                     <Font name="System Bold" size="18.0"/>
+                     <Font name="System Bold" size="18.0" />
                   </font>
                   <cursor>
-                     <Cursor fx:constant="HAND"/>
+                     <Cursor fx:constant="HAND" />
                   </cursor>
                </Button>
             </VBox>
-            <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS"/>
+            <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
          </VBox>
       </left>
       <center>
          <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
                <VBox.margin>
-                  <Insets left="20.0" right="20.0"/>
+                  <Insets left="20.0" right="20.0" />
                </VBox.margin>
                <Label prefHeight="29.0" prefWidth="88.0" text="language" textFill="#878787">
                   <font>
-                     <Font name="Cambria Bold" size="18.0"/>
+                     <Font name="Cambria Bold" size="18.0" />
                   </font>
                </Label>
-               <ComboBox prefWidth="150.0" promptText="English" styleClass="comboBoxLanguage"
-                         stylesheets="@../resources/style.css"/>
-               <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS"/>
-               <Button mnemonicParsing="false" styleClass="buttonAccount" stylesheets="@../resources/style.css"
-                       text="My Account"/>
+               <ComboBox prefWidth="150.0" promptText="English" styleClass="comboBoxLanguage" stylesheets="@../resources/style.css" />
+               <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
+               <Button mnemonicParsing="false" onAction="#loadAccount" styleClass="buttonAccount" stylesheets="@../resources/style.css" text="My Account" />
                <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../resources/ic_cart.png"/>
+                  <Image url="@../resources/ic_cart.png" />
                </ImageView>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <VBox.margin>
-                  <Insets left="20.0" right="20.0" top="10.0"/>
+                  <Insets left="20.0" right="20.0" top="10.0" />
                </VBox.margin>
-               <Pane prefHeight="84.0" prefWidth="96.0"/>
-               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card"
-                     stylesheets="@../resources/style.css">
+               <Pane prefHeight="84.0" prefWidth="96.0" />
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../resources/style.css">
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
                      <Label prefHeight="29.0" prefWidth="190.0" text="Free delivery" textFill="WHITE">
                         <font>
-                           <Font name="Cambria Bold" size="18.0"/>
+                           <Font name="Cambria Bold" size="18.0" />
                         </font>
                      </Label>
                      <Label prefHeight="16.0" prefWidth="190.0" text="over $20 order" textFill="#878787">
                         <font>
-                           <Font name="Cambria" size="15.0"/>
+                           <Font name="Cambria" size="15.0" />
                         </font>
                      </Label>
                   </VBox>
                   <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                     <Image url="@../resources/ic_delivery.png"/>
+                     <Image url="@../resources/ic_delivery.png" />
                   </ImageView>
                </HBox>
-               <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS"/>
-               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card"
-                     stylesheets="@../resources/style.css">
+               <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../resources/style.css">
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
                      <Label prefHeight="29.0" prefWidth="190.0" text="Shopping online" textFill="WHITE">
                         <font>
-                           <Font name="Cambria Bold" size="18.0"/>
+                           <Font name="Cambria Bold" size="18.0" />
                         </font>
                      </Label>
-                     <Label prefHeight="20.0" prefWidth="207.0" text="get your shopping in same day"
-                            textFill="#191919">
+                     <Label prefHeight="20.0" prefWidth="207.0" text="get your shopping in same day" textFill="#191919">
                         <font>
-                           <Font name="Cambria" size="15.0"/>
+                           <Font name="Cambria" size="15.0" />
                         </font>
                      </Label>
                   </VBox>
                   <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                     <Image url="@../resources/ic_stopwatch.png"/>
+                     <Image url="@../resources/ic_stopwatch.png" />
                   </ImageView>
                </HBox>
-               <Pane prefHeight="84.0" prefWidth="96.0"/>
+               <Pane prefHeight="84.0" prefWidth="96.0" />
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <ScrollPane fx:id="scroll" prefHeight="570.0" prefWidth="785.0" styleClass="transparent"
-                           stylesheets="@../resources/style.css">
+               <ScrollPane prefHeight="570.0" prefWidth="785.0" styleClass="transparent" stylesheets="@../resources/style.css">
                   <HBox.margin>
-                     <Insets top="10.0"/>
+                     <Insets top="10.0" />
                   </HBox.margin>
                   <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
                      </rowConstraints>
                   </GridPane>
                </ScrollPane>

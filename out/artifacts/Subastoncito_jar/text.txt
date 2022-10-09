@@ -1,1 +1,0 @@
-Java --module-path /Users/alejandroarias/Desktop/javaLibraries/fx --add-modules javafx.controls,javafx.fxml Subastoncito.jar 

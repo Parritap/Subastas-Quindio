@@ -11,6 +11,7 @@ import lombok.Setter;
 import model.Anuncio;
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
+import java.io.IOException;
 import java.util.HashMap;
 
 @Getter
@@ -23,8 +24,8 @@ public class App extends Application {
     //Contiene las rutas de todos los frames, la llave es el frame a mostrar
     //retorna la ruta de ese frame
     private HashMap<String, String> rutas;
-
-
+    //ventana general de la application
+    private Stage stage;
 
     /**
      * Main
@@ -53,6 +54,7 @@ public class App extends Application {
         IApplication frameInicialController = loader.getController();
         frameInicialController.setApplication(this);
         Scene scene = new Scene(root);
+        this.stage = stage;
         stage.setScene(scene);
         cargarRutas();
         stage.show();
@@ -62,8 +64,7 @@ public class App extends Application {
 
 
     /**
-     * METODO ENCARGADO DE INICIALIZAR  LO QUE LA
-     * APPLICATION NECESITE
+     * Metodo que inicializa datos necesarios en la app
      */
     private void inicializarApp() {
         rutas = new HashMap<>();
@@ -79,18 +80,40 @@ public class App extends Application {
      * manera solo se le da el nombre de la ventana al hashMap y él devuelve la ruta
      */
     private void cargarRutas() {
+        //hash map con las rutas
         rutas.put("subasta", "../view/Subastas.fxml");
+        rutas.put("cuenta", "../view/Cuenta.fxml");
+
     }
 
 
     /**
-     * ESTE METODO PERMITE QUE AL CLIENTE HACER CLIC EN UN ANUNCIO SE
-     * CAMBIE EL SELECCIONADO EN LA BARRA IZQUIERDA, EL EVENTO SE GENERA
-     * EN LA CLASE ItemController
+     * Este metodo permite que al hacer clic en algún anuncio
+     * se actualice el pane de la barra lateral izquierda
      * @param anuncio EL ANUNCIO QUE SE VA A ACTUALIZAR
      */
     public void setProductSelected(Anuncio anuncio) {
 
+
+    }
+
+    /**
+     * Este metodo permite cambiar el scene del stage global
+     * de la application
+     * @param scenePath el nombre de la scene que queremos cargar
+     */
+    public void loadScene(String scenePath) {
+        //cargo el fxml
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get(scenePath)));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            IApplication controller = loader.getController();
+            controller.setApplication(this);
+            this.stage.setScene(scene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

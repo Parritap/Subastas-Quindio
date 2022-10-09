@@ -35,7 +35,11 @@
     -fx-background-color: rgba(255,255,255,0.3);
     -fx-background-radius: 30;
 }
-
+.pujaTextfield{
+    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-background-radius: 30;
+    -fx-prompt-text-fill: #DED4D4;
+}
 .add-btn{
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 100;
@@ -62,3 +66,26 @@
     -fx-underline: true;
     -fx-cursor: HAND;
 }
+
+.pane:hover{
+    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-border-color: #EBE4E4;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+}
+
+.volverAsubasta{
+    -fx-background-color: #252525;
+    -fx-text-fill: White;
+    -fx-underline: True;
+}
+
+.createlbl{
+    -fx-alignment: Center;
+}
+
+.border-image{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-border-radius: 50%;
+}
+

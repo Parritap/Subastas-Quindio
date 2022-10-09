@@ -2,13 +2,9 @@ package model;
 
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
-import javafx.scene.image.Image;
 import lombok.Data;
-
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 
 @Data
 public class EmpresaSubasta implements Runnable, Serializable {
