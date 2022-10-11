@@ -1,9 +1,14 @@
 package model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-@Data
+
+@Setter
+@Getter
 public class Usuario implements Serializable {
 	//VARIABLES GLOBALES
 	private String name;
@@ -17,9 +22,11 @@ public class Usuario implements Serializable {
 
 	private ArrayList<Puja> listaPujas;
 
+	private Integer idListaPujas;
 	//Este atributo permite conocer si el cliente actual esta activo en la app
-	private boolean activo;
+	private Boolean activo;
 	private static Integer idAux = 0;
+	private static Integer idAuxListaPujas = 0;
 	//Este atributo permite saber el estado del usuario, Eliminado, Nuevo, Actualizado
 	private Estado estado;
 	private Integer id;
@@ -31,6 +38,9 @@ public class Usuario implements Serializable {
 	    this.cantAnuncios = cantAnuncios;
 		id = ++idAux;
 		estado = Estado.NUEVO;
+		this.activo = true;
+		this.idListaPujas = ++idAuxListaPujas;
+		this.cantAnuncios = 0;
 	}
 
 	public Usuario(String name, Integer age, String cedula, String correo, String password, String direccion ) {
@@ -42,6 +52,16 @@ public class Usuario implements Serializable {
 		this.password = password;
 		id = ++idAux;
 		estado = Estado.NUEVO;
+		this.activo=true;
+		this.idListaPujas = ++idAuxListaPujas;
+		this.cantAnuncios = 0;
+	}
+
+	public Usuario(){
+		this.id = idAux;
+		this.activo = true;
+		this.idListaPujas = ++idAuxListaPujas;
+		this.cantAnuncios = 0;
 	}
 
 	//NO ELIMINAR ESTOS GETTERS, SI NO NO COMPILA EL CODIGO
@@ -60,4 +80,6 @@ public class Usuario implements Serializable {
 		this.correo = nuevoUsuario.getCorreo();
 		this.password = nuevoUsuario.getPassword();
     }
+
+
 }

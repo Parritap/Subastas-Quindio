@@ -8,8 +8,11 @@ import javafx.scene.control.*;
 import interfaces.IApplication;
 import model.ModelFactoryController;
 import model.Usuario;
+import persistencia.ArchivoUtilLog;
+import persistencia.Persistencia;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * ESTA CLASE PERMITE CONTROLAR EL STAGE DE CREAR CUENTA
@@ -97,10 +100,20 @@ public class CrearCuentaController implements IApplication {
             try {
                 ModelFactoryController.getInstance().crearUsuario(usuario);
                 limpiarCamposTexto();
+                Persistencia.serializarObj(usuario, "idAux", "listaPujas", "idAuxListaPujas");
+                ArchivoUtilLog.guardarRegistroLog(String.format(": %s, %s, %o, %s", cedula, name, edad, correo), 1, "Registro Usuario", ModelFactoryController.getRutaLogs("CreacionUsuario.txt"));
                 application.showAlert("Usuario creado con éxito");
             } catch (EscrituraException e) {
                 limpiarCamposTexto();
                 application.showAlert(e.getMessage());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            } catch (InvocationTargetException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
             }
         }
     }

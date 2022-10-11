@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import application.App;
 import exceptions.EscrituraException;
+import exceptions.LecturaException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,8 +14,10 @@ import javafx.scene.control.TextField;
 import interfaces.IApplication;
 import lombok.Data;
 import model.EmpresaSubasta;
+import model.IAnuncio;
 import model.ModelFactoryController;
 import persistencia.ArchivoUtil;
+import persistencia.ArchivoUtilLog;
 
 /**
  * CLASE QUE CONTROLA EL PRIMER FRAME
@@ -65,16 +68,28 @@ public class FrameInicialController implements IApplication {
      * @throws IOException EL METODO GENERA UN EXCEPCION POR SI NO SE PUEDE ACCEDER A LA EMPRESA
      */
     @FXML
-     void signUp(ActionEvent ignoredEvent){
+     void signUp(ActionEvent ignoredEvent) throws LecturaException {
 
         String name = txtName.getText();
         String passWord = txtPassword.getText();
         String correo = txtEmail.getText();
+        System.out.println(name);
+        System.out.println(passWord);
 
         if(name.equals("admin") && passWord.equals("admin") && correo.equals("admin")) {
             application.showStageCloseAll("frame admin");
+            ArchivoUtilLog.guardarRegistroLog("Ingreso el administrador", 1, "Ingreso", ModelFactoryController.getRutaLogs("Ingreso.txt"));
         }
 
+        else if(name.equals("admin2") && passWord.equals("admin2") && correo.equals("admin2")) {
+            application.showStageCloseAll("frame admin");
+            ArchivoUtilLog.guardarRegistroLog("ingresó el administrador secundario", 1, "Ingreso", ModelFactoryController.getRutaLogs("Ingresos.txt"));
+        }
+
+        else if(ModelFactoryController.getInstance().getIUsuario().buscarUsuario(name, passWord, correo) != null){
+            application.showStageCloseAll("panel usuario");
+            ArchivoUtilLog.guardarRegistroLog("ingresó el usuario "+name, 1, "Ingreso", ModelFactoryController.getRutaLogs("Ingresos.txt"));
+        }
     }
 
     /**

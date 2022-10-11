@@ -10,7 +10,12 @@ import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import interfaces.CRUD;
 import interfaces.IObtenerAtributo;
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter
+@Setter
 public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
 	//SE CAMBIA EL HASHMAP POR UN ARRAYLIST, DEBIDO A QUE SE INVIRTIO LA DEPENDENCIA DEL ID
@@ -27,7 +32,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	public ArrayList<Anuncio> listar() throws LecturaException {
 
 		if(listaAnuncios.size() == 0){
-			throw new LecturaException("No hay Anuncios para listar");
+			throw new LecturaException("No hay Anuncios para listar", "intentando acceder a una lista de anuncios vacia");
 		}
 		return listaAnuncios;
 	}
@@ -45,7 +50,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 				return listaAnuncio;
 			}
 		}
-		throw new LecturaException("No se encontró el anuncio con ese ID");
+		throw new LecturaException("No se encontró el anuncio con ese ID", "anuncio con ID "+id+" no encontrado");
 	}
 
 	/**
@@ -70,7 +75,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 */
 	private boolean noExisteAnuncio(Anuncio anuncio) throws EscrituraException {
 		for (Anuncio aux: listaAnuncios){
-			if(aux.equals(anuncio)) throw new EscrituraException("Ya existe un anuncio con esas características");
+			if(aux.equals(anuncio)) throw new EscrituraException("Ya existe un anuncio con esas características", "intentando crear un anuncio ya existente");
 		}
 		return true;
 	}
@@ -106,7 +111,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 				flag = true;
 			}
 		}
-		if(!flag) throw new EscrituraException("No se ha podido eliminar el anuncio");
+		if(!flag) throw new EscrituraException("No se ha podido eliminar el anuncio", "el anuncio con id "+id+" no se ha podidio eliminar");
 	}
 
 	/**compara los elementos y ns dice si uno es mayor que el otro

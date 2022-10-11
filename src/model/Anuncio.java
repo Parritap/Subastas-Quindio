@@ -35,6 +35,7 @@ public class Anuncio implements Serializable {
 			//fecha actual
 			this.fechaPublicacion = LocalDate.now();
 			this.tiempoActivo = 24.0;
+			this.id = ++idAux;
 	}
 
 

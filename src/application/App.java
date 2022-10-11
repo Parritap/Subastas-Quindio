@@ -5,7 +5,6 @@ import controllers.AlertasController;
 import controllers.FrameInicialController;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -17,6 +16,9 @@ import lombok.Getter;
 import lombok.Setter;
 import model.*;
 import interfaces.IApplication;
+import persistencia.ArchivoUtil;
+import persistencia.ArchivoUtilLog;
+import persistencia.Persistencia;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -89,7 +91,18 @@ public class App extends Application {
     	//TipoOrden ord = TipoOrden.ASCENDENTE;
     	//System.out.println(ord == TipoOrden.DESCENDENTE);
 
+        //File archivoPrueba  =new File(ModelFactoryController.getRutaLogs()+"\\log1");
+        //System.out.println(archivoPrueba.getAbsolutePath());
+        //ArchivoUtilLog.guardarRegistroLog("mensaje de prueba", 1, "prueba", ModelFactoryController.getRutaLogs()+"\\log1");
+//        IAnuncio ImplAnuncio = new IAnuncio();
 
+  //      ImplAnuncio.crear(new Anuncio(2));
+        //ImplAnuncio.buscarId(23);
+        Usuario usr = new Usuario();
+        //usr.getActivo();
+        //Usuario user = Persistencia.deserializarUsuario(usr, 1);
+        //System.out.println(user.getCedula());
+        ArchivoUtil.guardarArchivo("C:\\td\\folder2\\prueba.txt", "prueba", true);
 
         //CARGO EL FRAME PRINCIPAL
         FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get("frame inicial")));
@@ -143,6 +156,7 @@ public class App extends Application {
         rutas.put("alerta", "../view/Alertas.fxml");
         rutas.put("frameCliente", "../view/FrameCliente.fxml");
         rutas.put("frame admin", "../view/FrameAdmin.fxml");
+        rutas.put("panel usuario", "../view/InterfazUsuario.fxml");
     }
 
 

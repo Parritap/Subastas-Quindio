@@ -18,7 +18,7 @@ public class IProducto implements CRUD<Producto>, Serializable {
     @Override
     public ArrayList<Producto> listar() throws LecturaException {
         if(listaProductos.size() == 0){
-            throw new LecturaException("No hay Productos para listar");
+            throw new LecturaException("No hay Productos para listar", "intentando acceder a una lista de productos vacía");
         }
         return listaProductos;
     }
@@ -31,13 +31,13 @@ public class IProducto implements CRUD<Producto>, Serializable {
             }
         }
 
-        throw new LecturaException("No se encontró el anuncio con ese ID");
+        throw new LecturaException("No se encontró el producto con ese ID", "no se ha encontrado el producto con id "+id);
     }
 
 
     private boolean noExisteProducto(Producto producto) throws EscrituraException {
         for (Producto aux: listaProductos){
-            if(aux.equals(producto)) throw new EscrituraException("Ya existe un anuncio con esas caracteristicas");
+            if(aux.equals(producto)) throw new EscrituraException("Ya existe un producto con esas caracteristicas", "intentando crer un producto ya existente"+producto.getNombre()+", "+producto.getId());
         }
         return true;
     }
@@ -71,7 +71,7 @@ public class IProducto implements CRUD<Producto>, Serializable {
                 break;
             }
         }
-        if(!flag) throw new EscrituraException("No se ha podido eliminar el anuncio");
+        if(!flag) throw new EscrituraException("No se ha podido eliminar el producto", "no se ha podido eliminar el producto con id "+id);
     }
 
 

@@ -1,3 +1,4 @@
 //Este archivo contiene notas o ideas para agregar al proyecto, no eliminar
 
 -Usar DirectoryChooser dc = new DirectoryChooser(); para la seleccion de las imagenes en las subastas
+-agregar ContraseniaNoValidaException al diagrama de clases

@@ -15,7 +15,7 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
     public ArrayList<Transaccion> listar() throws CRUDExceptions {
             if(listaTransacciones.size() >0)
                 return this.listaTransacciones;
-            throw new LecturaException("No hay Transacciones para listar");
+            throw new LecturaException("No hay Transacciones para listar", "intentando acceder a una lista de transacciones vacía");
     }
 
     @Override
@@ -25,7 +25,7 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
                 return transaccion;
             }
         }
-        throw  new LecturaException("Transaccion con id "+id+" no encontrado");
+        throw  new LecturaException("Transaccion no encontrada ","Transaccion con id "+id+" no encontrado");
     }
 
 
@@ -80,7 +80,7 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
                 break;
             }
         }
-        if(!flag) throw new EscrituraException("No se ha podido eliminar el anuncio");
+        if(!flag) throw new EscrituraException("No se ha podido eliminar la transaccion", "no se ha podido eliminar la transaccion "+id);
     }
 
 

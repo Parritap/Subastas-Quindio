@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import exceptions.ContraseniaNoValidaException;
+import exceptions.CorreoNoValidoException;
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import interfaces.CRUD;
@@ -34,7 +37,7 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
     @Override
     public ArrayList<Usuario> listar() throws LecturaException {
         if (listaUsuarios.size() == 0) {
-            throw new LecturaException("No hay Anuncios para listar");
+            throw new LecturaException("No hay Anuncios para listar", "intento de acceso a una lista de usuarios vacia");
         }
         return listaUsuarios;
     }
@@ -53,7 +56,25 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
                 return usuarioAux;
             }
         }
-        throw new LecturaException("No se encontró el usuario con ese ID");
+        throw new LecturaException("No se encontró el usuario con ese ID", "usuario "+id+" no encontrado");
+    }
+
+    public Usuario buscarUsuario(String nombre, String password, String correo) throws LecturaException {
+        for(Usuario usr: listaUsuarios){
+            if(usr.getName().equals(nombre)){
+                if(usr.getPassword().equals(password)){
+                    if(usr.getCorreo().equals(correo))
+                        return usr;
+                    else
+                        throw new CorreoNoValidoException("correo no valido", "el usuario "+usr.getId()+" intento ingresar con un correo no valido");
+                }
+                else{
+                    throw new ContraseniaNoValidaException("contraseña no valida", "usuario "+nombre+" intento ingresar con una contraseña no valida");
+                }
+            }
+        }
+
+        throw new LecturaException("usuario no encontrado", "usuario "+nombre+" no encontrado");
     }
 
     /**
@@ -68,7 +89,7 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
             usuario.setEstado(Estado.NUEVO);
             listaUsuarios.add(usuario);
         } else {
-            throw new EscrituraException("Ya existe un usuario con esas caracteristicas");
+            throw new EscrituraException("Ya existe un usuario con esas caracteristicas", "se intento crear un usuario ya existente ("+usuario.getCedula()+")");
         }
 
     }
@@ -103,7 +124,7 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
                 flag = true;
             }
         }
-        if (!flag) throw new EscrituraException("No se ha podido eliminar el usuario");
+        if (!flag) throw new EscrituraException("No se ha podido eliminar el usuario ", "No se ha podido eliminar el usuario "+id);
     }
 
     /**
