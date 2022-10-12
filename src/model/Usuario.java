@@ -41,6 +41,7 @@ public class Usuario implements Serializable {
 		this.activo = true;
 		this.idListaPujas = ++idAuxListaPujas;
 		this.cantAnuncios = 0;
+		this.listaPujas = new ArrayList<>();
 	}
 
 	public Usuario(String name, Integer age, String cedula, String correo, String password, String direccion ) {
@@ -50,8 +51,9 @@ public class Usuario implements Serializable {
 		this.correo = correo;
 		this.direccion = direccion;
 		this.password = password;
-		id = ++idAux;
-		estado = Estado.NUEVO;
+		this.id = ++idAux;
+		this.estado = Estado.NUEVO;
+		this.listaPujas = new ArrayList<>();
 		this.activo=true;
 		this.idListaPujas = ++idAuxListaPujas;
 		this.cantAnuncios = 0;
@@ -62,6 +64,7 @@ public class Usuario implements Serializable {
 		this.activo = true;
 		this.idListaPujas = ++idAuxListaPujas;
 		this.cantAnuncios = 0;
+		this.listaPujas = new ArrayList<>();
 	}
 
 	//NO ELIMINAR ESTOS GETTERS, SI NO NO COMPILA EL CODIGO

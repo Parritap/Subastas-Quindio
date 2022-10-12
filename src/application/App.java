@@ -21,6 +21,7 @@ import persistencia.ArchivoUtilLog;
 import persistencia.Persistencia;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -98,12 +99,20 @@ public class App extends Application {
 
   //      ImplAnuncio.crear(new Anuncio(2));
         //ImplAnuncio.buscarId(23);
-        Usuario usr = new Usuario();
+        /*Usuario usr = new Usuario();
+        usr.getListaPujas().add(new Puja());
+        usr.getListaPujas().add(new Puja());
+        usr.getListaPujas().add(new Puja());*/
         //usr.getActivo();
         //Usuario user = Persistencia.deserializarUsuario(usr, 1);
         //System.out.println(user.getCedula());
-        ArchivoUtil.guardarArchivo("C:\\td\\folder2\\prueba.txt", "prueba", true);
-
+        //ArchivoUtil.guardarArchivo("C:\\td\\folder2\\prueba.txt", "prueba", true);
+        //Persistencia.serializarPuja(new Puja(LocalDate.now(), new Usuario(), 122));
+        //Persistencia.serializarUsuario(usr);
+        //Persistencia.deserializarObj();
+        Usuario usr = new Usuario();
+        Persistencia.deserializarObj(usr, "1", 10);
+        System.out.println(usr.getName());
         //CARGO EL FRAME PRINCIPAL
         FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get("frame inicial")));
         Parent root = loader.load();

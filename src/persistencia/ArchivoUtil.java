@@ -3,6 +3,8 @@ package persistencia;
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -72,6 +74,77 @@ public class ArchivoUtil {
         fr.close();
         return contenido;
     }
+
+    //------------------------------------SERIALIZACI�N  y XML
+    /**
+     * Escribe en el fichero que se le pasa el objeto que se le envia
+     *
+     * @param rutaArchivo
+     *            path del fichero que se quiere escribir
+     * @throws IOException
+     */
+
+    @SuppressWarnings("unchecked")
+    public static Object cargarRecursoSerializado(String rutaArchivo)throws Exception
+    {
+        Object aux = null;
+//		Empresa empresa = null;
+        ObjectInputStream ois = null;
+        try {
+            // Se crea un ObjectInputStream
+            ois = new ObjectInputStream(new FileInputStream(rutaArchivo));
+
+            aux = ois.readObject();
+
+        } catch (Exception e2) {
+            throw e2;
+        } finally {
+            if (ois != null)
+                ois.close();
+        }
+        return aux;
+    }
+
+
+    public static void salvarRecursoSerializado(String rutaArchivo, Object object)	throws Exception {
+        ObjectOutputStream oos = null;
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream(rutaArchivo));
+            oos.writeObject(object);
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (oos != null)
+                oos.close();
+        }
+    }
+
+
+
+
+    public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException {
+
+        XMLDecoder decodificadorXML;
+        Object objetoXML;
+
+        decodificadorXML = new XMLDecoder(new FileInputStream(rutaArchivo));
+        objetoXML = decodificadorXML.readObject();
+        decodificadorXML.close();
+        return objetoXML;
+
+    }
+
+    public static void salvarRecursoSerializadoXML(String rutaArchivo, Object objeto) throws IOException {
+
+        XMLEncoder codificadorXML;
+
+        codificadorXML = new XMLEncoder(new FileOutputStream(rutaArchivo));
+        codificadorXML.writeObject(objeto);
+        codificadorXML.close();
+
+    }
+
+
 
 
     //VARIABLES GLOBALES

@@ -11,10 +11,13 @@ public class Anuncio implements Serializable {
 	private LocalDate fecha;
 	private String nombreAnunciante;
 	private Image foto;
+
+	private Integer idFoto;
 	private LocalDate fechaPublicacion;
 	private LocalDate fechaTerminacion;
 	private Integer valorInicial;
 	private ArrayList<Puja> listaPujas;
+	private Integer idListaPujas;
 	private Double tiempoActivo;
 
 	/**
@@ -36,6 +39,8 @@ public class Anuncio implements Serializable {
 			this.fechaPublicacion = LocalDate.now();
 			this.tiempoActivo = 24.0;
 			this.id = ++idAux;
+			this.idFoto = idAux;
+			this.idListaPujas = idAux;
 	}
 
 
@@ -44,6 +49,8 @@ public class Anuncio implements Serializable {
 		this.fechaPublicacion = LocalDate.now();
 		this.tiempoActivo = 24.0;
 		this.id = id;
+		this.idFoto = idAux;
+		this.idListaPujas = idAux;
 	}
 	//constructor completo
 	public Anuncio(LocalDate fecha, String nombreAnunciante, Image foto, LocalDate fechaTerminacion,
@@ -65,6 +72,8 @@ public class Anuncio implements Serializable {
 		//cada vez que se crea un anuncio se le pone como id el
 		//valor de esta variable, la cual va aumentar cada vez
 		//que creemos un anuncio
+		this.idFoto = idAux;
+		this.idListaPujas = idAux;
 	}
 
 	/**

@@ -1,12 +1,20 @@
 package model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
+@Getter
+@Setter
 public class Puja {
 	//VARIABLES GLOBALES
 	LocalDate fechaDePuja;
 	Usuario usuario;
+	Integer idUsuario;
 	Integer valorOfrecido;
+
+	private static Integer idListaPujas=0;
 
 	/**
 	 * CONSTRUCTOR
@@ -19,5 +27,15 @@ public class Puja {
 		this.fechaDePuja = fechaDePuja;
 	    this.usuario = usuario;
 	    this.valorOfrecido = valorOfrecido;
+		this.idUsuario = usuario.getId();
+	}
+
+	public Puja(){
+		this.fechaDePuja = LocalDate.now();
+	}
+
+	public static Integer darIdListaPuja(){
+		++idListaPujas;
+		return idListaPujas;
 	}
 }
