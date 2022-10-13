@@ -4,12 +4,17 @@ import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import interfaces.CRUD;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
+@Getter
+@Setter
 public class IProducto implements CRUD<Producto>, Serializable {
 
-    public static ArrayList<Producto> listaProductos = new ArrayList<>();
+    private ArrayList<Producto> listaProductos = new ArrayList<>();
 
     /**
      * devuelve la lista con todos los productos

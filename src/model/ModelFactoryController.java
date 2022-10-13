@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -41,6 +43,21 @@ public class ModelFactoryController {
         return "C:\\td\\persistencia\\archivos\\"+claseObj.getSimpleName()+".txt";
     }
 
+    /**devuelve la ruta de respaldo con el formato que debe tener
+     * el nombre del archivo
+     * */
+    public static String getRutaRespaldoArchivo(String nombreArchivo){
+        LocalDateTime f = LocalDateTime.now();
+        //return getRutaRespaldo()+nombreArchivo+"__"+f.getDayOfMonth()+f.getMonth()+(f.getYear()%100)+
+                //"__"+f.getHour()+"__"+f.getMinute()+"__"+f.getSecond();
+        return "";
+    }
+
+    public static String getRutaRespaldo(String nombreArchivo){
+        LocalDateTime f = LocalDateTime.now();
+        return "C:\\td\\persistencia\\respaldo\\"+nombreArchivo+"__"+f.getDayOfMonth()+f.getMonth()+(f.getYear()%100)+
+                "__"+f.getHour()+"__"+f.getMinute()+"__"+f.getSecond();
+    }
     public static Integer darIdListaPuja(){
         idListaPujas++;
         return idListaPujas;

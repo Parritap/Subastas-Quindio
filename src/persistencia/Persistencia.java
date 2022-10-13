@@ -10,6 +10,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static utilities.Utils.isNot;
@@ -73,9 +74,21 @@ public class Persistencia {
     }
 
 
-    /*public static void serializarEmpresa(){
-        ModelFactoryController.getInstance().get;
-    }*/
+    public static void serializarEmpresa() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        EmpresaSubasta empresa = ModelFactoryController.getInstance();
+
+        for(Usuario usr: empresa.getIUsuario().getListaUsuarios())
+        {serializarUsuario(usr);}
+
+        for(Anuncio anuncio: empresa.getIAnuncio().getListaAnuncios())
+        {serializarAnuncio(anuncio);}
+
+        for(Producto producto: empresa.getIProducto().getListaProductos())
+        {serializarProducto(producto);}
+
+        //crea una copia de las transacciones
+        ArchivoUtil.copiarArchivo(ModelFactoryController.getRutaObjetos("Transaccion.txt"), ModelFactoryController.getRutaRespaldo("Transaccion"));
+    }
 
     public static void serializarUsuario(Usuario usr) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         Persistencia.serializarObj(usr, "idAux", "foto", "listaPujas", "idAuxListaPujas");
@@ -103,6 +116,10 @@ public class Persistencia {
     }
     public static void serializarPuja(Puja puja) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         Persistencia.serializarObj(puja, "usuario");
+    }
+
+    public static void serializarTransaccion(Transaccion transaccion) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        Persistencia.serializarObj(transaccion, "idAux");
     }
 
 
@@ -160,6 +177,10 @@ public class Persistencia {
 
     public static LocalDate parseToLocalDate(String dato){
         return LocalDate.parse(dato);
+    }
+
+    public static LocalDateTime parseToLocalDateTime(String dato){
+        return LocalDateTime.parse(dato);
     }
 
 

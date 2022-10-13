@@ -19,7 +19,7 @@ import lombok.Setter;
 public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
 	//SE CAMBIA EL HASHMAP POR UN ARRAYLIST, DEBIDO A QUE SE INVIRTIO LA DEPENDENCIA DEL ID
-	public static ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
+	public ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
 
 	//METODO QUE DEVUELVE LA LISTA ANUNCIO
 

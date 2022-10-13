@@ -7,6 +7,7 @@ import utilities.Utils;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 /**
@@ -84,6 +85,32 @@ public class ArchivoUtil {
         bfr.close();
         fr.close();
         return contenido;
+    }
+
+    public static void copiarArchivo(String rutaOrigen, String rutaDestino) throws IOException {
+        InputStream is = null;
+        OutputStream os = null;
+        try {
+            verificarRuta(rutaOrigen);
+            verificarRuta(rutaDestino);
+
+            is = new FileInputStream(rutaOrigen);
+            os = new FileOutputStream(rutaDestino);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+        }
+        catch (IOException e){
+            System.out.println("no se pudieron copiar los archivos");
+            e.printStackTrace();
+        }
+        finally {
+            is.close();
+            os.close();
+        }
+
     }
 
     //------------------------------------SERIALIZACI�N  y XML
