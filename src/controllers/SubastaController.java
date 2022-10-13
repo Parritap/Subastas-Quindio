@@ -13,6 +13,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import model.Anuncio;
 import model.ModelFactoryController;
+import utilities.Utils;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -135,7 +137,7 @@ public class SubastaController implements IApplication{
      */
     @FXML
     void loadAccount(ActionEvent ignoredEvent) {
-        application.loadScene("cuenta");
+        application.loadScene(Utils.frameCuenta);
     }
 
 

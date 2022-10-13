@@ -22,29 +22,46 @@
     <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../resources/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <left>
             <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../resources/style.css" BorderPane.alignment="CENTER">
-                <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
-                    <Label prefHeight="50.0" prefWidth="164.0" text="Subastas" textFill="#fff9f9">
-                        <font>
-                            <Font name="Cambria Bold" size="40.0" />
-                        </font>
-                    </Label>
-                    <Label text="Quindío" textFill="WHITE">
-                        <font>
-                            <Font name="Cambria" size="40.0" />
-                        </font>
-                    </Label>
+                <HBox alignment="CENTER" prefHeight="73.0" prefWidth="440.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#irAlInicio" prefHeight="28.0" prefWidth="30.0" styleClass="btnAtras" stylesheets="@../resources/style.css" text="&lt;">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Button>
+                  <Label prefHeight="40.0" prefWidth="358.0" text="Subasta Quindío" textFill="WHITE">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Label>
+               </children>
                 </HBox>
             <Line endX="334.29290771484375" endY="-0.41421353816986084" startX="-100.0" stroke="WHITE" strokeWidth="3.0" />
-            <AnchorPane prefHeight="625.0" prefWidth="440.0" />
-            <Line endX="335.30718994140625" endY="-6.074905395507812E-4" startX="-100.0" stroke="WHITE" strokeWidth="3.0" />
-            <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="440.0" styleClass="volverAsubasta" stylesheets="@../resources/style.css" text=" Volver a las subastas">
-               <font>
-                  <Font size="27.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
+            <AnchorPane prefHeight="736.0" prefWidth="439.0">
+               <children>
+                  <VBox layoutX="32.0" layoutY="39.0" prefHeight="671.0" prefWidth="378.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#paneMyAccount" prefHeight="59.0" prefWidth="378.0" styleClass="btnOpciones" stylesheets="@../resources/style.css" text="Administrar mi cuenta">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="40.0" mnemonicParsing="false" onAction="#paneListadoSubasta" prefHeight="59.0" prefWidth="378.0" styleClass="btnOpciones" text="Ver mi listado de subastas">
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="hacerSubasta" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="378.0" styleClass="btnOpciones" text="Realizar subasta">
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
             </VBox>
         </left>
         <center>
@@ -68,7 +85,7 @@
                     </VBox.margin>
                <Circle fx:id="circleImage" fill="WHITE" onMouseClicked="#cargarPerfil" radius="81.0" stroke="BLACK" strokeType="INSIDE" styleClass="border-image">
                   <HBox.margin>
-                     <Insets bottom="20.0" left="30.0" />
+                     <Insets bottom="20.0" left="20.0" right="10.0" />
                   </HBox.margin>
                   <cursor>
                      <Cursor fx:constant="HAND" />
@@ -100,7 +117,7 @@
                                  <Insets right="40.0" top="30.0" />
                               </VBox.margin>
                            </TextField>
-                           <Spinner prefHeight="26.0" prefWidth="412.0" style="-fx-background-color: #B0B0B0;">
+                           <Spinner fx:id="edadSpinner" prefHeight="26.0" prefWidth="412.0" style="-fx-background-color: #B0B0B0;">
                               <VBox.margin>
                                  <Insets top="40.0" />
                               </VBox.margin>

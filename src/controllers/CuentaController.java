@@ -2,14 +2,16 @@ package controllers;
 
 import application.App;
 import interfaces.IApplication;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Spinner;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import utilities.Utils;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +27,9 @@ public class CuentaController implements IApplication {
     //imagen de la cuenta
     @FXML
     private Circle circleImage;
-
+    //Item para controlar la edad
+    @FXML
+    private Spinner<Integer> edadSpinner;
     //metodo que permite cargar una imagen en la cuenta
     @FXML
     void cargarPerfil(MouseEvent ignoredEvent) {
@@ -44,6 +48,20 @@ public class CuentaController implements IApplication {
         }
     }
 
+    @FXML
+    void irAlInicio(ActionEvent ignoredEvent) {
+        application.loadScene(Utils.frameInicio);
+    }
+
+    @FXML
+    void paneListadoSubasta(ActionEvent ignoredEvent) {
+
+    }
+
+    @FXML
+    void paneMyAccount(ActionEvent ignoredEvent) {
+
+    }
     @FXML
     void initialize() {
         circleImage.setFill(new ImagePattern(new Image("/resources/profile.png")));

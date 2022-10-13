@@ -158,3 +158,22 @@
 .heart:hover{
     -fx-background-image:url("https://www.google.com/images/srpr/logo3w.png");
 }
+
+.btnAtras{
+    -fx-background-color: Transparent;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-text-fill: White;
+    -fx-border-color: White;
+    -fx-cursor: HAND;
+}
+
+.btnOpciones{
+    -fx-background-color: Transparent;
+    -fx-border-color: White;
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-start-margin: 30,0,0,0;
+    -fx-text-fill: White;
+    -fx-cursor: Hand;
+}

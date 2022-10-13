@@ -11,6 +11,8 @@ import lombok.Setter;
 import model.Anuncio;
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
+import utilities.Utils;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -46,7 +48,7 @@ public class App extends Application {
         inicializarApp();
         //pruebas de codigo, por favor no borrarlas
         //CARGO EL FRAME PRINCIPAL
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get("subasta")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameInicio));
         Parent root = loader.load();
         IApplication frameInicialController = loader.getController();
         frameInicialController.setApplication(this);
@@ -56,10 +58,7 @@ public class App extends Application {
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
         stage.minWidthProperty();
-        cargarRutas();
         stage.show();
-        System.out.println("Height" + stage.getHeight());
-        System.out.println("Width" + stage.getWidth());
     }
 
 
@@ -67,23 +66,11 @@ public class App extends Application {
      * Metodo que inicializa datos necesarios en la app
      */
     private void inicializarApp() {
-        rutas = new HashMap<>();
-        cargarRutas();
         //El singleton crea la instancia de Empresa
         empresaSubasta = ModelFactoryController.getInstance();
     }
 
 
-    /**
-     * Metodo que inicializa las rutas en el hashMap, de esta
-     * manera solo se le da el nombre de la ventana al hashMap y él devuelve la ruta
-     */
-    private void cargarRutas() {
-        //hash map con las rutas
-        rutas.put("subasta", "../view/Subastas.fxml");
-        rutas.put("cuenta", "../view/Cuenta.fxml");
-
-    }
 
 
     //TODO
@@ -102,7 +89,7 @@ public class App extends Application {
      */
     public void loadScene(String scenePath) {
         //cargo el fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get(scenePath)));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(scenePath));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
