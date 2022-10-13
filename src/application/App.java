@@ -81,7 +81,13 @@ public class App extends Application {
      * se actualice el pane de la barra lateral izquierda
      * @param anuncio EL ANUNCIO QUE SE VA A ACTUALIZAR
      */
-    public void setProductSelected(Anuncio anuncio) {}
+    public void setProductSelected(Anuncio anuncio) {
+
+
+
+
+
+    }
 
     /**
      * Este metodo permite cambiar el scene del stage global

@@ -18,6 +18,7 @@ public class Anuncio implements Serializable {
 	private ArrayList<Puja> listaPujas;
 	private Double tiempoActivo;
 
+	private  Usuario usuario; //El usuario que realiza el anuncio
 	/**
 	 * creo la variable estado para indicar cuando un Anuncio ha sido eliminado, actualizado
 	 */

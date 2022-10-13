@@ -2,14 +2,14 @@ package controllers;
 
 import application.App;
 import interfaces.IApplication;
-import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.util.Duration;
 import model.Anuncio;
+import utilities.Utils;
+
 import java.awt.event.ActionEvent;
 import java.util.Objects;
 
@@ -34,6 +34,11 @@ public class ItemController implements IApplication {
     private App application;
 
     private Anuncio anuncio;
+
+    //Variable para definir si se debe dejar el corazon lleno o el vacio
+    private Boolean corazonLleno;
+
+
 
     private int horas, minutos ,segundos;
 
@@ -74,38 +79,40 @@ public class ItemController implements IApplication {
 
     }
 
-
+    /**
+     * Cuando entra el mouse a la imagen cargo el corazon lleno
+     * @param ignoredEvent generado al momento que entra el mouse
+     */
     @FXML
-    void cargarCorazonLleno(MouseEvent event) {
-        FadeTransition fade = new FadeTransition();
-        fade.setDuration(Duration.millis(5000));
-        fade.setFromValue(10);
-        fade.setToValue(0.1);
-        fade.setNode(heart);
-
-        System.out.println("cargo corazon lleno");
-        heart.setImage(new Image("/resources/heart.jpg"));
-        fade.play();
+    void cargarCorazonLleno(MouseEvent ignoredEvent) {
+        heart.setImage(new Image(Utils.corazonLleno));
     }
 
+    /**
+     * Cuando el mouse sale de la imagen cargo el corazon vacio
+     * @param ignoredEvent generado al entrar a la imagen
+     */
     @FXML
-    void cargarCorazonVacio(MouseEvent event) {
-        FadeTransition fade = new FadeTransition();
-        fade.setDuration(Duration.millis(5000));
-        fade.setFromValue(10);
-        fade.setToValue(0.1);
-        fade.setNode(heart);
-
-        System.out.println("cargo corazon vacio");
-        heart.setImage(new Image("/resources/heartContorno.png"));
-        fade.play();
+    void cargarCorazonVacio(MouseEvent ignoredEvent) {
+        heart.setImage(new Image(Utils.corazonVacio));
+        if(corazonLleno) cargarCorazonLleno(null);
     }
 
     @FXML
     void initialize() {
-
+        corazonLleno = false;
     }
 
+    /**
+     * Metodo que al momento de hacer clic cambia el estado de la variable
+     * corazon lleno
+     * @param ignoredEvent generado al momento de hacer clic
+     */
+    @FXML
+    void definirHeart(MouseEvent ignoredEvent) {
+        //cambio el valor de la variable
+        corazonLleno = !corazonLleno;
+    }
 
     /**
      * Metodo aun en proceso, cambiara el anuncio en la barra lateral

@@ -1,7 +1,5 @@
 package utilities;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
 
 public class Utils {
 
@@ -15,6 +13,10 @@ public class Utils {
     public static final String anuncioItem = "../view/AnuncioItem.fxml";
     //Url del pane de la gestión subasta
     public static final String manageSubasta = "../view/GestionarSubasta.fxml";
+    //Url de la imagen del corazon de like vacío
+    public static final String corazonVacio = "/resources/small_black.png";
+    //Url de la imagen del corazon de like lleno
+    public static final String corazonLleno = "/resources/small_filled.png";
 
 
 

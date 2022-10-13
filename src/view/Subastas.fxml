@@ -63,62 +63,188 @@
                   <String fx:value="chosen-fruit-card" />
                   <String fx:value="shadow" />
                </styleClass>
-               <HBox prefHeight="60.0" prefWidth="335.0">
+               <AnchorPane prefHeight="410.0" prefWidth="335.0">
+                  <children>
+                     <ImageView fx:id="adSelectedImage" fitHeight="70.0" fitWidth="81.0" layoutX="125.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../resources/ic_cart.png" />
+                        </image>
+                     </ImageView>
+                     <Separator layoutY="112.0" prefHeight="5.0" prefWidth="331.0" />
+                     <Label layoutX="4.0" layoutY="92.0" text="Datos del producto" textFill="WHITE" />
+                     <VBox layoutX="12.0" layoutY="127.0" prefHeight="168.0" prefWidth="310.0">
+                        <children>
+                           <HBox prefHeight="24.0" prefWidth="310.0">
+                              <children>
+                                 <Label prefHeight="19.0" prefWidth="62.0" text="Nombre:" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="adSelected" prefHeight="26.0" prefWidth="114.0" text="Peach" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                    <HBox.margin>
+                                       <Insets left="130.0" />
+                                    </HBox.margin>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="307.0">
+                              <children>
+                                 <Label prefHeight="26.0" prefWidth="101.0" text="Precio:" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="fruitPriceLabel" prefHeight="27.0" prefWidth="138.0" text="\$2.99" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                    <HBox.margin>
+                                       <Insets left="110.0" />
+                                    </HBox.margin>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox layoutX="10.0" layoutY="40.0" prefHeight="30.0" prefWidth="307.0">
+                              <children>
+                                 <Label prefHeight="26.0" prefWidth="233.0" text="Fecha anunciado:" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="fruitPriceLabel1" prefHeight="27.0" prefWidth="200.0" text="30-10-2022" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                    <HBox.margin>
+                                       <Insets left="40.0" />
+                                    </HBox.margin>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox layoutX="10.0" layoutY="70.0" prefHeight="30.0" prefWidth="307.0">
+                              <children>
+                                 <Label prefHeight="26.0" prefWidth="254.0" text="Fecha terminacion:" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="fruitPriceLabel11" prefHeight="27.0" prefWidth="208.0" text="31-10-2022" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                    <HBox.margin>
+                                       <Insets left="30.0" />
+                                    </HBox.margin>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox layoutX="10.0" layoutY="100.0" prefHeight="30.0" prefWidth="307.0">
+                              <children>
+                                 <Label prefHeight="26.0" prefWidth="233.0" text="Valor inicial:" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="fruitPriceLabel111" prefHeight="27.0" prefWidth="186.0" text="\$ 1.000.000" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                    <HBox.margin>
+                                       <Insets left="30.0" />
+                                    </HBox.margin>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox layoutX="10.0" layoutY="130.0" prefHeight="28.0" prefWidth="320.0">
+                              <children>
+                                 <Label prefHeight="26.0" prefWidth="233.0" text="Valor actual:" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="fruitPriceLabel1111" prefHeight="27.0" prefWidth="185.0" text="\$ 1.200.000" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                    <HBox.margin>
+                                       <Insets left="30.0" />
+                                    </HBox.margin>
+                                 </Label>
+                              </children>
+                           </HBox>
+                        </children>
+                     </VBox>
+                     <Label layoutX="4.0" layoutY="310.0" text="Datos del anunciante" textFill="WHITE" />
+                     <Separator layoutX="2.0" layoutY="329.0" prefHeight="5.0" prefWidth="331.0" />
+                     <VBox layoutX="7.0" layoutY="337.0" prefHeight="59.0" prefWidth="320.0">
+                        <children>
+                           <HBox prefHeight="30.0" prefWidth="307.0">
+                              <children>
+                                 <Label prefHeight="26.0" prefWidth="233.0" text="Nombre:" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="fruitPriceLabel12" prefHeight="27.0" prefWidth="241.0" text="Alejandro Arias" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                    <HBox.margin>
+                                       <Insets left="40.0" />
+                                    </HBox.margin>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="307.0">
+                              <children>
+                                 <Label prefHeight="26.0" prefWidth="233.0" text="Telefono:" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="fruitPriceLabel121" prefHeight="27.0" prefWidth="243.0" text="3123458990" textFill="WHITE">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                    <HBox.margin>
+                                       <Insets left="40.0" />
+                                    </HBox.margin>
+                                 </Label>
+                              </children>
+                           </HBox>
+                        </children>
+                     </VBox>
+                  </children>
+               </AnchorPane>
+               <Label prefHeight="17.0" prefWidth="341.0" text="Datos de la puja" textFill="WHITE">
                   <VBox.margin>
-                     <Insets left="20.0" top="30.0" />
+                     <Insets left="5.0" />
                   </VBox.margin>
-                  <Label fx:id="adSelected" prefHeight="48.0" prefWidth="276.0" text="Peach" textFill="WHITE">
-                     <font>
-                        <Font name="Cambria" size="36.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="fruitPriceLabel" prefHeight="49.0" prefWidth="270.0" text="\$2.99" textFill="WHITE">
-                     <font>
-                        <Font name="Cambria" size="36.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets right="25.0" />
-                     </HBox.margin>
-                  </Label>
-               </HBox>
-               <ImageView fx:id="adSelectedImage" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
+               </Label>
+               <Separator prefHeight="5.0" prefWidth="331.0" />
+               <HBox prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <Label prefHeight="26.0" prefWidth="233.0" text="Pujar con :" textFill="WHITE">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                        <HBox.margin>
+                           <Insets left="10.0" />
+                        </HBox.margin>
+                     </Label>
+                     <TextField prefHeight="26.0" prefWidth="197.0" promptText="Valor a pujar" styleClass="pujaTextfield" stylesheets="@../resources/style.css">
+                        <HBox.margin>
+                           <Insets right="20.0" />
+                        </HBox.margin>
+                     </TextField>
+                  </children>
                   <VBox.margin>
-                     <Insets top="20.0" />
+                     <Insets top="10.0" />
                   </VBox.margin>
-               </ImageView>
-               <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
-                  <VBox.margin>
-                     <Insets top="20.0" />
-                  </VBox.margin>
-                  <Label prefHeight="53.0" prefWidth="167.0" text="Pujar" textFill="WHITE">
-                     <font>
-                        <Font name="Cambria" size="24.0" />
-                     </font>
-                  </Label>
-                  <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="1" styleClass="comboBox" stylesheets="@../resources/style.css" />
-               </HBox>
-               <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
-                  <VBox.margin>
-                     <Insets bottom="20.0" top="20.0" />
-                  </VBox.margin>
-                  <Separator prefHeight="0.0" prefWidth="118.0" />
-                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="64.0" text="or" textFill="WHITE">
-                     <font>
-                        <Font name="Cambria" size="24.0" />
-                     </font>
-                  </Label>
-                  <Separator prefHeight="0.0" prefWidth="118.0" />
-               </HBox>
-               <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
-                  <Label prefHeight="42.0" prefWidth="142.0" text="Pujar" textFill="WHITE">
-                     <font>
-                        <Font name="Cambria" size="24.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField promptText="Type here" styleClass="pujaTextfield" stylesheets="@../resources/style.css" />
                </HBox>
                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../resources/style.css" text="Realizar oferta" textFill="#828282">
                   <VBox.margin>
