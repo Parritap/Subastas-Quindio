@@ -1,5 +1,7 @@
 package model;
 
+import utilities.Utils;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -46,17 +48,21 @@ public class ModelFactoryController {
     /**devuelve la ruta de respaldo con el formato que debe tener
      * el nombre del archivo
      * */
-    public static String getRutaRespaldoArchivo(String nombreArchivo){
-        LocalDateTime f = LocalDateTime.now();
-        //return getRutaRespaldo()+nombreArchivo+"__"+f.getDayOfMonth()+f.getMonth()+(f.getYear()%100)+
-                //"__"+f.getHour()+"__"+f.getMinute()+"__"+f.getSecond();
-        return "";
-    }
 
     public static String getRutaRespaldo(String nombreArchivo){
+        String[] componentes = nombreArchivo.split("\\.");
+        String nombre  = componentes[0];
+        String formato="";
+        if(componentes.length > 1) {
+            formato = componentes[1];
+        }
         LocalDateTime f = LocalDateTime.now();
-        return "C:\\td\\persistencia\\respaldo\\"+nombreArchivo+"__"+f.getDayOfMonth()+f.getMonth()+(f.getYear()%100)+
-                "__"+f.getHour()+"__"+f.getMinute()+"__"+f.getSecond();
+        return "C:\\td\\persistencia\\respaldo\\"+nombre+"__"+f.getDayOfMonth()+f.getMonthValue()+(f.getYear()%100)+
+                "__"+f.getHour()+"__"+f.getMinute()+"__"+f.getSecond()+"."+formato;
+    }
+
+    public static String getRutaSerializado(String nombreArchivo){
+        return "C:\\td\\"+nombreArchivo;
     }
     public static Integer darIdListaPuja(){
         idListaPujas++;

@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import application.App;
@@ -18,6 +19,7 @@ import model.IAnuncio;
 import model.ModelFactoryController;
 import persistencia.ArchivoUtil;
 import persistencia.ArchivoUtilLog;
+import persistencia.Persistencia;
 
 /**
  * CLASE QUE CONTROLA EL PRIMER FRAME
@@ -106,8 +108,10 @@ public class FrameInicialController implements IApplication {
      * @param ignoredE evento al hacer clic en nuestra propia x
      */
     @FXML
-    public void cerrarApp(ActionEvent ignoredE){
+    public void cerrarApp(ActionEvent ignoredE) throws Exception {
         ArchivoUtil.guardar();
+        Persistencia.serializarEmpresa();
+
         System.exit(0);
     }
 

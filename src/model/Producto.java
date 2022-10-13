@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 @Data
-public abstract class Producto implements Serializable {
+public  class Producto implements Serializable {
 
     //VARIABLES GLOBALES
     private Integer id;
@@ -23,6 +23,10 @@ public abstract class Producto implements Serializable {
         id = ++ idAux;
         this.nombre = nombre;
         this.descripcion = descripcion;
+    }
+
+    public Producto(){
+
     }
 
     public boolean compararId(Integer id){

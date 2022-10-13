@@ -38,6 +38,10 @@ public class Transaccion implements Serializable {
         this.valorPago = valorPago;
     }
 
+    public Transaccion(){
+        
+    }
+
     public boolean compararId(Integer id) {
         return this.id.compareTo(id) == 0;
     }

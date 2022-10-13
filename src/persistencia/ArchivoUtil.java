@@ -56,6 +56,13 @@ public class ArchivoUtil {
         folder.createNewFile();
     }
 
+    public static String[] listarDir(String ruta){
+        String[] rutas;
+        File f = new File(ruta);
+        rutas = f.list();
+        return rutas;
+    }
+
     /**determina si una carpeta de una ruta existe
      * @param ruta la ruta a determinar si existe
      * @return booleano indicando si la carpeta existe o no
@@ -63,6 +70,16 @@ public class ArchivoUtil {
     public static Boolean existeCarpeta(String ruta){
         File dir = new File(ruta);
         return dir.exists();
+    }
+
+    public static void limpiarArchivo(String ruta){
+        try {
+            guardarArchivo(ruta, "", false);
+        }
+        catch(IOException e){
+            System.out.println("no se pudo limpiar el archivo");
+            e.printStackTrace();
+        }
     }
 
     /**

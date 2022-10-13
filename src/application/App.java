@@ -76,7 +76,7 @@ public class App extends Application {
         //Usuario user = Persistencia.deserializarUsuario(usr, 1);
         //System.out.println(user.getCedula());
         //ArchivoUtil.guardarArchivo("C:\\td\\folder2\\prueba.txt", "prueba", true);
-        
+
 
 
         //PRUEBA UTILIDADES DE ARCHIVO UTIL
@@ -129,8 +129,15 @@ public class App extends Application {
 
         //PRUEBA DESERIALIZACION DE UN USUARIO
         /*Usuario user = new Usuario();
-        Persistencia.deserializarUsuario(user, "2");
+        Persistencia.deserializarUsuario(user, 2);
         System.out.println(user.getListaPujas().get(2).getValorOfrecido());
+        */
+
+
+        //PRUEBA SERIALIZACION DE UN PRODUCTO
+        /*Producto producto = new Producto("carne", "cerne de res");
+
+        Persistencia.serializarProducto(producto);
         */
 
         //PRUEBA SERIALIZACION Y RESPALDO DE TRANSACCIONES
@@ -143,6 +150,12 @@ public class App extends Application {
         Persistencia.serializarTransaccion(transaccion3);
         ArchivoUtil.copiarArchivo(ModelFactoryController.getRutaObjetos("Transaccion.txt"),ModelFactoryController.getRutaRespaldo("Transaccion"));
         */
+
+
+        Persistencia.deserializarEmpresa();
+
+        Persistencia.respaldarXML();
+        //System.out.println(ModelFactoryController.getInstance().getIUsuario().getListaUsuarios().get(0).getCedula());
 
         //CARGO EL FRAME PRINCIPAL
         FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get("frame inicial")));

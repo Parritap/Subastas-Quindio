@@ -1,5 +1,6 @@
 package persistencia;
 
+import exceptions.CRUDExceptions;
 import exceptions.LecturaException;
 import javafx.util.converter.LocalDateStringConverter;
 import model.*;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import static utilities.Utils.imprimirArreglo;
 import static utilities.Utils.isNot;
 
 public class Persistencia {
@@ -74,17 +76,31 @@ public class Persistencia {
     }
 
 
-    public static void serializarEmpresa() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public static void serializarEmpresa() throws Exception {
         EmpresaSubasta empresa = ModelFactoryController.getInstance();
 
+        ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Usuario.txt"));
+        ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Puja.txt"));
+
         for(Usuario usr: empresa.getIUsuario().getListaUsuarios())
-        {serializarUsuario(usr);}
+        {
+            serializarBinario(usr);
+            serializarXML(usr);
+            serializarUsuario(usr);}
 
+        ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Anuncio.txt"));
         for(Anuncio anuncio: empresa.getIAnuncio().getListaAnuncios())
-        {serializarAnuncio(anuncio);}
+        {
+            serializarBinario(anuncio);
+            serializarXML(anuncio);
+            serializarAnuncio(anuncio);}
 
+        ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Producto.txt"));
         for(Producto producto: empresa.getIProducto().getListaProductos())
-        {serializarProducto(producto);}
+        {
+            serializarBinario(producto);
+            serializarXML(producto);
+            serializarProducto(producto);}
 
         //crea una copia de las transacciones
         ArchivoUtil.copiarArchivo(ModelFactoryController.getRutaObjetos("Transaccion.txt"), ModelFactoryController.getRutaRespaldo("Transaccion"));
@@ -112,7 +128,7 @@ public class Persistencia {
     }
 
     public static void serializarProducto(Producto producto) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-        Persistencia.serializarObj(producto);
+        Persistencia.serializarObj(producto, "idAux");
     }
     public static void serializarPuja(Puja puja) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         Persistencia.serializarObj(puja, "usuario");
@@ -122,8 +138,17 @@ public class Persistencia {
         Persistencia.serializarObj(transaccion, "idAux");
     }
 
+    public static void serializarXML(Object obj) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException {
+        Class<?> claseObj = obj.getClass();
+        Method metodo = claseObj.getDeclaredMethod("getId");
+        ArchivoUtil.salvarRecursoSerializadoXML(ModelFactoryController.getRutaSerializado(claseObj.getSimpleName() + metodo.invoke(claseObj.cast(obj)) + ".xml"), obj);
+    }
 
-
+    public static void serializarBinario(Object obj) throws Exception {
+        Class<?> claseObj = obj.getClass();
+        Method metodo = claseObj.getDeclaredMethod("getId");
+        ArchivoUtil.salvarRecursoSerializado(ModelFactoryController.getRutaSerializado(claseObj.getSimpleName() + metodo.invoke(claseObj.cast(obj)) + ".dat"), obj);
+    }
 
     public static void deserializarObj(Object obj, String id, Integer idPos) throws IOException, LecturaException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, ClassNotFoundException {
         ArrayList<String> objetos = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos(obj));
@@ -142,7 +167,7 @@ public class Persistencia {
             }
         }
 
-        throw new LecturaException("usuario no encontrado", "intento fallido de deserializar usuario con id "+id);
+        throw new LecturaException("objeto no encontrado", "intento fallido de deserializar objeto "+obj.getClass().getSimpleName()+" con id "+id);
     }
 
 
@@ -198,6 +223,36 @@ public class Persistencia {
         throw new LecturaException("estado no valido", "Estado "+dato+" no valido");
     }
 
+    public static void deserializarEmpresa() throws IOException, CRUDExceptions, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        EmpresaSubasta empresaSubasta  = ModelFactoryController.getInstance();
+        //Deserializa usuarios
+        empresaSubasta.setIUsuario(new IUsuario());
+        ArrayList<String> usuarios = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos("Usuario.txt"));
+        for(int i=1; i<usuarios.size(); i++){
+            String props = usuarios.get(i);
+            Usuario usr = new Usuario();
+            deserializarUsuario(usr, props);
+            empresaSubasta.getIUsuario().add(usr);
+        }
+        //Dserializa anuncios
+        empresaSubasta.setIAnuncio(new IAnuncio());
+        ArrayList<String> anuncios = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos("Anuncio.txt"));
+        for(int i=1; i<anuncios.size(); i++){
+            String props = anuncios.get(i);
+            Anuncio anuncio = new Anuncio();
+            deserializarAnuncio(anuncio, props);
+            empresaSubasta.getIAnuncio().add(anuncio);
+        }
+
+        empresaSubasta.setIProducto(new IProducto());
+        ArrayList<String> productos = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos("Producto.txt"));
+        for(int i=1; i<productos.size(); i++){
+            String props = productos.get(i);
+            Producto producto = new Producto();
+            deserializarProducto(producto, props);
+            empresaSubasta.getIProducto().add(producto);
+        }
+    }
     public static ArrayList<Puja> deserializarPujas(Integer idListaPujas) throws IOException, LecturaException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         ArrayList<String> pujas = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos("Puja.txt"));
         ArrayList<Puja> resultado = new ArrayList<>();
@@ -221,8 +276,14 @@ public class Persistencia {
         return resultado;
     }
 
-    public static void deserializarUsuario(Usuario usr, String id) throws LecturaException, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
-        deserializarObj(usr, id, 10);
+    public static void deserializarUsuario(Usuario usr, Integer id) throws LecturaException, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        deserializarObj(usr, id+"", 10);
+        Integer idPujas = usr.getIdListaPujas();
+        usr.setListaPujas(deserializarPujas(idPujas));
+    }
+
+    public static void deserializarUsuario(Usuario usr, String props) throws LecturaException, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        deserializarObj(usr, props);
         Integer idPujas = usr.getIdListaPujas();
         usr.setListaPujas(deserializarPujas(idPujas));
     }
@@ -233,5 +294,21 @@ public class Persistencia {
         anuncio.setListaPujas(deserializarPujas(idPujas));
     }
 
+    public static void deserializarProducto(Producto producto, Integer id) throws LecturaException, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        deserializarObj(producto, id+"", 0);
+    }
 
+    public static void deserializarProducto(Producto producto, String id) throws LecturaException, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        deserializarObj(producto, id);
+    }
+
+    public static void respaldarXML() throws IOException {
+        String rutaBase = "C:\\td";
+        String[] archivos =  ArchivoUtil.listarDir(rutaBase);
+        for(String archivo: archivos){
+            if(archivo.endsWith(".xml")){
+                ArchivoUtil.copiarArchivo(rutaBase+"\\"+archivo, ModelFactoryController.getRutaRespaldo(archivo));
+            }
+        }
+    }
 }

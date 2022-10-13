@@ -58,12 +58,16 @@ public class Usuario implements Serializable {
 		this.cantAnuncios = 0;
 	}
 
-	public Usuario(){
+	public Usuario(ArrayList<Puja> listaPujas){
 		this.id = ++idAux;
 		this.activo = true;
 		this.idListaPujas = ModelFactoryController.darIdListaPuja();
 		this.cantAnuncios = 0;
-		this.listaPujas = new ArrayList<>();
+		this.listaPujas = listaPujas;
+	}
+
+	public Usuario(){
+
 	}
 
 	//NO ELIMINAR ESTOS GETTERS, SI NO NO COMPILA EL CODIGO

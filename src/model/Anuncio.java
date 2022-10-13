@@ -35,15 +35,18 @@ public class Anuncio implements Serializable {
 	private Integer id;
 	//constructor sencillo util para hacer pruebas;
 	public Anuncio() {
-			//fecha actual
-			this.fechaPublicacion = LocalDate.now();
-			this.tiempoActivo = 24.0;
-			this.id = ++idAux;
-			this.idFoto = idAux;
-			this.idListaPujas = ModelFactoryController.darIdListaPuja();
-			this.listaPujas = new ArrayList<>();
+
 	}
 
+	public Anuncio(Double tiempoActivo){
+		//fecha actual
+		this.fechaPublicacion = LocalDate.now();
+		this.tiempoActivo = tiempoActivo;
+		this.id = ++idAux;
+		this.idFoto = idAux;
+		this.idListaPujas = ModelFactoryController.darIdListaPuja();
+		this.listaPujas = new ArrayList<>();
+	}
 
 	public Anuncio(Integer id) {
 		//fecha actual
