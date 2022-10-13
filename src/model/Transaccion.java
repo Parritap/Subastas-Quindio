@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Setter
 @Getter
@@ -13,6 +14,14 @@ public class Transaccion implements Serializable {
     private Estado estado;
     private Integer valorPago;
     private static Integer idAux = 0;
+
+    private LocalDate fecha;
+
+    private Integer numeroCuenta;
+    private String cedulaCliente;
+    private String codigoEmpleado;
+
+    public Transaccion()
     public Transaccion(Integer valorPago){
 
         this.id = ++idAux;

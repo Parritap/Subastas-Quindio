@@ -110,9 +110,54 @@ public class App extends Application {
         //Persistencia.serializarPuja(new Puja(LocalDate.now(), new Usuario(), 122));
         //Persistencia.serializarUsuario(usr);
         //Persistencia.deserializarObj();
-        Usuario usr = new Usuario();
-        Persistencia.deserializarObj(usr, "1", 10);
-        System.out.println(usr.getName());
+
+        //ArchivoUtil.verificarRuta("C:\\td\\persistencia\\logs\\");
+        /*Usuario usr = new Usuario("dolly", 21, "1003929434", "liven@gmail.com", "aSimplePassword", "Cr1 23 Cll 19 Brr guayaquil");
+        usr.getListaPujas().add(new Puja(1, 30));
+        usr.getListaPujas().add(new Puja(1, 344));
+        usr.getListaPujas().add(new Puja(1, 500));
+
+        Anuncio anuncio = new Anuncio("john", 159, Estado.NUEVO, false);
+        anuncio.getListaPujas().add(new Puja(1, 20));
+        anuncio.getListaPujas().add(new Puja(1, 25));
+        anuncio.getListaPujas().add(new Puja(1, 31));
+
+        Usuario usr2 = new Usuario("jack", 28, "199299299", "gecko@gmail.com", "Ripper", "Cr1 144 Cll 19 Brr Burnos aires");
+        usr2.getListaPujas().add(new Puja(2, 1));
+        usr2.getListaPujas().add(new Puja(2, 11));
+        usr2.getListaPujas().add(new Puja(2, 111));
+
+
+        Anuncio anuncio2 = new Anuncio("jay", 400, Estado.NUEVO, true);
+        anuncio2.getListaPujas().add(new Puja(1, 64));
+        anuncio2.getListaPujas().add(new Puja(1, 128));
+        anuncio2.getListaPujas().add(new Puja(1, 256));
+
+
+        Usuario usr3 = new Usuario("shane", 25, "1003334333", "geid@gmail.com", "myOwnPassword", "Cr1 23 Cll 19 seoul");
+        usr3.getListaPujas().add(new Puja(1, 3));
+        usr3.getListaPujas().add(new Puja(1, 9));
+        usr3.getListaPujas().add(new Puja(1, 27));
+
+        Usuario usr4 = new Usuario("vieta", 9, "10029292992", "roots@gmail.com", "myOwnPassword", "Cr1 0 Cll 19 seoul");
+        usr4.getListaPujas().add(new Puja(1, 4));
+        usr4.getListaPujas().add(new Puja(1, 16));
+        usr4.getListaPujas().add(new Puja(1, 64));
+
+        Persistencia.serializarUsuario(usr);
+        Persistencia.serializarAnuncio(anuncio);
+        Persistencia.serializarUsuario(usr2);
+        Persistencia.serializarUsuario(usr3);
+        Persistencia.serializarUsuario(usr4);
+        Persistencia.serializarAnuncio(anuncio2);
+         */
+
+        Usuario user = new Usuario();
+        Persistencia.deserializarUsuario(user, "2");
+        System.out.println(user.getListaPujas().get(2).getValorOfrecido());
+
+
+
         //CARGO EL FRAME PRINCIPAL
         FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get("frame inicial")));
         Parent root = loader.load();

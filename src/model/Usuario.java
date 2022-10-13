@@ -26,7 +26,6 @@ public class Usuario implements Serializable {
 	//Este atributo permite conocer si el cliente actual esta activo en la app
 	private Boolean activo;
 	private static Integer idAux = 0;
-	private static Integer idAuxListaPujas = 0;
 	//Este atributo permite saber el estado del usuario, Eliminado, Nuevo, Actualizado
 	private Estado estado;
 	private Integer id;
@@ -39,7 +38,7 @@ public class Usuario implements Serializable {
 		id = ++idAux;
 		estado = Estado.NUEVO;
 		this.activo = true;
-		this.idListaPujas = ++idAuxListaPujas;
+		this.idListaPujas = ModelFactoryController.darIdListaPuja();
 		this.cantAnuncios = 0;
 		this.listaPujas = new ArrayList<>();
 	}
@@ -55,14 +54,14 @@ public class Usuario implements Serializable {
 		this.estado = Estado.NUEVO;
 		this.listaPujas = new ArrayList<>();
 		this.activo=true;
-		this.idListaPujas = ++idAuxListaPujas;
+		this.idListaPujas = ModelFactoryController.darIdListaPuja();
 		this.cantAnuncios = 0;
 	}
 
 	public Usuario(){
-		this.id = idAux;
+		this.id = ++idAux;
 		this.activo = true;
-		this.idListaPujas = ++idAuxListaPujas;
+		this.idListaPujas = ModelFactoryController.darIdListaPuja();
 		this.cantAnuncios = 0;
 		this.listaPujas = new ArrayList<>();
 	}

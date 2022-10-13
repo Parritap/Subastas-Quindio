@@ -1,6 +1,7 @@
 package persistencia;
 
 import exceptions.LecturaException;
+import javafx.util.converter.LocalDateStringConverter;
 import model.*;
 
 import java.awt.*;
@@ -35,31 +36,6 @@ public class Persistencia {
         }
         ArchivoUtil.guardarArchivo(ModelFactoryController.getRutaObjetos(obj), "\n"+atributos.substring(2), true);
     }
-
-    public static void serializarUsuario(Usuario usr) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-        Persistencia.serializarObj(usr, "idAux", "foto", "listaPujas", "idAuxListaPujas");
-        Persistencia.escribirCabecera(new Puja(), "usuario");
-        ArchivoUtil.guardarArchivo(
-                ModelFactoryController.getRutaObjetos("PujaUsr.txt"), "\n#"+usr.getId(), true);
-        for(Puja puja: usr.getListaPujas()){
-            Persistencia.serializarPuja(puja);
-        }
-
-    }
-
-    public static void serializarAnuncio(Anuncio anuncio) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-        serializarObj(anuncio, "idAux", "foto", "listaPujas");
-        Persistencia.escribirCabecera(new Puja(), "usuario");
-        ArchivoUtil.guardarArchivo(
-                ModelFactoryController.getRutaObjetos("PujaUsr.txt"), "\n#"+anuncio.getId(), true);
-        for(Puja puja: anuncio.getListaPujas()){
-            Persistencia.serializarPuja(puja);
-        }
-    }
-    public static void serializarPuja(Puja puja) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-        Persistencia.serializarObj(puja, "usuario");
-    }
-
 
     /**utilidad que devuelve el nombre del metodo en base a una propiedad
      * @param prefijo prefijo del metodo (get o set)
@@ -96,67 +72,39 @@ public class Persistencia {
         ArchivoUtil.guardarArchivo(ModelFactoryController.getRutaObjetos(obj), atributos.substring(2), true);
     }
 
-    public static void serializarUsuario(){
+
+    /*public static void serializarEmpresa(){
+        ModelFactoryController.getInstance().get;
+    }*/
+
+    public static void serializarUsuario(Usuario usr) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        Persistencia.serializarObj(usr, "idAux", "foto", "listaPujas", "idAuxListaPujas");
+        Persistencia.escribirCabecera(new Puja(), "usuario");
+        ArchivoUtil.guardarArchivo(
+                ModelFactoryController.getRutaObjetos("Puja.txt"), "\n#"+usr.getIdListaPujas(), true);
+        for(Puja puja: usr.getListaPujas()){
+            Persistencia.serializarPuja(puja);
+        }
 
     }
 
-
-    /**deserializa un usuario, devuelve un usuario a partir de los valores del archivo
-     * @param usr objeto Usuario sobre el cual queremos quemar las propiedades
-     * @param id id del usuario que buscamos
-     * @return el mismo objeto usr, solo que con los atributos configurados
-     * */
-    public static Usuario deserializarUsuario(Usuario usr, Integer id) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException {
-        String[] atributos = {"Name", "Age", "Cedula", "Correo",
-                              "CantAnuncios", "Direccion", "Password",
-                              "IdListaPujas", "Activo", "Estado", "Id"};
-        Class[] tipos = {String.class, Integer.class, String.class, String.class,
-                         Integer.class, String.class, String.class,
-                         Integer.class, Boolean.class, Estado.class, Integer.class};
-
-        Class<?> c = Persistencia.class;
-        ArrayList<Method> parse = new ArrayList<>();
-        for(Class<?> clase: tipos){
-            parse.add(c.getDeclaredMethod("parseTo"+clase.getSimpleName(), String.class));
+    public static void serializarAnuncio(Anuncio anuncio) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        serializarObj(anuncio, "idAux", "foto", "listaPujas");
+        Persistencia.escribirCabecera(new Puja(), "usuario");
+        ArchivoUtil.guardarArchivo(
+                ModelFactoryController.getRutaObjetos("Puja.txt"), "\n#"+anuncio.getIdListaPujas(), true);
+        for(Puja puja: anuncio.getListaPujas()){
+            Persistencia.serializarPuja(puja);
         }
-
-        ArrayList<String> listaUsuarios = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos("Usuario.txt"));
-        Class<?> claseUsr = usr.getClass();
-        Method setter;
-        for(String usuario: listaUsuarios) {
-            String[] props = usuario.split("@@");
-            if(props[10].equals(id+"")) {
-                for (int i = 0; i < atributos.length; i++) {
-                    setter = claseUsr.getDeclaredMethod("set" + atributos[i], tipos[i]);
-
-                    setter.invoke(usr, parse.get(i).invoke(Persistencia.class, props[i]));
-                }
-                break;
-            }
-        }
-        return usr;
     }
 
-    public static Anuncio deserializarAnuncio(Anuncio anuncio, Integer id) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException {
-        String[] atributos = {"Name", "Age", "Cedula", "Correo",
-                "CantAnuncios", "Direccion", "Password",
-                "IdListaPujas", "Activo", "Estado", "Id"};
-        Class[] tipos = {String.class, Integer.class, String.class, String.class,
-                Integer.class, String.class, String.class,
-                Integer.class, Boolean.class, Estado.class, Integer.class};
-
-        Class<?> c = Persistencia.class;
-        ArrayList<Method> parse = new ArrayList<>();
-        for (Class<?> clase : tipos) {
-            parse.add(c.getDeclaredMethod("parseTo" + clase.getSimpleName(), String.class));
-        }
-
-        return anuncio;
+    public static void serializarProducto(Producto producto) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        Persistencia.serializarObj(producto);
+    }
+    public static void serializarPuja(Puja puja) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        Persistencia.serializarObj(puja, "usuario");
     }
 
-
-
-    //public static void serializarPuja(){}
 
 
 
@@ -181,6 +129,19 @@ public class Persistencia {
     }
 
 
+    public static void deserializarObj(Object obj, String props) throws IOException, LecturaException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, ClassNotFoundException {
+        ArrayList<String> objetos = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos(obj));
+        String[] cabecera = objetos.get(0).split("@@");
+        String[] propiedades = props.split("@@");
+        for(int i = 0; i<propiedades.length; i++) {
+                String[] nombreTipo = cabecera[i].split(":");
+                Class<?> claseArgumento = Class.forName(nombreTipo[1]);
+                Method setter = obj.getClass().getDeclaredMethod(nombreMetodo("set", nombreTipo[0]), claseArgumento);
+                setter.invoke(obj, Persistencia.class.getDeclaredMethod("parseTo" + claseArgumento.getSimpleName(), String.class).invoke(Persistencia.class, propiedades[i]));
+            }
+
+    }
+
 
     //METODOS NECESARIOS PARA LA DESERIALIZACION
     //PASAN DE STRING A CUALQUIER OTRO TIPO
@@ -196,6 +157,12 @@ public class Persistencia {
         return dato;
     }
 
+
+    public static LocalDate parseToLocalDate(String dato){
+        return LocalDate.parse(dato);
+    }
+
+
     public static Estado parseToEstado(String dato) throws LecturaException {
         if(dato.equals("NUEVO")){
             return Estado.NUEVO;
@@ -209,5 +176,41 @@ public class Persistencia {
 
         throw new LecturaException("estado no valido", "Estado "+dato+" no valido");
     }
+
+    public static ArrayList<Puja> deserializarPujas(Integer idListaPujas) throws IOException, LecturaException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        ArrayList<String> pujas = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos("Puja.txt"));
+        ArrayList<Puja> resultado = new ArrayList<>();
+        Integer indicator = 0;
+        for(String puja: pujas){
+
+            if(puja.startsWith("#") && indicator == 1){
+                break;
+            }
+            if(indicator == 1){
+                Puja miembroPuja = new Puja();
+                deserializarObj(miembroPuja, puja);
+                resultado.add(miembroPuja);
+            }
+            if(puja.equals("#"+idListaPujas)){
+                indicator++;
+            }
+
+
+        }
+        return resultado;
+    }
+
+    public static void deserializarUsuario(Usuario usr, String id) throws LecturaException, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        deserializarObj(usr, id, 10);
+        Integer idPujas = usr.getIdListaPujas();
+        usr.setListaPujas(deserializarPujas(idPujas));
+    }
+
+    public static void deserializarAnuncio(Anuncio anuncio, String id) throws LecturaException, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        deserializarObj(anuncio, id, 10);
+        Integer idPujas = anuncio.getIdListaPujas();
+        anuncio.setListaPujas(deserializarPujas(idPujas));
+    }
+
 
 }

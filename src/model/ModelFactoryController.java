@@ -11,6 +11,7 @@ public class ModelFactoryController {
     //VARIABLE GENERAL PARA TODA LA EMPRESA
     private static EmpresaSubasta empresaSubasta;
     private static String rutaLogs;
+    private static Integer idListaPujas=0;
     /**
      * METODO QUE DEVUELVE LA INSTANCIA DE LA EMPRESA
      * @return LA INSTANCIA DE LA EMPRESA
@@ -40,5 +41,8 @@ public class ModelFactoryController {
         return "C:\\td\\persistencia\\archivos\\"+claseObj.getSimpleName()+".txt";
     }
 
-
+    public static Integer darIdListaPuja(){
+        idListaPujas++;
+        return idListaPujas;
+    }
 }

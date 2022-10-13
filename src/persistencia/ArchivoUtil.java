@@ -2,6 +2,7 @@ package persistencia;
 
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
+import utilities.Utils;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -20,9 +21,7 @@ public class ArchivoUtil {
      * @throws IOException
      */
     public static void guardarArchivo(String ruta,String contenido, Boolean flagAnexarContenido) throws IOException {
-        if(!existeCarpeta(ruta)){
-            crearRuta(ruta);
-        }
+        verificarRuta(ruta);
         FileWriter fw = new FileWriter(ruta,flagAnexarContenido);
         BufferedWriter bfw = new BufferedWriter(fw);
         bfw.write(contenido);
@@ -30,6 +29,15 @@ public class ArchivoUtil {
         fw.close();
     }
 
+
+    /**Verific que una ruta exista si no es asi, la crea
+     * @param ruta ruta que buscamos
+     * */
+    public static void verificarRuta(String ruta) throws IOException {
+        if(!existeCarpeta(ruta)){
+            crearRuta(ruta);
+        }
+    }
     /**Crea una ruta de carpetas, se utiliza cuando el usuario
      * no tiene el sistema de archivos predefinido
      * @param ruta ruta a crear
@@ -43,6 +51,8 @@ public class ArchivoUtil {
             folder = new File(rutaActual);
             folder.mkdirs();
         }
+        folder = new File(ruta);
+        folder.createNewFile();
     }
 
     /**determina si una carpeta de una ruta existe
@@ -61,9 +71,10 @@ public class ArchivoUtil {
      * @throws IOException
      */
     public static ArrayList<String> leerArchivo(String ruta) throws IOException {
+        verificarRuta(ruta);
 
         ArrayList<String>  contenido = new ArrayList<String>();
-        FileReader fr=new FileReader(ruta);
+        FileReader fr = new FileReader(ruta);
         BufferedReader bfr=new BufferedReader(fr);
         String linea="";
         while((linea = bfr.readLine())!=null)

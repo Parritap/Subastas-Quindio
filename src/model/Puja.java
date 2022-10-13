@@ -14,7 +14,6 @@ public class Puja {
 	Integer idUsuario;
 	Integer valorOfrecido;
 
-	private static Integer idListaPujas=0;
 
 	/**
 	 * CONSTRUCTOR
@@ -34,8 +33,10 @@ public class Puja {
 		this.fechaDePuja = LocalDate.now();
 	}
 
-	public static Integer darIdListaPuja(){
-		++idListaPujas;
-		return idListaPujas;
+	public Puja(Integer idUsuario, Integer valorOfrecido){
+		this.fechaDePuja = LocalDate.now();
+		this.idUsuario = idUsuario;
+		this.valorOfrecido = valorOfrecido;
 	}
+
 }

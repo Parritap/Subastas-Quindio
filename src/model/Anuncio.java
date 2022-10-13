@@ -40,7 +40,8 @@ public class Anuncio implements Serializable {
 			this.tiempoActivo = 24.0;
 			this.id = ++idAux;
 			this.idFoto = idAux;
-			this.idListaPujas = idAux;
+			this.idListaPujas = ModelFactoryController.darIdListaPuja();
+			this.listaPujas = new ArrayList<>();
 	}
 
 
@@ -50,7 +51,8 @@ public class Anuncio implements Serializable {
 		this.tiempoActivo = 24.0;
 		this.id = id;
 		this.idFoto = idAux;
-		this.idListaPujas = idAux;
+		this.idListaPujas = ModelFactoryController.darIdListaPuja();
+		this.listaPujas = new ArrayList<>();
 	}
 	//constructor completo
 	public Anuncio(LocalDate fecha, String nombreAnunciante, Image foto, LocalDate fechaTerminacion,
@@ -73,7 +75,23 @@ public class Anuncio implements Serializable {
 		//valor de esta variable, la cual va aumentar cada vez
 		//que creemos un anuncio
 		this.idFoto = idAux;
-		this.idListaPujas = idAux;
+		this.idListaPujas = ModelFactoryController.darIdListaPuja();
+		this.listaPujas = new ArrayList<>();
+	}
+
+	public Anuncio(String nombreAnunciante, Integer valorInicial, Estado estado, Boolean fueMostrado){
+		//fecha actual
+		this.nombreAnunciante = nombreAnunciante;
+		this.valorInicial = valorInicial;
+		this.estado = estado;
+		this.fueMostrado = fueMostrado;
+		this.fechaPublicacion = LocalDate.now();
+		this.fechaTerminacion = this.fechaPublicacion.plusDays(1);
+		this.tiempoActivo = 24.0;
+		this.id = ++idAux;
+		this.idFoto = idAux;
+		this.idListaPujas = ModelFactoryController.darIdListaPuja();
+		this.listaPujas = new ArrayList<>();
 	}
 
 	/**

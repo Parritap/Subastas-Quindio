@@ -14,4 +14,14 @@ public class Utils {
         }
         return true;
     }
+
+
+    public static void imprimirArreglo(String[] arr){
+        String resultado ="";
+        for(String str: arr){
+            resultado+=", "+str;
+        }
+
+        System.out.println("{"+resultado.substring(1)+"}");
+    }
 }
