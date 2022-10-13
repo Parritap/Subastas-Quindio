@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
@@ -102,6 +103,24 @@ public class App extends Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * Metodo que carga un FXML y devuelve ese pane
+     * @param ruta donde se encuentra el pane
+     * @return el pane que se encuentra en la ruta
+     */
+    public AnchorPane obtenerPane(String ruta){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
+        try {
+            AnchorPane root = loader.load();
+            IApplication controller = loader.getController();
+            controller.setApplication(this);
+            return root;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }

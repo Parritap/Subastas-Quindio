@@ -93,7 +93,7 @@ public class SubastaController implements IApplication{
             //recorro la lista de anuncios y los convierto en un item controller
             for (Anuncio anuncio : this.listaAnuncios) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(this.getClass().getResource("../view/AnuncioItem.fxml"));
+                fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
                 AnchorPane anchorPane = fxmlLoader.load();
                 ItemController itemController = fxmlLoader.getController();
                 itemController.setData(anuncio);
