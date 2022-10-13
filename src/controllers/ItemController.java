@@ -48,9 +48,6 @@ public class ItemController implements IApplication {
         nameLabel.setText(anuncio.getName());
         priceLable.setText(anuncio.getValorInicial()+"");
         img.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(anuncio.getImageSrc()))));
-        horas = anuncio.getHora();
-        minutos = anuncio.getMinutos();
-        segundos = anuncio.getSegundos();
         lblTiempo.setText("Tiempo restante "+horas+" "+minutos+" "+segundos);
     }
 

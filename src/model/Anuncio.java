@@ -56,7 +56,7 @@ public class Anuncio implements Serializable {
 	 * CONSTRUCTOR NECESARIO PARA PRUEBAS
 	 */
 
-	public Anuncio(String name, Double valorInicial, String imageSrc, Date fechaPublicacion, Date fechaTerminacion){
+	public Anuncio(String name, Double valorInicial, String imageSrc){
 		this.name = name;
 		this.valorInicial = valorInicial;
 		this.imageSrc = imageSrc;
@@ -72,28 +72,5 @@ public class Anuncio implements Serializable {
 		return this.id.compareTo(id) == 0;
 	}
 
-	/**
-	 * Metodo que calcula la diferencia de horas entre la fecha de inicio y terminacion
-	 * del anuncio
-	 * @return la diferencia entera de horas
-	 */
-	public int getHora() {
-		return (int) (fechaTerminacion.toEpochDay() - fechaPublicacion.toEpochDay());
-	}
 
-	/**
-	 * metodo que hace la diferencia de minutos entre la fecha de publicacion y la fecha de terminacion
-	 * @return diferencia de minutos
-	 */
-	public int getMinutos() {
-		return (int) (fechaPublicacion.toEpochDay() - fechaTerminacion.toEpochDay());
-	}
-
-	/**
-	 * metodo que hace la diferencia de segundos entre la fecha de publicacion y la fecha de terminacion
-	 * @return diferencia de segundos
-	 */
-	public int getSegundos() {
-		return (int) (fechaPublicacion.toEpochDay() - fechaTerminacion.toEpochDay());
-	}
 }
