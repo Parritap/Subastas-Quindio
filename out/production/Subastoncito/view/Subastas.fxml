@@ -196,7 +196,7 @@
                <Pane prefHeight="84.0" prefWidth="96.0" />
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <ScrollPane prefHeight="570.0" prefWidth="785.0" styleClass="transparent" stylesheets="@../resources/style.css">
+               <ScrollPane prefHeight="625.0" prefWidth="857.0" styleClass="transparent" stylesheets="@../resources/style.css">
                   <HBox.margin>
                      <Insets top="10.0" />
                   </HBox.margin>

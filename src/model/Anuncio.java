@@ -2,18 +2,18 @@ package model;
 
 import lombok.Data;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Data
 public class Anuncio implements Serializable {
 
 	private String name;
-	private LocalDate fecha;
+	private Date fecha;
 	private String nombreAnunciante;
 	private String imageSrc; //Es necesario cambiar la imagen a String, y contener solo la ruta para tener flexibilidad
-	private LocalDate fechaPublicacion;
-	private LocalDate fechaTerminacion;
+	private Date fechaPublicacion;
+	private Date fechaTerminacion;
 	private Double valorInicial;
 	private ArrayList<Puja> listaPujas;
 	private Double tiempoActivo;
@@ -33,15 +33,12 @@ public class Anuncio implements Serializable {
 	private Integer id;
 	
 	//constructor completo
-	public Anuncio(LocalDate fecha, String nombreAnunciante, String imageSrc, LocalDate fechaTerminacion,
+	public Anuncio(String nombreAnunciante, String imageSrc,
 				   Double valorInicial, Double tiempoActivo, Boolean fueMostrado) {
 		
-		this.fecha = fecha;
 	    this.nombreAnunciante = nombreAnunciante;
 	    this.imageSrc = imageSrc;
 	    //la fecha en la que se crea el objeto es la fecha del anuncio
-	    this.fechaPublicacion = LocalDate.now();
-	    this.fechaTerminacion = fechaTerminacion;
 	    this.valorInicial = valorInicial;
 	    //las pujas empiezan vacias
 	    this.listaPujas = new ArrayList<>();
@@ -59,14 +56,11 @@ public class Anuncio implements Serializable {
 	 * CONSTRUCTOR NECESARIO PARA PRUEBAS
 	 */
 
-	public Anuncio(String name, Double valorInicial, String imageSrc){
+	public Anuncio(String name, Double valorInicial, String imageSrc, Date fechaPublicacion, Date fechaTerminacion){
 		this.name = name;
 		this.valorInicial = valorInicial;
 		this.imageSrc = imageSrc;
 	}
-
-
-
 
 
 	/**
@@ -78,5 +72,28 @@ public class Anuncio implements Serializable {
 		return this.id.compareTo(id) == 0;
 	}
 
+	/**
+	 * Metodo que calcula la diferencia de horas entre la fecha de inicio y terminacion
+	 * del anuncio
+	 * @return la diferencia entera de horas
+	 */
+	public int getHora() {
+		return (int) (fechaTerminacion.toEpochDay() - fechaPublicacion.toEpochDay());
+	}
 
+	/**
+	 * metodo que hace la diferencia de minutos entre la fecha de publicacion y la fecha de terminacion
+	 * @return diferencia de minutos
+	 */
+	public int getMinutos() {
+		return (int) (fechaPublicacion.toEpochDay() - fechaTerminacion.toEpochDay());
+	}
+
+	/**
+	 * metodo que hace la diferencia de segundos entre la fecha de publicacion y la fecha de terminacion
+	 * @return diferencia de segundos
+	 */
+	public int getSegundos() {
+		return (int) (fechaPublicacion.toEpochDay() - fechaTerminacion.toEpochDay());
+	}
 }

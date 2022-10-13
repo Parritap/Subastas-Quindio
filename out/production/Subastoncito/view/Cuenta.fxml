@@ -66,10 +66,13 @@
                     <VBox.margin>
                         <Insets top="30.0" />
                     </VBox.margin>
-               <Circle fx:id="circleImage" fill="WHITE" onMouseClicked="#cargarPerfil" radius="70.0" stroke="BLACK" strokeType="INSIDE" styleClass="border-image">
+               <Circle fx:id="circleImage" fill="WHITE" onMouseClicked="#cargarPerfil" radius="81.0" stroke="BLACK" strokeType="INSIDE" styleClass="border-image">
                   <HBox.margin>
                      <Insets bottom="20.0" left="30.0" />
                   </HBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
                </Circle>
                <HBox prefHeight="160.0" prefWidth="688.0">
                   <children>
@@ -106,7 +109,7 @@
                      </VBox>
                   </children>
                   <HBox.margin>
-                     <Insets left="20.0" />
+                     <Insets />
                   </HBox.margin>
                </HBox>
                 </HBox>
@@ -232,7 +235,7 @@
                </children>
             </AnchorPane>
             <BorderPane.margin>
-               <Insets right="25.0" />
+               <Insets left="20.0" right="20.0" />
             </BorderPane.margin>
             </VBox>
         </center>
