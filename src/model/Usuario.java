@@ -16,7 +16,6 @@ public class Usuario implements Serializable {
 	private String cedula;
 	private String correo;
 	private Integer cantAnuncios;
-
 	private String direccion;
 	private String password;
 
@@ -29,6 +28,8 @@ public class Usuario implements Serializable {
 	//Este atributo permite saber el estado del usuario, Eliminado, Nuevo, Actualizado
 	private Estado estado;
 	private Integer id;
+
+	//Constructores
 	public Usuario(String name, Integer age, String cedula, String correo, Integer cantAnuncios, Puja puja) {
 		this.name = name;
 	    this.age = age;
@@ -70,7 +71,12 @@ public class Usuario implements Serializable {
 
 	}
 
-	//NO ELIMINAR ESTOS GETTERS, SI NO NO COMPILA EL CODIGO
+	/**
+	 * Metodo que permite comparar dos id, el del usuario actual y el
+	 * pasado por parametro
+	 * @param id a comparar con el usuario actual
+	 * @return true || false
+	 */
 	public boolean compararId(Integer id) {return this.id.compareTo(id) == 0;}
 
 	/**
@@ -78,7 +84,6 @@ public class Usuario implements Serializable {
 	 * ID
 	 * @param nuevoUsuario EL USUARIO QUE CONTIENE LOS ATRIBUTOS A ACTUALIZAR
 	 */
-
     public void actualizarAtributos(Usuario nuevoUsuario) {
 		this.name = nuevoUsuario.getName();
 		this.age = nuevoUsuario.getAge();

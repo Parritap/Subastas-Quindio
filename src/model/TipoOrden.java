@@ -5,6 +5,7 @@ package model;
  * QUE SE DESEA ORDENAR
  */
 public enum TipoOrden {
+	//Tipo de orden
 	ASCENDENTE, DESCENDENTE
 	
 }

@@ -5,6 +5,9 @@ import persistencia.ArchivoUtil;
 
 import java.time.LocalDate;
 
+/**
+ * Clase encargada de lanzar una excepcion de tipo anuncio exception
+ */
 public class AnuncioException  extends  EmpresaException{
 
     //Gravedad de la excepcion: WARNING

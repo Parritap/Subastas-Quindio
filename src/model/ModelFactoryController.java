@@ -6,6 +6,10 @@ import utilities.Utils;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import exceptions.CRUDExceptions;
+
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -22,7 +26,13 @@ public class ModelFactoryController {
      * @return LA INSTANCIA DE LA EMPRESA
      */
     public static EmpresaSubasta getInstance(){
-        return Objects.requireNonNullElseGet(empresaSubasta, () -> empresaSubasta = new EmpresaSubasta());
+        return Objects.requireNonNullElseGet(empresaSubasta, () -> {
+            try {
+                return empresaSubasta = new EmpresaSubasta();
+            } catch (CRUDExceptions e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     public static void deserializarEmpresa(){
@@ -84,5 +94,8 @@ public class ModelFactoryController {
     public static Integer darIdListaPuja(){
         idListaPujas++;
         return idListaPujas;
+    }
+    public static ArrayList<Anuncio> getlistaAnuncios() {
+        return getInstance().getListaAnuncios();
     }
 }

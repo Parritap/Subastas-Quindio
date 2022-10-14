@@ -6,26 +6,29 @@ import lombok.Setter;
 
 import java.awt.Image;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Getter
 @Setter
 public class Anuncio implements Serializable {
-	private LocalDate fecha;
-	private String nombreAnunciante;
-	private Image foto;
 
-	private Integer idFoto;
-	private LocalDate fechaPublicacion;
-	private LocalDate fechaTerminacion;
-	private Integer valorInicial;
+	//El anuncio contiene un producto
+	private Producto producto;
+	private String titulo;
+	private Date fecha;
+	private String nombreAnunciante;
+	private byte[] imageSrc; //Es necesario cambiar la imagen a String, y contener solo la ruta para tener flexibilidad
+	private Date fechaPublicacion;
+	private Date fechaTerminacion;
+	private Double valorInicial;
 	private ArrayList<Puja> listaPujas;
 	private Integer idListaPujas;
 	private Double tiempoActivo;
 
+	private  Usuario usuario; //El usuario que realiza el anuncio
 	/**
-	 * creo la variable estado para indicar cuando un Anuncio ha sido eliminado, actualizado
+	 * creo la variable Estado para indicar cuando un Anuncio ha sido eliminado, actualizado
 	 */
 	private Estado estado;
 
@@ -61,16 +64,13 @@ public class Anuncio implements Serializable {
 		this.idListaPujas = ModelFactoryController.darIdListaPuja();
 		this.listaPujas = new ArrayList<>();
 	}
+
 	//constructor completo
-	public Anuncio(LocalDate fecha, String nombreAnunciante, Image foto, LocalDate fechaTerminacion,
-				   Integer valorInicial, Double tiempoActivo, Boolean fueMostrado) {
-		
-		this.fecha = fecha;
+	public Anuncio(String nombreAnunciante, Double valorInicial, Double tiempoActivo, Boolean fueMostrado) {
+
 	    this.nombreAnunciante = nombreAnunciante;
-	    this.foto = foto;
+
 	    //la fecha en la que se crea el objeto es la fecha del anuncio
-	    this.fechaPublicacion = LocalDate.now();
-	    this.fechaTerminacion = fechaTerminacion;
 	    this.valorInicial = valorInicial;
 	    //las pujas empiezan vacias
 	    this.listaPujas = new ArrayList<>();
@@ -79,28 +79,20 @@ public class Anuncio implements Serializable {
 		//SE AGREGA EL ID
 		id = ++idAux;
 		//cada vez que se crea un anuncio se le pone como id el
-		//valor de esta variable, la cual va aumentar cada vez
+		//valor de esta variable, la cual va a aumentar cada vez
 		//que creemos un anuncio
-		this.idFoto = idAux;
-		this.idListaPujas = ModelFactoryController.darIdListaPuja();
-		this.listaPujas = new ArrayList<>();
 	}
 
-	public Anuncio(String nombreAnunciante, Integer valorInicial, Estado estado, Boolean fueMostrado){
-		//fecha actual
-		this.fecha = LocalDate.now();
-		this.nombreAnunciante = nombreAnunciante;
+
+	/**
+	 * CONSTRUCTOR NECESARIO PARA PRUEBAS
+	 */
+
+	public Anuncio(String name, Double valorInicial){
+		this.titulo = name;
 		this.valorInicial = valorInicial;
-		this.estado = estado;
-		this.fueMostrado = fueMostrado;
-		this.fechaPublicacion = LocalDate.now();
-		this.fechaTerminacion = this.fechaPublicacion.plusDays(1);
-		this.tiempoActivo = 24.0;
-		this.id = ++idAux;
-		this.idFoto = idAux;
-		this.idListaPujas = ModelFactoryController.darIdListaPuja();
-		this.listaPujas = new ArrayList<>();
 	}
+
 
 	/**
 	 * METODO QUE PERMITE COMPARAR IDS DADO UNO POR PARAMETRO
@@ -111,5 +103,35 @@ public class Anuncio implements Serializable {
 		return this.id.compareTo(id) == 0;
 	}
 
+	/**
+	 * metodo que devuelve el nombre del producto asociado con este anuncio
+	 * @return el nombre del producto
+	 */
+	public String getNameProducto() {
+		return producto.getNombre();
+	}
 
+	/**
+	 * Este metodo devuelve la cantidad de pujas que se ha hecho en ese anuncio
+	 * @return el total de pujas en el anuncio
+	 */
+	public String getTotalPujas() {
+		return listaPujas.size()+"";
+	}
+
+	/**
+	 * Este metodo devuelve el valor de la puja más alta
+	 * @return el string del valor de la puja mas alta
+	 */
+	public String getValorMasAlto() {
+		//El valor de la puja más alta será 0
+		Double masAlto = 0.0;
+		for (Puja aux : listaPujas) {
+			//si el valor de la puja es mayor entonces cambio el valor de la puja más alta
+			if (aux.getValorOfrecido().compareTo(masAlto) == 0) {
+				masAlto = aux.getValorOfrecido();
+			}
+		}
+		return masAlto+"";
+	}
 }

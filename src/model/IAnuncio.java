@@ -208,10 +208,9 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		}
 	}
 
-
 	/**
 	 * METODO QUE PERMITE ORDENAR DADO UN ATRIBUTO Y UN ORDEN
-	 * @param criterio LAMBDA CON EL CRITETIO POR EL QUE SE DESEA ORDENAR
+	 * @param criterio POR EL QUE SE DESEA ORDENAR
 	 * @param orden ASCENDENTE O DESCENDENTE
 	 * @return UN ARRAYLIST CON LOS OBJETOS ORDENADOS
 	 * @throws CRUDExceptions PUEDEN OCURRIR ERRORES DE LECTURA
@@ -235,4 +234,21 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		return anunciosOrdenados;
 	}
 
+	//es necesario crear más de estos para cada tipo de los
+	//atributos de anuncio, LocalDate, String, etc...
+	public Boolean esMayorA(Integer valor1, Integer valor2) {
+		return valor1 > valor2;
+	}
+
+	public Boolean esMayorA(Double valor1, Double valor2) {
+		return valor1 > valor2;
+	}
+
+	/**
+	 * Devuelve la lista de anuncios almacenados en la empresa
+	 * @return listaAnuncios
+	 */
+    public ArrayList<Anuncio> getListaAnuncio() {
+		return listaAnuncios;
+    }
 }
