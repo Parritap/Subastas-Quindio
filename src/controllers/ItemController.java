@@ -12,6 +12,7 @@ import lombok.Setter;
 import model.Anuncio;
 import utilities.Utils;
 
+import java.io.ByteArrayInputStream;
 import java.util.Objects;
 @Getter
 @Setter
@@ -56,7 +57,7 @@ public class ItemController implements IApplication {
         this.anuncio = anuncio;
         nameLabel.setText(anuncio.getTitulo());
         priceLable.setText(anuncio.getValorInicial()+"");
-        img.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(anuncio.getImageSrc()))));
+        //img.setImage(new Image(new ByteArrayInputStream(anuncio.getImageSrc())));
         lblTiempo.setText("Tiempo restante "+horas+" "+minutos+" "+segundos);
     }
 

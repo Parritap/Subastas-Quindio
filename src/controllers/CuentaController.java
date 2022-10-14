@@ -69,19 +69,8 @@ public class CuentaController implements IApplication {
     //metodo que permite cargar una imagen en la cuenta
     @FXML
     void cargarPerfil(MouseEvent ignoredEvent) {
-        //el file chooser permite abrir el explorador
-        FileChooser dc = new FileChooser();
-        File file = dc.showOpenDialog(new Stage());
-        //obtengo el arreglo de bits de la imagen
-        byte[] btImagen;
-        try {
-            //cargo la imagen al pane
-            btImagen = Files.readAllBytes(file.toPath());
-            Image img = new Image(new ByteArrayInputStream(btImagen), 199, 199, false, false);
-            circleImage.setFill(new ImagePattern(img));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Image img = new Image(new ByteArrayInputStream(Utils.obtenerBytesImagen()), 199, 199, false, false);
+        circleImage.setFill(new ImagePattern(img));
     }
 
     /**
@@ -156,6 +145,7 @@ public class CuentaController implements IApplication {
      */
     @FXML
     void hacerSubasta(ActionEvent event) {
+        cargarPanes();
         paneManejarCuenta.setVisible(false);
         paneListadoSubasta.setVisible(false);
         borderPane.setCenter(paneRealizarSubasta);

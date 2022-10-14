@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 @Data
-public abstract class Producto implements Serializable {
+public class Producto implements Serializable {
 
     //VARIABLES GLOBALES
     private Integer id;

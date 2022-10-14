@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -31,9 +32,9 @@
                      </font>
                   </Label>
                   <Label layoutX="32.0" layoutY="177.0" text="Nombre del producto:" textFill="WHITE" />
-                  <TextField layoutX="186.0" layoutY="172.0" prefHeight="26.0" prefWidth="182.0" promptText="product Name..." styleClass="styleTextField" />
+                  <TextField fx:id="txtNameProduct" layoutX="186.0" layoutY="172.0" prefHeight="26.0" prefWidth="182.0" promptText="product Name..." styleClass="styleTextField" />
                   <Label layoutX="32.0" layoutY="243.0" text="Descripcion del producto" textFill="WHITE" />
-                  <TextArea layoutX="32.0" layoutY="283.0" prefHeight="107.0" prefWidth="347.0" promptText="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. " style="-fx-background-color: #B0B0B0;" styleClass="styleTextArea" />
+                  <TextArea fx:id="txtDescripcionProducto" layoutX="32.0" layoutY="283.0" prefHeight="107.0" prefWidth="347.0" promptText="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. " style="-fx-background-color: #B0B0B0;" styleClass="styleTextArea" />
                   <Line endX="-115.5" endY="143.5" layoutX="531.0" layoutY="285.0" startX="-115.5" startY="-174.5" stroke="WHITE" strokeWidth="2.0" />
                   <Line endX="646.5" layoutX="91.0" layoutY="430.0" startX="-91.0" stroke="WHITE" strokeWidth="2.0" />
                   <Label layoutX="524.0" layoutY="127.0" prefHeight="15.0" prefWidth="107.0" text="Detalles del anuncio" textFill="WHITE">
@@ -42,21 +43,27 @@
                      </font>
                   </Label>
                   <Label layoutX="438.0" layoutY="161.0" text="Titulo" textFill="WHITE" />
-                  <TextField layoutX="517.0" layoutY="156.0" promptText="Ad title..." styleClass="styleTextField" />
+                  <TextField fx:id="txtTitleAnuncio" layoutX="517.0" layoutY="156.0" promptText="Ad title..." styleClass="styleTextField" />
                   <Label layoutX="164.0" layoutY="39.0" text="Detalles generales" textFill="WHITE">
                      <font>
                         <Font size="31.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="478.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button layoutX="521.0" layoutY="364.0" mnemonicParsing="false" styleClass="btnActualizarCuenta" text="Cargar una imagen" />
+                  <ImageView fx:id="imgAnuncio" fitHeight="119.0" fitWidth="176.0" layoutX="501.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button layoutX="521.0" layoutY="364.0" mnemonicParsing="false" onAction="#cargarImagen" styleClass="btnActualizarCuenta" text="Cargar una imagen">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                   <Label layoutX="139.0" layoutY="464.0" text="Valor inicial del anuncio" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="444.0" layoutY="462.0" prefHeight="27.0" prefWidth="251.0" promptText="1234567" styleClass="styleTextField" />
-                  <Button layoutX="324.0" layoutY="529.0" mnemonicParsing="false" styleClass="btnCrearCuenta" text="Crear mi Anuncio" />
+                  <TextField fx:id="txtValorAnuncio" layoutX="444.0" layoutY="462.0" prefHeight="27.0" prefWidth="251.0" promptText="1234567" styleClass="styleTextField" />
+                  <Button layoutX="324.0" layoutY="529.0" mnemonicParsing="false" onAction="#crearAnuncio" styleClass="btnCrearCuenta" text="Crear mi Anuncio">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </AnchorPane>
          </center>

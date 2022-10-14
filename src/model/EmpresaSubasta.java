@@ -4,7 +4,6 @@ import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
 import lombok.Data;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Data
@@ -24,10 +23,6 @@ public class EmpresaSubasta implements Runnable, Serializable {
         iProducto = new IProducto();
         iUsuario = new IUsuario();
         iTransaccion = new ITransaccion();
-        iAnuncio.add(new Anuncio("Paypal", 10000.0, "../resources/paypal.png"));
-        iAnuncio.add(new Anuncio("Mastercard", 15310.0, "../resources/mastercard.png"));
-        iAnuncio.add(new Anuncio("Efectivo", 8300.0, "../resources/efectivo.png"));
-        iAnuncio.add(new Anuncio("Perfil", 45500.0, "../resources/profile.png"));
     }
 
     /**

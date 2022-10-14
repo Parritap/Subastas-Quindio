@@ -15,6 +15,7 @@ import model.Anuncio;
 import model.ModelFactoryController;
 import utilities.Utils;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -56,8 +57,8 @@ public class SubastaController implements IApplication{
         this.lblAdName.setText(anuncio.getTitulo());
         this.lblAdPrice.setText("$" + anuncio.getValorInicial());
         //cargo la ruta de la imagen y la cargo en el anuncio
-        Image image = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream(anuncio.getImageSrc())));
-        this.adSelectedImage.setImage(image);
+        //Image image = new Image(new ByteArrayInputStream(anuncio.getImageSrc()));
+        //this.adSelectedImage.setImage(image);
     }
 
     /**
@@ -133,7 +134,7 @@ public class SubastaController implements IApplication{
         this.lblAdName.setText(anuncio.getTitulo());
         this.lblAdPrice.setText("$" + anuncio.getValorInicial());
         //cargo la ruta de la imagen y la cargo en el anuncio
-        Image image = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream(anuncio.getImageSrc())));
+        Image image = new Image(new ByteArrayInputStream(anuncio.getImageSrc()));
         this.adSelectedImage.setImage(image);
     }
 

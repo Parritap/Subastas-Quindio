@@ -11,7 +11,7 @@ public class Anuncio implements Serializable {
 	private String titulo;
 	private Date fecha;
 	private String nombreAnunciante;
-	private String imageSrc; //Es necesario cambiar la imagen a String, y contener solo la ruta para tener flexibilidad
+	private byte[] imageSrc; //Es necesario cambiar la imagen a String, y contener solo la ruta para tener flexibilidad
 	private Date fechaPublicacion;
 	private Date fechaTerminacion;
 	private Double valorInicial;
@@ -34,11 +34,10 @@ public class Anuncio implements Serializable {
 	private Integer id;
 	
 	//constructor completo
-	public Anuncio(String nombreAnunciante, String imageSrc,
-				   Double valorInicial, Double tiempoActivo, Boolean fueMostrado) {
+	public Anuncio(String nombreAnunciante, Double valorInicial, Double tiempoActivo, Boolean fueMostrado) {
 		
 	    this.nombreAnunciante = nombreAnunciante;
-	    this.imageSrc = imageSrc;
+
 	    //la fecha en la que se crea el objeto es la fecha del anuncio
 	    this.valorInicial = valorInicial;
 	    //las pujas empiezan vacias
@@ -57,10 +56,9 @@ public class Anuncio implements Serializable {
 	 * CONSTRUCTOR NECESARIO PARA PRUEBAS
 	 */
 
-	public Anuncio(String name, Double valorInicial, String imageSrc){
+	public Anuncio(String name, Double valorInicial){
 		this.titulo = name;
 		this.valorInicial = valorInicial;
-		this.imageSrc = imageSrc;
 	}
 
 

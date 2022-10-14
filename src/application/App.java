@@ -1,5 +1,6 @@
 package application;
 
+import controllers.AlertaController;
 import interfaces.IApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,11 +10,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
-import model.Anuncio;
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
 import utilities.Utils;
-
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -29,6 +28,9 @@ public class App extends Application {
     private HashMap<String, String> rutas;
     //ventana general de la application
     private Stage stage;
+    private Stage stageAlerta;
+    //Cliente activo es una variable que me identifica si un cliente ya ha iniciado sesión en la app
+    private Cliente clienteActivo;
 
     /**
      * Main
@@ -69,6 +71,7 @@ public class App extends Application {
     private void inicializarApp() {
         //El singleton crea la instancia de Empresa
         empresaSubasta = ModelFactoryController.getInstance();
+        clienteActivo = false;
     }
 
 
@@ -111,7 +114,31 @@ public class App extends Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
+
+    public void abrirAlerta(String mensaje){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameAlerta));
+        try {
+            AnchorPane root = loader.load();
+            IApplication controller = loader.getController();
+            controller.setApplication(this);
+            AlertaController controllerAux = (AlertaController) controller;
+            controllerAux.setMensaje(mensaje);
+            Scene scene = new Scene(root);
+            stageAlerta = new Stage();
+            stageAlerta.setScene(scene);
+            stage.setFullScreen(false);
+            stageAlerta.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Metodo que cierra la alerta con el mensaje
+     */
+    public void cerrarAlerta() {
+        stageAlerta.close();
+    }
 }
