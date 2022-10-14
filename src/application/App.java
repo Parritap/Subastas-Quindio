@@ -12,6 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
+import model.Usuario;
 import utilities.Utils;
 import java.io.IOException;
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public class App extends Application {
     private Stage stage;
     private Stage stageAlerta;
     //Cliente activo es una variable que me identifica si un cliente ya ha iniciado sesión en la app
-    private Cliente clienteActivo;
+    private Usuario clienteActivo;
 
     /**
      * Main
@@ -71,7 +72,6 @@ public class App extends Application {
     private void inicializarApp() {
         //El singleton crea la instancia de Empresa
         empresaSubasta = ModelFactoryController.getInstance();
-        clienteActivo = false;
     }
 
 
