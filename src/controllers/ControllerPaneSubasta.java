@@ -40,37 +40,37 @@ public class ControllerPaneSubasta implements IApplication {
     //Atributos del anuncio
     private String descripcion;
 
-    private  String nombreProducto;
+    private String nombreProducto;
 
     private String tituloAnuncio;
 
     private Double valorInicialAnuncio;
 
 
-
     /**
      * Metodo que carga una imagen a la vista
+     *
      * @param ignoredEvent generado al hacer clic
      */
     @FXML
     void cargarImagen(ActionEvent ignoredEvent) {
         byte[] imageByte = Utils.obtenerBytesImagen();
         imgAnuncio.setImage(new Image(new ByteArrayInputStream(imageByte), 199, 199, false, false));
-        this.bytesImg =imageByte;
+        this.bytesImg = imageByte;
     }
 
     /**
      * Metodo que crea un anuncio
+     *
      * @param ignoredEvent generado al hacer clic
      */
     @FXML
     void crearAnuncio(ActionEvent ignoredEvent) {
-        if(cargarCamposTextos()){
-            
-        }
-        else if(application.getClienteActivo() != null ){
+        if (cargarCamposTextos()) {
 
-        }else{
+        } else if (application.getClienteActivo() != null) {
+
+        } else {
             application.abrirAlerta("Debe crear una cuenta antes de publicar un anuncio");
         }
 
@@ -79,25 +79,27 @@ public class ControllerPaneSubasta implements IApplication {
     private boolean cargarCamposTextos() {
         String mensaje = "";
 
-        if(!txtNameProduct.getText().equals("")){
+        if (!txtNameProduct.getText().equals("")) {
             nombreProducto = txtNameProduct.getText();
-        }else{
+        } else {
             mensaje += "Debe ingresar el nombre del producto \n";
         }
 
-        if(!txtDescripcionProducto.getText().equals("")){
+        if (!txtDescripcionProducto.getText().equals("")) {
             descripcion = txtDescripcionProducto.getText();
-        }else{
-           mensaje += "Debe ingresar la descripcion del producto";
+        } else {
+            mensaje += "Debe ingresar la descripcion del producto";
         }
 
-        if(!txtTitleAnuncio.getText().equals("")){
+        if (!txtTitleAnuncio.getText().equals("")) {
             tituloAnuncio = txtTitleAnuncio.getText();
-        }else{
+        } else {
             mensaje += "Debe ingresar el titulo del anuncio";
         }
-
+        return true;
     }
+
+
 
     //Metodos implementados por la interfaz
     @Override
