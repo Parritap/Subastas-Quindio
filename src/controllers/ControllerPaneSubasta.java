@@ -119,7 +119,7 @@ public class ControllerPaneSubasta implements IApplication {
             try {
                 valorInicialAnuncio = Double.parseDouble(txtValorAnuncio.getText());
             }catch (NumberFormatException e){
-                mensaje += "Debe ingresar un valor numerico para el precio inicial\n";
+                mensaje += "Debe ingresar un valor númerico para el precio inicial\n";
             }
         }else{
             mensaje+="Debe ingresar valores númerico en el valor del anuncio";
