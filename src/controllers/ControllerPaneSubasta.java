@@ -1,6 +1,7 @@
 package controllers;
 
 import application.App;
+import exceptions.CRUDExceptions;
 import interfaces.IApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +9,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import model.Anuncio;
+import model.ModelFactoryController;
+import model.Producto;
 import utilities.Utils;
 
 import java.io.ByteArrayInputStream;
@@ -66,13 +70,21 @@ public class ControllerPaneSubasta implements IApplication {
      */
     @FXML
     void crearAnuncio(ActionEvent ignoredEvent) {
-        if (cargarCamposTextos() && application.getClienteActivo() != null) {
-            //Se debe crear el anuncio haciendo uso de las variables ya definidas arriba
-            //modelFactoryController. crear el producto
+        //si no hay un cliente activo no se puede crear un anuncio
+        if(application.getClienteActivo() == null){
+            application.abrirAlerta("Debe crear una cuenta antes de publicar un anuncio");
+            //si los campos de texto están completos creo el anuncio
+        }else if (cargarCamposTextos()) {
+            Producto producto = new Producto(nombreProducto, descripcion);
+            Anuncio anuncio = new Anuncio(tituloAnuncio, bytesImg, valorInicialAnuncio);
+            try {
+                ModelFactoryController.crearAnuncio(anuncio, producto, application.getClienteActivo());
+                application.abrirAlerta("Anuncio creado correctamente");
+            } catch (CRUDExceptions e) {
+                application.abrirAlerta(e.getMessage());
+            }
             //crear el anuncio
             //anucio.setProducto(producto)
-        }else {
-            application.abrirAlerta("Debe crear una cuenta antes de publicar un anuncio");
         }
 
     }
@@ -94,21 +106,23 @@ public class ControllerPaneSubasta implements IApplication {
         if (!txtDescripcionProducto.getText().equals("")) {
             descripcion = txtDescripcionProducto.getText();
         } else {
-            mensaje += "Debe ingresar la descripcion del producto";
+            mensaje += "Debe ingresar la descripcion del producto\n";
         }
 
         if (!txtTitleAnuncio.getText().equals("")) {
             tituloAnuncio = txtTitleAnuncio.getText();
         } else {
-            mensaje += "Debe ingresar el titulo del anuncio";
+            mensaje += "Debe ingresar el titulo del anuncio\n";
         }
 
         if(!txtValorAnuncio.getText().equals("")){
             try {
                 valorInicialAnuncio = Double.parseDouble(txtValorAnuncio.getText());
             }catch (NumberFormatException e){
-                mensaje+="Debe ingresar valores númerico en el valor del anuncio";
+                mensaje += "Debe ingresar un valor numerico para el precio inicial\n";
             }
+        }else{
+            mensaje+="Debe ingresar valores númerico en el valor del anuncio";
         }
 
         if(!mensaje.equals("")) application.abrirAlerta(mensaje);

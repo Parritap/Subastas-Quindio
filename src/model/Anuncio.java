@@ -34,33 +34,20 @@ public class Anuncio implements Serializable {
 	*/
 	private static int idAux;
 	private Integer id;
+
+	public Anuncio(){}
 	
 	//constructor completo
-	public Anuncio(String nombreAnunciante, Double valorInicial, Double tiempoActivo, Boolean fueMostrado) {
-		
-	    this.nombreAnunciante = nombreAnunciante;
-
-	    //la fecha en la que se crea el objeto es la fecha del anuncio
-	    this.valorInicial = valorInicial;
-	    //las pujas empiezan vacias
-	    this.listaPujas = new ArrayList<>();
-	    this.tiempoActivo = tiempoActivo;
-	    this.fueMostrado = fueMostrado;
-		//SE AGREGA EL ID
-		id = ++idAux;
-		//cada vez que se crea un anuncio se le pone como id el
-		//valor de esta variable, la cual va a aumentar cada vez
-		//que creemos un anuncio
-	}
-
-
-	/**
-	 * CONSTRUCTOR NECESARIO PARA PRUEBAS
-	 */
 
 	public Anuncio(String name, Double valorInicial){
 		this.titulo = name;
 		this.valorInicial = valorInicial;
+	}
+
+	public Anuncio(String tituloAnuncio, byte[] bytesImg, Double valorInicialAnuncio) {
+		this.titulo = tituloAnuncio;
+		this.imageSrc = bytesImg;
+		this.valorInicial = valorInicialAnuncio;
 	}
 
 
