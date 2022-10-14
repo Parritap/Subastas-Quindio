@@ -320,6 +320,7 @@ public class ArchivoUtil {
 
         XMLEncoder codificadorXML;
         codificadorXML = new XMLEncoder(new FileOutputStream(rutaArchivo));
+
         codificadorXML.setPersistenceDelegate(LocalDate.class,
                 new PersistenceDelegate() {
                     @Override

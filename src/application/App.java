@@ -153,6 +153,7 @@ public class App extends Application {
 
         //PRUBA SERIALIZACION Y DESERIALIZACION XML
 
+/*
         Usuario usr = new Usuario("diana", 21, "1003929434", "dianaM@gmail.com", "contraseniaDePrueba", "Cr1 23 Cll 19 Brr guayaquil");
         usr.getListaPujas().add(new Puja(1, 30));
         usr.getListaPujas().add(new Puja(1, 344));
@@ -183,7 +184,7 @@ public class App extends Application {
         usr4.getListaPujas().add(new Puja(1, 4));
         usr4.getListaPujas().add(new Puja(1, 16));
         usr4.getListaPujas().add(new Puja(1, 64));
-
+*/
         /*Persistencia.serializarUsuario(usr);
         Persistencia.serializarAnuncio(anuncio);
         Persistencia.serializarUsuario(usr2);
@@ -192,6 +193,7 @@ public class App extends Application {
         Persistencia.serializarAnuncio(anuncio2);
 */
 
+        /*
         EmpresaSubasta empresaSubasta = ModelFactoryController.getInstance();
         empresaSubasta.getIUsuario().getListaUsuarios().add(usr);
         empresaSubasta.getIUsuario().getListaUsuarios().add(usr2);
@@ -201,11 +203,11 @@ public class App extends Application {
         empresaSubasta.getIAnuncio().getListaAnuncios().add(anuncio);
         empresaSubasta.getIAnuncio().getListaAnuncios().add(anuncio2);
 
-        Persistencia.serializarEmpresa();
-        Persistencia.serializarEmpresaXML();
 
+        Persistencia.serializarEmpresaUnificado();
+        */
 
-        //ModelFactoryController.deserializarEmpresa();
+        ModelFactoryController.deserializarEmpresa();
 
 
 

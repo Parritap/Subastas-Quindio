@@ -110,8 +110,7 @@ public class FrameInicialController implements IApplication {
     @FXML
     public void cerrarApp(ActionEvent ignoredE) throws Exception {
         ArchivoUtil.guardar();
-        Persistencia.serializarEmpresa();
-
+        Persistencia.serializarEmpresaXML();
         System.exit(0);
     }
 

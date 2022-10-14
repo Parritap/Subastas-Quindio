@@ -86,8 +86,14 @@ public class Persistencia {
 
     /**guarda todo el objeto empresa en modelo.xml
      * */
-    public static void serializarEmpresaXML() throws CRUDExceptions, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+    public static void serializarEmpresaXML() throws Exception {
+        Persistencia.serializarEmpresa();
         ArchivoUtil.salvarRecursoSerializadoXML(ModelFactoryController.getRutaSerializado("model.xml"), deserializarEmpresa());
+    }
+
+    public static void serializarEmpresaUnificado() throws Exception {
+        serializarEmpresaXML();
+        serializarEmpresaBinario();
     }
 
     /**guarda todo el objeto empresa en modelo.dat
