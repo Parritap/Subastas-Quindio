@@ -102,7 +102,7 @@ public class Persistencia {
         ArchivoUtil.salvarRecursoSerializado(ModelFactoryController.getRutaSerializado("model.dat"),deserializarEmpresa());
     }
 
-    public static EmpresaSubasta deserializarEmpresaBinario(){
+    public static EmpresaSubasta deserializarEmpresaBinario() throws CRUDExceptions {
         try {
             EmpresaSubasta empresa = (EmpresaSubasta) ArchivoUtil.cargarRecursoSerializado(ModelFactoryController.getRutaSerializado("model.dat"));
             if (!Objects.isNull(empresa)) return empresa;
@@ -113,7 +113,7 @@ public class Persistencia {
         }
     }
 
-    public static EmpresaSubasta deserializarEmpresaXML(){
+    public static EmpresaSubasta deserializarEmpresaXML() throws CRUDExceptions {
         try {
             EmpresaSubasta empresa = (EmpresaSubasta) ArchivoUtil.cargarRecursoSerializadoXML(ModelFactoryController.getRutaSerializado("model.xml"));
             if (!Objects.isNull(empresa)) return empresa;

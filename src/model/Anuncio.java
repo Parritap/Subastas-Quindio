@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.awt.Image;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,14 +14,15 @@ import java.util.Date;
 @Setter
 public class Anuncio implements Serializable {
 
+	private Integer idFoto;
 	//El anuncio contiene un producto
 	private Producto producto;
 	private String titulo;
 	private Date fecha;
 	private String nombreAnunciante;
 	private byte[] imageSrc; //Es necesario cambiar la imagen a String, y contener solo la ruta para tener flexibilidad
-	private Date fechaPublicacion;
-	private Date fechaTerminacion;
+	private LocalDate fechaPublicacion;
+	private LocalDate fechaTerminacion;
 	private Double valorInicial;
 	private ArrayList<Puja> listaPujas;
 	private Integer idListaPujas;

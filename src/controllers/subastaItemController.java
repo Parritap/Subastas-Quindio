@@ -33,7 +33,7 @@ public class subastaItemController implements IApplication {
 
     public void setData(Anuncio anuncio){
         lblNameAnuncio.setText(anuncio.getTitulo());
-        lblFechaPublicado.setText(String.valueOf(anuncio.getFechaPublicacion().getDate()));
+        lblFechaPublicado.setText(String.valueOf(anuncio.getFechaPublicacion()));
         lblNomProducto.setText(anuncio.getNameProducto());
         lblTotalPujas.setText(anuncio.getTotalPujas());
         lblValorInicial.setText(anuncio.getValorInicial()+"");

@@ -15,10 +15,8 @@ public class Puja implements Serializable {
 	private LocalDate fechaDePuja;
 	private Usuario usuario;
 	private Double valorOfrecido;
-	LocalDate fechaDePuja;
-	Usuario usuario;
 	Integer idUsuario;
-	Integer valorOfrecido;
+
 
 	/**
 	 * CONSTRUCTOR
@@ -38,7 +36,7 @@ public class Puja implements Serializable {
 		this.fechaDePuja = LocalDate.now();
 	}
 
-	public Puja(Integer idUsuario, Integer valorOfrecido){
+	public Puja(Integer idUsuario, Double valorOfrecido){
 		this.fechaDePuja = LocalDate.now();
 		this.idUsuario = idUsuario;
 		this.valorOfrecido = valorOfrecido;

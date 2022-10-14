@@ -35,7 +35,7 @@ public class ModelFactoryController {
         });
     }
 
-    public static void deserializarEmpresa(){
+    public static void deserializarEmpresa() throws CRUDExceptions {
         empresaSubasta  = Persistencia.deserializarEmpresaXML();
         //hace una copia de seguridad del xml
         Persistencia.respaldarXML();
