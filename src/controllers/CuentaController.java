@@ -15,8 +15,11 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import model.ModelFactoryController;
 import model.Usuario;
+import persistencia.ArchivoUtil;
 import utilities.Utils;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  *Esta clase se encarga de manejar los eventos y funcionalidades de la vista de cuenta
@@ -241,10 +244,19 @@ public class CuentaController implements IApplication {
                 application.abrirAlerta("El usuario se agregó correctamente");
                 application.setClienteActivo(usuario);
                 btnCrearCuenta.setVisible(false);
+                ArchivoUtil.guardarRegistroLog("se creo el usuario "+usuario.getId()+":"+usuario.getName(), 1, "CreacionUsuario", ModelFactoryController.getRutaLogs("CreacionUsuario"));
             } catch (EscrituraException e) {
                 System.out.println(" entro "  );
                 //si el usuario ya existe entonces se lanza una excepcion
                 application.abrirAlerta(e.getMessage());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (InvocationTargetException e) {
+                throw new RuntimeException(e);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
             }
             //lo establezco como usuario activo
 
