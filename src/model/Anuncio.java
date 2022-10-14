@@ -8,6 +8,8 @@ import java.util.Date;
 @Data
 public class Anuncio implements Serializable {
 
+	//El anuncio contiene un producto
+	private Producto producto;
 	private String titulo;
 	private Date fecha;
 	private String nombreAnunciante;
@@ -71,5 +73,35 @@ public class Anuncio implements Serializable {
 		return this.id.compareTo(id) == 0;
 	}
 
+	/**
+	 * metodo que devuelve el nombre del producto asociado con este anuncio
+	 * @return el nombre del producto
+	 */
+	public String getNameProducto() {
+		return producto.getNombre();
+	}
 
+	/**
+	 * Este metodo devuelve la cantidad de pujas que se ha hecho en ese anuncio
+	 * @return el total de pujas en el anuncio
+	 */
+	public String getTotalPujas() {
+		return listaPujas.size()+"";
+	}
+
+	/**
+	 * Este metodo devuelve el valor de la puja más alta
+	 * @return el string del valor de la puja mas alta
+	 */
+	public String getValorMasAlto() {
+		//El valor de la puja más alta será 0
+		Double masAlto = 0.0;
+		for (Puja aux : listaPujas) {
+			//si el valor de la puja es mayor entonces cambio el valor de la puja más alta
+			if (aux.getValorOfrecido().compareTo(masAlto) == 0) {
+				masAlto = aux.getValorOfrecido();
+			}
+		}
+		return masAlto+"";
+	}
 }

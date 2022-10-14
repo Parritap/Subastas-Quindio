@@ -1,12 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0" prefWidth="836.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.controllerListadoSubastas">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="786.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.controllerListadoSubastas">
    <children>
-      <Label layoutX="327.0" layoutY="259.0" prefHeight="110.0" prefWidth="323.0" text="SOY LISTADO DE SUBASTAS">
+      <Label layoutX="27.0" layoutY="83.0" text="Mis Subastas">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="74.0" layoutY="159.0" prefHeight="236.0" prefWidth="690.0">
+         <content>
+            <VBox prefHeight="233.0" prefWidth="687.0" />
+         </content>
+      </ScrollPane>
+      <Line endX="710.0000610351562" endY="-7.62939453125E-6" layoutX="126.0" layoutY="114.0" startX="-125.99999237060547" startY="-7.62939453125E-6" strokeWidth="2.0" />
+      <Label layoutX="18.0" layoutY="446.0" text="Mis pujas">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Line endX="725.0" layoutX="111.0" layoutY="481.0" startX="-111.0" strokeWidth="2.0" />
+      <ScrollPane layoutX="58.0" layoutY="510.0" prefHeight="236.0" prefWidth="690.0">
+         <content>
+            <VBox prefHeight="233.0" prefWidth="687.0" />
+         </content>
+      </ScrollPane>
+      <AnchorPane layoutX="-3.0" layoutY="-1.0" prefHeight="68.0" prefWidth="844.0" style="-fx-background-color: #252525; -fx-background-radius: 30;" />
+      <Label layoutX="291.0" layoutY="14.0" prefHeight="40.0" prefWidth="255.0" text="Gestionar mis subastas" textFill="WHITE" AnchorPane.bottomAnchor="731.0" AnchorPane.leftAnchor="291.0" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="24.0" />
          </font>

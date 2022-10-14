@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import model.Anuncio;
@@ -18,7 +19,6 @@ import utilities.Utils;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Esta clase se encarga de ser el controlador del primer frame
@@ -137,6 +137,27 @@ public class SubastaController implements IApplication{
         Image image = new Image(new ByteArrayInputStream(anuncio.getImageSrc()));
         this.adSelectedImage.setImage(image);
     }
+
+    /**
+     * Metodo que carga la vista de administrador de la app
+     * @param event generado al hacer clic
+     */
+    @FXML
+    void paneAdministrador(MouseEvent event) {
+
+    }
+
+    /**
+     * Metodo qeu carga la lista de pujas de un usuario
+     * @param ignoredEvent generado al hacer clic
+     */
+    @FXML
+    void verPujasCompletas(MouseEvent ignoredEvent) {
+
+    }
+
+
+
 
     //metodos implementados por la interfaz
 

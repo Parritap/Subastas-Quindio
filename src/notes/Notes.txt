@@ -1,3 +1,4 @@
 //Este archivo contiene notas o ideas para agregar al proyecto, no eliminar
 
-//Agregar estrellas, me gusta y transiciones
+//se debe cambiar la clase producto como clase normal en el modelo uml
+//se debe cambiar la cardinalidad
