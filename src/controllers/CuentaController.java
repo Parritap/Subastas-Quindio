@@ -1,6 +1,7 @@
 package controllers;
 
 import application.App;
+import exceptions.EscrituraException;
 import interfaces.IApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +13,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import model.ModelFactoryController;
+import model.Usuario;
 import utilities.Utils;
 import java.io.ByteArrayInputStream;
 
@@ -27,6 +30,40 @@ public class CuentaController implements IApplication {
     private BorderPane borderPane;
 
     @FXML
+    private TextField txtName;
+
+    @FXML
+    private TextField txtCedula;
+
+    @FXML
+    private TextField txtCorreo;
+
+    @FXML
+    private TextField txtDireccion;
+
+    @FXML
+    private TextField txtTelefono;
+
+    @FXML
+    private PasswordField txtPassword;
+
+    //Variables auxiliares para la creacion de las cuentas
+    //y la actualization
+    private String name;
+
+    private Integer edad;
+
+    private String cedula;
+
+    private String correo;
+
+    private String direccion;
+
+    private String telefono;
+
+    private String contrasenia;
+
+    @FXML
     private AnchorPane paneListadoSubasta;
 
     @FXML
@@ -34,6 +71,9 @@ public class CuentaController implements IApplication {
     //Contiene los metodos de pago
     @FXML
     private MenuButton cmbBoxPago;
+    //boton que permite crear una cuenta
+    @FXML
+    private Button btnCrearCuenta;
     //imagen de la cuenta
     @FXML
     private Circle circleImage;
@@ -77,6 +117,10 @@ public class CuentaController implements IApplication {
         application.loadScene(Utils.frameInicio);
     }
 
+    /**
+     * Metodo que carga el AnchorPane del listado de subastas
+     * @param ignoredEvent generado al hacer clic
+     */
     @FXML
     void paneListadoSubasta(ActionEvent ignoredEvent) {
         cargarPanes();
@@ -86,11 +130,18 @@ public class CuentaController implements IApplication {
         paneListadoSubasta.setVisible(true);
     }
 
+    /**
+     * Metodo que inicializa los panes que se cargan al hacer clic
+     */
     private void cargarPanes() {
         paneListadoSubasta = application.obtenerPane(Utils.listadoSubasta);
         paneRealizarSubasta = application.obtenerPane(Utils.realizarSubasta);
     }
 
+    /**
+     * Metodo que cambia el pane con la gestión de la cuenta
+     * @param ignoredEvent generado al hacer clic
+     */
     @FXML
     void paneMyAccount(ActionEvent ignoredEvent) {
         cargarPanes();
@@ -99,9 +150,9 @@ public class CuentaController implements IApplication {
         paneRealizarSubasta.setVisible(false);
         paneListadoSubasta.setVisible(false);
     }
+
     @FXML
     void initialize() {
-
         circleImage.setFill(new ImagePattern(new Image(Utils.profileImage)));
         SpinnerValueFactory<Integer> valueFactory = //
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(18, 100, 18);
@@ -110,8 +161,6 @@ public class CuentaController implements IApplication {
         rbFemale.setToggleGroup(group);
         rbMale.setToggleGroup(group);
         rbNoMore.setToggleGroup(group);
-
-
     }
 
     /**
@@ -124,14 +173,91 @@ public class CuentaController implements IApplication {
     }
 
     /**
+     * Este metodo carga los campos en las variables auxiliares,
+     * también verifica que los campos no estén vacíos
+     * @return true si todos los campos están llenos, false si falta alguno
+     */
+    private boolean cargarCampos() {
+        String mensaje = "";
+
+        if(!txtName.getText().equals("")){
+            name = txtName.getText();
+        }else {
+            mensaje += "Agregue un nombre\n";
+        }
+
+        edad = edadSpinner.getValue();
+
+        if(!txtCedula.getText().equals("")){
+            cedula = txtCedula.getText();
+        }else {
+            mensaje += "Agregue una cedula\n";
+        }
+
+        if(!txtCorreo.getText().equals("")){
+            correo = txtCorreo.getText();
+        }else{
+            mensaje += "Agregue un correo \n";
+        }
+
+        if(!txtDireccion.getText().equals("")){
+            direccion = txtDireccion.getText();
+        }else{
+            mensaje += "Agregue una direccion\n";
+        }
+
+        if(!txtTelefono.getText().equals("")){
+            telefono = txtTelefono.getText();
+        }else {
+            mensaje += "Agregue un telefono";
+        }
+
+        if(!txtPassword.getText().equals("")){
+            contrasenia = txtPassword.getText();
+        }else {
+            mensaje += "Agregue una contraseña";
+        }
+        if(!mensaje.equals("")){
+            application.abrirAlerta(mensaje);
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Metodo que permite crear una cuenta
      * @param event generado al hacer clic
      */
     @FXML
     void crearCuenta(ActionEvent event) {
+        if(cargarCampos() && application.getClienteActivo() == null){
+            //creo el usuario con los datos obtenidos en el txt
+            Usuario usuario = new Usuario(name, edad, cedula, correo, direccion, telefono, contrasenia);
+            //el singleton agrega el usuario a la lista
+            try {
+                ModelFactoryController.addUsuario(usuario);
+                limpiarCamposTexto();
+                application.abrirAlerta("El usuario se agregó correctamente");
+                application.setClienteActivo(usuario);
+                btnCrearCuenta.setVisible(false);
+            } catch (EscrituraException e) {
+                System.out.println(" entro "  );
+                //si el usuario ya existe entonces se lanza una excepcion
+                application.abrirAlerta(e.getMessage());
+            }
+            //lo establezco como usuario activo
 
+        }
     }
 
+    /**
+     * Este metodo permite vaciar la informacion contenida en los
+     * campos de texto
+     */
+    private void limpiarCamposTexto() {
+        txtName.setText("");
+    }
 
 
     /**

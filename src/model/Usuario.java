@@ -19,6 +19,8 @@ public class Usuario implements Serializable {
 	private String direccion;
 	private String password;
 
+	private String telefono;
+
 	private ArrayList<Puja> listaPujas;
 
 	private Integer idListaPujas;
@@ -44,13 +46,16 @@ public class Usuario implements Serializable {
 		this.listaPujas = new ArrayList<>();
 	}
 
-	public Usuario(String name, Integer age, String cedula, String correo, String password, String direccion ) {
+	public Usuario(String name, Integer age, String cedula, String correo, String direccion, String telefono, String password) {
 		this.name = name;
 		this.age = age;
 		this.cedula = cedula;
 		this.correo = correo;
 		this.direccion = direccion;
 		this.password = password;
+		this.telefono = telefono;
+		id = ++idAux;
+		estado = Estado.NUEVO;
 		this.id = ++idAux;
 		this.estado = Estado.NUEVO;
 		this.listaPujas = new ArrayList<>();
@@ -91,6 +96,20 @@ public class Usuario implements Serializable {
 		this.correo = nuevoUsuario.getCorreo();
 		this.password = nuevoUsuario.getPassword();
     }
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Usuario usuario = (Usuario) o;
+		return Objects.equals(name, usuario.name) && Objects.equals(cedula, usuario.cedula);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, age, cedula, correo, cantAnuncios, direccion, password, telefono, listaPujas, activo, estado, id);
+	}
+
 
 
 }

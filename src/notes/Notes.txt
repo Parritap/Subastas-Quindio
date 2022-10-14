@@ -4,3 +4,4 @@
 -agregar ContraseniaNoValidaException al diagrama de clases
 //se debe cambiar la clase producto como clase normal en el modelo uml
 //se debe cambiar la cardinalidad
+//se debe cambiar localDate por Date en Anuncio, en el modelo uml

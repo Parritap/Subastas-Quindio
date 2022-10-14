@@ -117,7 +117,10 @@ public class App extends Application {
         }
     }
 
-
+    /**
+     * Metodo que abre un stage con un mensaje
+     * @param mensaje el mensaje que se quiere mostrar
+     */
     public void abrirAlerta(String mensaje){
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameAlerta));
         try {
