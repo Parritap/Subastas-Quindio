@@ -1,0 +1,2 @@
+name:java.lang.String@@age:java.lang.Integer@@cedula:java.lang.String@@correo:java.lang.String@@cantAnuncios:java.lang.Integer@@direccion:java.lang.String@@password:java.lang.String@@telefono:java.lang.String@@idListaPujas:java.lang.Integer@@activo:java.lang.Boolean@@estado:model.Estado@@id:java.lang.Integer
+Parra@@23@@12330449@@parron@gmail.com@@0@@Cra 10 Cll 11@@parron@@3114562789@@1@@true@@NUEVO@@2

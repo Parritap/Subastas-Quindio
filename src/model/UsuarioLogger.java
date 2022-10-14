@@ -8,7 +8,6 @@ public class UsuarioLogger {
     }
 
     public void eliminarAnuncio(){
-
     }
 
     public void crearAnuncio(){

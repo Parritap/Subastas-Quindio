@@ -49,6 +49,7 @@ public class App extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
+
         inicializarApp();
         //pruebas de codigo, por favor no borrarlas
         //CARGO EL FRAME PRINCIPAL
@@ -63,6 +64,7 @@ public class App extends Application {
         stage.setFullScreen(true);
         stage.minWidthProperty();
         stage.show();
+
     }
 
 
