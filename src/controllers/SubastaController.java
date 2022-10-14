@@ -30,7 +30,10 @@ public class SubastaController implements IApplication{
     private App application;
 
     @FXML
-    private Label adSelected;
+    private Label lblAdName;
+
+    @FXML
+    private Label lblAdPrice;
 
     @FXML
     private ImageView adSelectedImage;
@@ -50,8 +53,8 @@ public class SubastaController implements IApplication{
 
     private void loadFirstAd(Anuncio anuncio) {
         //obtengo los atributos del anuncio por defecto
-        this.adSelected.setText(anuncio.getName());
-        this.adSelected.setText("$" + anuncio.getValorInicial());
+        this.lblAdName.setText(anuncio.getTitulo());
+        this.lblAdPrice.setText("$" + anuncio.getValorInicial());
         //cargo la ruta de la imagen y la cargo en el anuncio
         Image image = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream(anuncio.getImageSrc())));
         this.adSelectedImage.setImage(image);
@@ -96,6 +99,7 @@ public class SubastaController implements IApplication{
                 fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
                 AnchorPane anchorPane = fxmlLoader.load();
                 ItemController itemController = fxmlLoader.getController();
+                itemController.setSubastaController(this);
                 itemController.setData(anuncio);
                 //si he llegado a tres columnas que salte a la siguiente fila
                 if (column == 3) {
@@ -117,6 +121,20 @@ public class SubastaController implements IApplication{
             var9.printStackTrace();
         }
 
+    }
+
+    /**
+     * Este metodo permite que al hacer clic en algún anuncio
+     * se actualice el pane de la barra lateral izquierda
+     * @param anuncio EL ANUNCIO QUE SE VA A ACTUALIZAR
+     */
+    public void setProductSelected(Anuncio anuncio) {
+        //obtengo los atributos del anuncio por defecto
+        this.lblAdName.setText(anuncio.getTitulo());
+        this.lblAdPrice.setText("$" + anuncio.getValorInicial());
+        //cargo la ruta de la imagen y la cargo en el anuncio
+        Image image = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream(anuncio.getImageSrc())));
+        this.adSelectedImage.setImage(image);
     }
 
     //metodos implementados por la interfaz

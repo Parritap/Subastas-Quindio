@@ -74,21 +74,6 @@ public class App extends Application {
 
 
 
-    //TODO
-
-    /**
-     * Este metodo permite que al hacer clic en algún anuncio
-     * se actualice el pane de la barra lateral izquierda
-     * @param anuncio EL ANUNCIO QUE SE VA A ACTUALIZAR
-     */
-    public void setProductSelected(Anuncio anuncio) {
-
-
-
-
-
-    }
-
     /**
      * Este metodo permite cambiar el scene del stage global
      * de la application

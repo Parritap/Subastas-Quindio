@@ -25,9 +25,9 @@ public class EmpresaSubasta implements Runnable, Serializable {
         iUsuario = new IUsuario();
         iTransaccion = new ITransaccion();
         iAnuncio.add(new Anuncio("Paypal", 10000.0, "../resources/paypal.png"));
-        iAnuncio.add(new Anuncio("Mastercard", 10000.0, "../resources/mastercard.png"));
-        iAnuncio.add(new Anuncio("Efectivo", 10000.0, "../resources/efectivo.png"));
-        iAnuncio.add(new Anuncio("Perfil", 10000.0, "../resources/profile.png"));
+        iAnuncio.add(new Anuncio("Mastercard", 15310.0, "../resources/mastercard.png"));
+        iAnuncio.add(new Anuncio("Efectivo", 8300.0, "../resources/efectivo.png"));
+        iAnuncio.add(new Anuncio("Perfil", 45500.0, "../resources/profile.png"));
     }
 
     /**

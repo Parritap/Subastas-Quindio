@@ -8,7 +8,7 @@ import java.util.Date;
 @Data
 public class Anuncio implements Serializable {
 
-	private String name;
+	private String titulo;
 	private Date fecha;
 	private String nombreAnunciante;
 	private String imageSrc; //Es necesario cambiar la imagen a String, y contener solo la ruta para tener flexibilidad
@@ -20,7 +20,7 @@ public class Anuncio implements Serializable {
 
 	private  Usuario usuario; //El usuario que realiza el anuncio
 	/**
-	 * creo la variable estado para indicar cuando un Anuncio ha sido eliminado, actualizado
+	 * creo la variable Estado para indicar cuando un Anuncio ha sido eliminado, actualizado
 	 */
 	private Estado estado;
 
@@ -58,7 +58,7 @@ public class Anuncio implements Serializable {
 	 */
 
 	public Anuncio(String name, Double valorInicial, String imageSrc){
-		this.name = name;
+		this.titulo = name;
 		this.valorInicial = valorInicial;
 		this.imageSrc = imageSrc;
 	}

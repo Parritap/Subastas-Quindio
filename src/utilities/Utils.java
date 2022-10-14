@@ -12,7 +12,9 @@ public class Utils {
     //Url del pane de los anuncios
     public static final String anuncioItem = "../view/AnuncioItem.fxml";
     //Url del pane de la gestión subasta
-    public static final String manageSubasta = "../view/GestionarSubasta.fxml";
+    public static final String realizarSubasta = "../view/GestionarSubasta.fxml";
+    //Url listado subasta
+    public static final String listadoSubasta = "../view/ListadoSubasta.fxml";
     //Url de la imagen del corazon de like vacío
     public static final String corazonVacio = "/resources/small_black.png";
     //Url de la imagen del corazon de like lleno

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
@@ -29,6 +30,12 @@ public class CuentaController implements IApplication {
     //Pane general de la vista
     @FXML
     private BorderPane borderPane;
+
+    @FXML
+    private AnchorPane paneListadoSubasta;
+
+    @FXML
+    private AnchorPane paneRealizarSubasta;
     //Contiene los metodos de pago
     @FXML
     private MenuButton cmbBoxPago;
@@ -47,8 +54,6 @@ public class CuentaController implements IApplication {
     //Pane que se mostraran según las opciones
     @FXML
     private VBox paneManejarCuenta;
-
-
     //Radio buttons
     @FXML
     private RadioButton rbFemale;
@@ -90,12 +95,25 @@ public class CuentaController implements IApplication {
 
     @FXML
     void paneListadoSubasta(ActionEvent ignoredEvent) {
+        cargarPanes();
+        paneManejarCuenta.setVisible(false);
+        paneRealizarSubasta.setVisible(false);
+        borderPane.setCenter(paneListadoSubasta);
+        paneListadoSubasta.setVisible(true);
+    }
 
+    private void cargarPanes() {
+        paneListadoSubasta = application.obtenerPane(Utils.listadoSubasta);
+        paneRealizarSubasta = application.obtenerPane(Utils.realizarSubasta);
     }
 
     @FXML
     void paneMyAccount(ActionEvent ignoredEvent) {
-
+        cargarPanes();
+        borderPane.setCenter(paneManejarCuenta);
+        paneManejarCuenta.setVisible(true);
+        paneRealizarSubasta.setVisible(false);
+        paneListadoSubasta.setVisible(false);
     }
     @FXML
     void initialize() {
@@ -108,6 +126,8 @@ public class CuentaController implements IApplication {
         rbFemale.setToggleGroup(group);
         rbMale.setToggleGroup(group);
         rbNoMore.setToggleGroup(group);
+
+
     }
 
     /**
@@ -137,10 +157,16 @@ public class CuentaController implements IApplication {
     @FXML
     void hacerSubasta(ActionEvent event) {
         paneManejarCuenta.setVisible(false);
-
-
-        borderPane.setCenter(application.obtenerPane(Utils.manageSubasta));
+        paneListadoSubasta.setVisible(false);
+        borderPane.setCenter(paneRealizarSubasta);
+        paneRealizarSubasta.setVisible(true);
     }
+
+
+
+
+
+
 
     /**
      * Metodo que cambia el valor del metodo de pago
@@ -148,9 +174,7 @@ public class CuentaController implements IApplication {
      */
     @FXML
     void setValueComboBox(ActionEvent event) {
-
         Object itemSeleccionado =  event.getSource();
-
         if(itemSeleccionado == itemMastercard) cmbBoxPago.setText("Mastercard");
         else if( itemSeleccionado == itemPaypal) cmbBoxPago.setText("Paypal");
         else if( itemSeleccionado == itemVisa) cmbBoxPago.setText("Visa");

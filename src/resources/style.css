@@ -177,3 +177,12 @@
     -fx-text-fill: White;
     -fx-cursor: Hand;
 }
+
+.stylePane{
+    -fx-background-color: #252525;
+    -fx-background-radius: 30, 30, 30, 30;
+}
+
+.styleTextArea{
+    -fx-background-color: #B0B0B0;
+}

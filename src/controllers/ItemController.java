@@ -7,12 +7,14 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import lombok.Getter;
+import lombok.Setter;
 import model.Anuncio;
 import utilities.Utils;
 
-import java.awt.event.ActionEvent;
 import java.util.Objects;
-
+@Getter
+@Setter
 public class ItemController implements IApplication {
 
     //variables globales
@@ -38,6 +40,8 @@ public class ItemController implements IApplication {
     //Variable para definir si se debe dejar el corazon lleno o el vacio
     private Boolean corazonLleno;
 
+    //instancia del controlador del panel de subasta
+    private  SubastaController subastaController;
 
 
     private int horas, minutos ,segundos;
@@ -50,7 +54,7 @@ public class ItemController implements IApplication {
      */
     public void setData(Anuncio anuncio) {
         this.anuncio = anuncio;
-        nameLabel.setText(anuncio.getName());
+        nameLabel.setText(anuncio.getTitulo());
         priceLable.setText(anuncio.getValorInicial()+"");
         img.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(anuncio.getImageSrc()))));
         lblTiempo.setText("Tiempo restante "+horas+" "+minutos+" "+segundos);
@@ -73,7 +77,7 @@ public class ItemController implements IApplication {
      * @param ignored evento generado al hacer clin
      */
     @FXML
-    public void setProductSelected(ActionEvent ignored){
+    void setProductSelected(MouseEvent ignored){
         //desacoplo los metodos
         setProductSelected();
 
@@ -118,7 +122,7 @@ public class ItemController implements IApplication {
      * Metodo aun en proceso, cambiara el anuncio en la barra lateral
      */
     private void setProductSelected(){
-        application.setProductSelected(anuncio);
+        subastaController.setProductSelected(anuncio);
     }
 
 
