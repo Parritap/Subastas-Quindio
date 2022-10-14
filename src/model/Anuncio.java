@@ -1,12 +1,16 @@
 package model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.awt.Image;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-@Data
+@Getter
+@Setter
 public class Anuncio implements Serializable {
 	private LocalDate fecha;
 	private String nombreAnunciante;
@@ -84,6 +88,7 @@ public class Anuncio implements Serializable {
 
 	public Anuncio(String nombreAnunciante, Integer valorInicial, Estado estado, Boolean fueMostrado){
 		//fecha actual
+		this.fecha = LocalDate.now();
 		this.nombreAnunciante = nombreAnunciante;
 		this.valorInicial = valorInicial;
 		this.estado = estado;

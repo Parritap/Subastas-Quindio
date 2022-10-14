@@ -6,6 +6,7 @@ import javafx.util.converter.LocalDateStringConverter;
 import model.*;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -13,6 +14,7 @@ import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static utilities.Utils.imprimirArreglo;
 import static utilities.Utils.isNot;
@@ -82,43 +84,38 @@ public class Persistencia {
         ArchivoUtil.guardarArchivo(ModelFactoryController.getRutaObjetos(obj), atributos.substring(2), true);
     }
 
+    /**guarda todo el objeto empresa en modelo.xml
+     * */
+    public static void serializarEmpresaXML() throws CRUDExceptions, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        ArchivoUtil.salvarRecursoSerializadoXML(ModelFactoryController.getRutaSerializado("model.xml"), deserializarEmpresa());
+    }
 
-    //serializa todo el objeto empresa con productos, anuncios, usuarios y transacciones
-    public static void serializarEmpresa() throws Exception {
-        //obtiene la instancia de empresa
-        EmpresaSubasta empresa = ModelFactoryController.getInstance();
+    /**guarda todo el objeto empresa en modelo.dat
+     * */
+    public static void serializarEmpresaBinario() throws Exception {
+        ArchivoUtil.salvarRecursoSerializado(ModelFactoryController.getRutaSerializado("model.dat"),deserializarEmpresa());
+    }
 
-        //se supone que deserializamos empresa de estos archivos,
-        // entonces, para evitar duplicados, primero limpiamos los archivos
-        ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Usuario.txt"));
-        ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Puja.txt"));
+    public static EmpresaSubasta deserializarEmpresaBinario(){
+        try {
+            EmpresaSubasta empresa = (EmpresaSubasta) ArchivoUtil.cargarRecursoSerializado(ModelFactoryController.getRutaSerializado("model.dat"));
+            if (!Objects.isNull(empresa)) return empresa;
+            else return new EmpresaSubasta();
+        }
+        catch (Exception e){
+            return new EmpresaSubasta();
+        }
+    }
 
-        //serializa los usuarios de empresa
-        for(Usuario usr: empresa.getIUsuario().getListaUsuarios())
-        {
-            //los serializa en cada formato
-            serializarBinario(usr);
-            serializarXML(usr);
-            serializarUsuario(usr);}
-
-        //hace el mismo proceso anterior pero con anuncios
-        ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Anuncio.txt"));
-        for(Anuncio anuncio: empresa.getIAnuncio().getListaAnuncios())
-        {
-            serializarBinario(anuncio);
-            serializarXML(anuncio);
-            serializarAnuncio(anuncio);}
-
-        //hace el mismo proceso anterior pero con productos
-        ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Producto.txt"));
-        for(Producto producto: empresa.getIProducto().getListaProductos())
-        {
-            serializarBinario(producto);
-            serializarXML(producto);
-            serializarProducto(producto);}
-
-        //crea una copia de las transacciones
-        ArchivoUtil.copiarArchivo(ModelFactoryController.getRutaObjetos("Transaccion.txt"), ModelFactoryController.getRutaRespaldo("Transaccion"));
+    public static EmpresaSubasta deserializarEmpresaXML(){
+        try {
+            EmpresaSubasta empresa = (EmpresaSubasta) ArchivoUtil.cargarRecursoSerializadoXML(ModelFactoryController.getRutaSerializado("model.xml"));
+            if (!Objects.isNull(empresa)) return empresa;
+            else return new EmpresaSubasta();
+        }
+        catch(Exception e){
+            return new EmpresaSubasta();
+        }
     }
 
     /**metodo utilizado para serializar los objetos de tipo usuario
@@ -285,6 +282,9 @@ public class Persistencia {
         return LocalDateTime.parse(dato);
     }
 
+    public static Double parseToDouble(String dato){
+        return Double.parseDouble(dato);
+    }
 
     public static Estado parseToEstado(String dato) throws LecturaException {
         if(dato.equals("NUEVO")){
@@ -304,8 +304,8 @@ public class Persistencia {
      *
      * */
 
-    public static void deserializarEmpresa() throws IOException, CRUDExceptions, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
-        EmpresaSubasta empresaSubasta  = ModelFactoryController.getInstance();
+    public static EmpresaSubasta deserializarEmpresa() throws IOException, CRUDExceptions, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        EmpresaSubasta empresaSubasta  = new EmpresaSubasta();
         //Deserializa usuarios
         empresaSubasta.setIUsuario(new IUsuario());
         ArrayList<String> usuarios = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos("Usuario.txt"));
@@ -337,6 +337,19 @@ public class Persistencia {
             deserializarProducto(producto, props);
             empresaSubasta.getIProducto().add(producto);
         }
+
+        //Deserializa transacciones
+        empresaSubasta.setITransaccion(new ITransaccion());
+        ArrayList<String> transacciones = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos("Transaccion.txt"));
+        for(int i=1; i<transacciones.size(); i++){
+            //deserializa una transaccion y lo agrega a la lista de empresa
+            String props = transacciones.get(i);
+            Transaccion transaccion = new Transaccion();
+            deserializarTransaccion(transaccion, props);
+            empresaSubasta.getITransaccion().add(transaccion);
+        }
+
+        return empresaSubasta;
     }
 
     /**deserializa una lista de pujas, estas siguen un formato especial, p. ej:
@@ -409,8 +422,8 @@ public class Persistencia {
         anuncio.setListaPujas(deserializarPujas(idPujas));
     }
 
-    public static void deserializarAnuncio(Anuncio anuncio, String id) throws LecturaException, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
-        deserializarObj(anuncio, id, 10);
+    public static void deserializarAnuncio(Anuncio anuncio, String props) throws LecturaException, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        deserializarObj(anuncio, props);
         Integer idPujas = anuncio.getIdListaPujas();
         anuncio.setListaPujas(deserializarPujas(idPujas));
     }
@@ -423,15 +436,67 @@ public class Persistencia {
         deserializarObj(producto, props);
     }
 
+    public static void deserializarTransaccion(Transaccion transaccion, Integer id) throws LecturaException, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        deserializarObj(transaccion, id+"", 0);
+    }
+
+    public static void deserializarTransaccion(Transaccion transaccion, String props) throws LecturaException, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        deserializarObj(transaccion, props);
+    }
+
     /**respalda los archivos xml en la ruta pedida por el taller
      * */
-    public static void respaldarXML() throws IOException {
-        String rutaBase = "C:\\td";
-        String[] archivos =  ArchivoUtil.listarDir(rutaBase);
-        for(String archivo: archivos){
-            if(archivo.endsWith(".xml")){
-                ArchivoUtil.copiarArchivo(rutaBase+"\\"+archivo, ModelFactoryController.getRutaRespaldo(archivo));
+    public static void respaldarXML() {
+        try {
+            String rutaXML = "C:\\td\\model.xml";
+            String rutaCopiaXML = ModelFactoryController.getRutaRespaldo("model.xml");
+            File archivo = new File(rutaXML);
+            if (archivo.exists()) {
+                ArchivoUtil.copiarArchivo(rutaXML, rutaCopiaXML);
             }
         }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        }
+
+
+    //serializa todo el objeto empresa con productos, anuncios, usuarios y transacciones
+    public static void serializarEmpresa() throws Exception {
+        //obtiene la instancia de empresa
+        EmpresaSubasta empresa = ModelFactoryController.getInstance();
+
+        //se supone que deserializamos empresa de estos archivos,
+        // entonces, para evitar duplicados, primero limpiamos los archivos
+        ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Usuario.txt"));
+        ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Puja.txt"));
+
+        //serializa los usuarios de empresa
+        for(Usuario usr: empresa.getIUsuario().getListaUsuarios())
+        {
+            //los serializa en cada formato
+//            serializarBinario(usr);
+  //          serializarXML(usr);
+            serializarUsuario(usr);}
+
+        //hace el mismo proceso anterior pero con anuncios
+        ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Anuncio.txt"));
+        for(Anuncio anuncio: empresa.getIAnuncio().getListaAnuncios())
+        {
+      //      serializarBinario(anuncio);
+    //        serializarXML(anuncio);
+            serializarAnuncio(anuncio);}
+
+        //hace el mismo proceso anterior pero con productos
+        ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Producto.txt"));
+        for(Producto producto: empresa.getIProducto().getListaProductos())
+        {
+          //  serializarBinario(producto);
+        //    serializarXML(producto);
+            serializarProducto(producto);}
+
+        //crea una copia de las transacciones
+        ArchivoUtil.copiarArchivo(ModelFactoryController.getRutaObjetos("Transaccion.txt"), ModelFactoryController.getRutaRespaldo("Transaccion"));
     }
+
 }

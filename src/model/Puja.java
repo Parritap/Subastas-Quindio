@@ -3,11 +3,12 @@ package model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Getter
 @Setter
-public class Puja {
+public class Puja implements Serializable {
 	//VARIABLES GLOBALES
 	LocalDate fechaDePuja;
 	Usuario usuario;

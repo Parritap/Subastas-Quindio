@@ -63,7 +63,7 @@ public class App extends Application {
         //GUARDADO DE LOGS
         //File archivoPrueba  =new File(ModelFactoryController.getRutaLogs()+"\\log1");
         //System.out.println(archivoPrueba.getAbsolutePath());
-        //ArchivoUtil.guardarRegistroLog("mensaje de prueba", 1, "prueba", ModelFactoryController.getRutaLogs()+"\\log1");
+        //ArchivoUtilLog.guardarRegistroLog("mensaje de prueba", 1, "prueba", ModelFactoryController.getRutaLogs()+"\\log1");
 
         //IAnuncio ImplAnuncio = new IAnuncio();
         //ImplAnuncio.crear(new Anuncio(2));
@@ -151,11 +151,63 @@ public class App extends Application {
         ArchivoUtil.copiarArchivo(ModelFactoryController.getRutaObjetos("Transaccion.txt"),ModelFactoryController.getRutaRespaldo("Transaccion"));
         */
 
+        //PRUBA SERIALIZACION Y DESERIALIZACION XML
 
-        Persistencia.deserializarEmpresa();
+        Usuario usr = new Usuario("diana", 21, "1003929434", "dianaM@gmail.com", "contraseniaDePrueba", "Cr1 23 Cll 19 Brr guayaquil");
+        usr.getListaPujas().add(new Puja(1, 30));
+        usr.getListaPujas().add(new Puja(1, 344));
+        usr.getListaPujas().add(new Puja(1, 500));
 
-        Persistencia.respaldarXML();
-        //System.out.println(ModelFactoryController.getInstance().getIUsuario().getListaUsuarios().get(0).getCedula());
+
+        Anuncio anuncio = new Anuncio("john", 159, Estado.NUEVO, false);
+        anuncio.getListaPujas().add(new Puja(1, 20));
+        anuncio.getListaPujas().add(new Puja(1, 25));
+        anuncio.getListaPujas().add(new Puja(1, 31));
+
+        Usuario usr2 = new Usuario("jean", 28, "199299299", "jean122@gmail.com", "abcgdgd", "Cr1 144 Cll 19 Brr Burnos aires");
+        usr2.getListaPujas().add(new Puja(2, 1));
+        usr2.getListaPujas().add(new Puja(2, 11));
+        usr2.getListaPujas().add(new Puja(2, 111));
+
+        Anuncio anuncio2 = new Anuncio("carlos", 400, Estado.NUEVO, true);
+        anuncio2.getListaPujas().add(new Puja(1, 64));
+        anuncio2.getListaPujas().add(new Puja(1, 128));
+        anuncio2.getListaPujas().add(new Puja(1, 256));
+
+        Usuario usr3 = new Usuario("juan", 25, "1003334333", "juanOrtiz@gmail.com", "Password22", "Cr1 23 Cll 19 ");
+        usr3.getListaPujas().add(new Puja(1, 3));
+        usr3.getListaPujas().add(new Puja(1, 9));
+        usr3.getListaPujas().add(new Puja(1, 27));
+
+        Usuario usr4 = new Usuario("luisa", 9, "10029292992", "luisaFer@gmail.com", "Password1", "Cr1 0 Cll 19");
+        usr4.getListaPujas().add(new Puja(1, 4));
+        usr4.getListaPujas().add(new Puja(1, 16));
+        usr4.getListaPujas().add(new Puja(1, 64));
+
+        /*Persistencia.serializarUsuario(usr);
+        Persistencia.serializarAnuncio(anuncio);
+        Persistencia.serializarUsuario(usr2);
+        Persistencia.serializarUsuario(usr3);
+        Persistencia.serializarUsuario(usr4);
+        Persistencia.serializarAnuncio(anuncio2);
+*/
+
+        EmpresaSubasta empresaSubasta = ModelFactoryController.getInstance();
+        empresaSubasta.getIUsuario().getListaUsuarios().add(usr);
+        empresaSubasta.getIUsuario().getListaUsuarios().add(usr2);
+        empresaSubasta.getIUsuario().getListaUsuarios().add(usr3);
+        empresaSubasta.getIUsuario().getListaUsuarios().add(usr4);
+
+        empresaSubasta.getIAnuncio().getListaAnuncios().add(anuncio);
+        empresaSubasta.getIAnuncio().getListaAnuncios().add(anuncio2);
+
+        Persistencia.serializarEmpresa();
+        Persistencia.serializarEmpresaXML();
+
+
+        //ModelFactoryController.deserializarEmpresa();
+
+
 
         //CARGO EL FRAME PRINCIPAL
         FXMLLoader loader = new FXMLLoader(getClass().getResource(rutas.get("frame inicial")));

@@ -1,5 +1,6 @@
 package model;
 
+import persistencia.Persistencia;
 import utilities.Utils;
 
 import java.time.LocalDate;
@@ -24,9 +25,18 @@ public class ModelFactoryController {
         return Objects.requireNonNullElseGet(empresaSubasta, () -> empresaSubasta = new EmpresaSubasta());
     }
 
+    public static void deserializarEmpresa(){
+        empresaSubasta  = Persistencia.deserializarEmpresaXML();
+        //hace una copia de seguridad del xml
+        Persistencia.respaldarXML();
+    }
+
     public static IUsuario getIUsuario(){
         return getInstance().getIUsuario();
     }
+
+    public static void agregarUsuario(Usuario ur){}
+
 
     //Los metodos getRuta... sirven para obtener las rutas
     //especificadas en el taller

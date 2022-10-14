@@ -4,10 +4,10 @@ import model.EmpresaSubasta;
 import model.ModelFactoryController;
 import utilities.Utils;
 
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
+import java.beans.*;
 import java.io.*;
 import java.nio.file.Files;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.FileHandler;
@@ -319,10 +319,21 @@ public class ArchivoUtil {
     public static void salvarRecursoSerializadoXML(String rutaArchivo, Object objeto) throws IOException {
 
         XMLEncoder codificadorXML;
-
         codificadorXML = new XMLEncoder(new FileOutputStream(rutaArchivo));
+        codificadorXML.setPersistenceDelegate(LocalDate.class,
+                new PersistenceDelegate() {
+                    @Override
+                    protected Expression instantiate(Object localDate, Encoder encdr) {
+                        return new Expression(localDate,
+                                LocalDate.class,
+                                "parse",
+                                new Object[]{localDate.toString()});
+                    }
+                });
+
         codificadorXML.writeObject(objeto);
         codificadorXML.close();
+
 
     }
 
