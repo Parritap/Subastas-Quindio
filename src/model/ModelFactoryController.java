@@ -1,6 +1,7 @@
 package model;
 
 import exceptions.CRUDExceptions;
+import exceptions.EscrituraException;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,5 +32,9 @@ public class ModelFactoryController {
 
     public static ArrayList<Anuncio> getlistaAnuncios() {
         return getInstance().getListaAnuncios();
+    }
+
+    public static void addUsuario(Usuario usuario) throws EscrituraException {
+        empresaSubasta.crearUsuario(usuario);
     }
 }

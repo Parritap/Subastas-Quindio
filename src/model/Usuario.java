@@ -1,9 +1,13 @@
 package model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import java.io.Serializable;
 import java.util.ArrayList;
-@Data
+import java.util.Objects;
+
+@Getter
+@Setter
 public class Usuario implements Serializable {
 	//VARIABLES GLOBALES
 	private String name;
@@ -14,6 +18,8 @@ public class Usuario implements Serializable {
 	private String direccion;
 	private String password;
 
+	private String telefono;
+
 	private ArrayList<Puja> listaPujas;
 
 	//Este atributo permite conocer si el cliente actual esta activo en la app
@@ -23,24 +29,15 @@ public class Usuario implements Serializable {
 	private Estado estado;
 	private Integer id;
 
-	//Constructores
-	public Usuario(String name, Integer age, String cedula, String correo, Integer cantAnuncios, Puja puja) {
-		this.name = name;
-	    this.age = age;
-	    this.cedula = cedula;
-	    this.correo = correo;
-	    this.cantAnuncios = cantAnuncios;
-		id = ++idAux;
-		estado = Estado.NUEVO;
-	}
 
-	public Usuario(String name, Integer age, String cedula, String correo, String password, String direccion ) {
+	public Usuario(String name, Integer age, String cedula, String correo, String direccion, String telefono, String password) {
 		this.name = name;
 		this.age = age;
 		this.cedula = cedula;
 		this.correo = correo;
 		this.direccion = direccion;
 		this.password = password;
+		this.telefono = telefono;
 		id = ++idAux;
 		estado = Estado.NUEVO;
 	}
@@ -65,4 +62,18 @@ public class Usuario implements Serializable {
 		this.correo = nuevoUsuario.getCorreo();
 		this.password = nuevoUsuario.getPassword();
     }
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Usuario usuario = (Usuario) o;
+		return Objects.equals(name, usuario.name) && Objects.equals(cedula, usuario.cedula);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, age, cedula, correo, cantAnuncios, direccion, password, telefono, listaPujas, activo, estado, id);
+	}
+
 }

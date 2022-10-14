@@ -91,7 +91,7 @@
 }
 
 .labelCreateSpecial{
-    -fx-font-size: 30;
+    -fx-font-size: 20;
     -fx-margin: 30, 30, 30, 30;
     -fx-text-fill: White;
 }

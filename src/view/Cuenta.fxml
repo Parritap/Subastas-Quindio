@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
@@ -100,10 +101,18 @@
                               <VBox.margin>
                                  <Insets left="30.0" top="30.0" />
                               </VBox.margin>
+                              <font>
+                                 <Font size="8.0" />
+                              </font>
                            </Label>
                            <Label layoutX="11.0" layoutY="11.0" prefHeight="37.0" prefWidth="412.0" styleClass="labelCreateSpecial" text="Edad">
                               <VBox.margin>
-                                 <Insets left="30.0" top="30.0" />
+                                 <Insets left="30.0" top="20.0" />
+                              </VBox.margin>
+                           </Label>
+                           <Label layoutX="41.0" layoutY="108.0" prefHeight="37.0" prefWidth="412.0" styleClass="labelCreateSpecial" text="Contraseña">
+                              <VBox.margin>
+                                 <Insets left="15.0" top="10.0" />
                               </VBox.margin>
                            </Label>
                         </children>
@@ -113,16 +122,21 @@
                            <Insets bottom="-10.0" />
                         </HBox.margin>
                         <children>
-                           <TextField promptText="Jhon Doe" styleClass="styleTextField">
+                           <TextField fx:id="txtName" promptText="Jhon Doe" styleClass="styleTextField">
                               <VBox.margin>
                                  <Insets right="40.0" top="30.0" />
                               </VBox.margin>
                            </TextField>
-                           <Spinner fx:id="edadSpinner" prefHeight="26.0" prefWidth="412.0" style="-fx-background-color: #B0B0B0;">
+                           <Spinner fx:id="edadSpinner" prefHeight="26.0" prefWidth="465.0" style="-fx-background-color: #B0B0B0;">
                               <VBox.margin>
-                                 <Insets top="40.0" />
+                                 <Insets right="40.0" top="30.0" />
                               </VBox.margin>
                            </Spinner>
+                           <PasswordField fx:id="txtPassword" promptText="-     -      -      -      -      -      -      -      -    -    -" styleClass="styleTextField">
+                              <VBox.margin>
+                                 <Insets right="40.0" top="25.0" />
+                              </VBox.margin>
+                           </PasswordField>
                         </children>
                      </VBox>
                   </children>
@@ -133,7 +147,7 @@
                 </HBox>
             <HBox prefHeight="453.0" prefWidth="850.0">
                <children>
-                  <VBox prefHeight="362.0" prefWidth="389.0" styleClass="bordePane3">
+                  <VBox prefHeight="346.0" prefWidth="363.0" styleClass="bordePane3">
                      <children>
                         <Label prefHeight="39.0" prefWidth="494.0" styleClass="labelCreateSpecial" stylesheets="@../resources/style.css" text="Cédula">
                            <VBox.margin>
@@ -179,24 +193,24 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox prefHeight="445.0" prefWidth="459.0" styleClass="bordePane4">
+                  <VBox prefHeight="380.0" prefWidth="469.0" styleClass="bordePane4">
                      <children>
-                        <TextField prefHeight="26.0" prefWidth="419.0" promptText="1234567890" styleClass="styleTextField">
+                        <TextField fx:id="txtCedula" prefHeight="26.0" prefWidth="419.0" promptText="1234567890" styleClass="styleTextField">
                            <VBox.margin>
                               <Insets bottom="10.0" right="40.0" top="30.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField layoutX="10.0" layoutY="10.0" promptText="example.1234@gmail.com" styleClass="styleTextField">
+                        <TextField fx:id="txtCorreo" layoutX="10.0" layoutY="10.0" promptText="example.1234@gmail.com" styleClass="styleTextField">
                            <VBox.margin>
                               <Insets right="40.0" top="30.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField promptText="cra 123 # 90-30 Armenia Qundio" styleClass="styleTextField">
+                        <TextField fx:id="txtDireccion" promptText="cra 123 # 90-30 Armenia Qundio" styleClass="styleTextField">
                            <VBox.margin>
                               <Insets right="40.0" top="30.0" />
                            </VBox.margin>
                         </TextField>
-                        <MenuButton fx:id="cmbBoxPago" mnemonicParsing="false" prefHeight="26.0" prefWidth="444.0" style="-fx-background-color: #B0B0B0;" text="Seleccione el pago" textFill="WHITE">
+                        <MenuButton fx:id="cmbBoxPago" mnemonicParsing="false" prefHeight="26.0" prefWidth="444.0" style="-fx-background-color: #B0B0B0;" text="Efectivo" textFill="WHITE">
                           <items>
                             <MenuItem fx:id="itemPaypal" mnemonicParsing="false" onAction="#setValueComboBox" text="Paypal">
                                  <graphic>
@@ -239,7 +253,7 @@
                               <Insets right="40.0" top="30.0" />
                            </VBox.margin>
                         </MenuButton>
-                        <TextField promptText="3124356754345" styleClass="styleTextField">
+                        <TextField fx:id="txtTelefono" promptText="3124356754345" styleClass="styleTextField">
                            <VBox.margin>
                               <Insets right="40.0" top="30.0" />
                            </VBox.margin>
@@ -265,7 +279,7 @@
                   <Insets />
                </VBox.margin>
                <children>
-                  <Button layoutX="560.0" layoutY="40.0" mnemonicParsing="false" onAction="#crearCuenta" prefHeight="71.0" prefWidth="219.0" styleClass="btnCrearCuenta" text="Crear una cuenta" textFill="#191919">
+                  <Button fx:id="btnCrearCuenta" layoutX="560.0" layoutY="40.0" mnemonicParsing="false" onAction="#crearCuenta" prefHeight="71.0" prefWidth="219.0" styleClass="btnCrearCuenta" text="Crear una cuenta" textFill="#191919">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
