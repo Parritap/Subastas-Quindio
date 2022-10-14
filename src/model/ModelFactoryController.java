@@ -3,6 +3,8 @@ package model;
 import persistencia.Persistencia;
 import utilities.Utils;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -100,7 +102,9 @@ public class ModelFactoryController {
         return getInstance().getListaAnuncios();
     }
 
-    public static void addUsuario(Usuario usuario) throws EscrituraException {
+    public static void addUsuario(Usuario usuario) throws EscrituraException, IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        //serializa el usuario
+        Persistencia.serializarUsuario(usuario);
         empresaSubasta.crearUsuario(usuario);
     }
 }
