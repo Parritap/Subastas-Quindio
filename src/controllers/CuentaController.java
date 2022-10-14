@@ -269,6 +269,12 @@ public class CuentaController implements IApplication {
      */
     private void limpiarCamposTexto() {
         txtName.setText("");
+        txtPassword.setText("");
+        txtCedula.setText("");
+        txtCorreo.setText("");
+        txtDireccion.setText("");
+        cmbBoxPago.setText("Efectivo");
+        txtTelefono.setText("");
     }
 
 

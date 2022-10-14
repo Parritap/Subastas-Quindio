@@ -107,4 +107,8 @@ public class ModelFactoryController {
         Persistencia.serializarUsuario(usuario);
         empresaSubasta.crearUsuario(usuario);
     }
+
+    public static void crearAnuncio(Anuncio anuncio, Producto producto, Usuario clienteActivo) throws CRUDExceptions {
+        empresaSubasta.crearAnuncio(anuncio, producto, clienteActivo);
+    }
 }

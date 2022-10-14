@@ -42,10 +42,7 @@ public class Anuncio implements Serializable {
 	*/
 	private static int idAux;
 	private Integer id;
-	//constructor sencillo util para hacer pruebas;
-	public Anuncio() {
 
-	}
 
 	public Anuncio(Double tiempoActivo){
 		//fecha actual
@@ -90,9 +87,19 @@ public class Anuncio implements Serializable {
 	 * CONSTRUCTOR NECESARIO PARA PRUEBAS
 	 */
 
+	public Anuncio(){}
+	
+	//constructor completo
+
 	public Anuncio(String name, Double valorInicial){
 		this.titulo = name;
 		this.valorInicial = valorInicial;
+	}
+
+	public Anuncio(String tituloAnuncio, byte[] bytesImg, Double valorInicialAnuncio) {
+		this.titulo = tituloAnuncio;
+		this.imageSrc = bytesImg;
+		this.valorInicial = valorInicialAnuncio;
 	}
 
 
