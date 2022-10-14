@@ -9,7 +9,7 @@ import interfaces.IApplication;
 import model.ModelFactoryController;
 import model.Usuario;
 import persistencia.ArchivoUtil;
-import persistencia.ArchivoUtilLog;
+import persistencia.ArchivoUtil;
 import persistencia.Persistencia;
 
 import java.io.IOException;
@@ -103,7 +103,7 @@ public class CrearCuentaController implements IApplication {
                 limpiarCamposTexto();
                 //Persistencia.serializarObj(usuario, "idAux", "listaPujas", "idAuxListaPujas");
 
-                ArchivoUtilLog.guardarRegistroLog(String.format(": %s, %s, %o, %s", cedula, name, edad, correo), 1, "Registro Usuario", ModelFactoryController.getRutaLogs("CreacionUsuario.txt"));
+                ArchivoUtil.guardarRegistroLog(String.format(": %s, %s, %o, %s", cedula, name, edad, correo), 1, "Registro Usuario", ModelFactoryController.getRutaLogs("CreacionUsuario.txt"));
                 application.showAlert("Usuario creado con éxito");
             } catch (EscrituraException e) {
                 limpiarCamposTexto();

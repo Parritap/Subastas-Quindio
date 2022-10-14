@@ -1,7 +1,7 @@
 package exceptions;
 
 import model.ModelFactoryController;
-import persistencia.ArchivoUtilLog;
+import persistencia.ArchivoUtil;
 
 public class CRUDExceptions extends Exception {
 
@@ -12,7 +12,7 @@ public class CRUDExceptions extends Exception {
 	//Cada excepcion toma dos mensajes, uno para imprimir en consola, otro para escribir en el log
 	public CRUDExceptions(String mensaje, String mensajeLog) {
 		super(mensaje);
-		ArchivoUtilLog.guardarRegistroLog(this.getClass().getSimpleName()+", "+mensajeLog, nivelDeExcepcion, "Excepcion", ModelFactoryController.getRutaLogs("Excepciones.txt"));
+		ArchivoUtil.guardarRegistroLog(this.getClass().getSimpleName()+", "+mensajeLog, nivelDeExcepcion, "Excepcion", ModelFactoryController.getRutaLogs("Excepciones.txt"));
 	}
 	
 }

@@ -52,7 +52,7 @@ public class test {
 
     //File archivoPrueba  =new File(ModelFactoryController.getRutaLogs()+"\\log1");
     //System.out.println(archivoPrueba.getAbsolutePath());
-    //ArchivoUtilLog.guardarRegistroLog("mensaje de prueba", 1, "prueba", ModelFactoryController.getRutaLogs()+"\\log1");
+    //ArchivoUtil.guardarRegistroLog("mensaje de prueba", 1, "prueba", ModelFactoryController.getRutaLogs()+"\\log1");
 //        IAnuncio ImplAnuncio = new IAnuncio();
 
     //      ImplAnuncio.crear(new Anuncio(2));

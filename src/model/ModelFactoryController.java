@@ -28,6 +28,9 @@ public class ModelFactoryController {
         return getInstance().getIUsuario();
     }
 
+    //Los metodos getRuta... sirven para obtener las rutas
+    //especificadas en el taller
+
     /**devuelve la ruta en la que se guarda el log
      * @param nombreArchivo nombre del archivo en el que se guarda el log
      * @return ruta en la que se va a guardar el log*/
@@ -64,6 +67,10 @@ public class ModelFactoryController {
     public static String getRutaSerializado(String nombreArchivo){
         return "C:\\td\\"+nombreArchivo;
     }
+
+    /**da un id para la lista de pujas, usualmente a objetos Usuario o Anuncio
+     * este es necesario para la deserializacion
+     * */
     public static Integer darIdListaPuja(){
         idListaPujas++;
         return idListaPujas;

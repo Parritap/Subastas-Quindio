@@ -1,7 +1,7 @@
 package exceptions;
 
 import model.ModelFactoryController;
-import persistencia.ArchivoUtilLog;
+import persistencia.ArchivoUtil;
 
 public class ContraseniaNoValidaException extends UsuarioException{
     public static Integer nivelDeExcepcion =2;
@@ -9,6 +9,6 @@ public class ContraseniaNoValidaException extends UsuarioException{
     public ContraseniaNoValidaException(String mensaje, String mensajeLog){
         super(mensaje, mensajeLog);
         //GUARDA EN EL LOG LA EXCEPCION CON UN MENSAJE
-        ArchivoUtilLog.guardarRegistroLog(this.getClass().getSimpleName()+", "+mensajeLog, nivelDeExcepcion, "Excepcion", ModelFactoryController.getRutaLogs("Excepciones.txt"));
+        ArchivoUtil.guardarRegistroLog(this.getClass().getSimpleName()+", "+mensajeLog, nivelDeExcepcion, "Excepcion", ModelFactoryController.getRutaLogs("Excepciones.txt"));
     }
 }

@@ -1,7 +1,7 @@
 package exceptions;
 
 import model.ModelFactoryController;
-import persistencia.ArchivoUtilLog;
+import persistencia.ArchivoUtil;
 
 import java.time.LocalDate;
 
@@ -14,6 +14,6 @@ public class AnuncioException  extends  EmpresaException{
 
         super(mensaje, mensajeLog);
         //guarda el log, utiliza el nombre de la clase para indicarlo en el log                                              //todas las excepciones se guardan en Excepcion.txt
-        ArchivoUtilLog.guardarRegistroLog(this.getClass().getSimpleName()+", "+mensajeLog, nivelDeExcepcion, "Excepcion", ModelFactoryController.getRutaLogs("Excepciones.txt"));
+        ArchivoUtil.guardarRegistroLog(this.getClass().getSimpleName()+", "+mensajeLog, nivelDeExcepcion, "Excepcion", ModelFactoryController.getRutaLogs("Excepciones.txt"));
     }
 }
