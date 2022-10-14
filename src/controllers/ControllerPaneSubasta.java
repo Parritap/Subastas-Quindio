@@ -2,7 +2,6 @@ package controllers;
 
 import application.App;
 import interfaces.IApplication;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -35,6 +34,7 @@ public class ControllerPaneSubasta implements IApplication {
     @FXML
     private TextField txtValorAnuncio;
 
+    //Estas variables contendrán la informacion ya filtrada de los campos de textos
     private byte[] bytesImg;
 
     //Atributos del anuncio
@@ -66,19 +66,25 @@ public class ControllerPaneSubasta implements IApplication {
      */
     @FXML
     void crearAnuncio(ActionEvent ignoredEvent) {
-        if (cargarCamposTextos()) {
-
-        } else if (application.getClienteActivo() != null) {
-
-        } else {
+        if (cargarCamposTextos() && application.getClienteActivo() != null) {
+            //Se debe crear el anuncio haciendo uso de las variables ya definidas arriba
+            //modelFactoryController. crear el producto
+            //crear el anuncio
+            //anucio.setProducto(producto)
+        }else {
             application.abrirAlerta("Debe crear una cuenta antes de publicar un anuncio");
         }
 
     }
 
+    /**
+     * Este metodo obtiene toda la información de los campos de texto
+     * y la filtra, si alguna no cumple se debe lanzar una alerta
+     * @return true si todos los campos de texto son correctos\\ false si alguno no cumple
+     */
     private boolean cargarCamposTextos() {
         String mensaje = "";
-
+        //obtengo la info de los txt
         if (!txtNameProduct.getText().equals("")) {
             nombreProducto = txtNameProduct.getText();
         } else {
@@ -96,7 +102,17 @@ public class ControllerPaneSubasta implements IApplication {
         } else {
             mensaje += "Debe ingresar el titulo del anuncio";
         }
-        return true;
+
+        if(!txtValorAnuncio.getText().equals("")){
+            try {
+                valorInicialAnuncio = Double.parseDouble(txtValorAnuncio.getText());
+            }catch (NumberFormatException e){
+                mensaje+="Debe ingresar valores númerico en el valor del anuncio";
+            }
+        }
+
+        if(!mensaje.equals("")) application.abrirAlerta(mensaje);
+        return mensaje.equals("");
     }
 
 
