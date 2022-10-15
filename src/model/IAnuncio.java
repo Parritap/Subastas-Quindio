@@ -76,6 +76,9 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		if (!existeAnuncio(anuncio)) {
 			listaAnuncios.add(anuncio);
 			System.out.println(" Agrego anuncio ");
+			for (Anuncio anuncio1 : listaAnuncios) {
+				System.out.println(anuncio1.toString());
+			}
 		}
 	}
 

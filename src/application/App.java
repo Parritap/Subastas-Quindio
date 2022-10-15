@@ -94,7 +94,7 @@ public class App extends Application {
             empresaSubasta = new EmpresaSubasta();
 
         }*/
-        empresaSubasta = new EmpresaSubasta();
+        empresaSubasta = ModelFactoryController.getInstance();
         Usuario usuario = new Usuario("Alejandro Arias", 20, "1209283", "alejandro@gmail.com", "cra 20 cll 12", "324334565", "1234Jose");
         Producto producto = new Producto("Popcorn", "Son de mantequilla");
         Anuncio anuncio = new Anuncio("Vendo popCorn", Utils.obtenerBytesImagen(), 300.0);
