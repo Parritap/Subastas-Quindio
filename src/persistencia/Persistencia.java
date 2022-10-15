@@ -87,13 +87,14 @@ public class Persistencia {
     /**guarda todo el objeto empresa en modelo.xml
      * */
     public static void serializarEmpresaXML() throws Exception {
-        Persistencia.serializarEmpresa();
+        //Persistencia.serializarEmpresa();
         ArchivoUtil.salvarRecursoSerializadoXML(ModelFactoryController.getRutaSerializado("model.xml"), deserializarEmpresa());
     }
 
     public static void serializarEmpresaUnificado() throws Exception {
         serializarEmpresaXML();
         serializarEmpresaBinario();
+        ArchivoUtil.copiarArchivo(ModelFactoryController.getRutaObjetos("Transaccion.txt"), ModelFactoryController.getRutaRespaldo("Transaccion"));
     }
 
     /**guarda todo el objeto empresa en modelo.dat
@@ -117,7 +118,7 @@ public class Persistencia {
         try {
             EmpresaSubasta empresa = (EmpresaSubasta) ArchivoUtil.cargarRecursoSerializadoXML(ModelFactoryController.getRutaSerializado("model.xml"));
             if (!Objects.isNull(empresa)) return empresa;
-            else return new EmpresaSubasta();
+            else throw new Exception();
         }
         catch(Exception e){
             return new EmpresaSubasta();
@@ -454,7 +455,7 @@ public class Persistencia {
      * */
     public static void respaldarXML() {
         try {
-            String rutaXML = "C:\\td\\model.xml";
+            String rutaXML = ModelFactoryController.getRutaBase()+"\\persistencia\\model.xml";
             String rutaCopiaXML = ModelFactoryController.getRutaRespaldo("model.xml");
             File archivo = new File(rutaXML);
             if (archivo.exists()) {
@@ -468,6 +469,8 @@ public class Persistencia {
 
 
     //serializa todo el objeto empresa con productos, anuncios, usuarios y transacciones
+
+    /*
     public static void serializarEmpresa() throws Exception {
         //obtiene la instancia de empresa
         EmpresaSubasta empresa = ModelFactoryController.getInstance();
@@ -482,27 +485,28 @@ public class Persistencia {
         {
             //los serializa en cada formato
 //            serializarBinario(usr);
-  //          serializarXML(usr);
+            //          serializarXML(usr);
             serializarUsuario(usr);}
 
         //hace el mismo proceso anterior pero con anuncios
         ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Anuncio.txt"));
         for(Anuncio anuncio: empresa.getIAnuncio().getListaAnuncios())
         {
-      //      serializarBinario(anuncio);
-    //        serializarXML(anuncio);
+            //      serializarBinario(anuncio);
+            //        serializarXML(anuncio);
             serializarAnuncio(anuncio);}
 
         //hace el mismo proceso anterior pero con productos
         ArchivoUtil.limpiarArchivo(ModelFactoryController.getRutaObjetos("Producto.txt"));
         for(Producto producto: empresa.getIProducto().getListaProductos())
         {
-          //  serializarBinario(producto);
-        //    serializarXML(producto);
+            //  serializarBinario(producto);
+            //    serializarXML(producto);
             serializarProducto(producto);}
 
         //crea una copia de las transacciones
         ArchivoUtil.copiarArchivo(ModelFactoryController.getRutaObjetos("Transaccion.txt"), ModelFactoryController.getRutaRespaldo("Transaccion"));
     }
+    */
 
 }

@@ -1,6 +1,8 @@
 package application;
 
 import controllers.AlertaController;
+import exceptions.CRUDExceptions;
+import interfaces.CRUD;
 import interfaces.IApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import lombok.Setter;
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
 import model.Usuario;
+import persistencia.Persistencia;
 import utilities.Utils;
 import java.io.IOException;
 import java.util.HashMap;
@@ -51,7 +54,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
 
         inicializarApp();
-        //pruebas de codigo, por favor no borrarlas
+
         //CARGO EL FRAME PRINCIPAL
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameInicio));
         Parent root = loader.load();
@@ -63,8 +66,15 @@ public class App extends Application {
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
         stage.minWidthProperty();
+        stage.setOnCloseRequest(event->{
+            try {
+                Persistencia.serializarEmpresaUnificado();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        });
         stage.show();
-
     }
 
 
@@ -72,9 +82,15 @@ public class App extends Application {
      * METODO ENCARGADO DE INICIALIZAR  LO QUE LA
      * APPLICATION NECESITE
      */
-    private void inicializarApp() {
+    private void inicializarApp() throws CRUDExceptions {
         //El singleton crea la instancia de Empresa
-        empresaSubasta = ModelFactoryController.getInstance();
+        //empresaSubasta = ModelFactoryController.getInstance();
+        try {
+            ModelFactoryController.deserializarEmpresa();
+        }
+        catch(CRUDExceptions e){
+            empresaSubasta = new EmpresaSubasta();
+        }
     }
 
 

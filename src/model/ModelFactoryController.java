@@ -55,13 +55,15 @@ public class ModelFactoryController {
     //Los metodos getRuta... sirven para obtener las rutas
     //especificadas en el taller
 
-    /**devuelve la ruta en la que se guarda el log
-     * @param nombreArchivo nombre del archivo en el que se guarda el log
-     * @return ruta en la que se va a guardar el log*/
+
 
     public static String getRutaBase(){
         return Paths.get("").toAbsolutePath().toString()+"\\src";
     }
+
+    /**devuelve la ruta en la que se guarda el log
+     * @param nombreArchivo nombre del archivo en el que se guarda el log
+     * @return ruta en la que se va a guardar el log*/
     public static String getRutaLogs(String nombreArchivo){
         return getRutaBase()+"\\persistencia\\log\\"+nombreArchivo;
     }
@@ -93,7 +95,7 @@ public class ModelFactoryController {
     }
 
     public static String getRutaSerializado(String nombreArchivo){
-        return  getRutaBase()+nombreArchivo;
+        return  getRutaBase()+"\\persistencia\\"+nombreArchivo;
     }
 
     /**da un id para la lista de pujas, usualmente a objetos Usuario o Anuncio

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="19" class="java.beans.XMLDecoder">
+ <object class="model.EmpresaSubasta" id="EmpresaSubasta0">
+  <void id="IUsuario0" property="IUsuario">
+   <void property="listaUsuarios">
+    <void method="add">
+     <object class="model.Usuario">
+      <void property="activo">
+       <boolean>true</boolean>
+      </void>
+      <void property="age">
+       <int>28</int>
+      </void>
+      <void property="cantAnuncios">
+       <int>0</int>
+      </void>
+      <void property="cedula">
+       <string>1002345677</string>
+      </void>
+      <void property="correo">
+       <string>johnatanCardona@gmail.com</string>
+      </void>
+      <void property="direccion">
+       <string>Cra 23 Cll 12 Bogota, Cundinamarca</string>
+      </void>
+      <void property="estado">
+       <object class="java.lang.Enum" id="Estado0" method="valueOf">
+        <class>model.Estado</class>
+        <string>NUEVO</string>
+       </object>
+      </void>
+      <void property="id">
+       <int>2</int>
+      </void>
+      <void property="idListaPujas">
+       <int>1</int>
+      </void>
+      <void property="listaPujas">
+       <object class="java.util.ArrayList"/>
+      </void>
+      <void property="name">
+       <string>johnatan</string>
+      </void>
+      <void property="password">
+       <string>Johnatan1996</string>
+      </void>
+      <void property="telefono">
+       <string>3102346711</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="model.Usuario">
+      <void property="activo">
+       <boolean>true</boolean>
+      </void>
+      <void property="age">
+       <int>21</int>
+      </void>
+      <void property="cantAnuncios">
+       <int>0</int>
+      </void>
+      <void property="cedula">
+       <string>1003774788</string>
+      </void>
+      <void property="correo">
+       <string>camilaPerez21@outlook.com</string>
+      </void>
+      <void property="direccion">
+       <string>Cra 11 Cll 23 Medellin, Antioquia</string>
+      </void>
+      <void property="estado">
+       <object idref="Estado0"/>
+      </void>
+      <void property="id">
+       <int>2</int>
+      </void>
+      <void property="idListaPujas">
+       <int>1</int>
+      </void>
+      <void property="listaPujas">
+       <object class="java.util.ArrayList"/>
+      </void>
+      <void property="name">
+       <string>Camila </string>
+      </void>
+      <void property="password">
+       <string>CamilaPerez</string>
+      </void>
+      <void property="telefono">
+       <string>3124567811</string>
+      </void>
+     </object>
+    </void>
+   </void>
+  </void>
+ </object>
+</java>
