@@ -103,7 +103,7 @@ public class SubastaController implements IApplication{
                 itemController.setSubastaController(this);
                 itemController.setData(anuncio);
                 //si he llegado a tres columnas que salte a la siguiente fila
-                if (column == 3) {
+                if (column == 2) {
                     column = 0;
                     ++row;
                 }

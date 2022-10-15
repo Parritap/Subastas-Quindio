@@ -331,11 +331,11 @@
                <Pane prefHeight="84.0" prefWidth="96.0" />
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <ScrollPane prefHeight="625.0" prefWidth="857.0" styleClass="transparent" stylesheets="@../resources/style.css">
+               <ScrollPane prefHeight="625.0" prefWidth="835.0" styleClass="transparent" stylesheets="@../resources/style.css">
                   <HBox.margin>
                      <Insets top="10.0" />
                   </HBox.margin>
-                  <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+                  <GridPane fx:id="grid" hgap="100.0" prefHeight="0.0" prefWidth="0.0" vgap="50.0">
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" />
                      </rowConstraints>

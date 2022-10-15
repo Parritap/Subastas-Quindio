@@ -125,7 +125,6 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
 		switch (campo) {
 			case "nombreAnunciante" -> resultado = anuncio1.getNombreAnunciante().compareTo(anuncio2.getNombreAnunciante());
-			case "tiempoActivo" -> resultado = anuncio1.getTiempoActivo().compareTo(anuncio2.getTiempoActivo());
 			case "valorInicial" -> resultado = anuncio1.getValorInicial().compareTo(anuncio2.getValorInicial());
 		}
 		return resultado;

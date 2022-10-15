@@ -2,6 +2,7 @@ package controllers;
 
 import application.App;
 import interfaces.IApplication;
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -13,7 +14,7 @@ import model.Anuncio;
 import utilities.Utils;
 
 import java.io.ByteArrayInputStream;
-import java.util.Objects;
+import java.time.LocalDateTime;
 @Getter
 @Setter
 public class ItemController implements IApplication {
@@ -57,10 +58,35 @@ public class ItemController implements IApplication {
         this.anuncio = anuncio;
         nameLabel.setText(anuncio.getTitulo());
         priceLable.setText(anuncio.getValorInicial()+"");
-        //img.setImage(new Image(new ByteArrayInputStream(anuncio.getImageSrc())));
+        img.setImage(new Image(new ByteArrayInputStream(anuncio.getImageSrc())));
         lblTiempo.setText("Tiempo restante "+horas+" "+minutos+" "+segundos);
+        actualizarTiempo();
     }
 
+    public void actualizarTiempo(){
+        AnimationTimer timer = new AnimationTimer() {
+            LocalDateTime fechaTerminacion = anuncio.getFechaTerminacion();
+            final LocalDateTime fechaPublicacion = anuncio.getFechaPublicacion();
+            int minutos = 4;
+            int segundos = 60;
+            @Override
+            public void handle(long tiempoActual) {
+
+
+                if(segundos > 0){
+                    segundos = fechaPublicacion.getSecond() - fechaTerminacion.getSecond() ;
+                    fechaTerminacion = fechaTerminacion.minusNanos(10000000);
+                }else if(minutos >0){
+                    -- minutos;
+                    segundos = 60;
+                }
+                System.out.println("Tiempo restante "+minutos+" minutos "+segundos+" segundos");
+                lblTiempo.setText("Tiempo restante "+minutos+" minutos "+segundos+" segundos");
+            }
+        };
+
+        timer.start();
+    }
     //metodos implementados por la interfaz
     @Override
     public App getApplication() {

@@ -186,3 +186,6 @@
 .styleTextArea{
     -fx-background-color: #B0B0B0;
 }
+.textCenter{
+    -fx-alignment: Center;
+}
