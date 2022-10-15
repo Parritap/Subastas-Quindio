@@ -2,7 +2,6 @@ package application;
 
 import controllers.AlertaController;
 import exceptions.CRUDExceptions;
-import interfaces.CRUD;
 import interfaces.IApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

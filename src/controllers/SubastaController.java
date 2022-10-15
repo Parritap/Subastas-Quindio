@@ -89,6 +89,8 @@ public class SubastaController implements IApplication{
      * Metodo que recorre la lista de anuncios y los carga al pane scroll
      */
     private void cargarAnuncioAlScroll() {
+        //elimino todos los elementos del grid
+        this.grid.getChildren().clear();
         //defino la columna y la fila del gridPane
         int column = 0;
         int row = 1;
@@ -96,27 +98,31 @@ public class SubastaController implements IApplication{
         try {
             //recorro la lista de anuncios y los convierto en un item controller
             for (Anuncio anuncio : this.listaAnuncios) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
-                AnchorPane anchorPane = fxmlLoader.load();
-                ItemController itemController = fxmlLoader.getController();
-                itemController.setSubastaController(this);
-                itemController.setData(anuncio);
-                //si he llegado a tres columnas que salte a la siguiente fila
-                if (column == 2) {
-                    column = 0;
-                    ++row;
+
+                if(!anuncio.getFueMostrado()){
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
+                    AnchorPane anchorPane = fxmlLoader.load();
+                    ItemController itemController = fxmlLoader.getController();
+                    itemController.setSubastaController(this);
+                    itemController.setData(anuncio);
+                    //si he llegado a tres columnas que salte a la siguiente fila
+                    if (column == 2) {
+                        column = 0;
+                        ++row;
+                    }
+                    //propiedades de grid pane para que pueda adaptarse a la pantalla
+                    //es decir que sea responsive
+                    this.grid.add(anchorPane, column++, row);
+                    this.grid.setMinWidth(-1.0);
+                    this.grid.setPrefWidth(-1.0);
+                    this.grid.setMaxWidth(Double.NEGATIVE_INFINITY);
+                    this.grid.setMinHeight(-1.0);
+                    this.grid.setPrefHeight(-1.0);
+                    this.grid.setMaxHeight(Double.NEGATIVE_INFINITY);
+                    GridPane.setMargin(anchorPane, new Insets(10.0));
                 }
-                //propiedades de grid pane para que pueda adaptarse a la pantalla
-                //es decir que sea responsive
-                this.grid.add(anchorPane, column++, row);
-                this.grid.setMinWidth(-1.0);
-                this.grid.setPrefWidth(-1.0);
-                this.grid.setMaxWidth(Double.NEGATIVE_INFINITY);
-                this.grid.setMinHeight(-1.0);
-                this.grid.setPrefHeight(-1.0);
-                this.grid.setMaxHeight(Double.NEGATIVE_INFINITY);
-                GridPane.setMargin(anchorPane, new Insets(10.0));
+
             }
         } catch (IOException var9) {
             var9.printStackTrace();
@@ -181,4 +187,7 @@ public class SubastaController implements IApplication{
     }
 
 
+    public void actualizarAnuncios() {
+        cargarAnuncioAlScroll();
+    }
 }

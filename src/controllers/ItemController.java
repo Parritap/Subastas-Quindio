@@ -56,6 +56,7 @@ public class ItemController implements IApplication {
      */
     public void setData(Anuncio anuncio) {
         this.anuncio = anuncio;
+        anuncio.setFueMostrado(true);
         nameLabel.setText(anuncio.getTitulo());
         priceLable.setText(anuncio.getValorInicial()+"");
         img.setImage(new Image(new ByteArrayInputStream(anuncio.getImageSrc())));
@@ -63,6 +64,10 @@ public class ItemController implements IApplication {
         actualizarTiempo();
     }
 
+    /**
+     * Este metodo actualiza el label de cuanto tiempo lleva el anuncio
+     * se usa la clase animationTimer para generar el ciclo
+     */
     public void actualizarTiempo(){
         AnimationTimer timer = new AnimationTimer() {
             @Override
@@ -75,7 +80,15 @@ public class ItemController implements IApplication {
                 long tiempoRestante = fechaTerminacion.toEpochSecond(Utils.ZONE_OFFSET) - fechaActual.toEpochSecond(Utils.ZONE_OFFSET);
                 segundos = (int) (tiempoRestante % 60);
                 minutos = (int) ((tiempoRestante / 60) % 60);
-                lblTiempo.setText("Tiempo restante "+minutos+" minutos "+segundos +" segundos");
+                //si el tiempo se acaba, se acaba la animación
+                if(segundos == 0 && minutos == 0){
+                    this.stop();
+                    //actualizo los anuncios contenidos
+                    subastaController.actualizarAnuncios();
+                }else {
+                    lblTiempo.setText("Tiempo restante "+minutos+" minutos "+segundos +" segundos");
+                }
+
             }
         };
 

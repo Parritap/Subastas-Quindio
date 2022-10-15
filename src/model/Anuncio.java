@@ -52,6 +52,7 @@ public class Anuncio implements Serializable {
 		this.fechaTerminacion = this.fechaPublicacion.plusMinutes(5L);
 		this.idListaPujas = ModelFactoryController.darIdListaPuja();
 		this.listaPujas = new ArrayList<>();
+		this.fueMostrado = false;
 	}
 
 
