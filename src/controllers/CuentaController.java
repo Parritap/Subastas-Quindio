@@ -16,6 +16,7 @@ import javafx.scene.shape.Circle;
 import model.ModelFactoryController;
 import model.Usuario;
 import persistencia.ArchivoUtil;
+import persistencia.Persistencia;
 import utilities.Utils;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -244,6 +245,7 @@ public class CuentaController implements IApplication {
                 application.abrirAlerta("El usuario se agregó correctamente");
                 application.setClienteActivo(usuario);
                 btnCrearCuenta.setVisible(false);
+                //Persistencia.serializarUsuario(usuario);
                 ArchivoUtil.guardarRegistroLog("se creo el usuario "+usuario.getId()+":"+usuario.getName(), 1, "CreacionUsuario", ModelFactoryController.getRutaLogs("CreacionUsuario"));
             } catch (EscrituraException e) {
                 System.out.println(" entro "  );

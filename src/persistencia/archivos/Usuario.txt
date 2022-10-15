@@ -1,0 +1,1 @@
+name:java.lang.String@@age:java.lang.Integer@@cedula:java.lang.String@@correo:java.lang.String@@cantAnuncios:java.lang.Integer@@direccion:java.lang.String@@password:java.lang.String@@telefono:java.lang.String@@idListaPujas:java.lang.Integer@@activo:java.lang.Boolean@@estado:model.Estado@@id:java.lang.Integer
