@@ -56,7 +56,6 @@ public class ItemController implements IApplication {
      */
     public void setData(Anuncio anuncio) {
         this.anuncio = anuncio;
-        anuncio.setFueMostrado(true);
         nameLabel.setText(anuncio.getTitulo());
         priceLable.setText(anuncio.getValorInicial()+"");
         img.setImage(new Image(new ByteArrayInputStream(anuncio.getImageSrc())));
@@ -85,6 +84,7 @@ public class ItemController implements IApplication {
                     this.stop();
                     //actualizo los anuncios contenidos
                     subastaController.actualizarAnuncios();
+                    anuncio.setFueMostrado(true);
                 }else {
                     lblTiempo.setText("Tiempo restante "+minutos+" minutos "+segundos +" segundos");
                 }

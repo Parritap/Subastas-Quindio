@@ -15,7 +15,6 @@ import javafx.scene.layout.GridPane;
 import model.Anuncio;
 import model.ModelFactoryController;
 import utilities.Utils;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,7 +56,6 @@ public class SubastaController implements IApplication{
         this.lblAdName.setText(anuncio.getTitulo());
         this.lblAdPrice.setText("$" + anuncio.getValorInicial());
         //cargo la ruta de la imagen y la cargo en el anuncio
-        //Image image = new Image(new ByteArrayInputStream(anuncio.getImageSrc()));
         //this.adSelectedImage.setImage(image);
     }
 

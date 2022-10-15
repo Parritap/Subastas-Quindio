@@ -235,6 +235,8 @@ public class CuentaController implements IApplication {
      */
     @FXML
     void crearCuenta(ActionEvent event) {
+        //Los campos de textos requeridos para crear el usuario
+        //cliente activo es el cliente que tiene la application
         if(cargarCampos() && application.getClienteActivo() == null){
             //creo el usuario con los datos obtenidos en el txt
             Usuario usuario = new Usuario(name, edad, cedula, correo, direccion, telefono, contrasenia);
@@ -245,7 +247,6 @@ public class CuentaController implements IApplication {
                 application.abrirAlerta("El usuario se agregó correctamente");
                 application.setClienteActivo(usuario);
                 btnCrearCuenta.setVisible(false);
-                //Persistencia.serializarUsuario(usuario);
                 ArchivoUtil.guardarRegistroLog("se creo el usuario "+usuario.getId()+":"+usuario.getName(), 1, "CreacionUsuario", ModelFactoryController.getRutaLogs("CreacionUsuario"));
             } catch (EscrituraException e) {
                 System.out.println(" entro "  );
