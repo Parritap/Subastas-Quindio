@@ -6,8 +6,13 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 
 public class Utils {
+
+
+    public static final ZoneOffset ZONE_OFFSET = OffsetDateTime.now().getOffset();
 
     /**DEVUELVE TRUE SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS
      * EN LOS DEMAS ARGUMENTOS

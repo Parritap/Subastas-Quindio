@@ -1,2 +1,1 @@
 name:java.lang.String@@age:java.lang.Integer@@cedula:java.lang.String@@correo:java.lang.String@@cantAnuncios:java.lang.Integer@@direccion:java.lang.String@@password:java.lang.String@@telefono:java.lang.String@@idListaPujas:java.lang.Integer@@activo:java.lang.Boolean@@estado:model.Estado@@id:java.lang.Integer
-johnatan@@28@@1002345677@@johnatanCardona@gmail.com@@0@@Cra 23 Cll 12 Bogota, Cundinamarca@@Johnatan1996@@3102346711@@1@@true@@NUEVO@@2

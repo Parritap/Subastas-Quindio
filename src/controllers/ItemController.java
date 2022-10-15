@@ -65,23 +65,17 @@ public class ItemController implements IApplication {
 
     public void actualizarTiempo(){
         AnimationTimer timer = new AnimationTimer() {
-            LocalDateTime fechaTerminacion = anuncio.getFechaTerminacion();
-            final LocalDateTime fechaPublicacion = anuncio.getFechaPublicacion();
-            int minutos = 4;
-            int segundos = 60;
             @Override
             public void handle(long tiempoActual) {
-
-
-                if(segundos > 0){
-                    segundos = fechaPublicacion.getSecond() - fechaTerminacion.getSecond() ;
-                    fechaTerminacion = fechaTerminacion.minusNanos(10000000);
-                }else if(minutos >0){
-                    -- minutos;
-                    segundos = 60;
-                }
-                System.out.println("Tiempo restante "+minutos+" minutos "+segundos+" segundos");
-                lblTiempo.setText("Tiempo restante "+minutos+" minutos "+segundos+" segundos");
+                //con la fecha de terminacion del anuncio se le resta 1000000 para que se actualice cada segundo
+                //a su vez se le resta la fecha actual para obtener el tiempo restante
+                //se cambia el texto de lblTiempo para mostrar el tiempo restante en minutos y segundos
+                LocalDateTime fechaActual = LocalDateTime.now();
+                LocalDateTime fechaTerminacion = anuncio.getFechaTerminacion();
+                long tiempoRestante = fechaTerminacion.toEpochSecond(Utils.ZONE_OFFSET) - fechaActual.toEpochSecond(Utils.ZONE_OFFSET);
+                segundos = (int) (tiempoRestante % 60);
+                minutos = (int) ((tiempoRestante / 60) % 60);
+                lblTiempo.setText("Tiempo restante "+minutos+" minutos "+segundos +" segundos");
             }
         };
 

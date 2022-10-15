@@ -34,7 +34,7 @@
                </image></ImageView>
             <HBox prefHeight="67.0" prefWidth="307.0">
                <children>
-                  <Label fx:id="lblTiempo" prefHeight="60.0" prefWidth="225.0" text="Tiempo restante 60:60:60 s">
+                  <Label fx:id="lblTiempo" prefHeight="60.0" prefWidth="256.0" text="Tiempo restante 60:60:60 s">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
@@ -47,7 +47,7 @@
                         <Image url="@../resources/small_black.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="40.0" top="10.0" />
+                        <Insets top="10.0" />
                      </HBox.margin>
                   </ImageView>
                </children>
