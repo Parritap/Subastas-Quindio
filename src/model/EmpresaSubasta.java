@@ -3,10 +3,8 @@ package model;
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -71,5 +69,9 @@ public class EmpresaSubasta implements Runnable, Serializable {
 
     public void actualizarUsuario(Usuario clienteActivo, Usuario usuario) throws LecturaException {
         iUsuario.actualizar(clienteActivo.getId(), usuario);
+    }
+
+    public void addAnuncio(Anuncio anuncio) throws CRUDExceptions {
+        iAnuncio.add(anuncio);
     }
 }

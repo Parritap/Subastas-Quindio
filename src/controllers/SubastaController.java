@@ -61,30 +61,6 @@ public class SubastaController implements IApplication, Inicializable {
     }
 
     /**
-     * Metodo que permite cargar algunos componentes necesarios antes de
-     * mostrar la ventana
-     */
-    @FXML
-    public void initialize() {
-        //divido el metodo en otro para evitar acoplamiento
-        inicializar();
-
-    }
-
-    /**
-     * Contiene lo necesario para que los anuncios se puedan mostrar
-     */
-    private void inicializar() {
-        //obtengo la lista de anuncios disponibles en la empresa
-        this.listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios());
-        //si existe al menos un anuncio selecciono el primero como anuncio por defecto
-        //para ser mostrado en la barra lateral
-        if (this.listaAnuncios.size() > 0)this.loadFirstAd(this.listaAnuncios.get(0));
-        //metodo que permite recorrer los anuncios y cargarlos en el pane scroll
-        cargarAnuncioAlScroll();
-    }
-
-    /**
      * Metodo que recorre la lista de anuncios y los carga al pane scroll
      */
     private void cargarAnuncioAlScroll() {
@@ -191,5 +167,17 @@ public class SubastaController implements IApplication, Inicializable {
     }
 
     @Override
-    public void inicializarComponentes() {}
+    public void inicializarComponentes() {
+        //obtengo la lista de anuncios disponibles en la empresa
+        this.listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios());
+        System.out.println("total anuncio " + this.listaAnuncios.size());
+        for (Anuncio listaAnuncio : this.listaAnuncios) {
+            System.out.println(listaAnuncio.toString());
+        }
+        //si existe al menos un anuncio selecciono el primero como anuncio por defecto
+        //para ser mostrado en la barra lateral
+        if (this.listaAnuncios.size() > 0)this.loadFirstAd(this.listaAnuncios.get(0));
+        //metodo que permite recorrer los anuncios y cargarlos en el pane scroll
+        cargarAnuncioAlScroll();
+    }
 }

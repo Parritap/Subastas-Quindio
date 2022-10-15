@@ -13,9 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
-import model.EmpresaSubasta;
-import model.ModelFactoryController;
-import model.Usuario;
+import model.*;
 import persistencia.Persistencia;
 import utilities.Utils;
 import java.io.IOException;
@@ -61,6 +59,8 @@ public class App extends Application {
         Parent root = loader.load();
         IApplication frameInicialController = loader.getController();
         frameInicialController.setApplication(this);
+        Inicializable inicializableController = (Inicializable) frameInicialController;
+        inicializableController.inicializarComponentes();
         Scene scene = new Scene(root);
         this.stage = stage;
         stage.setScene(scene);
@@ -84,14 +84,26 @@ public class App extends Application {
      * APPLICATION NECESITE
      */
     private void inicializarApp() throws CRUDExceptions {
+
         //El singleton crea la instancia de Empresa
         //empresaSubasta = ModelFactoryController.getInstance();
-        try {
+        /*try {
             ModelFactoryController.deserializarEmpresa();
         }
         catch(CRUDExceptions e){
             empresaSubasta = new EmpresaSubasta();
-        }
+
+        }*/
+        empresaSubasta = new EmpresaSubasta();
+        Usuario usuario = new Usuario("Alejandro Arias", 20, "1209283", "alejandro@gmail.com", "cra 20 cll 12", "324334565", "1234Jose");
+        Producto producto = new Producto("Popcorn", "Son de mantequilla");
+        Anuncio anuncio = new Anuncio("Vendo popCorn", Utils.obtenerBytesImagen(), 300.0);
+        anuncio.setProducto(producto);
+        anuncio.setUsuario(usuario);
+        usuario.addAnuncio(anuncio);
+        empresaSubasta.addAnuncio(anuncio);
+        clienteActivo = usuario;
+        empresaSubasta.crearUsuario(usuario);
     }
 
 

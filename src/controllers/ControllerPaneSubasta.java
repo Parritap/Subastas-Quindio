@@ -78,6 +78,8 @@ public class ControllerPaneSubasta implements IApplication, Inicializable {
         }else if (cargarCamposTextos()) {
             Producto producto = new Producto(nombreProducto, descripcion);
             Anuncio anuncio = new Anuncio(tituloAnuncio, bytesImg, valorInicialAnuncio);
+            anuncio.setProducto(producto);
+            application.getClienteActivo().addAnuncio(anuncio);
             try {
                 ModelFactoryController.crearAnuncio(anuncio, producto, application.getClienteActivo());
                 application.abrirAlerta("Anuncio creado correctamente");
