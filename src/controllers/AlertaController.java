@@ -2,11 +2,12 @@ package controllers;
 
 import application.App;
 import interfaces.IApplication;
+import interfaces.Inicializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class AlertaController implements IApplication {
+public class AlertaController implements IApplication, Inicializable {
 
     private App application;
 
@@ -49,4 +50,8 @@ public class AlertaController implements IApplication {
         this.application = application;
     }
 
+    @Override
+    public void inicializarComponentes() {
+
+    }
 }

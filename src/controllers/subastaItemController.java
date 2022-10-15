@@ -2,6 +2,7 @@ package controllers;
 
 import application.App;
 import interfaces.IApplication;
+import interfaces.Inicializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import lombok.Getter;
@@ -9,7 +10,7 @@ import lombok.Setter;
 import model.Anuncio;
 @Getter
 @Setter
-public class subastaItemController implements IApplication {
+public class subastaItemController implements IApplication, Inicializable {
 
     private App application;
 
@@ -51,4 +52,7 @@ public class subastaItemController implements IApplication {
     public void setApplication(App application) {
         this.application = application;
     }
+
+    @Override
+    public void inicializarComponentes() {}
 }

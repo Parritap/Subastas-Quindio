@@ -2,6 +2,7 @@ package model;
 
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
+import exceptions.LecturaException;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -66,5 +67,9 @@ public class EmpresaSubasta implements Runnable, Serializable {
         anuncio.setProducto(producto);
         anuncio.setUsuario(clienteActivo);
         iAnuncio.add(anuncio);
+    }
+
+    public void actualizarUsuario(Usuario clienteActivo, Usuario usuario) throws LecturaException {
+        iUsuario.actualizar(clienteActivo.getId(), usuario);
     }
 }

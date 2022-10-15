@@ -3,6 +3,7 @@ package controllers;
 import application.App;
 import exceptions.CRUDExceptions;
 import interfaces.IApplication;
+import interfaces.Inicializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -16,7 +17,7 @@ import utilities.Utils;
 
 import java.io.ByteArrayInputStream;
 
-public class ControllerPaneSubasta implements IApplication {
+public class ControllerPaneSubasta implements IApplication, Inicializable {
 
 
     private App application;
@@ -142,4 +143,6 @@ public class ControllerPaneSubasta implements IApplication {
         this.application = application;
     }
 
+    @Override
+    public void inicializarComponentes() {}
 }

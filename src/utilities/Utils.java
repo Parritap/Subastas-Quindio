@@ -12,7 +12,7 @@ import java.time.ZoneOffset;
 public class Utils {
 
 
-    public static final ZoneOffset ZONE_OFFSET = OffsetDateTime.now().getOffset();
+
 
     /**DEVUELVE TRUE SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS
      * EN LOS DEMAS ARGUMENTOS
@@ -55,6 +55,10 @@ public class Utils {
     public static final String corazonLleno = "/resources/small_filled.png";
     //Url del fxml de alerta
     public static final String frameAlerta = "../view/Alerta.fxml";
+    //Variable que contiene la zona horaria
+    public static final ZoneOffset ZONE_OFFSET = OffsetDateTime.now().getOffset();
+    //Url del nuevo pane de crearCuenta
+    public static final String crearCuente = "../view/CrearCuenta.fxml";
 
     /**
      * Metodo que permite abrir el FileChooser

@@ -1,8 +1,10 @@
 package application;
 
 import controllers.AlertaController;
+import controllers.CuentaController;
 import exceptions.CRUDExceptions;
 import interfaces.IApplication;
+import interfaces.Inicializable;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,7 +36,7 @@ public class App extends Application {
     private Stage stageAlerta;
     //Cliente activo es una variable que me identifica si un cliente ya ha iniciado sesión en la app
     private Usuario clienteActivo;
-
+    private CuentaController cuentaController;
     /**
      * Main
      * @param args args
@@ -108,6 +110,8 @@ public class App extends Application {
             Scene scene = new Scene(root);
             IApplication controller = loader.getController();
             controller.setApplication(this);
+            Inicializable controllerInicializable = (Inicializable) controller;
+            controllerInicializable.inicializarComponentes();
             this.stage.setScene(scene);
             stage.setFullScreen(true);
             stage.setFullScreenExitHint("");
@@ -128,6 +132,8 @@ public class App extends Application {
             AnchorPane root = loader.load();
             IApplication controller = loader.getController();
             controller.setApplication(this);
+            Inicializable controllerInicializable = (Inicializable) controller;
+            controllerInicializable.inicializarComponentes();
             return root;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -156,10 +162,19 @@ public class App extends Application {
         }
     }
 
+    public void setCuentaController(CuentaController cuentaController){
+        this.cuentaController = cuentaController;
+    }
+
+    public CuentaController getCuentaController(){
+        return cuentaController;
+    }
     /**
      * Metodo que cierra la alerta con el mensaje
      */
     public void cerrarAlerta() {
         stageAlerta.close();
     }
+
+
 }

@@ -2,6 +2,7 @@ package controllers;
 
 import application.App;
 import interfaces.IApplication;
+import interfaces.Inicializable;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -17,7 +18,7 @@ import java.io.ByteArrayInputStream;
 import java.time.LocalDateTime;
 @Getter
 @Setter
-public class ItemController implements IApplication {
+public class ItemController implements IApplication, Inicializable {
 
     //variables globales
     @FXML
@@ -160,4 +161,6 @@ public class ItemController implements IApplication {
     }
 
 
+    @Override
+    public void inicializarComponentes() {}
 }

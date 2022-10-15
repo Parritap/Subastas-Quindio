@@ -1,19 +1,14 @@
 package model;
 
+import exceptions.LecturaException;
 import persistencia.Persistencia;
-import utilities.Utils;
-
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
-
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -23,7 +18,6 @@ public class ModelFactoryController {
 
     //VARIABLE GENERAL PARA TODA LA EMPRESA
     private static EmpresaSubasta empresaSubasta;
-    private static String rutaLogs;
     private static Integer idListaPujas=0;
     /**
      * METODO QUE DEVUELVE LA INSTANCIA DE LA EMPRESA
@@ -45,17 +39,8 @@ public class ModelFactoryController {
         Persistencia.respaldarXML();
     }
 
-    public static IUsuario getIUsuario(){
-        return getInstance().getIUsuario();
-    }
-
-    public static void agregarUsuario(Usuario ur){}
-
-
     //Los metodos getRuta... sirven para obtener las rutas
     //especificadas en el taller
-
-
 
     public static String getRutaBase(){
         return Paths.get("").toAbsolutePath().toString()+"\\src";
@@ -117,5 +102,9 @@ public class ModelFactoryController {
 
     public static void crearAnuncio(Anuncio anuncio, Producto producto, Usuario clienteActivo) throws CRUDExceptions {
         empresaSubasta.crearAnuncio(anuncio, producto, clienteActivo);
+    }
+
+    public static void actualizarUsuario(Usuario clienteActivo, Usuario usuario) throws LecturaException {
+        empresaSubasta.actualizarUsuario(clienteActivo, usuario);
     }
 }

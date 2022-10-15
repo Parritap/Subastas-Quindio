@@ -2,8 +2,9 @@ package controllers;
 
 import application.App;
 import interfaces.IApplication;
+import interfaces.Inicializable;
 
-public class controllerListadoSubastas implements IApplication {
+public class controllerListadoSubastas implements IApplication, Inicializable {
 
     private App application;
 
@@ -16,4 +17,7 @@ public class controllerListadoSubastas implements IApplication {
     public void setApplication(App application) {
 
     }
+
+    @Override
+    public void inicializarComponentes() {}
 }

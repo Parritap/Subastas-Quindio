@@ -2,6 +2,7 @@ package controllers;
 
 import application.App;
 import interfaces.IApplication;
+import interfaces.Inicializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
  * que se muestra en la App
  * @author alejandroarias
  */
-public class SubastaController implements IApplication{
+public class SubastaController implements IApplication, Inicializable {
 
     //Variables globales
     private App application;
@@ -188,4 +189,7 @@ public class SubastaController implements IApplication{
     public void actualizarAnuncios() {
         cargarAnuncioAlScroll();
     }
+
+    @Override
+    public void inicializarComponentes() {}
 }
