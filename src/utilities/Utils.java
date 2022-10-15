@@ -39,6 +39,8 @@ public class Utils {
 
     //url del frame inicial donde se ubican las subastas
     public static final String frameInicio = "../view/Subastas.fxml";
+    //Url de los item mostrados en mis subastas
+    public static final String SUBASTA_ITEM = "../view/subastaItem.fxml";
     //url del frame del panel de cuenta
     public static final String frameCuenta = "../view/Cuenta.fxml";
     //Url de la imagen por defecto al crear cuenta

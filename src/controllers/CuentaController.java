@@ -30,6 +30,8 @@ public class CuentaController implements IApplication, Inicializable {
     private Button btnHacerSubasta;
     @FXML
     private Button btnListadoSubasta;
+    @FXML
+    private Button btnCerrarSesion;
 
     /**
      * Cambia la ventana al panel de subasta

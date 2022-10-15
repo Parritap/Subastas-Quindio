@@ -8,6 +8,10 @@ import javafx.scene.control.Label;
 import lombok.Getter;
 import lombok.Setter;
 import model.Anuncio;
+
+import java.text.DateFormat;
+import java.time.format.DateTimeFormatter;
+
 @Getter
 @Setter
 public class subastaItemController implements IApplication, Inicializable {
@@ -32,6 +36,8 @@ public class subastaItemController implements IApplication, Inicializable {
     @FXML
     private Label lblNameAnuncio;
 
+    private Anuncio anuncio;
+
     public void setData(Anuncio anuncio){
         lblNameAnuncio.setText(anuncio.getTitulo());
         lblFechaPublicado.setText(String.valueOf(anuncio.getFechaPublicacion()));
@@ -54,5 +60,13 @@ public class subastaItemController implements IApplication, Inicializable {
     }
 
     @Override
-    public void inicializarComponentes() {}
+    public void inicializarComponentes() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        lblNameAnuncio.setText(anuncio.getTitulo());
+        lblNomProducto.setText((anuncio.getProducto().getNombre()));
+        lblFechaPublicado.setText(anuncio.getFechaPublicacion().format(formatter));
+        lblValorInicial.setText("$"+anuncio.getValorInicial());
+        lblValorMasAlto.setText("$"+anuncio.getValorMasAlto());
+        lblTotalPujas.setText(anuncio.getTotalPujas());
+    }
 }
