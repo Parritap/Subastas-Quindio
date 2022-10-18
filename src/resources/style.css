@@ -215,3 +215,8 @@
 .spinner .decrement-arrow-button .decrement-arrow {
     -fx-background-color: white;
 }
+
+.textFieldSubasta{
+    -fx-background-color: Transparent;
+    -fx-text-fill: White;
+}

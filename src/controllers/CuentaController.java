@@ -51,6 +51,8 @@ public class CuentaController implements IApplication, Inicializable {
         cargarPanes();
         paneCrearCuenta.setVisible(false);
         paneRealizarSubasta.setVisible(false);
+        borderPane.getCenter().setTranslateY(-100);
+        borderPane.getCenter().setTranslateX(-80);
         borderPane.setCenter(paneListadoSubasta);
         paneListadoSubasta.setVisible(true);
     }
@@ -72,16 +74,12 @@ public class CuentaController implements IApplication, Inicializable {
     void paneMyAccount(ActionEvent ignoredEvent) {
         cargarPanes();
         borderPane.setCenter(paneCrearCuenta);
+        borderPane.getCenter().setTranslateX(100);
         paneCrearCuenta.setVisible(true);
         paneRealizarSubasta.setVisible(false);
         paneListadoSubasta.setVisible(false);
     }
 
-    /**
-     * Inicializa los nodos de la GUI
-     */
-    @FXML
-    void initialize() {}
     /**
      * Metodo que carga el pane de realizar la subasta
      * @param event generado al hacer clic
@@ -92,6 +90,8 @@ public class CuentaController implements IApplication, Inicializable {
         paneCrearCuenta.setVisible(false);
         paneListadoSubasta.setVisible(false);
         borderPane.setCenter(paneRealizarSubasta);
+        borderPane.getCenter().setTranslateY(50);
+        borderPane.getCenter().setTranslateX(100);
         paneRealizarSubasta.setVisible(true);
     }
 
@@ -113,6 +113,7 @@ public class CuentaController implements IApplication, Inicializable {
         application.setCuentaController(this);
         cargarPanes();
         borderPane.setCenter(paneCrearCuenta);
+        borderPane.getCenter().setTranslateX(100);
         if(application.getClienteActivo() == null){
             btnHacerSubasta.setVisible(false);
             btnListadoSubasta.setVisible(false);

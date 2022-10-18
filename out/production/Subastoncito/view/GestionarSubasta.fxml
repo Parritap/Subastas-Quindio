@@ -9,85 +9,80 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="785.0" prefWidth="836.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ControllerPaneSubasta">
+<AnchorPane prefHeight="833.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ControllerPaneSubasta">
    <children>
-      <BorderPane layoutX="25.0" layoutY="35.0" prefHeight="809.0" prefWidth="854.0">
-         <center>
-            <AnchorPane prefHeight="708.0" prefWidth="833.0" styleClass="stylePane" stylesheets="@../resources/style.css" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fitHeight="73.0" fitWidth="49.0" layoutX="556.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/clicAd.png" />
-                     </image>
-                  </ImageView>
-                  <Line endX="621.0" layoutX="115.0" layoutY="109.0" startX="-115.0" stroke="WHITE" strokeWidth="3.0" />
-                  <Label layoutX="32.0" layoutY="168.0" />
-                  <Label layoutX="133.0" layoutY="126.0" text="Detalles del producto" textFill="WHITE">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="32.0" layoutY="177.0" text="Nombre del producto:" textFill="WHITE" />
-                  <TextField fx:id="txtNameProduct" layoutX="186.0" layoutY="172.0" prefHeight="26.0" prefWidth="182.0" promptText="product Name..." styleClass="styleTextField" />
-                  <Label layoutX="32.0" layoutY="243.0" text="Descripcion del producto" textFill="WHITE" />
-                  <TextArea fx:id="txtDescripcionProducto" layoutX="32.0" layoutY="283.0" prefHeight="107.0" prefWidth="347.0" promptText="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. " style="-fx-background-color: #B0B0B0;" styleClass="styleTextArea" />
-                  <Line endX="-115.5" endY="143.5" layoutX="531.0" layoutY="285.0" startX="-115.5" startY="-174.5" stroke="WHITE" strokeWidth="2.0" />
-                  <Line endX="646.5" layoutX="91.0" layoutY="430.0" startX="-91.0" stroke="WHITE" strokeWidth="2.0" />
-                  <Label layoutX="524.0" layoutY="127.0" prefHeight="15.0" prefWidth="107.0" text="Detalles del anuncio" textFill="WHITE">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="438.0" layoutY="161.0" text="Titulo" textFill="WHITE" />
-                  <TextField fx:id="txtTitleAnuncio" layoutX="517.0" layoutY="156.0" promptText="Ad title..." styleClass="styleTextField" />
-                  <Label layoutX="164.0" layoutY="39.0" text="Detalles generales" textFill="WHITE">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="imgAnuncio" fitHeight="119.0" fitWidth="176.0" layoutX="501.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button layoutX="521.0" layoutY="364.0" mnemonicParsing="false" onAction="#cargarImagen" styleClass="btnActualizarCuenta" text="Cargar una imagen">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Label layoutX="139.0" layoutY="464.0" text="Valor inicial del anuncio" textFill="WHITE">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtValorAnuncio" layoutX="444.0" layoutY="462.0" prefHeight="27.0" prefWidth="251.0" promptText="1234567" styleClass="styleTextField" />
-                  <Button layoutX="324.0" layoutY="529.0" mnemonicParsing="false" onAction="#crearAnuncio" styleClass="btnCrearCuenta" text="Crear mi Anuncio">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-               </children>
-            </AnchorPane>
-         </center>
+      <AnchorPane layoutX="14.0" layoutY="190.0" prefHeight="584.0" prefWidth="791.0" style="-fx-background-color: #252525; -fx-background-radius: 30;">
+         <children>
+            <Line endX="709.0" layoutX="101.0" layoutY="51.0" startX="-100.0" stroke="WHITE" />
+            <Button layoutX="341.0" layoutY="527.0" mnemonicParsing="false" onAction="#crearAnuncio" styleClass="btnCrearCuenta" stylesheets="@../resources/style.css" text="Crear mi Anuncio">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="381.0" layoutY="447.0" text="Valor inicial del anuncio" textFill="WHITE" />
+            <TextField fx:id="txtValorAnuncio" layoutX="534.0" layoutY="438.0" prefHeight="27.0" prefWidth="251.0" promptText="1234567" styleClass="textFieldSubasta" stylesheets="@../resources/style.css" />
+            <TextField fx:id="txtTitleAnuncio" layoutX="147.0" layoutY="443.0" promptText="Ad title..." styleClass="textFieldSubasta" stylesheets="@../resources/style.css" />
+            <Label layoutX="51.0" layoutY="369.0" text="Detalles del anuncio" textFill="WHITE" />
+            <Label layoutX="26.0" layoutY="326.0" prefHeight="71.0" prefWidth="13.0" text="." textFill="WHITE">
+               <font>
+                  <Font size="58.0" />
+               </font>
+            </Label>
+            <Line endX="709.0" layoutX="100.0" layoutY="403.0" startX="-100.0" stroke="WHITE" />
+            <Label layoutX="54.0" layoutY="449.0" text="Titulo" textFill="WHITE" />
+            <TextArea fx:id="txtDescripcionProducto" layoutX="234.0" layoutY="223.0" prefHeight="71.0" prefWidth="281.0" promptText="Escriba aquí de que se trata su producto..." styleClass="textFieldSubasta" stylesheets="@../resources/style.css" />
+            <Label layoutX="54.0" layoutY="249.0" text="Descripcion del producto" textFill="WHITE" />
+            <Label layoutX="51.0" layoutY="115.0" prefHeight="17.0" prefWidth="148.0" text="Nombre del producto:" textFill="WHITE" />
+            <Line endX="192.5" layoutX="335.0" layoutY="132.0" startX="-100.0" stroke="WHITE" />
+            <Line endX="100.0" layoutX="240.0" layoutY="466.0" startX="-100.0" stroke="WHITE" />
+            <Line endX="100.0" layoutX="632.0" layoutY="463.0" startX="-100.0" stroke="WHITE" />
+         </children>
+      </AnchorPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="192.0" layoutX="596.0" layoutY="271.0" stroke="WHITE" strokeType="INSIDE" style="-fx-arc-height: 40; -fx-arc-width: 40;" width="199.0" />
+      <Label layoutX="58.0" layoutY="14.0" prefHeight="43.0" prefWidth="694.0" style="-fx-background-color: #252525; -fx-background-radius: 30;" text="Crear mi anuncio" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
          <padding>
-            <Insets bottom="50.0" left="70.0" right="70.0" top="50.0" />
+            <Insets left="300.0" />
          </padding>
-         <top>
-            <AnchorPane prefHeight="57.0" prefWidth="739.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label text="Crear mi anuncio" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="297.0" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <padding>
-                        <Insets left="300.0" />
-                     </padding>
-                  </Label>
-                  <Line endX="266.5" layoutX="360.0" layoutY="29.0" startX="-233.5" strokeWidth="2.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="125.5" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="28.0" />
-               </children>
-               <BorderPane.margin>
-                  <Insets bottom="30.0" />
-               </BorderPane.margin>
-            </AnchorPane>
-         </top>
-      </BorderPane>
+      </Label>
+      <Line endX="709.0" layoutX="127.0" layoutY="149.0" startX="-127.0" stroke="#252525" strokeWidth="3.0" />
+      <Label layoutX="55.0" layoutY="255.0" />
+      <Label layoutX="70.0" layoutY="190.0" text="Detalles del producto" textFill="WHITE" />
+      <TextField fx:id="txtNameProduct" layoutX="251.0" layoutY="279.0" prefHeight="26.0" prefWidth="281.0" promptText="Product Name..." styleClass="textFieldSubasta" stylesheets="@../resources/style.css">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="39.0" layoutY="109.0" text="Detalles generales" textFill="#252525">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgAnuncio" fitHeight="179.0" fitWidth="201.0" layoutX="608.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/efectivo.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="641.0" layoutY="508.0" mnemonicParsing="false" onAction="#cargarImagen" styleClass="btnActualizarCuenta" stylesheets="@../resources/style.css" text="Cargar una imagen">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="49.0" layoutY="146.0" prefHeight="53.0" prefWidth="13.0" text="." textFill="WHITE">
+         <font>
+            <Font size="58.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="67.0" text=".">
+         <font>
+            <Font size="62.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
