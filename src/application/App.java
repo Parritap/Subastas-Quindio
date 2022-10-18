@@ -85,15 +85,6 @@ public class App extends Application {
      */
     private void inicializarApp() throws CRUDExceptions {
 
-        //El singleton crea la instancia de Empresa
-        //empresaSubasta = ModelFactoryController.getInstance();
-        /*try {
-            ModelFactoryController.deserializarEmpresa();
-        }
-        catch(CRUDExceptions e){
-            empresaSubasta = new EmpresaSubasta();
-
-        }*/
         empresaSubasta = ModelFactoryController.getInstance();
         Usuario usuario = new Usuario("Alejandro Arias", 20, "1209283", "alejandro@gmail.com", "cra 20 cll 12", "324334565", "1234Jose");
         Producto producto = new Producto("Popcorn", "Son de mantequilla");

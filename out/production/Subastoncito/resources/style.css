@@ -220,3 +220,8 @@
     -fx-background-color: Transparent;
     -fx-text-fill: White;
 }
+.barraScroll:vertical{
+    /*se le cambia el color de la barra de scroll*/
+    -fx-background: #252525;
+    
+}

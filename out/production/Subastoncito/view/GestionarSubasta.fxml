@@ -53,8 +53,8 @@
       </Label>
       <Line endX="709.0" layoutX="127.0" layoutY="149.0" startX="-127.0" stroke="#252525" strokeWidth="3.0" />
       <Label layoutX="55.0" layoutY="255.0" />
-      <Label layoutX="70.0" layoutY="190.0" text="Detalles del producto" textFill="WHITE" />
-      <TextField fx:id="txtNameProduct" layoutX="251.0" layoutY="279.0" prefHeight="26.0" prefWidth="281.0" promptText="Product Name..." styleClass="textFieldSubasta" stylesheets="@../resources/style.css">
+      <Label layoutX="70.0" layoutY="206.0" text="Detalles del producto" textFill="WHITE" />
+      <TextField fx:id="txtNameProduct" layoutX="251.0" layoutY="289.0" prefHeight="26.0" prefWidth="281.0" promptText="Product Name..." styleClass="textFieldSubasta" stylesheets="@../resources/style.css">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -74,7 +74,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="49.0" layoutY="146.0" prefHeight="53.0" prefWidth="13.0" text="." textFill="WHITE">
+      <Label layoutX="49.0" layoutY="159.0" prefHeight="53.0" prefWidth="13.0" text="." textFill="WHITE">
          <font>
             <Font size="58.0" />
          </font>
