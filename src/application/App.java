@@ -17,6 +17,8 @@ import model.*;
 import persistencia.Persistencia;
 import utilities.Utils;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
 
 @Getter
@@ -83,7 +85,7 @@ public class App extends Application {
      * METODO ENCARGADO DE INICIALIZAR  LO QUE LA
      * APPLICATION NECESITE
      */
-    private void inicializarApp() throws CRUDExceptions {
+    private void inicializarApp() throws CRUDExceptions, IOException {
 
         empresaSubasta = ModelFactoryController.getInstance();
         Usuario usuario = new Usuario("Alejandro Arias", 20, "1209283", "alejandro@gmail.com", "cra 20 cll 12", "324334565", "1234Jose");
