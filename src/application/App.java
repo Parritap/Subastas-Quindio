@@ -88,6 +88,7 @@ public class App extends Application {
 
         empresaSubasta = ModelFactoryController.getInstance();
         Usuario usuario = new Usuario("Alejandro Arias", 20, "1209283", "alejandro@gmail.com", "cra 20 cll 12", "324334565", "1234Jose");
+        Usuario admin  = new Usuario("Administrador", 20, "000000", "admin", "cra 20 cll 12", "324334565", "admin");
         Producto producto = new Producto("Popcorn", "Son de mantequilla");
         Anuncio anuncio = new Anuncio("Vendo popCorn", Utils.obtenerBytesImagen(), 300.0);
         anuncio.setProducto(producto);
@@ -95,6 +96,7 @@ public class App extends Application {
         usuario.addAnuncio(anuncio);
         empresaSubasta.addAnuncio(anuncio);
         empresaSubasta.crearUsuario(usuario);
+        empresaSubasta.crearUsuario(admin);
     }
 
 
