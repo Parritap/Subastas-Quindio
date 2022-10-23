@@ -180,4 +180,9 @@ public class SubastaController implements IApplication, Inicializable {
         //metodo que permite recorrer los anuncios y cargarlos en el pane scroll
         cargarAnuncioAlScroll();
     }
+
+    @FXML
+    void iniciarSesion(ActionEvent event) {
+        application.loadScene(Utils.iniciarSesion);
+    }
 }

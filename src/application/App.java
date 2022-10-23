@@ -3,6 +3,7 @@ package application;
 import controllers.AlertaController;
 import controllers.CuentaController;
 import exceptions.CRUDExceptions;
+import exceptions.LecturaException;
 import interfaces.IApplication;
 import interfaces.Inicializable;
 import javafx.application.Application;
@@ -67,7 +68,7 @@ public class App extends Application {
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
         stage.minWidthProperty();
-        stage.setOnCloseRequest(event->{
+        stage.setOnCloseRequest(event->{ //Este método serializa la app al cerrar la aplicación.
             try {
                 Persistencia.serializarEmpresaUnificado();
             }
@@ -93,11 +94,8 @@ public class App extends Application {
         anuncio.setUsuario(usuario);
         usuario.addAnuncio(anuncio);
         empresaSubasta.addAnuncio(anuncio);
-        clienteActivo = usuario;
         empresaSubasta.crearUsuario(usuario);
     }
-
-
 
 
     /**
@@ -180,4 +178,24 @@ public class App extends Application {
     }
 
 
+    /**
+     * Método que verífica las credenciales de un usuario y de ser correctas cambia el usuario activo.
+     * @param email el email del usuario
+     * @param contrasenia la contraseña del usuario
+     * @throws LecturaException De haber algún error en las credenciales.
+     */
+    public void iniciarSesion(String email, String contrasenia) throws LecturaException {
+        //"Handler" dado que handle es "lidiar con algo".
+        IUsuario handler = empresaSubasta.getIUsuario();
+       Usuario usuario = handler.buscarPorCorreo(email);
+
+       if(!handler.verificarContrasenia(usuario, contrasenia)){
+           throw new LecturaException ("La contraseña es incorrecta", "La contraseña pasada no es valida");
+       }
+         clienteActivo = usuario;
+
+       loadScene(Utils.frameInicio);
+
+
+    }
 }

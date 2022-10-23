@@ -276,7 +276,8 @@
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor></ComboBox>
-               <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
+               <Pane prefHeight="66.0" prefWidth="296.0" HBox.hgrow="ALWAYS" />
+               <Button mnemonicParsing="false" onAction="#iniciarSesion" styleClass="buttonAccount" stylesheets="@../resources/style.css" text="Log in " />
                <Button mnemonicParsing="false" onAction="#loadAccount" styleClass="buttonAccount" stylesheets="@../resources/style.css" text="My Account" />
                <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@../resources/ic_cart.png" />

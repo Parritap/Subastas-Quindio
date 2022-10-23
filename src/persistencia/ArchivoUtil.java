@@ -130,7 +130,7 @@ public class ArchivoUtil {
     }
 
 
-    /**Verifica que una ruta exista si no es asi, la crea
+    /**Verifica que una ruta exista, si no es asi, la crea
      * @param ruta ruta que buscamos
      * @throws IOException
      * */

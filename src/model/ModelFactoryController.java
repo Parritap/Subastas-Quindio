@@ -16,6 +16,10 @@ import java.util.Objects;
  */
 public class ModelFactoryController {
 
+    public static void main(String[] args) {
+        System.out.println(getRutaRespaldo("holaMundo.txt"));
+    }
+
     //VARIABLE GENERAL PARA TODA LA EMPRESA
     private static EmpresaSubasta empresaSubasta;
     private static Integer idListaPujas=0;
@@ -42,6 +46,10 @@ public class ModelFactoryController {
     //Los metodos getRuta... sirven para obtener las rutas
     //especificadas en el taller
 
+    /**
+     * Método que Retorna el siguiente string: C:\Users\esteb\IdeaProjects\Subastoncito\src
+     * @return "C:\Users\esteb\IdeaProjects\Subastoncito\src".
+     */
     public static String getRutaBase(){
         return Paths.get("").toAbsolutePath().toString()+"\\src";
     }
