@@ -62,11 +62,19 @@ public class ModelFactoryController {
         return getRutaBase()+"\\persistencia\\exceptions\\registroExcepciones.log";
     }
 
+    public static String getRutaLogAcciones (){
+        return getRutaBase()+"\\persistencia\\exceptions\\registroAcciones.log";
+    }
+
     /**devuelve la ruta en la que se guarda el log
      * @param nombreArchivo nombre del archivo en el que se guarda el log
      * @return ruta en la que se va a guardar el log*/
     public static String getRutaLogs(String nombreArchivo){
         return getRutaBase()+"\\persistencia\\log\\"+nombreArchivo;
+    }
+
+    public static String getRutaRegistroAcciones (){
+        return getRutaBase()+"\\persistencia\\log\\Acciones.log";
     }
 
     public static String getRutaObjetos(String nombreArchivo){
