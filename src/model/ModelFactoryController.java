@@ -1,7 +1,7 @@
 package model;
 
 import exceptions.LecturaException;
-import persistencia.Persistencia;
+import persistencia.clases.Persistencia;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Paths;
