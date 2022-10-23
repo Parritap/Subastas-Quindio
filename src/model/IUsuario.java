@@ -59,6 +59,21 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
         throw new LecturaException("No se encontró el usuario con ese ID", "usuario "+id+" no encontrado");
     }
 
+    /**
+     * Método que permite buscar un usuario por su correo.
+     * @param correo correo del usuario a buscar.
+     * @return Usuario con el correo dado.
+     * @throws LecturaException Si no se encuentra el usuario.
+     */
+    public Usuario buscarPorCorreo(String correo) throws LecturaException {
+        for (Usuario usuarioAux : listaUsuarios) {
+            if (usuarioAux.compararCorreo(correo)) {
+                return usuarioAux;
+            }
+        }
+        throw new LecturaException("No se encontró el usuario con ese correo", "usuario "+correo+" no encontrado");
+    }
+
     public Usuario buscarUsuario(String nombre, String password, String correo) throws LecturaException {
         for(Usuario usr: listaUsuarios){
             if(usr.getName().equals(nombre)){
@@ -199,5 +214,15 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
             if (aux.equals(usuario)) return true;
         }
         return false;
+    }
+
+    /**
+     * Método que verífica si la contraseña pasada como argumento de un usuario coincide con la del mismo.
+     * @param usuario el usuario a verificar
+     * @param constrasenia la contraseña a verificar
+     * @return True de ser correcta la contraseña || False de lo contrario.
+     */
+    public boolean verificarContrasenia (Usuario usuario, String constrasenia){
+        return usuario.getPassword().equals(constrasenia);
     }
 }

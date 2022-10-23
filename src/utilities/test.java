@@ -1,10 +1,5 @@
 package utilities;
 
-import model.ModelFactoryController;
-import model.Transaccion;
-import persistencia.ArchivoUtil;
-import persistencia.Persistencia;
-
 public class test {
 
     public static void main(String[] args) {

@@ -33,7 +33,12 @@ public class controllerListadoSubastas implements IApplication, Inicializable {
 
     @Override
     public void inicializarComponentes() {
-        ArrayList<Anuncio> listadoAnuncio = application.getClienteActivo().getListaAnuncios();
+        ArrayList<Anuncio> listadoAnuncio = new ArrayList<>();
+        try {
+            listadoAnuncio = application.getClienteActivo().getListaAnuncios();
+        } catch (Exception e) {
+            //Do nothing.
+        }
         for (Anuncio anuncio : listadoAnuncio) {
             for (int i = 0; i <100 ; i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(Utils.SUBASTA_ITEM));

@@ -140,4 +140,17 @@ public class CuentaController implements IApplication, Inicializable {
         this.application=application;
     }
 
+
+
+    /**
+     * Metodo que cierra la sesión del usuario
+     * @param event generado al hacer clic en el boton cerrar sesión.
+     */
+    @FXML
+    void cerrarSesion(ActionEvent event) {
+        System.out.println("Cerrando sesión");
+        application.setClienteActivo(null);
+        application.loadScene(Utils.frameInicio);
+    }
+
 }

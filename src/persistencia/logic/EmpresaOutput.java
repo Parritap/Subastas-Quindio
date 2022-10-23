@@ -1,4 +1,4 @@
-package persistencia;
+package persistencia.logic;
 
 import model.EmpresaSubasta;
 

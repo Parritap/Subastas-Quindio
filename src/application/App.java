@@ -3,6 +3,7 @@ package application;
 import controllers.AlertaController;
 import controllers.CuentaController;
 import exceptions.CRUDExceptions;
+import exceptions.LecturaException;
 import interfaces.IApplication;
 import interfaces.Inicializable;
 import javafx.application.Application;
@@ -14,8 +15,10 @@ import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
 import model.*;
-import persistencia.Persistencia;
+import persistencia.logic.ArchivoUtil;
+import persistencia.logic.Persistencia;
 import utilities.Utils;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -87,14 +90,16 @@ public class App extends Application {
 
         empresaSubasta = ModelFactoryController.getInstance();
         Usuario usuario = new Usuario("Alejandro Arias", 20, "1209283", "alejandro@gmail.com", "cra 20 cll 12", "324334565", "1234Jose");
+        Usuario admin = new Usuario("Administrador", 20, "000000", "admin", "cra 20 cll 12", "324334565", "admin");
         Producto producto = new Producto("Popcorn", "Son de mantequilla");
         Anuncio anuncio = new Anuncio("Vendo popCorn", Utils.obtenerBytesImagen(), 300.0);
         anuncio.setProducto(producto);
         anuncio.setUsuario(usuario);
         usuario.addAnuncio(anuncio);
         empresaSubasta.addAnuncio(anuncio);
-        clienteActivo = usuario;
+        //clienteActivo = usuario;
         empresaSubasta.crearUsuario(usuario);
+        empresaSubasta.crearUsuario(admin);
     }
 
 
@@ -103,6 +108,7 @@ public class App extends Application {
     /**
      * Este metodo permite cambiar el scene del stage global
      * de la application
+     *
      * @param scenePath el nombre de la scene que queremos cargar
      */
     public void loadScene(String scenePath) {
@@ -126,10 +132,11 @@ public class App extends Application {
 
     /**
      * Metodo que carga un FXML y devuelve ese pane
+     *
      * @param ruta donde se encuentra el pane
      * @return el pane que se encuentra en la ruta
      */
-    public AnchorPane obtenerPane(String ruta){
+    public AnchorPane obtenerPane(String ruta) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
         try {
             AnchorPane root = loader.load();
@@ -145,9 +152,10 @@ public class App extends Application {
 
     /**
      * Metodo que abre un stage con un mensaje
+     *
      * @param mensaje el mensaje que se quiere mostrar
      */
-    public void abrirAlerta(String mensaje){
+    public void abrirAlerta(String mensaje) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameAlerta));
         try {
             AnchorPane root = loader.load();
@@ -180,4 +188,25 @@ public class App extends Application {
     }
 
 
+    /**
+     * Método que verífica las credenciales de un usuario y de ser correctas cambia el usuario activo.
+     *
+     * @param email       el email del usuario
+     * @param contrasenia la contraseña del usuario
+     * @throws LecturaException De haber algún error en las credenciales.
+     */
+    public void iniciarSesion(String email, String contrasenia) throws LecturaException {
+        //"Handler" dado que handle es "lidiar con algo".
+        IUsuario handler = empresaSubasta.getIUsuario();
+        Usuario usuario = handler.buscarPorCorreo(email);
+
+        if (!handler.verificarContrasenia(usuario, contrasenia)) {
+            throw new LecturaException("La contraseña es incorrecta", "La contraseña pasada no es valida");
+        }
+        clienteActivo = usuario;
+        ArchivoUtil.guardarRegistroLog("El usuario de nombre " + clienteActivo.getName()+ " y correo "+ usuario.getCorreo() + " ha iniciado sesión.", 1, "Inicio de sesión", ModelFactoryController.getRutaLogs("InicioSesion.log"));
+        loadScene(Utils.frameInicio);
+
+
+    }
 }

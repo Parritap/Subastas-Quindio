@@ -13,9 +13,12 @@ import javafx.scene.image.ImageView;
 import model.Anuncio;
 import model.ModelFactoryController;
 import model.Producto;
+import persistencia.logic.Persistencia;
 import utilities.Utils;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 public class ControllerPaneSubasta implements IApplication, Inicializable {
 
@@ -84,7 +87,16 @@ public class ControllerPaneSubasta implements IApplication, Inicializable {
                 ModelFactoryController.crearAnuncio(anuncio, producto, application.getClienteActivo());
                 application.abrirAlerta("Anuncio creado correctamente");
             } catch (CRUDExceptions e) {
+                Persistencia.registrarExcepcion(e, "Fallo en la creacion de anuncios", 2);
                 application.abrirAlerta(e.getMessage());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (InvocationTargetException e) {
+                throw new RuntimeException(e);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
             }
             //crear el anuncio
             //anucio.setProducto(producto)
@@ -122,6 +134,7 @@ public class ControllerPaneSubasta implements IApplication, Inicializable {
             try {
                 valorInicialAnuncio = Double.parseDouble(txtValorAnuncio.getText());
             }catch (NumberFormatException e){
+                Persistencia.registrarExcepcion(e, "Error al convertir caracter en numero", 1);
                 mensaje += "Debe ingresar un valor numerico para el precio inicial\n";
             }
         }else{

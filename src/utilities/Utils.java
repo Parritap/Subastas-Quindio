@@ -62,6 +62,8 @@ public class Utils {
     //Url del nuevo pane de crearCuenta
     public static final String crearCuente = "../view/CrearCuenta.fxml";
 
+    public static final String iniciarSesion = "../view/IniciarSesion.fxml";
+
     /**
      * Metodo que permite abrir el FileChooser
      * y elegir una imagen que será cargada y guardada en el modelo

@@ -1,7 +1,7 @@
 package model;
 
 import exceptions.LecturaException;
-import persistencia.Persistencia;
+import persistencia.logic.Persistencia;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Paths;
@@ -15,6 +15,10 @@ import java.util.Objects;
  * SINGLETON
  */
 public class ModelFactoryController {
+
+    public static void main(String[] args) {
+        System.out.println(getRutaRespaldo("holaMundo.txt"));
+    }
 
     //VARIABLE GENERAL PARA TODA LA EMPRESA
     private static EmpresaSubasta empresaSubasta;
@@ -42,8 +46,24 @@ public class ModelFactoryController {
     //Los metodos getRuta... sirven para obtener las rutas
     //especificadas en el taller
 
+    /**
+     * Método que Retorna el siguiente string: C:\Users\esteb\IdeaProjects\Subastoncito\src
+     * @return "C:\Users\esteb\IdeaProjects\Subastoncito\src".
+     */
     public static String getRutaBase(){
         return Paths.get("").toAbsolutePath().toString()+"\\src";
+    }
+
+    /**
+     * Devuelve la ruta del log de las excepciones.
+     * @return ruta de log de excepciones.
+     */
+    public static String getRutaLogException(){
+        return getRutaBase()+"\\persistencia\\exceptions\\registroExcepciones.log";
+    }
+
+    public static String getRutaLogAcciones (){
+        return getRutaBase()+"\\persistencia\\exceptions\\registroAcciones.log";
     }
 
     /**devuelve la ruta en la que se guarda el log
@@ -51,6 +71,10 @@ public class ModelFactoryController {
      * @return ruta en la que se va a guardar el log*/
     public static String getRutaLogs(String nombreArchivo){
         return getRutaBase()+"\\persistencia\\log\\"+nombreArchivo;
+    }
+
+    public static String getRutaRegistroAcciones (){
+        return getRutaBase()+"\\persistencia\\log\\Acciones.log";
     }
 
     public static String getRutaObjetos(String nombreArchivo){
@@ -94,14 +118,15 @@ public class ModelFactoryController {
         return getInstance().getListaAnuncios();
     }
 
-    public static void addUsuario(Usuario usuario) throws EscrituraException, IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public static void crearUsuario(Usuario usuario) throws EscrituraException, IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         //serializa el usuario
         Persistencia.serializarUsuario(usuario);
         empresaSubasta.crearUsuario(usuario);
     }
 
-    public static void crearAnuncio(Anuncio anuncio, Producto producto, Usuario clienteActivo) throws CRUDExceptions {
+    public static void crearAnuncio(Anuncio anuncio, Producto producto, Usuario clienteActivo) throws CRUDExceptions, IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         empresaSubasta.crearAnuncio(anuncio, producto, clienteActivo);
+        Persistencia.serializarAnuncio(anuncio);
     }
 
     public static void actualizarUsuario(Usuario clienteActivo, Usuario usuario) throws LecturaException {

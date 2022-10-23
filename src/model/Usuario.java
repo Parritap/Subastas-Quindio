@@ -71,6 +71,9 @@ public class Usuario implements Serializable {
 	 */
 	public boolean compararId(Integer id) {return this.id.compareTo(id) == 0;}
 
+
+	public boolean compararCorreo (String correo) {return this.correo.compareTo(correo) == 0;}
+
 	/**
 	 * METODO QUE PERMITE ACTUALIZAR ATRIBUTOS DE UN USUARIO SIN CAMBIAR EL
 	 * ID
