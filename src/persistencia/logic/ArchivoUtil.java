@@ -75,24 +75,23 @@ public class ArchivoUtil {
 
     }
 
-    public static void guardarRegistroLogExceptions(Exception exception, int nivel) {
+    public static void guardarRegistroLogExceptions(Exception exception, String mensaje,int nivel) {
 
         String ruta = null;
-        String message = null;
+        String exceptionStackTrace = null;
         //SI NO EXISTE LA RUTA, LA CREA
         try {
             StringWriter sw = new StringWriter(); //Estas dos líneas lo que hacen es permitir convertir el stacktrace en un String.
             PrintWriter pw = new PrintWriter(sw); //Estas dos líneas lo que hacen es permitir convertir el stacktrace en un String.
             exception.printStackTrace(pw);
 
-            message = sw.toString();
+            exceptionStackTrace = sw.toString();
 
             ArchivoUtil.crearRuta(ModelFactoryController.getRutaLogException());
             ruta = ModelFactoryController.getRutaLogException(); //obtenemos el String de la ruta del archivo log.
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String log = "";
         Logger LOGGER = Logger.getLogger("Registro de Excepcion");
         FileHandler fileHandler = null;
         cargarFechaSistema();
@@ -103,9 +102,9 @@ public class ArchivoUtil {
             LOGGER.addHandler(fileHandler);
 
             switch (nivel) {
-                case 1 -> LOGGER.log(Level.INFO, fechaSistema + "{\n" + message + "\n}");
-                case 2 -> LOGGER.log(Level.WARNING, fechaSistema + "{\n" + message + "\n}");
-                case 3 -> LOGGER.log(Level.SEVERE, fechaSistema + "{\n" + message + "\n}");
+                case 1 -> LOGGER.log(Level.INFO, fechaSistema +   " " +mensaje +"\n{\n" + exceptionStackTrace + "}");
+                case 2 -> LOGGER.log(Level.WARNING, fechaSistema +" " +mensaje +"\n{\n" + exceptionStackTrace + "}");
+                case 3 -> LOGGER.log(Level.SEVERE, fechaSistema + " " +mensaje +"\n{\n" + exceptionStackTrace + "}");
                 default -> {
                 }
             }

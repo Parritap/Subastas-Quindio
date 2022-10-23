@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import model.ModelFactoryController;
+import persistencia.logic.Persistencia;
 
 public class IniciarSesionController implements IApplication, Inicializable {
 
@@ -33,6 +34,7 @@ public class IniciarSesionController implements IApplication, Inicializable {
                 application.iniciarSesion(email, contrasenia);
             }
         } catch (LecturaException e) {
+            Persistencia.registrarExcepcion(e, "Error al iniciar sesion, credenciales incorrectas", 1);
             application.abrirAlerta("La contraseña o el email son incorrectos, por favor intente de nuevo");
         }
 

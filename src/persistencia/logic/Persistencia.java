@@ -283,10 +283,22 @@ public class Persistencia {
                 setter.invoke(obj, Persistencia.class.getDeclaredMethod("parseTo" + claseArgumento.getSimpleName(), String.class).invoke(Persistencia.class, propiedades[i]));
             }
         } catch (Exception e) {
-            ArchivoUtil.guardarRegistroLogExceptions(e, 3);
+            Persistencia.registrarExcepcion(e, "", 3);
             e.printStackTrace();
         }
 
+    }
+
+    /**
+     * Método que registra las excepciones dentro de un archivo .log junto con todo su StackTrace.
+     * El archivo log se encuentra en src/persistencia/exceptions/registroExcepciones.log
+     * En este archivo se encarga de registrar todo tipo de excepciones que se presenten en el programa.
+     * @param e Excepcion a registrar
+     * @param mensaje Mensaje relacionado a la excepcion
+     * @param nivel nivel de la excepcion.
+     */
+    public static void registrarExcepcion(Exception e, String mensaje, int nivel) {
+        ArchivoUtil.guardarRegistroLogExceptions(e, mensaje, nivel);
     }
 
 
@@ -493,6 +505,13 @@ public class Persistencia {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Este método solo debería ser usado para registrar la información de un acción, por lo que el nivel del Log será INFO.
+     */
+    public static void registrarAccion(String mensajeLog, String accion, String rutaArchivo) {
+        ArchivoUtil.guardarRegistroLog(mensajeLog, 1 , accion, rutaArchivo);
     }
 
 

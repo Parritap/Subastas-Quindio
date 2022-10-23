@@ -15,6 +15,7 @@ import javafx.scene.shape.Circle;
 import model.ModelFactoryController;
 import model.Usuario;
 import persistencia.logic.ArchivoUtil;
+import persistencia.logic.Persistencia;
 import utilities.Utils;
 import java.io.ByteArrayInputStream;
 
@@ -114,7 +115,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
             Usuario usuario = new Usuario(name, edad, cedula, correo, direccion, telefono, contrasenia);
             //el singleton agrega el usuario a la lista
             try {
-                ModelFactoryController.addUsuario(usuario);
+                ModelFactoryController.crearUsuario(usuario);
                 limpiarCamposTexto();
                 application.abrirAlerta("El usuario se agregó correctamente");
                 application.setClienteActivo(usuario);
@@ -125,6 +126,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
             } catch (EscrituraException e) {
                 //si el usuario ya existe entonces se lanza una excepcion
                 application.abrirAlerta(e.getMessage());
+                Persistencia.registrarExcepcion(e, "El usuario ya existe", 1);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
