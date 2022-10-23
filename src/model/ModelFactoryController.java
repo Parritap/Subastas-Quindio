@@ -59,7 +59,7 @@ public class ModelFactoryController {
      * @return ruta de log de excepciones.
      */
     public static String getRutaLogException(){
-        return getRutaBase()+"\\persistencia\\exceptions\\Excepciones.txt";
+        return getRutaBase()+"\\persistencia\\exceptions\\registroExcepciones.log";
     }
 
     /**devuelve la ruta en la que se guarda el log
