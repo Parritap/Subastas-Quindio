@@ -118,14 +118,15 @@ public class ModelFactoryController {
         return getInstance().getListaAnuncios();
     }
 
-    public static void addUsuario(Usuario usuario) throws EscrituraException, IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public static void crearUsuario(Usuario usuario) throws EscrituraException, IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         //serializa el usuario
         Persistencia.serializarUsuario(usuario);
         empresaSubasta.crearUsuario(usuario);
     }
 
-    public static void crearAnuncio(Anuncio anuncio, Producto producto, Usuario clienteActivo) throws CRUDExceptions {
+    public static void crearAnuncio(Anuncio anuncio, Producto producto, Usuario clienteActivo) throws CRUDExceptions, IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         empresaSubasta.crearAnuncio(anuncio, producto, clienteActivo);
+        Persistencia.serializarAnuncio(anuncio);
     }
 
     public static void actualizarUsuario(Usuario clienteActivo, Usuario usuario) throws LecturaException {
