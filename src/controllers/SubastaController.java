@@ -187,7 +187,6 @@ public class SubastaController implements IApplication, Inicializable {
         cargarAnuncioAlScroll();
 
         if(application.getClienteActivo()!=null) brn_LogIn.setVisible(false);
-
     }
 
     @FXML

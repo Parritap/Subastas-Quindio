@@ -1,11 +1,9 @@
-package persistencia;
+package persistencia.logic;
 
 import exceptions.CRUDExceptions;
 import exceptions.LecturaException;
-import javafx.util.converter.LocalDateStringConverter;
 import model.*;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -16,7 +14,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import static utilities.Utils.imprimirArreglo;
 import static utilities.Utils.isNot;
 
 public class Persistencia {
@@ -272,17 +269,22 @@ public class Persistencia {
      * @throws IOException, LecturaException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, ClassNotFoundException
      */
     public static void deserializarObj(Object obj, String props) throws IOException, LecturaException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, ClassNotFoundException {
-        ArrayList<String> objetos = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos(obj));
-        //array con los nombres de los atributos
-        String[] cabecera = objetos.get(0).split("@@");
-        //array con las propiedades de props
-        String[] propiedades = props.split("@@");
-        //quemamos todas las propiedades en obj
-        for (int i = 0; i < propiedades.length; i++) {
-            String[] nombreTipo = cabecera[i].split(":");
-            Class<?> claseArgumento = Class.forName(nombreTipo[1]);
-            Method setter = obj.getClass().getDeclaredMethod(nombreMetodo("set", nombreTipo[0]), claseArgumento);
-            setter.invoke(obj, Persistencia.class.getDeclaredMethod("parseTo" + claseArgumento.getSimpleName(), String.class).invoke(Persistencia.class, propiedades[i]));
+        try {
+            ArrayList<String> objetos = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos(obj));
+            //array con los nombres de los atributos
+            String[] cabecera = objetos.get(0).split("@@");
+            //array con las propiedades de props
+            String[] propiedades = props.split("@@");
+            //quemamos todas las propiedades en obj
+            for (int i = 0; i < propiedades.length; i++) {
+                String[] nombreTipo = cabecera[i].split(":");
+                Class<?> claseArgumento = Class.forName(nombreTipo[1]);
+                Method setter = obj.getClass().getDeclaredMethod(nombreMetodo("set", nombreTipo[0]), claseArgumento);
+                setter.invoke(obj, Persistencia.class.getDeclaredMethod("parseTo" + claseArgumento.getSimpleName(), String.class).invoke(Persistencia.class, propiedades[i]));
+            }
+        } catch (Exception e) {
+            ArchivoUtil.guardarRegistroLogExceptions(e, 3);
+            e.printStackTrace();
         }
 
     }

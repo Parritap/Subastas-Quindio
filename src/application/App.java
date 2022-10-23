@@ -15,14 +15,11 @@ import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
 import model.*;
-import persistencia.ArchivoUtil;
-import persistencia.Persistencia;
+import persistencia.logic.ArchivoUtil;
+import persistencia.logic.Persistencia;
 import utilities.Utils;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.HashMap;
 
 @Getter

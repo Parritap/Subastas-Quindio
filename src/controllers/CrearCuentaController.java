@@ -14,7 +14,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import model.ModelFactoryController;
 import model.Usuario;
-import persistencia.ArchivoUtil;
+import persistencia.logic.ArchivoUtil;
 import utilities.Utils;
 import java.io.ByteArrayInputStream;
 

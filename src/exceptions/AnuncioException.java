@@ -1,9 +1,7 @@
 package exceptions;
 
 import model.ModelFactoryController;
-import persistencia.ArchivoUtil;
-
-import java.time.LocalDate;
+import persistencia.logic.ArchivoUtil;
 
 /**
  * Clase encargada de lanzar una excepcion de tipo anuncio exception

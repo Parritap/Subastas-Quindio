@@ -4,7 +4,7 @@ package exceptions;
 import lombok.Getter;
 import lombok.Setter;
 import model.ModelFactoryController;
-import persistencia.ArchivoUtil;
+import persistencia.logic.ArchivoUtil;
 
 import java.time.LocalDate;
 

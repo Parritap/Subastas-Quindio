@@ -1,7 +1,7 @@
 package exceptions;
 
 import model.ModelFactoryController;
-import persistencia.ArchivoUtil;
+import persistencia.logic.ArchivoUtil;
 
 public class FormatoCorreoInvalidoException extends UsuarioException{
     public static Integer nivelDeExcepcion = 2;

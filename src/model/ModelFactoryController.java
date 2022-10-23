@@ -1,7 +1,7 @@
 package model;
 
 import exceptions.LecturaException;
-import persistencia.clases.Persistencia;
+import persistencia.logic.Persistencia;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Paths;
@@ -52,6 +52,14 @@ public class ModelFactoryController {
      */
     public static String getRutaBase(){
         return Paths.get("").toAbsolutePath().toString()+"\\src";
+    }
+
+    /**
+     * Devuelve la ruta del log de las excepciones.
+     * @return ruta de log de excepciones.
+     */
+    public static String getRutaLogException(){
+        return getRutaBase()+"\\persistencia\\exceptions\\Excepciones.txt";
     }
 
     /**devuelve la ruta en la que se guarda el log
