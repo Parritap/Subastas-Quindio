@@ -42,7 +42,6 @@ public class Usuario implements Serializable {
 		this.direccion = direccion;
 		this.password = password;
 		this.telefono = telefono;
-		this.id = ++idAux;
 		this.estado = Estado.NUEVO;
 		this.id = ++idAux;
 		this.listaPujas = new ArrayList<>();
