@@ -21,6 +21,8 @@ import utilities.Utils;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
 
 @Getter
@@ -39,10 +41,8 @@ public class App extends Application {
     //Cliente activo es una variable que me identifica si un cliente ya ha iniciado sesión en la app
     private Usuario clienteActivo;
     private CuentaController cuentaController;
-
     /**
      * Main
-     *
      * @param args args
      */
     public static void main(String[] args) {
@@ -73,10 +73,11 @@ public class App extends Application {
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
         stage.minWidthProperty();
-        stage.setOnCloseRequest(event -> { //Este método serializa la app al cerrar la aplicación.
+        stage.setOnCloseRequest(event->{
             try {
                 Persistencia.serializarEmpresaUnificado();
-            } catch (Exception e) {
+            }
+            catch (Exception e){
                 e.printStackTrace();
             }
         });
@@ -88,7 +89,7 @@ public class App extends Application {
      * METODO ENCARGADO DE INICIALIZAR  LO QUE LA
      * APPLICATION NECESITE
      */
-    private void inicializarApp() throws CRUDExceptions {
+    private void inicializarApp() throws CRUDExceptions, IOException {
 
         empresaSubasta = ModelFactoryController.getInstance();
         Usuario usuario = new Usuario("Alejandro Arias", 20, "1209283", "alejandro@gmail.com", "cra 20 cll 12", "324334565", "1234Jose");
@@ -99,9 +100,12 @@ public class App extends Application {
         anuncio.setUsuario(usuario);
         usuario.addAnuncio(anuncio);
         empresaSubasta.addAnuncio(anuncio);
+        clienteActivo = usuario;
         empresaSubasta.crearUsuario(usuario);
         empresaSubasta.crearUsuario(admin);
     }
+
+
 
 
     /**
@@ -172,14 +176,13 @@ public class App extends Application {
         }
     }
 
-    public void setCuentaController(CuentaController cuentaController) {
+    public void setCuentaController(CuentaController cuentaController){
         this.cuentaController = cuentaController;
     }
 
-    public CuentaController getCuentaController() {
+    public CuentaController getCuentaController(){
         return cuentaController;
     }
-
     /**
      * Metodo que cierra la alerta con el mensaje
      */
