@@ -100,7 +100,7 @@ public class App extends Application {
         anuncio.setUsuario(usuario);
         usuario.addAnuncio(anuncio);
         empresaSubasta.addAnuncio(anuncio);
-        clienteActivo = usuario;
+        //clienteActivo = usuario;
         empresaSubasta.crearUsuario(usuario);
         empresaSubasta.crearUsuario(admin);
     }

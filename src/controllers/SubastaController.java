@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,8 +28,13 @@ import java.util.ArrayList;
  */
 public class SubastaController implements IApplication, Inicializable {
 
+
+
     //Variables globales
     private App application;
+
+    @FXML
+    private Button brn_LogIn;
 
     @FXML
     private Label lblAdName;
@@ -179,6 +185,9 @@ public class SubastaController implements IApplication, Inicializable {
         if (this.listaAnuncios.size() > 0)this.loadFirstAd(this.listaAnuncios.get(0));
         //metodo que permite recorrer los anuncios y cargarlos en el pane scroll
         cargarAnuncioAlScroll();
+
+        if(application.getClienteActivo()!=null) brn_LogIn.setVisible(false);
+
     }
 
     @FXML
