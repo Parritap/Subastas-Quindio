@@ -86,7 +86,7 @@ public class App extends Application {
      * METODO ENCARGADO DE INICIALIZAR  LO QUE LA
      * APPLICATION NECESITE
      */
-    private void inicializarApp() throws CRUDExceptions, IOException {
+    private void inicializarApp() throws CRUDExceptions {
 
         empresaSubasta = ModelFactoryController.getInstance();
         Usuario usuario = new Usuario("Alejandro Arias", 20, "1209283", "alejandro@gmail.com", "cra 20 cll 12", "324334565", "1234Jose");

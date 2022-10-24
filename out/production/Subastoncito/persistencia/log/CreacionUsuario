@@ -1,4 +1,4 @@
-Oct 22, 2022 2:39:23 PM persistencia.ArchivoUtil guardarRegistroLog
+Oct 22, 2022 2:39:23 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: CreacionUsuario,se creo el usuario 4:Juan Esteban Parra Parra,2022-10-22
-Oct 22, 2022 10:29:24 PM persistencia.ArchivoUtil guardarRegistroLog
+Oct 22, 2022 10:29:24 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: CreacionUsuario,se creo el usuario 6:Juan Esteban Parra,2022-10-22
