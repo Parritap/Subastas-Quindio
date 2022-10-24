@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="17.0.4.1" class="java.beans.XMLDecoder">
+ <object class="model.EmpresaSubasta" id="EmpresaSubasta0">
+  <void id="IUsuario0" property="IUsuario">
+   <void property="listaUsuarios">
+    <void method="add">
+     <object class="model.Usuario">
+      <void property="listaPujas">
+       <object class="java.util.ArrayList"/>
+      </void>
+      <void property="name">
+       <string></string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="model.Usuario">
+      <void property="activo">
+       <boolean>true</boolean>
+      </void>
+      <void property="age">
+       <int>21</int>
+      </void>
+      <void property="cantAnuncios">
+       <int>0</int>
+      </void>
+      <void property="cedula">
+       <string>2312313123123</string>
+      </void>
+      <void property="correo">
+       <string>esteban@gmail.com</string>
+      </void>
+      <void property="direccion">
+       <string>dqwdwqdqwdq</string>
+      </void>
+      <void property="estado">
+       <object class="java.lang.Enum" id="Estado0" method="valueOf">
+        <class>model.Estado</class>
+        <string>NUEVO</string>
+       </object>
+      </void>
+      <void property="id">
+       <int>6</int>
+      </void>
+      <void property="idListaPujas">
+       <int>4</int>
+      </void>
+      <void property="listaPujas">
+       <object class="java.util.ArrayList"/>
+      </void>
+      <void property="name">
+       <string>Juan Esteban Parra</string>
+      </void>
+      <void property="password">
+       <string>admin</string>
+      </void>
+      <void property="telefono">
+       <string>q2131232131312</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="model.Usuario">
+      <void property="activo">
+       <boolean>true</boolean>
+      </void>
+      <void property="age">
+       <int>18</int>
+      </void>
+      <void property="cantAnuncios">
+       <int>0</int>
+      </void>
+      <void property="cedula">
+       <string>10201201010</string>
+      </void>
+      <void property="correo">
+       <string>carlos@gmail.com</string>
+      </void>
+      <void property="direccion">
+       <string>cra infinito</string>
+      </void>
+      <void property="estado">
+       <object idref="Estado0"/>
+      </void>
+      <void property="id">
+       <int>6</int>
+      </void>
+      <void property="idListaPujas">
+       <int>4</int>
+      </void>
+      <void property="listaPujas">
+       <object class="java.util.ArrayList"/>
+      </void>
+      <void property="name">
+       <string>Carlos</string>
+      </void>
+      <void property="password">
+       <string>carlos</string>
+      </void>
+      <void property="telefono">
+       <string>31201230123</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="model.Usuario">
+      <void property="activo">
+       <boolean>true</boolean>
+      </void>
+      <void property="age">
+       <int>20</int>
+      </void>
+      <void property="cantAnuncios">
+       <int>0</int>
+      </void>
+      <void property="cedula">
+       <string>1004871385</string>
+      </void>
+      <void property="correo">
+       <string>correaanubis@gmail.com</string>
+      </void>
+      <void property="direccion">
+       <string>Cra 10 Cll 11</string>
+      </void>
+      <void property="estado">
+       <object idref="Estado0"/>
+      </void>
+      <void property="id">
+       <int>6</int>
+      </void>
+      <void property="idListaPujas">
+       <int>4</int>
+      </void>
+      <void property="listaPujas">
+       <object class="java.util.ArrayList"/>
+      </void>
+      <void property="name">
+       <string>anubis</string>
+      </void>
+      <void property="password">
+       <string>jjsuduus</string>
+      </void>
+      <void property="telefono">
+       <string>3116592853</string>
+      </void>
+     </object>
+    </void>
+   </void>
+  </void>
+ </object>
+</java>

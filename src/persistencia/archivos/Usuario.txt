@@ -1,0 +1,5 @@
+name:java.lang.String@@age:java.lang.Integer@@cedula:java.lang.String@@correo:java.lang.String@@cantAnuncios:java.lang.Integer@@direccion:java.lang.String@@password:java.lang.String@@telefono:java.lang.String@@idListaPujas:java.lang.Integer@@activo:java.lang.Boolean@@estado:model.Estado@@id:java.lang.Integer
+Juan Esteban Parra@@21@@2312313123123@@esteban@gmail.com@@0@@dqwdwqdqwdq@@admin@@q2131232131312@@4@@true@@NUEVO@@6
+Carlos@@18@@10201201010@@carlos@gmail.com@@0@@cra infinito@@carlos@@31201230123@@4@@true@@NUEVO@@6
+anubis@@20@@1004871385@@correaanubis@gmail.com@@0@@Cra 10 Cll 11@@jjsuduus@@3116592853@@4@@true@@NUEVO@@6
+fernando@@18@@1000038822@@fernandoCz@hotmail.com@@0@@Cra 10 Cll 11@@fernandoCardenas@@3116592853@@4@@true@@NUEVO@@6

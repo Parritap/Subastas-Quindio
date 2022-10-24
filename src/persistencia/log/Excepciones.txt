@@ -1,0 +1,72 @@
+Oct 22, 2022 7:43:27 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario estebanparra946@gmail.com no encontrado,2022-10-22
+Oct 22, 2022 7:43:27 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario estebanparra946@gmail.com no encontrado,2022-10-22
+Oct 22, 2022 9:08:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,2022-10-22
+Oct 22, 2022 9:08:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,2022-10-22
+oct. 23, 2022 6:16:10 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 6:16:10 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 6:20:52 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 6:20:52 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 6:20:56 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 6:20:56 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 6:27:47 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 6:27:47 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 6:31:13 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 6:31:13 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 6:33:15 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 6:33:15 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:03:20 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:03:20 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:03:29 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:03:29 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:03:47 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:03:47 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:04:13 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:04:13 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:09:17 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:09:17 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:10:26 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:10:26 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:14:18 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:14:18 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:15:25 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:15:25 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario correaanubis@gmail.com no encontrado,2022-10-23
+oct. 23, 2022 7:18:26 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, La contraseña pasada no es valida,2022-10-23
+oct. 23, 2022 7:18:26 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, La contraseña pasada no es valida,2022-10-23
+oct. 23, 2022 7:47:45 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario asja no encontrado,2022-10-23
+oct. 23, 2022 7:47:45 P. M. persistencia.logic.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: Excepcion,LecturaException, usuario asja no encontrado,2022-10-23
