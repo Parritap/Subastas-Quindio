@@ -2,7 +2,6 @@ package utilities;
 
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -29,14 +28,16 @@ public class Utils {
 
 
     public static void imprimirArreglo(String[] arr){
-        String resultado ="";
+        StringBuilder resultado = new StringBuilder();
         for(String str: arr){
-            resultado+=", "+str;
+            resultado.append(", ").append(str);
         }
 
         System.out.println("{"+resultado.substring(1)+"}");
     }
 
+    //Url del sonido al hacer click
+    public static final String URL_CLICK = "src/resources/soundClic.mp3";
     //url del frame inicial donde se ubican las subastas
     public static final String frameInicio = "../view/Subastas.fxml";
     //Url de los item mostrados en mis subastas
@@ -84,6 +85,16 @@ public class Utils {
         return btImagen;
     }
 
+    /**
+     * metodo que permite reproducir un sonido al hacer click
+     * en un boton o en un item
+     * @param url url del sonido
+     *
+     */
 
-
+    public static void playSound(String url){
+        javafx.scene.media.Media media = new javafx.scene.media.Media(new File(url).toURI().toString());
+        javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
+        mediaPlayer.play();
+    }
 }

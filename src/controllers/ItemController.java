@@ -157,7 +157,11 @@ public class ItemController implements IApplication, Inicializable {
      * Metodo aun en proceso, cambiara el anuncio en la barra lateral
      */
     private void setProductSelected(){
+        
         subastaController.setProductSelected(anuncio);
+        //genero un sonido al hacer clic
+        Utils.playSound(Utils.URL_CLICK);
+        
     }
 
 

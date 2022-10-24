@@ -12,5 +12,6 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" exported="" name="JavaFX_Windows" level="project" />
     <orderEntry type="library" name="AnimateFX-1.2.1" level="project" />
+    <orderEntry type="library" name="javafx.graphics" level="project" />
   </component>
 </module>
