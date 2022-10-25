@@ -86,7 +86,7 @@ public class Utils {
     }
 
     /**
-     * metodo que permite reproducir un sonido al hacer click
+     * metodo que permite reproducir un sonido al hacer clic
      * en un boton o en un item
      * @param url url del sonido
      *

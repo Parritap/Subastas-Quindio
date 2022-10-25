@@ -104,7 +104,7 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
             usuario.setEstado(Estado.NUEVO);
             listaUsuarios.add(usuario);
         } else {
-            throw new EscrituraException("Ya existe un usuario con esas caracteristicas", "se intento crear un usuario ya existente ("+usuario.getCedula()+")");
+            throw new EscrituraException("Ya existe un usuario con esas caracteristicas", "se intento crear un usuario ya existente ("+ (usuario != null ? usuario.getCedula() : null) +")");
         }
 
     }
