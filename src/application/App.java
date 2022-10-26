@@ -18,7 +18,6 @@ import model.*;
 import persistencia.logic.ArchivoUtil;
 import persistencia.logic.Persistencia;
 import utilities.Utils;
-
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -129,6 +128,7 @@ public class App extends Application {
             throw new RuntimeException(e);
         }
     }
+
 
     /**
      * Metodo que carga un FXML y devuelve ese pane

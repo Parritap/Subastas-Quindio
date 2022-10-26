@@ -8,15 +8,28 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import lombok.Getter;
+import lombok.Setter;
 import model.ModelFactoryController;
 import persistencia.logic.Persistencia;
 
+import java.io.File;
+import java.security.cert.PolicyNode;
+
+@Setter
+@Getter
 public class IniciarSesionController implements IApplication, Inicializable {
 
     private App application;
 
     private String email;
     private String contrasenia;
+
+    @FXML
+    private MediaView mediaEffect;
 
     @FXML
     private Button btn_iniciarSesion;
@@ -54,6 +67,13 @@ public class IniciarSesionController implements IApplication, Inicializable {
         return true;
     }
 
+    @FXML
+    void initialize() {
+    }
+
+
+
+
     @Override
     public App getApplication() {
         return this.application;
@@ -68,4 +88,5 @@ public class IniciarSesionController implements IApplication, Inicializable {
     public void inicializarComponentes() {
 
     }
+
 }
