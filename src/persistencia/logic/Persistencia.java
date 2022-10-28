@@ -11,6 +11,7 @@ import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import static utilities.Utils.isNot;
@@ -85,10 +86,9 @@ public class Persistencia {
     }
 
     /**
-     * guarda todo el objeto empresa en modelo.xml
+     * guarda el objeto empresa en modelo.xml
      */
     public static void serializarEmpresaXML() throws Exception {
-        //Persistencia.serializarEmpresa();
         ArchivoUtil.salvarRecursoSerializadoXML(ModelFactoryController.getRutaSerializado("model.xml"), deserializarEmpresa());
     }
 
@@ -259,15 +259,15 @@ public class Persistencia {
 
 
     /**
-     * deserializa un objeto, en vez de buscar un id en el archivo
-     * le pasamos directamente la cadena con las propiedadees que queremos
+     * metodo que permite deserializar un objeto, en vez de buscar un ID en el archivo
+     * le pasamos directamente la cadena con las propiedades que queremos
      * que queme en obj
      *
-     * @param obj   objeto sobre el cual queremos aplicar la deserializacion
+     * @param obj   objeto sobre el cual queremos aplicar la deserialization
      * @param props propiedades que queremos aplicar sobre obj
      * @throws IOException, LecturaException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, ClassNotFoundException
      */
-    public static void deserializarObj(Object obj, String props) throws IOException, LecturaException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, ClassNotFoundException {
+    public static void deserializarObj(Object obj, String props){
         try {
             ArrayList<String> objetos = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos(obj));
             //array con los nombres de los atributos
@@ -513,7 +513,9 @@ public class Persistencia {
     public static Double parseToDouble(String dato) {
         return Double.parseDouble(dato);
     }
-
-
+    public static ArrayList<String> parseToArrayList(String dato) {
+        String[] aux2 = dato.split(",");
+        return new ArrayList<>(Arrays.asList(aux2));
+    }
 
 }

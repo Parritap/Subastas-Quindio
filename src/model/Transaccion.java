@@ -1,15 +1,14 @@
 package model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
+import lombok.ToString;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Setter
 @Getter
+@ToString
 public class Transaccion implements Serializable {
     private Integer id;
     private Estado estado;

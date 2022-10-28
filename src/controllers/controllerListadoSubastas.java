@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import model.Anuncio;
-import model.Usuario;
 import utilities.Utils;
 
 import java.io.IOException;

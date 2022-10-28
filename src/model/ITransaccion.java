@@ -86,7 +86,7 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
 
 
     /**
-     * determina quien es el mayor entre las dos trasacciones a o b
+     * determina quien es el mayor entre las dos transacciones a o b
      * @param campo atributo por el cual se van a comparar las dos transacciones
      * */
 
@@ -129,5 +129,14 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
             listaTransacciones.add(transaccion);
         }
     }
+    /**
+     * To string de la clase
+     */
 
+    @Override
+    public String toString() {
+        return "ITransaccion{" +
+                "listaTransacciones=" + listaTransacciones.toString() +
+                '}';
+    }
 }

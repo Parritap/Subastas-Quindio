@@ -151,4 +151,14 @@ public class IProducto implements CRUD<Producto>, Serializable {
 
         return productosOrdenados;
     }
+
+    /**
+     * To string
+     */
+    @Override
+    public String toString() {
+        return "ProductoDAO{" +
+                "listaProductos=" + listaProductos.toString() +
+                '}';
+    }
 }

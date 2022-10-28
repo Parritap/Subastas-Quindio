@@ -1,9 +1,6 @@
 package model;
 
-
 import java.io.Serializable;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Objects;
 import exceptions.CRUDExceptions;
@@ -12,7 +9,6 @@ import exceptions.LecturaException;
 import interfaces.CRUD;
 import lombok.Getter;
 import lombok.Setter;
-
 
 @Getter
 @Setter
@@ -60,7 +56,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 */
 	@Override
 	public void crear(Anuncio anuncio) throws EscrituraException {
-		if(!existeAnuncio(anuncio)) {
+		if(existeAnuncio(anuncio)) {
 			anuncio.setEstado(Estado.NUEVO);
 			listaAnuncios.add(anuncio);
 		}
@@ -73,7 +69,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 */
 	@Override
 	public void add(Anuncio anuncio) throws CRUDExceptions {
-		if (!existeAnuncio(anuncio)) {
+		if (existeAnuncio(anuncio)) {
 			listaAnuncios.add(anuncio);
 			System.out.println(" Agrego anuncio ");
 			for (Anuncio anuncio1 : listaAnuncios) {
@@ -94,7 +90,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 				throw new EscrituraException("Ya existe un anuncio con esas características", "intentando crear un anuncio ya existente");
 			}
 		}
-		return false;
+		return true;
 	}
 
 
@@ -153,11 +149,9 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 * @param campo ATRIBUTO POR EL QUE SE DESEA LISTAR
 	 * @param dir ASCENDENTE O DESCENDENTE
 	 * @return UNA LISTA CON LOS OBJETOS ORDENADOS
-	 * @throws CRUDExceptions PUEDEN SUCEDER ERRORES DE LECTURA
-	 * @throws CRUDExceptions PUEDEN SUCEDER ERRORES DE LECTURA
 	 */
 	@Override
-	public ArrayList<Anuncio> listar(String campo, TipoOrden dir) throws CRUDExceptions {
+	public ArrayList<Anuncio> listar(String campo, TipoOrden dir){
 		ArrayList<Anuncio> listaOrdenada = listaAnuncios;
 		listaOrdenada.sort((a, b) -> {
 			int resultado = 0;
@@ -171,59 +165,6 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		return listaOrdenada;
 	}
 
-
-	/**metodo alternativo para listar utilizando reflexion y los getters de Lombok
-	 * @param campo nombre del atributo por el cual vamos a comparar los anuncios
-	 * @param dir si se ordena de manera ascendente o descendente
-	 * @param comparar lambda con la funcion por la cual vamos a comparar los valores del atributo*/
-	public ArrayList<Anuncio> listar(String campo, TipoOrden dir, Comparar<Object> comparar) throws CRUDExceptions, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-		String nombreMetodo ="get"+Character.toUpperCase(campo.charAt(0))+campo.substring(1);
-		Method getter = Anuncio.class.getDeclaredMethod(nombreMetodo);
-		ArrayList<Anuncio> anuncios = this.listar();
-		ArrayList<Anuncio> anunciosOrdenados = new ArrayList<>();
-		//índice en el que vamos a insertar cada elemento al ordenar
-		int ind = 0;
-		Boolean esMayor;
-		for (Anuncio anuncio : anuncios) {
-			for (int j = 0; j < anunciosOrdenados.size(); j++) {
-				ind = j;
-				esMayor = comparar.esMayor(getter.invoke(anuncio), getter.invoke(anunciosOrdenados.get(j)));
-				if (dir == TipoOrden.ASCENDENTE && !esMayor) break;
-				if (dir == TipoOrden.DESCENDENTE && esMayor) break;
-			}
-			if (ind >= anunciosOrdenados.size() - 1) anunciosOrdenados.add(anuncio);
-			anunciosOrdenados.add(ind, anuncio);
-		}
-		return anunciosOrdenados;
-	}
-
-
-
-	/**
-	 * METODO QUE PERMITE ORDENAR DADO UN ATRIBUTO Y UN ORDEN
-	 * @param criterio POR EL QUE SE DESEA ORDENAR
-	 * @param orden ASCENDENTE O DESCENDENTE
-	 * @return UN ARRAYLIST CON LOS OBJETOS ORDENADOS
-	 * @throws CRUDExceptions PUEDEN OCURRIR ERRORES DE LECTURA
-	 */
-
-	public ArrayList<Anuncio> listar(Comparar<Anuncio> criterio, TipoOrden orden) throws CRUDExceptions {
-		ArrayList<Anuncio> anuncios = this.listar();
-		ArrayList<Anuncio> anunciosOrdenados = new ArrayList<>();
-		//índice en el que vamos a insertar cada elemento al ordenar
-		int ind = 0;
-		for (Anuncio anuncio : anuncios) {
-			for (int j = 0; j < anunciosOrdenados.size(); j++) {
-				ind = j;
-				if (orden == TipoOrden.ASCENDENTE && !criterio.esMayor(anuncio, anunciosOrdenados.get(j))) break;
-				if (orden == TipoOrden.DESCENDENTE && criterio.esMayor(anuncio, anunciosOrdenados.get(j))) break;
-			}
-			if (ind >= anunciosOrdenados.size() - 1) anunciosOrdenados.add(anuncio);
-			anunciosOrdenados.add(ind, anuncio);
-		}
-
-		return anunciosOrdenados;
-	}
 	/**
 	 * Devuelve la lista de anuncios almacenados en la empresa
 	 * @return listaAnuncios
@@ -231,4 +172,14 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
     public ArrayList<Anuncio> getListaAnuncio() {
 		return listaAnuncios;
     }
+
+	/**
+	 * To string
+	 */
+	@Override
+	public String toString() {
+		return "Empresa{" +
+				" listaAnuncios=" + listaAnuncios.toString() +
+				'}';
+	}
 }

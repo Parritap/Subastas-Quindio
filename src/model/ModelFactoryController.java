@@ -16,10 +16,6 @@ import java.util.Objects;
  */
 public class ModelFactoryController {
 
-    public static void main(String[] args) {
-        System.out.println(getRutaRespaldo("holaMundo.txt"));
-    }
-
     //VARIABLE GENERAL PARA TODA LA EMPRESA
     private static EmpresaSubasta empresaSubasta;
     private static Integer idListaPujas=0;
@@ -28,6 +24,11 @@ public class ModelFactoryController {
      * @return LA INSTANCIA DE LA EMPRESA
      */
     public static EmpresaSubasta getInstance(){
+        try {
+            deserializarEmpresa();
+        } catch (CRUDExceptions e) {
+            throw new RuntimeException(e);
+        }
         return Objects.requireNonNullElseGet(empresaSubasta, () -> {
             try {
                 return empresaSubasta = new EmpresaSubasta();
@@ -107,8 +108,8 @@ public class ModelFactoryController {
         return  getRutaBase()+"\\persistencia\\"+nombreArchivo;
     }
 
-    /**da un id para la lista de pujas, usualmente a objetos Usuario o Anuncio
-     * este es necesario para la deserializacion
+    /**da un ID para la lista de pujas, usualmente a objetos Usuario o Anuncio
+     * este es necesario para deserializar
      * */
     public static Integer darIdListaPuja(){
         idListaPujas++;

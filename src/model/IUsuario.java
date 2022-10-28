@@ -225,4 +225,14 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
     public boolean verificarContrasenia (Usuario usuario, String constrasenia){
         return usuario.getPassword().equals(constrasenia);
     }
+
+    /**
+     * To string
+     */
+    @Override
+    public String toString() {
+        return "UsuarioDAO{" +
+                "listaUsuarios=" + listaUsuarios.toString() +
+                '}';
+    }
 }

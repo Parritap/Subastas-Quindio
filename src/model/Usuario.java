@@ -2,12 +2,14 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
 @Setter
 @Getter
+@ToString
 public class Usuario implements Serializable {
 	//VARIABLES GLOBALES
 	private String name;
@@ -59,9 +61,7 @@ public class Usuario implements Serializable {
 		this.listaPujas = listaPujas;
 	}
 
-	public Usuario(){
-
-	}
+	public Usuario(){}
 
 	/**
 	 * Metodo que permite comparar dos id, el del usuario actual y el
@@ -111,4 +111,5 @@ public class Usuario implements Serializable {
 		}
 		if (flag) listaAnuncios.add(anuncio);
 	}
+
 }

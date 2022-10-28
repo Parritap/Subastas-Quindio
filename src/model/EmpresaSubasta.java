@@ -1,16 +1,14 @@
 package model;
 
 import exceptions.CRUDExceptions;
-import exceptions.ContraseniaNoValidaException;
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import lombok.Getter;
 import lombok.Setter;
 import persistencia.logic.Persistencia;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.UUID;
+
 
 @Getter
 @Setter
@@ -80,5 +78,19 @@ public class EmpresaSubasta implements Runnable, Serializable {
     public void addAnuncio(Anuncio anuncio) throws CRUDExceptions {
         iAnuncio.add(anuncio);
         Persistencia.registrarAccion("Se agregó el anuncio con id: " + anuncio.getId(), "Anuncio agregado", ModelFactoryController.getRutaRegistroAcciones());
+    }
+
+    /**
+     * To string
+     */
+
+    @Override
+    public String toString() {
+        return "EmpresaSubasta{" +
+                "iAnuncio=" + iAnuncio.toString() +
+                ", iUsuario=" + iUsuario.toString() +
+                ", iProducto=" + iProducto.toString() +
+                ", iTransaccion=" + iTransaccion.toString() +
+                '}';
     }
 }
