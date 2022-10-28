@@ -2,14 +2,19 @@ package controllers;
 
 import application.App;
 import interfaces.IApplication;
+import interfaces.Inicializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import lombok.Getter;
 import lombok.Setter;
 import model.Anuncio;
+
+import java.text.DateFormat;
+import java.time.format.DateTimeFormatter;
+
 @Getter
 @Setter
-public class subastaItemController implements IApplication {
+public class subastaItemController implements IApplication, Inicializable {
 
     private App application;
 
@@ -31,6 +36,8 @@ public class subastaItemController implements IApplication {
     @FXML
     private Label lblNameAnuncio;
 
+    private Anuncio anuncio;
+
     public void setData(Anuncio anuncio){
         lblNameAnuncio.setText(anuncio.getTitulo());
         lblFechaPublicado.setText(String.valueOf(anuncio.getFechaPublicacion()));
@@ -50,5 +57,16 @@ public class subastaItemController implements IApplication {
     @Override
     public void setApplication(App application) {
         this.application = application;
+    }
+
+    @Override
+    public void inicializarComponentes() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        lblNameAnuncio.setText(anuncio.getTitulo());
+        lblNomProducto.setText((anuncio.getProducto().getNombre()));
+        lblFechaPublicado.setText(anuncio.getFechaPublicacion().format(formatter));
+        lblValorInicial.setText("$"+anuncio.getValorInicial());
+        lblValorMasAlto.setText("$"+anuncio.getValorMasAlto());
+        lblTotalPujas.setText(anuncio.getTotalPujas());
     }
 }

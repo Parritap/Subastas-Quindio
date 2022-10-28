@@ -276,7 +276,8 @@
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor></ComboBox>
-               <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
+               <Pane prefHeight="66.0" prefWidth="296.0" HBox.hgrow="ALWAYS" />
+               <Button fx:id="brn_LogIn" mnemonicParsing="false" onAction="#iniciarSesion" styleClass="buttonAccount" stylesheets="@../resources/style.css" text="Log in " />
                <Button mnemonicParsing="false" onAction="#loadAccount" styleClass="buttonAccount" stylesheets="@../resources/style.css" text="My Account" />
                <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@../resources/ic_cart.png" />
@@ -331,15 +332,19 @@
                <Pane prefHeight="84.0" prefWidth="96.0" />
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <ScrollPane prefHeight="625.0" prefWidth="857.0" styleClass="transparent" stylesheets="@../resources/style.css">
+               <ScrollPane prefHeight="625.0" prefWidth="835.0" stylesheets="@../resources/style.css">
                   <HBox.margin>
                      <Insets top="10.0" />
                   </HBox.margin>
-                  <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+                  <GridPane fx:id="grid" hgap="100.0" prefHeight="0.0" prefWidth="0.0" vgap="50.0">
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" />
                      </rowConstraints>
                   </GridPane>
+                  <styleClass>
+                     <String fx:value="transparent" />
+                     <String fx:value="barraScroll" />
+                  </styleClass>
                </ScrollPane>
             </HBox>
          </VBox>

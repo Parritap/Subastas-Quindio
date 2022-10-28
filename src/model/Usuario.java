@@ -1,9 +1,7 @@
 package model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -31,21 +29,10 @@ public class Usuario implements Serializable {
 	//Este atributo permite saber el estado del usuario, Eliminado, Nuevo, Actualizado
 	private Estado estado;
 	private Integer id;
+	private ArrayList<Anuncio> listaAnuncios;
 
 	//Constructores
-	public Usuario(String name, Integer age, String cedula, String correo, Integer cantAnuncios, Puja puja) {
-		this.name = name;
-	    this.age = age;
-	    this.cedula = cedula;
-	    this.correo = correo;
-	    this.cantAnuncios = cantAnuncios;
-		id = ++idAux;
-		estado = Estado.NUEVO;
-		this.activo = true;
-		this.idListaPujas = ModelFactoryController.darIdListaPuja();
-		this.cantAnuncios = 0;
-		this.listaPujas = new ArrayList<>();
-	}
+
 
 	public Usuario(String name, Integer age, String cedula, String correo, String direccion, String telefono, String password) {
 		this.name = name;
@@ -55,14 +42,13 @@ public class Usuario implements Serializable {
 		this.direccion = direccion;
 		this.password = password;
 		this.telefono = telefono;
-		id = ++idAux;
-		estado = Estado.NUEVO;
-		this.id = ++idAux;
 		this.estado = Estado.NUEVO;
+		this.id = ++idAux;
 		this.listaPujas = new ArrayList<>();
 		this.activo=true;
 		this.idListaPujas = ModelFactoryController.darIdListaPuja();
 		this.cantAnuncios = 0;
+		this.listaAnuncios = new ArrayList<>();
 	}
 
 	public Usuario(ArrayList<Puja> listaPujas){
@@ -84,6 +70,9 @@ public class Usuario implements Serializable {
 	 * @return true || false
 	 */
 	public boolean compararId(Integer id) {return this.id.compareTo(id) == 0;}
+
+
+	public boolean compararCorreo (String correo) {return this.correo.compareTo(correo) == 0;}
 
 	/**
 	 * METODO QUE PERMITE ACTUALIZAR ATRIBUTOS DE UN USUARIO SIN CAMBIAR EL
@@ -112,5 +101,14 @@ public class Usuario implements Serializable {
 	}
 
 
-
+	public void addAnuncio(Anuncio anuncio) {
+		boolean flag = true;
+		for (int i = 0; i < listaAnuncios.size() && flag; i++) {
+			Anuncio anuncioAux = listaAnuncios.get(i);
+			if(anuncioAux.equals(anuncio)){
+				flag =false;
+			}
+		}
+		if (flag) listaAnuncios.add(anuncio);
+	}
 }

@@ -14,9 +14,9 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <ScrollPane layoutX="74.0" layoutY="159.0" prefHeight="236.0" prefWidth="690.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="74.0" layoutY="159.0" prefHeight="236.0" prefWidth="690.0">
          <content>
-            <VBox prefHeight="233.0" prefWidth="687.0" />
+            <VBox fx:id="VBoxMisSubastas" prefHeight="233.0" prefWidth="670.0" />
          </content>
       </ScrollPane>
       <Line endX="710.0000610351562" endY="-7.62939453125E-6" layoutX="126.0" layoutY="114.0" startX="-125.99999237060547" startY="-7.62939453125E-6" strokeWidth="2.0" />
@@ -37,5 +37,11 @@
             <Font size="24.0" />
          </font>
       </Label>
+      <Label layoutX="81.0" layoutY="134.0" text="Nombre del anuncio" />
+      <Label layoutX="223.0" layoutY="134.0" text="Nombre del producto" />
+      <Label layoutX="366.0" layoutY="134.0" text="Fecha anunciado" />
+      <Label layoutX="486.0" layoutY="134.0" text="Valor inicial" />
+      <Label layoutX="577.0" layoutY="134.0" text="Puja mas alta" />
+      <Label layoutX="674.0" layoutY="134.0" text="Total pujas" />
    </children>
 </AnchorPane>

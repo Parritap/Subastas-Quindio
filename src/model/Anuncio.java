@@ -1,12 +1,9 @@
 package model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.awt.Image;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,13 +18,11 @@ public class Anuncio implements Serializable {
 	private Date fecha;
 	private String nombreAnunciante;
 	private byte[] imageSrc; //Es necesario cambiar la imagen a String, y contener solo la ruta para tener flexibilidad
-	private LocalDate fechaPublicacion;
-	private LocalDate fechaTerminacion;
+	private LocalDateTime fechaPublicacion;
+	private LocalDateTime fechaTerminacion;
 	private Double valorInicial;
 	private ArrayList<Puja> listaPujas;
 	private Integer idListaPujas;
-	private Double tiempoActivo;
-
 	private  Usuario usuario; //El usuario que realiza el anuncio
 	/**
 	 * creo la variable Estado para indicar cuando un Anuncio ha sido eliminado, actualizado
@@ -43,63 +38,21 @@ public class Anuncio implements Serializable {
 	private static int idAux;
 	private Integer id;
 
-
-	public Anuncio(Double tiempoActivo){
-		//fecha actual
-		this.fechaPublicacion = LocalDate.now();
-		this.tiempoActivo = tiempoActivo;
-		this.id = ++idAux;
-		this.idFoto = idAux;
-		this.idListaPujas = ModelFactoryController.darIdListaPuja();
-		this.listaPujas = new ArrayList<>();
-	}
-
-	public Anuncio(Integer id) {
-		//fecha actual
-		this.fechaPublicacion = LocalDate.now();
-		this.tiempoActivo = 24.0;
-		this.id = id;
-		this.idFoto = idAux;
-		this.idListaPujas = ModelFactoryController.darIdListaPuja();
-		this.listaPujas = new ArrayList<>();
-	}
-
-	//constructor completo
-	public Anuncio(String nombreAnunciante, Double valorInicial, Double tiempoActivo, Boolean fueMostrado) {
-
-	    this.nombreAnunciante = nombreAnunciante;
-
-	    //la fecha en la que se crea el objeto es la fecha del anuncio
-	    this.valorInicial = valorInicial;
-	    //las pujas empiezan vacias
-	    this.listaPujas = new ArrayList<>();
-	    this.tiempoActivo = tiempoActivo;
-	    this.fueMostrado = fueMostrado;
-		//SE AGREGA EL ID
-		id = ++idAux;
-		//cada vez que se crea un anuncio se le pone como id el
-		//valor de esta variable, la cual va a aumentar cada vez
-		//que creemos un anuncio
-	}
-
-
 	/**
 	 * CONSTRUCTOR NECESARIO PARA PRUEBAS
 	 */
 
 	public Anuncio(){}
-	
-	//constructor completo
-
-	public Anuncio(String name, Double valorInicial){
-		this.titulo = name;
-		this.valorInicial = valorInicial;
-	}
 
 	public Anuncio(String tituloAnuncio, byte[] bytesImg, Double valorInicialAnuncio) {
 		this.titulo = tituloAnuncio;
 		this.imageSrc = bytesImg;
 		this.valorInicial = valorInicialAnuncio;
+		this.fechaPublicacion = LocalDateTime.now();
+		this.fechaTerminacion = this.fechaPublicacion.plusMinutes(5L);
+		this.idListaPujas = ModelFactoryController.darIdListaPuja();
+		this.listaPujas = new ArrayList<>();
+		this.fueMostrado = false;
 	}
 
 

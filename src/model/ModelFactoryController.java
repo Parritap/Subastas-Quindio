@@ -1,19 +1,14 @@
 package model;
 
-import persistencia.Persistencia;
-import utilities.Utils;
-
+import exceptions.LecturaException;
+import persistencia.logic.Persistencia;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
-
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -21,9 +16,12 @@ import java.util.Objects;
  */
 public class ModelFactoryController {
 
+    public static void main(String[] args) {
+        System.out.println(getRutaRespaldo("holaMundo.txt"));
+    }
+
     //VARIABLE GENERAL PARA TODA LA EMPRESA
     private static EmpresaSubasta empresaSubasta;
-    private static String rutaLogs;
     private static Integer idListaPujas=0;
     /**
      * METODO QUE DEVUELVE LA INSTANCIA DE LA EMPRESA
@@ -45,25 +43,38 @@ public class ModelFactoryController {
         Persistencia.respaldarXML();
     }
 
-    public static IUsuario getIUsuario(){
-        return getInstance().getIUsuario();
-    }
-
-    public static void agregarUsuario(Usuario ur){}
-
-
     //Los metodos getRuta... sirven para obtener las rutas
     //especificadas en el taller
+
+    /**
+     * Método que Retorna el siguiente string: C:\Users\esteb\IdeaProjects\Subastoncito\src
+     * @return "C:\Users\esteb\IdeaProjects\Subastoncito\src".
+     */
+    public static String getRutaBase(){
+        return Paths.get("").toAbsolutePath().toString()+"\\src";
+    }
+
+    /**
+     * Devuelve la ruta del log de las excepciones.
+     * @return ruta de log de excepciones.
+     */
+    public static String getRutaLogException(){
+        return getRutaBase()+"\\persistencia\\exceptions\\registroExcepciones.log";
+    }
+
+    public static String getRutaLogAcciones (){
+        return getRutaBase()+"\\persistencia\\exceptions\\registroAcciones.log";
+    }
 
     /**devuelve la ruta en la que se guarda el log
      * @param nombreArchivo nombre del archivo en el que se guarda el log
      * @return ruta en la que se va a guardar el log*/
-
-    public static String getRutaBase(){
-        return Paths.get("").toAbsolutePath().toString()+"\\src";
-    }
     public static String getRutaLogs(String nombreArchivo){
         return getRutaBase()+"\\persistencia\\log\\"+nombreArchivo;
+    }
+
+    public static String getRutaRegistroAcciones (){
+        return getRutaBase()+"\\persistencia\\log\\Acciones.log";
     }
 
     public static String getRutaObjetos(String nombreArchivo){
@@ -93,7 +104,7 @@ public class ModelFactoryController {
     }
 
     public static String getRutaSerializado(String nombreArchivo){
-        return  getRutaBase()+nombreArchivo;
+        return  getRutaBase()+"\\persistencia\\"+nombreArchivo;
     }
 
     /**da un id para la lista de pujas, usualmente a objetos Usuario o Anuncio
@@ -107,13 +118,18 @@ public class ModelFactoryController {
         return getInstance().getListaAnuncios();
     }
 
-    public static void addUsuario(Usuario usuario) throws EscrituraException, IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public static void crearUsuario(Usuario usuario) throws EscrituraException, IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         //serializa el usuario
         Persistencia.serializarUsuario(usuario);
         empresaSubasta.crearUsuario(usuario);
     }
 
-    public static void crearAnuncio(Anuncio anuncio, Producto producto, Usuario clienteActivo) throws CRUDExceptions {
+    public static void crearAnuncio(Anuncio anuncio, Producto producto, Usuario clienteActivo) throws CRUDExceptions, IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         empresaSubasta.crearAnuncio(anuncio, producto, clienteActivo);
+        Persistencia.serializarAnuncio(anuncio);
+    }
+
+    public static void actualizarUsuario(Usuario clienteActivo, Usuario usuario) throws LecturaException {
+        empresaSubasta.actualizarUsuario(clienteActivo, usuario);
     }
 }

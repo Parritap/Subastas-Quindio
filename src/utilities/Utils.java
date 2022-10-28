@@ -2,12 +2,16 @@ package utilities;
 
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 
 public class Utils {
+
+
+
 
     /**DEVUELVE TRUE SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS
      * EN LOS DEMAS ARGUMENTOS
@@ -24,16 +28,20 @@ public class Utils {
 
 
     public static void imprimirArreglo(String[] arr){
-        String resultado ="";
+        StringBuilder resultado = new StringBuilder();
         for(String str: arr){
-            resultado+=", "+str;
+            resultado.append(", ").append(str);
         }
 
         System.out.println("{"+resultado.substring(1)+"}");
     }
 
+    //Url del sonido al hacer click
+    public static final String URL_CLICK = "src/resources/soundClic.mp3";
     //url del frame inicial donde se ubican las subastas
     public static final String frameInicio = "../view/Subastas.fxml";
+    //Url de los item mostrados en mis subastas
+    public static final String SUBASTA_ITEM = "../view/subastaItem.fxml";
     //url del frame del panel de cuenta
     public static final String frameCuenta = "../view/Cuenta.fxml";
     //Url de la imagen por defecto al crear cuenta
@@ -50,6 +58,12 @@ public class Utils {
     public static final String corazonLleno = "/resources/small_filled.png";
     //Url del fxml de alerta
     public static final String frameAlerta = "../view/Alerta.fxml";
+    //Variable que contiene la zona horaria
+    public static final ZoneOffset ZONE_OFFSET = OffsetDateTime.now().getOffset();
+    //Url del nuevo pane de crearCuenta
+    public static final String crearCuente = "../view/CrearCuenta.fxml";
+
+    public static final String iniciarSesion = "../view/IniciarSesion.fxml";
 
     /**
      * Metodo que permite abrir el FileChooser
@@ -71,6 +85,16 @@ public class Utils {
         return btImagen;
     }
 
+    /**
+     * metodo que permite reproducir un sonido al hacer clic
+     * en un boton o en un item
+     * @param url url del sonido
+     *
+     */
 
-
+    public static void playSound(String url){
+        javafx.scene.media.Media media = new javafx.scene.media.Media(new File(url).toURI().toString());
+        javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
+        mediaPlayer.play();
+    }
 }

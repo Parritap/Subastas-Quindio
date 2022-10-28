@@ -3,6 +3,7 @@ package controllers;
 import application.App;
 import exceptions.CRUDExceptions;
 import interfaces.IApplication;
+import interfaces.Inicializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -12,11 +13,14 @@ import javafx.scene.image.ImageView;
 import model.Anuncio;
 import model.ModelFactoryController;
 import model.Producto;
+import persistencia.logic.Persistencia;
 import utilities.Utils;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
-public class ControllerPaneSubasta implements IApplication {
+public class ControllerPaneSubasta implements IApplication, Inicializable {
 
 
     private App application;
@@ -77,11 +81,22 @@ public class ControllerPaneSubasta implements IApplication {
         }else if (cargarCamposTextos()) {
             Producto producto = new Producto(nombreProducto, descripcion);
             Anuncio anuncio = new Anuncio(tituloAnuncio, bytesImg, valorInicialAnuncio);
+            anuncio.setProducto(producto);
+            application.getClienteActivo().addAnuncio(anuncio);
             try {
                 ModelFactoryController.crearAnuncio(anuncio, producto, application.getClienteActivo());
                 application.abrirAlerta("Anuncio creado correctamente");
             } catch (CRUDExceptions e) {
+                Persistencia.registrarExcepcion(e, "Fallo en la creacion de anuncios", 2);
                 application.abrirAlerta(e.getMessage());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (InvocationTargetException e) {
+                throw new RuntimeException(e);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
             }
             //crear el anuncio
             //anucio.setProducto(producto)
@@ -119,7 +134,8 @@ public class ControllerPaneSubasta implements IApplication {
             try {
                 valorInicialAnuncio = Double.parseDouble(txtValorAnuncio.getText());
             }catch (NumberFormatException e){
-                mensaje += "Debe ingresar un valor númerico para el precio inicial\n";
+                Persistencia.registrarExcepcion(e, "Error al convertir caracter en numero", 1);
+                mensaje += "Debe ingresar un valor numerico para el precio inicial\n";
             }
         }else{
             mensaje+="Debe ingresar valores númerico en el valor del anuncio";
@@ -142,4 +158,6 @@ public class ControllerPaneSubasta implements IApplication {
         this.application = application;
     }
 
+    @Override
+    public void inicializarComponentes() {}
 }

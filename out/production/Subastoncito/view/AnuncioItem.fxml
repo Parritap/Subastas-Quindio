@@ -11,34 +11,30 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="247.0" prefWidth="262.0" stylesheets="@../resources/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ItemController">
+<AnchorPane fx:id="pane" prefHeight="285.0" prefWidth="307.0" stylesheets="@../resources/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ItemController">
     <children>
         <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" onMouseClicked="#setProductSelected" prefHeight="215.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <HBox prefHeight="51.0" prefWidth="185.0">
-                    <children>
-                        <Label fx:id="nameLabel" prefHeight="49.0" prefWidth="137.0" text="Cherry">
-                            <font>
-                                <Font name="Cambria" size="24.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="priceLable" prefHeight="49.0" prefWidth="134.0" text="\$0.99">
-                            <font>
-                                <Font name="Cambria Bold" size="18.0" />
-                            </font>
-                        </Label>
-                    </children>
-                    <VBox.margin>
-                        <Insets left="20.0" top="20.0" />
-                    </VBox.margin>
-                </HBox>
+                  <Label fx:id="nameLabel" prefHeight="49.0" prefWidth="308.0" styleClass="textCenter" stylesheets="@../resources/style.css" text="Cherry">
+                      <font>
+                          <Font name="Cambria" size="24.0" />
+                      </font>
+                  </Label>
+                  <Label fx:id="priceLable" prefHeight="29.0" prefWidth="307.0" text="\$0.99" textFill="#00000094">
+                      <font>
+                          <Font name="Cambria Bold" size="18.0" />
+                      </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+                  </Label>
                 <ImageView fx:id="img" fitHeight="115.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/efectivo.png" />
                </image></ImageView>
-            <HBox prefHeight="61.0" prefWidth="262.0">
+            <HBox prefHeight="67.0" prefWidth="307.0">
                <children>
-                  <Label fx:id="lblTiempo" prefHeight="60.0" prefWidth="175.0" text="Tiempo restante 60:60:60 s">
+                  <Label fx:id="lblTiempo" prefHeight="60.0" prefWidth="256.0" text="Tiempo restante 60:60:60 s">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
@@ -51,10 +47,13 @@
                         <Image url="@../resources/small_black.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="30.0" top="10.0" />
+                        <Insets top="10.0" />
                      </HBox.margin>
                   </ImageView>
                </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
             </HBox>
             </children>
         </VBox>

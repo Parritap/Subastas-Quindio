@@ -5,11 +5,11 @@ import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Objects;
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import interfaces.CRUD;
-import interfaces.IObtenerAtributo;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,8 +40,8 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	/**
 	 * Método que buscar por el identificador del anuncio.
 	 * @param id identificador a buscar dentro de la lista de anuncios.
-	 * @return Anuncio con el id especificado.
-	 * @throws LecturaException De no encontrar ningún anuncio con el id especificado.
+	 * @return Anuncio con el identificador pasado por parametro.
+	 * @throws LecturaException De no encontrar ningún anuncio con el identificador especificado.
 	 */
 	@Override
 	public Anuncio buscarId(Integer id) throws LecturaException {
@@ -60,11 +60,26 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 */
 	@Override
 	public void crear(Anuncio anuncio) throws EscrituraException {
-		if(noExisteAnuncio(anuncio)) {
+		if(!existeAnuncio(anuncio)) {
 			anuncio.setEstado(Estado.NUEVO);
 			listaAnuncios.add(anuncio);
 		}
 
+	}
+	/**
+	 * METODO QUE PERMITE AGREGAR UN ANUNCIO A LA EMPRESA
+	 * @param anuncio ANUNCIO A AGREGAR
+	 * @throws CRUDExceptions SI NO PUEDE AGREGAR MAS ANUNCIO LANZA UNA EXCEPCION
+	 */
+	@Override
+	public void add(Anuncio anuncio) throws CRUDExceptions {
+		if (!existeAnuncio(anuncio)) {
+			listaAnuncios.add(anuncio);
+			System.out.println(" Agrego anuncio ");
+			for (Anuncio anuncio1 : listaAnuncios) {
+				System.out.println(anuncio1.toString());
+			}
+		}
 	}
 
 	/**
@@ -73,12 +88,15 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 * @return True si el anuncio NO EXISTE
 	 * @throws EscrituraException Si el anuncio ya existe.
 	 */
-	private boolean noExisteAnuncio(Anuncio anuncio) throws EscrituraException {
+	private boolean existeAnuncio(Anuncio anuncio) throws EscrituraException {
 		for (Anuncio aux: listaAnuncios){
-			if(aux.equals(anuncio)) throw new EscrituraException("Ya existe un anuncio con esas características", "intentando crear un anuncio ya existente");
+			if(aux.equals(anuncio)){
+				throw new EscrituraException("Ya existe un anuncio con esas características", "intentando crear un anuncio ya existente");
+			}
 		}
-		return true;
+		return false;
 	}
+
 
 	/**
 	 * METODO QUE PERMITE ACTUALIZAR UN ANUNCIO DADO UN NUEVO
@@ -91,7 +109,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	@Override
 	public void actualizar(Integer id, Anuncio nuevoAnuncio) throws EscrituraException {
 		for(int i=0; i<listaAnuncios.size(); i++){
-			if(listaAnuncios.get(i).getId() == id){
+			if(Objects.equals(listaAnuncios.get(i).getId(), id)){
 				listaAnuncios.set(i,nuevoAnuncio);
 			}
 		}
@@ -125,7 +143,6 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
 		switch (campo) {
 			case "nombreAnunciante" -> resultado = anuncio1.getNombreAnunciante().compareTo(anuncio2.getNombreAnunciante());
-			case "tiempoActivo" -> resultado = anuncio1.getTiempoActivo().compareTo(anuncio2.getTiempoActivo());
 			case "valorInicial" -> resultado = anuncio1.getValorInicial().compareTo(anuncio2.getValorInicial());
 		}
 		return resultado;
@@ -139,8 +156,6 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 * @throws CRUDExceptions PUEDEN SUCEDER ERRORES DE LECTURA
 	 * @throws CRUDExceptions PUEDEN SUCEDER ERRORES DE LECTURA
 	 */
-
-
 	@Override
 	public ArrayList<Anuncio> listar(String campo, TipoOrden dir) throws CRUDExceptions {
 		ArrayList<Anuncio> listaOrdenada = listaAnuncios;
@@ -159,14 +174,14 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
 	/**metodo alternativo para listar utilizando reflexion y los getters de Lombok
 	 * @param campo nombre del atributo por el cual vamos a comparar los anuncios
-	 * @param dir si se ordena de anera ascendente o descendente
+	 * @param dir si se ordena de manera ascendente o descendente
 	 * @param comparar lambda con la funcion por la cual vamos a comparar los valores del atributo*/
-	public ArrayList<Anuncio> listar(String campo, TipoOrden dir, Comparar comparar) throws CRUDExceptions, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InvocationTargetException {
+	public ArrayList<Anuncio> listar(String campo, TipoOrden dir, Comparar<Object> comparar) throws CRUDExceptions, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
 		String nombreMetodo ="get"+Character.toUpperCase(campo.charAt(0))+campo.substring(1);
 		Method getter = Anuncio.class.getDeclaredMethod(nombreMetodo);
 		ArrayList<Anuncio> anuncios = this.listar();
 		ArrayList<Anuncio> anunciosOrdenados = new ArrayList<>();
-		//indice en el que vamos a insertar cada elemento al ordenar
+		//índice en el que vamos a insertar cada elemento al ordenar
 		int ind = 0;
 		Boolean esMayor;
 		for (Anuncio anuncio : anuncios) {
@@ -182,31 +197,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		return anunciosOrdenados;
 	}
 
-	/**
-	 * METODO QUE PERMITE AGREGAR UN ANUNCIO A LA EMPRESA
-	 * @param anuncio ANUNCIO A AGREGAR
-	 * @throws CRUDExceptions SI NO PUEDE AGREGAR MAS ANUNCIO LANZA UNA EXCEPCION
-	 */
-	@Override
-	public void add(Anuncio anuncio) throws CRUDExceptions {
-		if (noExisteAnuncio(anuncio)) {
-			listaAnuncios.add(anuncio);
-		}
-	}
 
-
-	/**Agrega N anuncios a la lista
-	 toma N argumentos
-	 @param anuncios una lista de argumentos que son los anuncios a agregar
-	 */
-	public void crearN(Anuncio... anuncios) throws LecturaException, EscrituraException {
-		for(Anuncio anuncio: anuncios){
-			if(noExisteAnuncio(anuncio)){
-				anuncio.setEstado(Estado.NUEVO);
-				listaAnuncios.add(anuncio);
-			}
-		}
-	}
 
 	/**
 	 * METODO QUE PERMITE ORDENAR DADO UN ATRIBUTO Y UN ORDEN
@@ -216,10 +207,10 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 * @throws CRUDExceptions PUEDEN OCURRIR ERRORES DE LECTURA
 	 */
 
-	public ArrayList<Anuncio> listar(Comparar criterio, TipoOrden orden) throws CRUDExceptions {
+	public ArrayList<Anuncio> listar(Comparar<Anuncio> criterio, TipoOrden orden) throws CRUDExceptions {
 		ArrayList<Anuncio> anuncios = this.listar();
 		ArrayList<Anuncio> anunciosOrdenados = new ArrayList<>();
-		//indice en el que vamos a insertar cada elemento al ordenar
+		//índice en el que vamos a insertar cada elemento al ordenar
 		int ind = 0;
 		for (Anuncio anuncio : anuncios) {
 			for (int j = 0; j < anunciosOrdenados.size(); j++) {
@@ -233,17 +224,6 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
 		return anunciosOrdenados;
 	}
-
-	//es necesario crear más de estos para cada tipo de los
-	//atributos de anuncio, LocalDate, String, etc...
-	public Boolean esMayorA(Integer valor1, Integer valor2) {
-		return valor1 > valor2;
-	}
-
-	public Boolean esMayorA(Double valor1, Double valor2) {
-		return valor1 > valor2;
-	}
-
 	/**
 	 * Devuelve la lista de anuncios almacenados en la empresa
 	 * @return listaAnuncios

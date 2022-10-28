@@ -1,2 +1,4 @@
 fechaDePuja:java.time.LocalDate@@valorOfrecido:java.lang.Double@@idUsuario:java.lang.Integer
-#1
+
+#3
+#4

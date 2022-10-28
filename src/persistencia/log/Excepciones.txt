@@ -1,0 +1,8 @@
+Oct 22, 2022 7:43:27 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario estebanparra946@gmail.com no encontrado,2022-10-22
+Oct 22, 2022 7:43:27 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario estebanparra946@gmail.com no encontrado,2022-10-22
+Oct 22, 2022 9:08:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,2022-10-22
+Oct 22, 2022 9:08:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,2022-10-22

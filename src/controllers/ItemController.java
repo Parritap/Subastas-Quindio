@@ -2,6 +2,8 @@ package controllers;
 
 import application.App;
 import interfaces.IApplication;
+import interfaces.Inicializable;
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -13,10 +15,10 @@ import model.Anuncio;
 import utilities.Utils;
 
 import java.io.ByteArrayInputStream;
-import java.util.Objects;
+import java.time.LocalDateTime;
 @Getter
 @Setter
-public class ItemController implements IApplication {
+public class ItemController implements IApplication, Inicializable {
 
     //variables globales
     @FXML
@@ -57,10 +59,42 @@ public class ItemController implements IApplication {
         this.anuncio = anuncio;
         nameLabel.setText(anuncio.getTitulo());
         priceLable.setText(anuncio.getValorInicial()+"");
-        //img.setImage(new Image(new ByteArrayInputStream(anuncio.getImageSrc())));
+        img.setImage(new Image(new ByteArrayInputStream(anuncio.getImageSrc())));
         lblTiempo.setText("Tiempo restante "+horas+" "+minutos+" "+segundos);
+        actualizarTiempo();
     }
 
+    /**
+     * Este metodo actualiza el label de cuanto tiempo lleva el anuncio
+     * se usa la clase animationTimer para generar el ciclo
+     */
+    public void actualizarTiempo(){
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long tiempoActual) {
+                //con la fecha de terminacion del anuncio se le resta 1000000 para que se actualice cada segundo
+                //a su vez se le resta la fecha actual para obtener el tiempo restante
+                //se cambia el texto de lblTiempo para mostrar el tiempo restante en minutos y segundos
+                LocalDateTime fechaActual = LocalDateTime.now();
+                LocalDateTime fechaTerminacion = anuncio.getFechaTerminacion();
+                long tiempoRestante = fechaTerminacion.toEpochSecond(Utils.ZONE_OFFSET) - fechaActual.toEpochSecond(Utils.ZONE_OFFSET);
+                segundos = (int) (tiempoRestante % 60);
+                minutos = (int) ((tiempoRestante / 60) % 60);
+                //si el tiempo se acaba, se acaba la animación
+                if(segundos == 0 && minutos == 0){
+                    this.stop();
+                    //actualizo los anuncios contenidos
+                    subastaController.actualizarAnuncios();
+                    anuncio.setFueMostrado(true);
+                }else {
+                    lblTiempo.setText("Tiempo restante "+minutos+" minutos "+segundos +" segundos");
+                }
+
+            }
+        };
+
+        timer.start();
+    }
     //metodos implementados por la interfaz
     @Override
     public App getApplication() {
@@ -123,8 +157,14 @@ public class ItemController implements IApplication {
      * Metodo aun en proceso, cambiara el anuncio en la barra lateral
      */
     private void setProductSelected(){
+        
         subastaController.setProductSelected(anuncio);
+        //genero un sonido al hacer clic
+        Utils.playSound(Utils.URL_CLICK);
+        
     }
 
 
+    @Override
+    public void inicializarComponentes() {}
 }

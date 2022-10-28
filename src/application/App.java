@@ -1,7 +1,11 @@
 package application;
 
 import controllers.AlertaController;
+import controllers.CuentaController;
+import exceptions.CRUDExceptions;
+import exceptions.LecturaException;
 import interfaces.IApplication;
+import interfaces.Inicializable;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,9 +14,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
-import model.EmpresaSubasta;
-import model.ModelFactoryController;
-import model.Usuario;
+import model.*;
+import persistencia.logic.ArchivoUtil;
+import persistencia.logic.Persistencia;
 import utilities.Utils;
 import java.io.IOException;
 import java.util.HashMap;
@@ -32,7 +36,7 @@ public class App extends Application {
     private Stage stageAlerta;
     //Cliente activo es una variable que me identifica si un cliente ya ha iniciado sesión en la app
     private Usuario clienteActivo;
-
+    private CuentaController cuentaController;
     /**
      * Main
      * @param args args
@@ -51,20 +55,29 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
 
         inicializarApp();
-        //pruebas de codigo, por favor no borrarlas
+
         //CARGO EL FRAME PRINCIPAL
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameInicio));
         Parent root = loader.load();
         IApplication frameInicialController = loader.getController();
         frameInicialController.setApplication(this);
+        Inicializable inicializableController = (Inicializable) frameInicialController;
+        inicializableController.inicializarComponentes();
         Scene scene = new Scene(root);
         this.stage = stage;
         stage.setScene(scene);
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
         stage.minWidthProperty();
+        stage.setOnCloseRequest(event->{
+            try {
+                Persistencia.serializarEmpresaUnificado();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        });
         stage.show();
-
     }
 
 
@@ -72,9 +85,20 @@ public class App extends Application {
      * METODO ENCARGADO DE INICIALIZAR  LO QUE LA
      * APPLICATION NECESITE
      */
-    private void inicializarApp() {
-        //El singleton crea la instancia de Empresa
+    private void inicializarApp() throws CRUDExceptions {
+
         empresaSubasta = ModelFactoryController.getInstance();
+        Usuario usuario = new Usuario("Alejandro Arias", 20, "1209283", "alejandro@gmail.com", "cra 20 cll 12", "324334565", "1234Jose");
+        Usuario admin = new Usuario("Administrador", 20, "000000", "admin", "cra 20 cll 12", "324334565", "admin");
+        Producto producto = new Producto("Popcorn", "Son de mantequilla");
+        Anuncio anuncio = new Anuncio("Vendo popCorn", Utils.obtenerBytesImagen(), 300.0);
+        anuncio.setProducto(producto);
+        anuncio.setUsuario(usuario);
+        usuario.addAnuncio(anuncio);
+        empresaSubasta.addAnuncio(anuncio);
+        //clienteActivo = usuario;
+        empresaSubasta.crearUsuario(usuario);
+        empresaSubasta.crearUsuario(admin);
     }
 
 
@@ -83,6 +107,7 @@ public class App extends Application {
     /**
      * Este metodo permite cambiar el scene del stage global
      * de la application
+     *
      * @param scenePath el nombre de la scene que queremos cargar
      */
     public void loadScene(String scenePath) {
@@ -93,6 +118,8 @@ public class App extends Application {
             Scene scene = new Scene(root);
             IApplication controller = loader.getController();
             controller.setApplication(this);
+            Inicializable controllerInicializable = (Inicializable) controller;
+            controllerInicializable.inicializarComponentes();
             this.stage.setScene(scene);
             stage.setFullScreen(true);
             stage.setFullScreenExitHint("");
@@ -102,17 +129,21 @@ public class App extends Application {
         }
     }
 
+
     /**
      * Metodo que carga un FXML y devuelve ese pane
+     *
      * @param ruta donde se encuentra el pane
      * @return el pane que se encuentra en la ruta
      */
-    public AnchorPane obtenerPane(String ruta){
+    public AnchorPane obtenerPane(String ruta) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
         try {
             AnchorPane root = loader.load();
             IApplication controller = loader.getController();
             controller.setApplication(this);
+            Inicializable controllerInicializable = (Inicializable) controller;
+            controllerInicializable.inicializarComponentes();
             return root;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -121,9 +152,10 @@ public class App extends Application {
 
     /**
      * Metodo que abre un stage con un mensaje
+     *
      * @param mensaje el mensaje que se quiere mostrar
      */
-    public void abrirAlerta(String mensaje){
+    public void abrirAlerta(String mensaje) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameAlerta));
         try {
             AnchorPane root = loader.load();
@@ -141,10 +173,40 @@ public class App extends Application {
         }
     }
 
+    public void setCuentaController(CuentaController cuentaController){
+        this.cuentaController = cuentaController;
+    }
+
+    public CuentaController getCuentaController(){
+        return cuentaController;
+    }
     /**
      * Metodo que cierra la alerta con el mensaje
      */
     public void cerrarAlerta() {
         stageAlerta.close();
+    }
+
+
+    /**
+     * Método que verífica las credenciales de un usuario y de ser correctas cambia el usuario activo.
+     *
+     * @param email       el email del usuario
+     * @param contrasenia la contraseña del usuario
+     * @throws LecturaException De haber algún error en las credenciales.
+     */
+    public void iniciarSesion(String email, String contrasenia) throws LecturaException {
+        //"Handler" dado que handle es "lidiar con algo".
+        IUsuario handler = empresaSubasta.getIUsuario();
+        Usuario usuario = handler.buscarPorCorreo(email);
+
+        if (!handler.verificarContrasenia(usuario, contrasenia)) {
+            throw new LecturaException("La contraseña es incorrecta", "La contraseña pasada no es valida");
+        }
+        clienteActivo = usuario;
+        ArchivoUtil.guardarRegistroLog("El usuario de nombre " + clienteActivo.getName()+ " y correo "+ usuario.getCorreo() + " ha iniciado sesión.", 1, "Inicio de sesión", ModelFactoryController.getRutaLogs("InicioSesion.log"));
+        loadScene(Utils.frameInicio);
+
+
     }
 }
