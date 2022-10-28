@@ -22,6 +22,7 @@ import javafx.scene.layout.VBox;
 import model.Anuncio;
 import model.Language;
 import model.ModelFactoryController;
+import model.Rol;
 import utilities.Utils;
 
 import java.io.ByteArrayInputStream;
@@ -222,6 +223,12 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
             paneVistaAdmin.setVisible(false);
         }
 
+        if(application.getClienteActivo() != null && application.getClienteActivo().isAdmin()){
+            paneVistaAdmin.setVisible(true);
+        }else{
+            paneVistaAdmin.setVisible(false);
+            panePujas.setLayoutX(panePujas.getLayoutX() + 300);
+        }
 
     }
 

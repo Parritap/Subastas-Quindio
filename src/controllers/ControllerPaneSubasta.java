@@ -89,17 +89,9 @@ public class ControllerPaneSubasta implements IApplication, Inicializable {
             } catch (CRUDExceptions e) {
                 Persistencia.registrarExcepcion(e, "Fallo en la creacion de anuncios", 2);
                 application.abrirAlerta(e.getMessage());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (InvocationTargetException e) {
-                throw new RuntimeException(e);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            } catch (NoSuchMethodException e) {
+            } catch (IOException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
                 throw new RuntimeException(e);
             }
-            //crear el anuncio
-            //anucio.setProducto(producto)
         }
 
     }

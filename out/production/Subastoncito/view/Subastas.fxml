@@ -288,49 +288,49 @@
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="10.0" />
                </VBox.margin>
-               <Pane prefHeight="84.0" prefWidth="96.0" />
-               <HBox fx:id="panePujas" alignment="CENTER" onMouseClicked="#verPujasCompletas" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../resources/style.css">
-                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
-                     <Label prefHeight="29.0" prefWidth="190.0" text="Pujas aceptadas" textFill="WHITE">
-                        <font>
-                           <Font name="Cambria Bold" size="18.0" />
-                        </font>
-                     </Label>
-                     <Label prefHeight="16.0" prefWidth="190.0" text="pujas completas" textFill="#878787">
-                        <font>
-                           <Font name="Cambria" size="15.0" />
-                        </font>
-                     </Label>
-                  </VBox>
-                  <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                     <Image url="@../resources/ic_delivery.png" />
-                  </ImageView>
-                  <cursor>
-                     <Cursor fx:constant="HAND" />
-                  </cursor>
-               </HBox>
-               <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
-               <HBox fx:id="paneVistaAdmin" alignment="CENTER" onMouseClicked="#paneAdministrador" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../resources/style.css">
-                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
-                     <Label prefHeight="29.0" prefWidth="190.0" text="Vista de administrador" textFill="WHITE">
-                        <font>
-                           <Font name="Cambria Bold" size="18.0" />
-                        </font>
-                     </Label>
-                     <Label prefHeight="20.0" prefWidth="207.0" text="Ver los datos generales de subasta Quindío" textFill="#191919">
-                        <font>
-                           <Font size="11.0" />
-                        </font>
-                     </Label>
-                  </VBox>
-                  <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                     <Image url="@../resources/ic_stopwatch.png" />
-                  </ImageView>
-                  <cursor>
-                     <Cursor fx:constant="HAND" />
-                  </cursor>
-               </HBox>
-               <Pane prefHeight="84.0" prefWidth="96.0" />
+               <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS">
+                  <children>
+                     <HBox fx:id="panePujas" alignment="CENTER" layoutX="42.0" onMouseClicked="#verPujasCompletas" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../resources/style.css">
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
+                           <Label prefHeight="29.0" prefWidth="190.0" text="Pujas aceptadas" textFill="WHITE">
+                              <font>
+                                 <Font name="Cambria Bold" size="18.0" />
+                              </font>
+                           </Label>
+                           <Label prefHeight="16.0" prefWidth="190.0" text="pujas completas" textFill="#878787">
+                              <font>
+                                 <Font name="Cambria" size="15.0" />
+                              </font>
+                           </Label>
+                        </VBox>
+                        <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                           <Image url="@../resources/ic_delivery.png" />
+                        </ImageView>
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </HBox>
+                     <HBox fx:id="paneVistaAdmin" alignment="CENTER" layoutX="476.0" onMouseClicked="#paneAdministrador" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../resources/style.css">
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
+                           <Label prefHeight="29.0" prefWidth="190.0" text="Vista de administrador" textFill="WHITE">
+                              <font>
+                                 <Font name="Cambria Bold" size="18.0" />
+                              </font>
+                           </Label>
+                           <Label prefHeight="20.0" prefWidth="207.0" text="Ver los datos generales de subasta Quindío" textFill="#191919">
+                              <font>
+                                 <Font size="11.0" />
+                              </font>
+                           </Label>
+                        </VBox>
+                        <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                           <Image url="@../resources/ic_stopwatch.png" />
+                        </ImageView>
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </HBox>
+                  </children></Pane>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <ScrollPane prefHeight="625.0" prefWidth="835.0" stylesheets="@../resources/style.css">

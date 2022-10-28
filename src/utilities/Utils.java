@@ -1,5 +1,7 @@
 package utilities;
 
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
@@ -91,4 +93,7 @@ public class Utils {
     }
 
 
+    public static Paint rgbToColor(int colorAleatorio, int colorAleatorio2, int colorAleatorio3) {
+        return javafx.scene.paint.Color.rgb(colorAleatorio, colorAleatorio2, colorAleatorio3);
+    }
 }

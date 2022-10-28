@@ -57,7 +57,6 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
 
         inicializarApp();
-        ModelFactoryController.getInstance().getIUsuario().getListaUsuarios().forEach(System.out::println);
         //CARGO EL FRAME PRINCIPAL
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameInicio));
         Parent root = loader.load();

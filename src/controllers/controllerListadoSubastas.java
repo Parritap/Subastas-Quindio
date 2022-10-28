@@ -4,13 +4,8 @@ import application.App;
 import interfaces.IApplication;
 import interfaces.Inicializable;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import model.Anuncio;
-import utilities.Utils;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class controllerListadoSubastas implements IApplication, Inicializable {
@@ -38,7 +33,10 @@ public class controllerListadoSubastas implements IApplication, Inicializable {
         } catch (Exception e) {
             //Do nothing.
         }
-        for (Anuncio anuncio : listadoAnuncio) {
+        for (int i = 0; i < listadoAnuncio.size(); i++) {
+            System.out.println(listadoAnuncio.get(i));
+        }
+        /*for (Anuncio anuncio : listadoAnuncio) {
             for (int i = 0; i <100 ; i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(Utils.SUBASTA_ITEM));
                 try {
@@ -52,6 +50,6 @@ public class controllerListadoSubastas implements IApplication, Inicializable {
                     throw new RuntimeException(e);
                 }
             }
-        }
+        }*/
     }
 }
