@@ -45,14 +45,25 @@ public class IniciarSesionController implements IApplication, Inicializable {
     void iniciarSesion(ActionEvent event) {
         try {
             if (obtenerDatos()) {
+                limpiarCampos();
                 application.iniciarSesion(email, contrasenia);
             }
         } catch (LecturaException e) {
+            limpiarCampos();
             Persistencia.registrarExcepcion(e, "Error al iniciar sesion, credenciales incorrectas", 1);
             application.abrirAlerta("La contraseña o el email son incorrectos, por favor intente de nuevo");
         }
 
     }
+
+    /**
+     *Este metodo se encarga de limpia los campos de texto
+     */
+    void limpiarCampos() {
+        txtField_email.setText("");
+        txt_contrasenia.setText("");
+    }
+
 
     /**
      * Método que extrae los datos de los botones.

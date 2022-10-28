@@ -120,7 +120,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
                 application.abrirAlerta("El usuario se agregó correctamente");
                 application.setClienteActivo(usuario);
                 btnCrearCuenta.setVisible(false);
-                ArchivoUtil.guardarRegistroLog("se creo el usuario "+usuario.getId()+":"+usuario.getName(), 1, "CreacionUsuario", ModelFactoryController.getRutaLogs("CreacionUsuario"));
+                ArchivoUtil.guardarRegistroLog("se creo el usuario "+usuario.getId()+":"+usuario.getName(), 1, "Creacion de usuario", ModelFactoryController.getRutaLogs("CreacionUsuario"));
                 btnActualizarCuenta.setVisible(true);
                 cuentaController.mostrarBotonesBarraLateral();
             } catch (EscrituraException e) {

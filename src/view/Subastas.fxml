@@ -44,7 +44,7 @@
                   <String fx:value="search-box" />
                   <String fx:value="shadow" />
                </styleClass>
-               <TextField prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../resources/style.css">
+               <TextField onInputMethodTextChanged="#filtrarAnuncios" prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../resources/style.css">
                   <HBox.margin>
                      <Insets left="20.0" />
                   </HBox.margin>
@@ -55,7 +55,7 @@
                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../resources/style.css" text="Search" textFill="WHITE" />
             </HBox>
             <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
-            <VBox alignment="CENTER" prefHeight="535.0" prefWidth="100.0" stylesheets="@../resources/style.css">
+            <VBox fx:id="paneInfoAnuncio" alignment="CENTER" prefHeight="535.0" prefWidth="100.0" stylesheets="@../resources/style.css">
                <VBox.margin>
                   <Insets left="50.0" right="50.0" />
                </VBox.margin>
@@ -272,13 +272,14 @@
                      <Font name="Cambria Bold" size="18.0" />
                   </font>
                </Label>
-               <ComboBox prefWidth="150.0" promptText="English" styleClass="comboBoxLanguage" stylesheets="@../resources/style.css">
+               <ComboBox fx:id="comboLanguages" prefWidth="150.0" promptText="English" styleClass="comboBoxLanguage" stylesheets="@../resources/style.css">
                   <cursor>
                      <Cursor fx:constant="HAND" />
-                  </cursor></ComboBox>
+                  </cursor>
+               </ComboBox>
                <Pane prefHeight="66.0" prefWidth="296.0" HBox.hgrow="ALWAYS" />
-               <Button fx:id="brn_LogIn" mnemonicParsing="false" onAction="#iniciarSesion" styleClass="buttonAccount" stylesheets="@../resources/style.css" text="Log in " />
-               <Button mnemonicParsing="false" onAction="#loadAccount" styleClass="buttonAccount" stylesheets="@../resources/style.css" text="My Account" />
+               <Button fx:id="brn_LogIn" mnemonicParsing="false" onAction="#iniciarSesion" onMouseEntered="#effectGrow" onMouseExited="#effectDecrement" styleClass="buttonAccount" stylesheets="@../resources/style.css" text="Log in " />
+               <Button fx:id="btnAccount" mnemonicParsing="false" onAction="#loadAccount" onMouseEntered="#effectGrow" onMouseExited="#effectDecrement" styleClass="buttonAccount" stylesheets="@../resources/style.css" text="My Account" />
                <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@../resources/ic_cart.png" />
                </ImageView>
@@ -288,7 +289,7 @@
                   <Insets left="20.0" right="20.0" top="10.0" />
                </VBox.margin>
                <Pane prefHeight="84.0" prefWidth="96.0" />
-               <HBox alignment="CENTER" onMouseClicked="#verPujasCompletas" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../resources/style.css">
+               <HBox fx:id="panePujas" alignment="CENTER" onMouseClicked="#verPujasCompletas" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../resources/style.css">
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
                      <Label prefHeight="29.0" prefWidth="190.0" text="Pujas aceptadas" textFill="WHITE">
                         <font>
@@ -309,7 +310,7 @@
                   </cursor>
                </HBox>
                <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
-               <HBox alignment="CENTER" onMouseClicked="#paneAdministrador" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../resources/style.css">
+               <HBox fx:id="paneVistaAdmin" alignment="CENTER" onMouseClicked="#paneAdministrador" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../resources/style.css">
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
                      <Label prefHeight="29.0" prefWidth="190.0" text="Vista de administrador" textFill="WHITE">
                         <font>

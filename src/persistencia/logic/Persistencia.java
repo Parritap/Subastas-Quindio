@@ -23,7 +23,7 @@ public class Persistencia {
      * metodos complementarios por cada clase
      *
      * @param obj    objeto a serializar,
-     *               este metodo sirve para cualquier tipo de objeto, siempre y cuando no teng otros objetos como atributo
+     *               este metodo sirve para cualquier tipo de objeto, siempre y cuando no tenga otros objetos como atributo
      * @param ignore atributos a ignorar al momento de serializar
      */
     public static void serializarObj(Object obj, String... ignore) throws IOException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
@@ -37,7 +37,7 @@ public class Persistencia {
         Method getter;
         for (Field campo : camposObj) {
             if (isNot(campo.getName(), ignore)) {
-                //llama a los getter para obtener los tributos y agregarlos al resultado
+                //llama a los getter para obtener los atributos y agregarlos al resultado
                 getter = claseObj.getDeclaredMethod(nombreMetodo("get", campo.getName()));
                 atributos.append("@@").append(getter.invoke(obj));
             }
@@ -137,7 +137,7 @@ public class Persistencia {
         Persistencia.serializarObj(usr, "idAux", "foto", "listaPujas", "idAuxListaPujas");
         Persistencia.escribirCabecera(new Puja(), "usuario");
         //serializa las pujas correspondientes a este usuario, para ello pone un numeral
-        //seguido de un id y todos los datos de las pujas correspondientes a ese objeto
+        //seguido de un ID y todos los datos de las pujas correspondientes a ese objeto
         ArchivoUtil.guardarArchivo(
                 ModelFactoryController.getRutaObjetos("Puja.txt"), "\n#" + usr.getIdListaPujas(), true);
         for (Puja puja : usr.getListaPujas()) {
@@ -223,12 +223,12 @@ public class Persistencia {
     }
 
     /**
-     * deserializa un objeto a partir del formato implmentado del taller
+     * deserialize un objeto a partir del formato implementado del taller
      *
-     * @param obj   objeto sobre el cual queremos aplicar la deserializacion
+     * @param obj   objeto sobre el cual queremos aplicar la deserialization
      * @param id    id del objeto que queremos deserializar, el metodo busca este en todos los objetos del
      *              archivo, si no lo encuentra lanza una excepcion
-     * @param idPos posicion en la cual deberia estar el id dentro del formato que manejamos
+     * @param idPos Posición en la cual debería estar el ID dentro del formato que manejamos
      *              p. ej nombre@@cedula@@id@@correo idPos=2
      */
     public static void deserializarObj(Object obj, String id, Integer idPos) throws IOException, LecturaException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, ClassNotFoundException {
@@ -301,42 +301,17 @@ public class Persistencia {
     }
 
 
-    //METODOS NECESARIOS PARA DESERIALIZAR OBJETOS
-    //PASAN DE STRING A CUALQUIER OTRO TIPO
-    public static Integer parseToInteger(String dato) {
-        return Integer.parseInt(dato);
-    }
 
-    public static Boolean parseToBoolean(String dato) {
-        return Boolean.parseBoolean(dato);
-    }
-
-    public static String parseToString(String dato) {
-        return dato;
-    }
-
-
-    public static LocalDate parseToLocalDate(String dato) {
-        return LocalDate.parse(dato);
-    }
-
-    public static LocalDateTime parseToLocalDateTime(String dato) {
-        return LocalDateTime.parse(dato);
-    }
-
-    public static Double parseToDouble(String dato) {
-        return Double.parseDouble(dato);
-    }
 
     public static Estado parseToEstado(String dato) throws LecturaException {
-        if (dato.equals("NUEVO")) {
-            return Estado.NUEVO;
-        } else if (dato.equals("ACTUALIZADO")) {
-            return Estado.ACTUALIZADO;
-        } else if (dato.equals("ELIMINADO")) {
-            return Estado.ELIMINADO;
+        switch (dato) {
+            case "NUEVO":
+                return Estado.NUEVO;
+            case "ACTUALIZADO":
+                return Estado.ACTUALIZADO;
+            case "ELIMINADO":
+                return Estado.ELIMINADO;
         }
-
         throw new LecturaException("estado no valido", "Estado " + dato + " no valido");
     }
 
@@ -512,7 +487,32 @@ public class Persistencia {
     public static void registrarAccion(String mensajeLog, String accion, String rutaArchivo) {
         ArchivoUtil.guardarRegistroLog(mensajeLog, 1 , accion, rutaArchivo);
     }
-    
+
+    //METODOS NECESARIOS PARA DESERIALIZAR OBJETOS
+    //PASAN DE STRING A CUALQUIER OTRO TIPO
+    public static Integer parseToInteger(String dato) {
+        return Integer.parseInt(dato);
+    }
+
+    public static Boolean parseToBoolean(String dato) {
+        return Boolean.parseBoolean(dato);
+    }
+
+    public static String parseToString(String dato) {
+        return dato;
+    }
+
+    public static LocalDate parseToLocalDate(String dato) {
+        return LocalDate.parse(dato);
+    }
+
+    public static LocalDateTime parseToLocalDateTime(String dato) {
+        return LocalDateTime.parse(dato);
+    }
+
+    public static Double parseToDouble(String dato) {
+        return Double.parseDouble(dato);
+    }
 
 
 

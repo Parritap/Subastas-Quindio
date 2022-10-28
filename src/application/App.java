@@ -2,7 +2,6 @@ package application;
 
 import controllers.AlertaController;
 import controllers.CuentaController;
-import exceptions.CRUDExceptions;
 import exceptions.LecturaException;
 import interfaces.IApplication;
 import interfaces.Inicializable;
@@ -55,7 +54,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
 
         inicializarApp();
-
+        ModelFactoryController.getInstance().getIUsuario().getListaUsuarios().forEach(System.out::println);
         //CARGO EL FRAME PRINCIPAL
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameInicio));
         Parent root = loader.load();
@@ -85,24 +84,9 @@ public class App extends Application {
      * METODO ENCARGADO DE INICIALIZAR  LO QUE LA
      * APPLICATION NECESITE
      */
-    private void inicializarApp() throws CRUDExceptions {
-
+    private void inicializarApp(){
         empresaSubasta = ModelFactoryController.getInstance();
-        Usuario usuario = new Usuario("Alejandro Arias", 20, "1209283", "alejandro@gmail.com", "cra 20 cll 12", "324334565", "1234Jose");
-        Usuario admin = new Usuario("Administrador", 20, "000000", "admin", "cra 20 cll 12", "324334565", "admin");
-        Producto producto = new Producto("Popcorn", "Son de mantequilla");
-        Anuncio anuncio = new Anuncio("Vendo popCorn", Utils.obtenerBytesImagen(), 300.0);
-        anuncio.setProducto(producto);
-        anuncio.setUsuario(usuario);
-        usuario.addAnuncio(anuncio);
-        empresaSubasta.addAnuncio(anuncio);
-        //clienteActivo = usuario;
-        empresaSubasta.crearUsuario(usuario);
-        empresaSubasta.crearUsuario(admin);
     }
-
-
-
 
     /**
      * Este metodo permite cambiar el scene del stage global
@@ -152,7 +136,6 @@ public class App extends Application {
 
     /**
      * Metodo que abre un stage con un mensaje
-     *
      * @param mensaje el mensaje que se quiere mostrar
      */
     public void abrirAlerta(String mensaje) {
@@ -206,7 +189,6 @@ public class App extends Application {
         clienteActivo = usuario;
         ArchivoUtil.guardarRegistroLog("El usuario de nombre " + clienteActivo.getName()+ " y correo "+ usuario.getCorreo() + " ha iniciado sesión.", 1, "Inicio de sesión", ModelFactoryController.getRutaLogs("InicioSesion.log"));
         loadScene(Utils.frameInicio);
-
 
     }
 }

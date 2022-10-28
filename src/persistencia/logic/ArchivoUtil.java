@@ -2,7 +2,6 @@ package persistencia.logic;
 
 import model.EmpresaSubasta;
 import model.ModelFactoryController;
-
 import java.beans.*;
 import java.io.*;
 import java.time.LocalDate;
@@ -51,16 +50,11 @@ public class ArchivoUtil {
                 }
             }
 
-        } catch (SecurityException e) {
+        } catch (SecurityException | IOException e) {
 
-            LOGGER.log(Level.SEVERE, e.getMessage());
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
             LOGGER.log(Level.SEVERE, e.getMessage());
             e.printStackTrace();
         } finally {
-
             assert fileHandler != null;
             fileHandler.close();
         }

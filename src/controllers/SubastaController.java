@@ -8,12 +8,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import model.Anuncio;
 import model.ModelFactoryController;
 import utilities.Utils;
@@ -34,16 +38,30 @@ public class SubastaController implements IApplication, Inicializable {
     private App application;
 
     @FXML
+    private Button btnAccount;
+
+    @FXML
+    private ComboBox<String> comboLanguages;
+    @FXML
     private Button brn_LogIn;
 
     @FXML
     private Label lblAdName;
 
     @FXML
+    private VBox paneInfoAnuncio;
+
+    @FXML
     private Label lblAdPrice;
 
     @FXML
     private ImageView adSelectedImage;
+
+    @FXML
+    private HBox panePujas;
+
+    @FXML
+    private HBox paneVistaAdmin;
 
     @FXML
     private GridPane grid;
@@ -59,11 +77,11 @@ public class SubastaController implements IApplication, Inicializable {
      */
 
     private void loadFirstAd(Anuncio anuncio) {
+        paneInfoAnuncio.setVisible(true);
         //obtengo los atributos del anuncio por defecto
         this.lblAdName.setText(anuncio.getTitulo());
         this.lblAdPrice.setText("$" + anuncio.getValorInicial());
         //cargo la ruta de la imagen y la cargo en el anuncio
-        //this.adSelectedImage.setImage(image);
     }
 
     /**
@@ -143,9 +161,6 @@ public class SubastaController implements IApplication, Inicializable {
 
     }
 
-
-
-
     //metodos implementados por la interfaz
 
     @Override
@@ -174,12 +189,9 @@ public class SubastaController implements IApplication, Inicializable {
 
     @Override
     public void inicializarComponentes() {
+        paneInfoAnuncio.setVisible(false);
         //obtengo la lista de anuncios disponibles en la empresa
         this.listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios());
-        System.out.println("total anuncio " + this.listaAnuncios.size());
-        for (Anuncio listaAnuncio : this.listaAnuncios) {
-            System.out.println(listaAnuncio.toString());
-        }
         //si existe al menos un anuncio selecciono el primero como anuncio por defecto
         //para ser mostrado en la barra lateral
         if (this.listaAnuncios.size() > 0)this.loadFirstAd(this.listaAnuncios.get(0));
@@ -187,10 +199,57 @@ public class SubastaController implements IApplication, Inicializable {
         cargarAnuncioAlScroll();
 
         if(application.getClienteActivo()!=null) brn_LogIn.setVisible(false);
+        comboLanguages.getItems().addAll(Utils.lenguajes);
+
+        if(application.getClienteActivo() == null){
+            panePujas.setVisible(false);
+            paneVistaAdmin.setVisible(false);
+        }
+
+
+    }
+
+    /**
+     * Metodo que detecta cuando el mouse entra al boton ir a cuenta e ir a login y los hace crecer un poco
+     * @param event generado al mover el mouse
+     */
+    @FXML
+    void effectGrow(MouseEvent event) {
+
+        if(event.getSource() == btnAccount){
+            btnAccount.setScaleX(1.1);
+            btnAccount.setScaleY(1.1);
+        }else if(event.getSource() == brn_LogIn){
+            brn_LogIn.setScaleX(1.1);
+            brn_LogIn.setScaleY(1.1);
+        }
+    }
+
+    /**
+     * Metodo que detecta cuando el mouse sale del boton ir a cuenta e ir a login y los hace volver a su tamaño original
+     * @param event generado al mover el mouse
+     */
+
+    @FXML
+    void effectDecrement(MouseEvent event) {
+        if(event.getSource() == btnAccount){
+            btnAccount.setScaleX(1);
+            btnAccount.setScaleY(1);
+        }else if(event.getSource() == brn_LogIn){
+            brn_LogIn.setScaleX(1);
+            brn_LogIn.setScaleY(1);
+        }
     }
 
     @FXML
     void iniciarSesion(ActionEvent event) {
         application.loadScene(Utils.iniciarSesion);
     }
+
+
+    @FXML
+    void filtrarAnuncios(InputMethodEvent event) {
+
+    }
+
 }

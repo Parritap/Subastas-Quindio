@@ -5,6 +5,8 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
@@ -14,9 +16,9 @@ public class Utils {
 
 
     /**DEVUELVE TRUE SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS
-     * EN LOS DEMAS ARGUMENTOS
+     * EN LOS DEMOS ARGUMENTOS
      * @param source CADENA QUE SE COMPARA
-     * @param targets CADENAS A LAS QUE PODRIA SER IGUAL SOURCE
+     * @param targets CADENAS A LAS QUE PODRÍA SER IGUAL SOURCE
      * @return SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS EN TARGET
      * */
     public static Boolean isNot(String source, String[] targets){
@@ -25,18 +27,8 @@ public class Utils {
         }
         return true;
     }
-
-
-    public static void imprimirArreglo(String[] arr){
-        StringBuilder resultado = new StringBuilder();
-        for(String str: arr){
-            resultado.append(", ").append(str);
-        }
-
-        System.out.println("{"+resultado.substring(1)+"}");
-    }
-
-    //Url del sonido al hacer click
+    public static String[] lenguajes = {"English", "Español"};
+    //Url del sonido al hacer clic
     public static final String URL_CLICK = "src/resources/soundClic.mp3";
     //url del frame inicial donde se ubican las subastas
     public static final String frameInicio = "../view/Subastas.fxml";
@@ -97,4 +89,6 @@ public class Utils {
         javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
         mediaPlayer.play();
     }
+
+
 }

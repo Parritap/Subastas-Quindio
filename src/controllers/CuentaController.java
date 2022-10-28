@@ -99,7 +99,6 @@ public class CuentaController implements IApplication, Inicializable {
      * Metodo que permite mostrar los botones de la barra lateral
      */
     public void mostrarBotonesBarraLateral(){
-        System.out.println(" muestro botones laterales "  );
         btnListadoSubasta.setVisible(true);
         btnHacerSubasta.setVisible(true);
     }
