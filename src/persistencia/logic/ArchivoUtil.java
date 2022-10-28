@@ -44,20 +44,11 @@ public class ArchivoUtil {
             LOGGER.addHandler(fileHandler);
 
             switch (nivel) {
-                case 1:
-                    LOGGER.log(Level.INFO, accion + "," + mensajeLog + "," + fechaSistema);
-                    break;
-
-                case 2:
-                    LOGGER.log(Level.WARNING, accion + "," + mensajeLog + "," + fechaSistema);
-                    break;
-
-                case 3:
-                    LOGGER.log(Level.SEVERE, accion + "," + mensajeLog + "," + fechaSistema);
-                    break;
-
-                default:
-                    break;
+                case 1 -> LOGGER.log(Level.INFO, accion + "," + mensajeLog + "," + fechaSistema);
+                case 2 -> LOGGER.log(Level.WARNING, accion + "," + mensajeLog + "," + fechaSistema);
+                case 3 -> LOGGER.log(Level.SEVERE, accion + "," + mensajeLog + "," + fechaSistema);
+                default -> {
+                }
             }
 
         } catch (SecurityException e) {
@@ -70,6 +61,7 @@ public class ArchivoUtil {
             e.printStackTrace();
         } finally {
 
+            assert fileHandler != null;
             fileHandler.close();
         }
 
@@ -97,6 +89,7 @@ public class ArchivoUtil {
         cargarFechaSistema();
         try {
 
+            assert ruta != null;
             fileHandler = new FileHandler(ruta, true);
             fileHandler.setFormatter(new SimpleFormatter());
             LOGGER.addHandler(fileHandler);
@@ -119,6 +112,7 @@ public class ArchivoUtil {
             e.printStackTrace();
         } finally {
 
+            assert fileHandler != null;
             fileHandler.close();
         }
 
@@ -128,7 +122,6 @@ public class ArchivoUtil {
 
         String diaN = "";
         String mesN = "";
-        String anioN = "";
 
         Calendar cal1 = Calendar.getInstance();
 
@@ -136,8 +129,6 @@ public class ArchivoUtil {
         int dia = cal1.get(Calendar.DATE);
         int mes = cal1.get(Calendar.MONTH) + 1;
         int anio = cal1.get(Calendar.YEAR);
-        int hora = cal1.get(Calendar.HOUR);
-        int minuto = cal1.get(Calendar.MINUTE);
 
 
         if (dia < 10) {
@@ -151,17 +142,15 @@ public class ArchivoUtil {
             mesN += "" + mes;
         }
 
-        //		fecha_Actual+= a�o+"-"+mesN+"-"+ diaN;
-        //		fechaSistema = a�o+"-"+mesN+"-"+diaN+"-"+hora+"-"+minuto;
         fechaSistema = anio + "-" + mesN + "-" + diaN;
-        //		horaFechaSistema = hora+"-"+minuto;
+
     }
 
     /**
      * Este metodo recibe una cadena con el contenido que se quiere guardar en el archivo
      *
-     * @param ruta es la ruta o path donde esta ubicado el archivo
-     * @throws IOException
+     * @param ruta es la ruta o path donde está ubicado el archivo
+     * @throws IOException si no se puede crear el archivo
      */
     public static void guardarArchivo(String ruta, String contenido, Boolean flagAnexarContenido) throws IOException {
         verificarRuta(ruta);
@@ -177,7 +166,7 @@ public class ArchivoUtil {
      * Verifica que una ruta exista, si no es asi, la crea
      *
      * @param ruta ruta que buscamos
-     * @throws IOException
+     * @throws IOException si no se puede crear la ruta
      */
     public static void verificarRuta(String ruta) throws IOException {
         if (!existeCarpeta(ruta)) {
@@ -190,7 +179,7 @@ public class ArchivoUtil {
      * no tiene el sistema de archivos predefinido
      *
      * @param ruta ruta a crear
-     * @throws IOException
+     * @throws IOException si no se puede crear la ruta
      */
     public static void crearRuta(String ruta) throws IOException {
         String[] dirs = ruta.split("\\\\");
@@ -230,7 +219,7 @@ public class ArchivoUtil {
     }
 
     /**
-     * deja un archivo en blanco, utili para evitar duplicados en la serializacion
+     * deja un archivo en blanco, util para evitar duplicados en la serializacion
      *
      * @param ruta ruta del archivo a limpiar
      */
@@ -244,11 +233,11 @@ public class ArchivoUtil {
     }
 
     /**
-     * ESte metodo retorna el contendio del archivo ubicado en una ruta,con la lista de cadenas.
+     * ESte metodo retorna el contenido del archivo ubicado en una ruta, con la lista de cadenas.
      *
-     * @param ruta
-     * @return
-     * @throws IOException
+     * @param ruta es la ruta o path donde está ubicado el archivo
+     * @return lista de cadenas con el contenido del archivo
+     * @throws IOException si no se puede leer el archivo
      */
     public static ArrayList<String> leerArchivo(String ruta) throws IOException {
         verificarRuta(ruta);
@@ -271,7 +260,7 @@ public class ArchivoUtil {
      *
      * @param rutaOrigen  ruta del archivo que queremos copiar
      * @param rutaDestino ruta donde queremos copiar el archivo, si este archivo no existe, es creado
-     * @throws IOException
+     * @throws IOException si no se puede copiar el archivo
      */
     public static void copiarArchivo(String rutaOrigen, String rutaDestino) throws IOException {
         InputStream is = null;
@@ -291,35 +280,28 @@ public class ArchivoUtil {
             System.out.println("no se pudieron copiar los archivos");
             e.printStackTrace();
         } finally {
+            assert is != null;
             is.close();
+            assert os != null;
             os.close();
         }
 
     }
 
-    //------------------------------------SERIALIZACI�N  y XML
+    //------------------------------------SERIALIZACION  y XML----------------------------------------------
 
     /**
-     * Escribe en el fichero que se le pasa el objeto que se le envia
+     * Escribe en el fichero que se le pasa el objeto que se le envía
      *
      * @param rutaArchivo path del fichero que se quiere escribir
-     * @throws IOException
+     * @throws IOException si no se puede escribir el archivo
      */
 
     public static Object cargarRecursoSerializado(String rutaArchivo) throws Exception {
         Object aux = null;
-        ObjectInputStream ois = null;
-        try {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(rutaArchivo))) {
             // Se crea un ObjectInputStream
-            ois = new ObjectInputStream(new FileInputStream(rutaArchivo));
-
             aux = ois.readObject();
-
-        } catch (Exception e2) {
-            throw e2;
-        } finally {
-            if (ois != null)
-                ois.close();
         }
         return aux;
     }
@@ -330,34 +312,25 @@ public class ArchivoUtil {
      *
      * @param rutaArchivo ruta donde guardar el archivo
      * @param object      objeto a serializar
-     * @throws Exception
+     * @throws Exception si no se puede serializar el objeto
      */
     public static void salvarRecursoSerializado(String rutaArchivo, Object object) throws Exception {
-        ObjectOutputStream oos = null;
-        try {
-            oos = new ObjectOutputStream(new FileOutputStream(rutaArchivo));
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(rutaArchivo))) {
             oos.writeObject(object);
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            if (oos != null)
-                oos.close();
         }
     }
 
     /**
-     * deserializa un objeto a partir de un xml
+     * metodo que permite deserializar un objeto a partir de un xml
      *
      * @param rutaArchivo ruta del archivo que queremos deserializar
-     * @throws IOException
+     * @throws IOException si no se puede deserializar el objeto
      */
 
 
     public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException {
-
         XMLDecoder decodificadorXML;
         Object objetoXML;
-
         decodificadorXML = new XMLDecoder(new FileInputStream(rutaArchivo));
         objetoXML = decodificadorXML.readObject();
         decodificadorXML.close();
@@ -371,7 +344,7 @@ public class ArchivoUtil {
      *
      * @param rutaArchivo ruta donde queremos guardar el serializado
      * @param objeto      objeto a serializar
-     * @throws IOException
+     * @throws IOException si no se puede serializar el objeto
      */
     public static void salvarRecursoSerializadoXML(String rutaArchivo, Object objeto) throws IOException {
 

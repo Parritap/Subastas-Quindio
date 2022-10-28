@@ -117,9 +117,11 @@ public class CuentaController implements IApplication, Inicializable {
         if(application.getClienteActivo() == null){
             btnHacerSubasta.setVisible(false);
             btnListadoSubasta.setVisible(false);
+            btnCerrarSesion.setVisible(false);
         }else {
             btnHacerSubasta.setVisible(true);
             btnListadoSubasta.setVisible(true);
+            btnCerrarSesion.setVisible(true);
         }
     }
     /**
@@ -148,7 +150,6 @@ public class CuentaController implements IApplication, Inicializable {
      */
     @FXML
     void cerrarSesion(ActionEvent event) {
-        System.out.println("Cerrando sesión");
         application.setClienteActivo(null);
         application.loadScene(Utils.frameInicio);
     }

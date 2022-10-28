@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 import model.ModelFactoryController;
 import persistencia.logic.Persistencia;
+import utilities.Utils;
 
 import java.io.File;
 import java.security.cert.PolicyNode;
@@ -71,6 +72,9 @@ public class IniciarSesionController implements IApplication, Inicializable {
     void initialize() {
     }
 
+    public void irLogin(ActionEvent event) {
+        application.loadScene(Utils.frameInicio);
+    }
 
 
 

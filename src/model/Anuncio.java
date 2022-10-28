@@ -53,6 +53,8 @@ public class Anuncio implements Serializable {
 		this.idListaPujas = ModelFactoryController.darIdListaPuja();
 		this.listaPujas = new ArrayList<>();
 		this.fueMostrado = false;
+		this.estado = Estado.NUEVO;
+		this.id = ++idAux;
 	}
 
 
