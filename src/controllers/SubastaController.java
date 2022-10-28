@@ -20,6 +20,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Anuncio;
 import model.ModelFactoryController;
+import model.Rol;
 import utilities.Utils;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -206,6 +207,12 @@ public class SubastaController implements IApplication, Inicializable {
             paneVistaAdmin.setVisible(false);
         }
 
+        if(application.getClienteActivo() != null && application.getClienteActivo().isAdmin()){
+            paneVistaAdmin.setVisible(true);
+        }else{
+            paneVistaAdmin.setVisible(false);
+            panePujas.setLayoutX(panePujas.getLayoutX() + 300);
+        }
 
     }
 

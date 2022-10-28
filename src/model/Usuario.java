@@ -32,6 +32,8 @@ public class Usuario implements Serializable {
 	private Estado estado;
 	private Integer id;
 	private ArrayList<Anuncio> listaAnuncios;
+	private Rol rol;
+
 
 	//Constructores
 
@@ -51,6 +53,7 @@ public class Usuario implements Serializable {
 		this.idListaPujas = ModelFactoryController.darIdListaPuja();
 		this.cantAnuncios = 0;
 		this.listaAnuncios = new ArrayList<>();
+		this.rol = Rol.CLIENTE;
 	}
 
 	public Usuario(ArrayList<Puja> listaPujas){
@@ -59,6 +62,7 @@ public class Usuario implements Serializable {
 		this.idListaPujas = ModelFactoryController.darIdListaPuja();
 		this.cantAnuncios = 0;
 		this.listaPujas = listaPujas;
+		this.rol = Rol.CLIENTE;
 	}
 
 	public Usuario(){}
@@ -103,13 +107,14 @@ public class Usuario implements Serializable {
 
 	public void addAnuncio(Anuncio anuncio) {
 		boolean flag = true;
-		for (int i = 0; i < listaAnuncios.size() && flag; i++) {
-			Anuncio anuncioAux = listaAnuncios.get(i);
-			if(anuncioAux.equals(anuncio)){
-				flag =false;
+		for (Anuncio anuncioAux : listaAnuncios) {
+			if (anuncioAux.equals(anuncio)) {
+				flag = false;
+				break;
 			}
 		}
 		if (flag) listaAnuncios.add(anuncio);
 	}
 
+	public boolean isAdmin() {return this.rol == Rol.ADMINISTRADOR;}
 }
