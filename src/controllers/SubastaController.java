@@ -3,6 +3,7 @@ package controllers;
 import application.App;
 import interfaces.IApplication;
 import interfaces.Inicializable;
+import interfaces.LanguageInterchangeable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,19 +20,29 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Anuncio;
+import model.Language;
 import model.ModelFactoryController;
 import utilities.Utils;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 /**
  * Esta clase se encarga de ser el controlador del primer frame
  * que se muestra en la App
+ *
  * @author alejandroarias
  */
-public class SubastaController implements IApplication, Inicializable {
+public class SubastaController implements IApplication, Inicializable, LanguageInterchangeable {
 
+    public static void main(String[] args) {
+        SubastaController object = new SubastaController();
+        object.printThisFiels();
+        //object.cambiarIdioma(Language.ENGLISH);
+    }
 
 
     //Variables globales
@@ -73,6 +84,7 @@ public class SubastaController implements IApplication, Inicializable {
     /**
      * Este metodo carga un anuncio a la barra lateral de la app
      * (LA BARRA NARANJA)
+     *
      * @param anuncio El anuncio que se va a ubicar como seleccionado por defecto
      */
 
@@ -98,7 +110,7 @@ public class SubastaController implements IApplication, Inicializable {
             //recorro la lista de anuncios y los convierto en un item controller
             for (Anuncio anuncio : this.listaAnuncios) {
 
-                if(!anuncio.getFueMostrado()){
+                if (!anuncio.getFueMostrado()) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
                     AnchorPane anchorPane = fxmlLoader.load();
@@ -132,6 +144,7 @@ public class SubastaController implements IApplication, Inicializable {
     /**
      * Este metodo permite que al hacer clic en algún anuncio
      * se actualice el pane de la barra lateral izquierda
+     *
      * @param anuncio EL ANUNCIO QUE SE VA A ACTUALIZAR
      */
     public void setProductSelected(Anuncio anuncio) {
@@ -145,6 +158,7 @@ public class SubastaController implements IApplication, Inicializable {
 
     /**
      * Metodo que carga la vista de administrador de la app
+     *
      * @param event generado al hacer clic
      */
     @FXML
@@ -154,6 +168,7 @@ public class SubastaController implements IApplication, Inicializable {
 
     /**
      * Metodo qeu carga la lista de pujas de un usuario
+     *
      * @param ignoredEvent generado al hacer clic
      */
     @FXML
@@ -175,6 +190,7 @@ public class SubastaController implements IApplication, Inicializable {
 
     /**
      * Metodo que abre el frame de crear cuenta
+     *
      * @param ignoredEvent evento generado al hacer clic
      */
     @FXML
@@ -194,14 +210,14 @@ public class SubastaController implements IApplication, Inicializable {
         this.listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios());
         //si existe al menos un anuncio selecciono el primero como anuncio por defecto
         //para ser mostrado en la barra lateral
-        if (this.listaAnuncios.size() > 0)this.loadFirstAd(this.listaAnuncios.get(0));
+        if (this.listaAnuncios.size() > 0) this.loadFirstAd(this.listaAnuncios.get(0));
         //metodo que permite recorrer los anuncios y cargarlos en el pane scroll
         cargarAnuncioAlScroll();
 
-        if(application.getClienteActivo()!=null) brn_LogIn.setVisible(false);
+        if (application.getClienteActivo() != null) brn_LogIn.setVisible(false);
         comboLanguages.getItems().addAll(Utils.lenguajes);
 
-        if(application.getClienteActivo() == null){
+        if (application.getClienteActivo() == null) {
             panePujas.setVisible(false);
             paneVistaAdmin.setVisible(false);
         }
@@ -211,15 +227,16 @@ public class SubastaController implements IApplication, Inicializable {
 
     /**
      * Metodo que detecta cuando el mouse entra al boton ir a cuenta e ir a login y los hace crecer un poco
+     *
      * @param event generado al mover el mouse
      */
     @FXML
     void effectGrow(MouseEvent event) {
 
-        if(event.getSource() == btnAccount){
+        if (event.getSource() == btnAccount) {
             btnAccount.setScaleX(1.1);
             btnAccount.setScaleY(1.1);
-        }else if(event.getSource() == brn_LogIn){
+        } else if (event.getSource() == brn_LogIn) {
             brn_LogIn.setScaleX(1.1);
             brn_LogIn.setScaleY(1.1);
         }
@@ -227,15 +244,16 @@ public class SubastaController implements IApplication, Inicializable {
 
     /**
      * Metodo que detecta cuando el mouse sale del boton ir a cuenta e ir a login y los hace volver a su tamaño original
+     *
      * @param event generado al mover el mouse
      */
 
     @FXML
     void effectDecrement(MouseEvent event) {
-        if(event.getSource() == btnAccount){
+        if (event.getSource() == btnAccount) {
             btnAccount.setScaleX(1);
             btnAccount.setScaleY(1);
-        }else if(event.getSource() == brn_LogIn){
+        } else if (event.getSource() == brn_LogIn) {
             brn_LogIn.setScaleX(1);
             brn_LogIn.setScaleY(1);
         }
@@ -250,6 +268,34 @@ public class SubastaController implements IApplication, Inicializable {
     @FXML
     void filtrarAnuncios(InputMethodEvent event) {
 
+    }
+
+    /**
+     * Método aun no terminado.
+     * La idea es recorrer todos los labels de esta clase, y depende del idioma seleccionado, cambiar el texto de cada label
+     * El texto de cada label se encontrará en el archivo de propiedades correspondiente al idioma seleccionado.
+     * Este método debe ser llamado dentro del método inicializarComponentes().
+     */
+    @Override
+    public void cambiarIdioma(Language language) throws NoSuchMethodException {
+
+
+
+        Field [] fields = getClass().getDeclaredFields();
+        for (Field field : fields) {
+            if (field.getType().getSimpleName().equals("Button")) {
+
+                String labelName = field.getName();
+                Method m = field.getClass().getMethod("setText", String.class);
+            }
+        }
+    }
+
+    public void printThisFiels (){
+        Field [] fields = getClass().getDeclaredFields();
+        for (Field field : fields) {
+            System.out.println(field.getName());
+        }
     }
 
 }

@@ -36,6 +36,9 @@ public class App extends Application {
     //Cliente activo es una variable que me identifica si un cliente ya ha iniciado sesión en la app
     private Usuario clienteActivo;
     private CuentaController cuentaController;
+
+    //El lenguaje estará en español por defecto.
+    private Language language = Language.SPANISH;
     /**
      * Main
      * @param args args
