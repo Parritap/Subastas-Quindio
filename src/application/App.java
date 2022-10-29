@@ -46,6 +46,8 @@ public class App extends Application {
     //Cliente activo es una variable que me identifica si un cliente ya ha iniciado sesión en la app
     private Usuario clienteActivo;
     private CuentaController cuentaController;
+    //Variable que me identifica el idioma de la aplicación
+    private String lenguaje;
 
     //El lenguaje estará en español por defecto.
     private Language language = Language.SPANISH;
@@ -68,12 +70,11 @@ public class App extends Application {
 
         inicializarApp();
         //CARGO EL FRAME PRINCIPAL
-
-        Locale locale = new Locale("en", "US");
-        ResourceBundle bundle = ResourceBundle.getBundle("persistencia/languages/subasta/language", locale);
-
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameInicio), bundle);
+        //cambié la obtención del bundle para no acoplarlo a este metodo
+        //y generalizarlo para todos los frames
+        //también cree una variable de instancia para el idioma
+        //se inicia en inglés y se encuentra en el metodo inicializarApp
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameInicio), getBundle());
         Parent root = loader.load();
         IApplication frameInicialController = loader.getController();
         frameInicialController.setApplication(this);
@@ -96,6 +97,25 @@ public class App extends Application {
         stage.show();
     }
 
+    /**
+     * Este metodo permite generalizar el bundle de los idiomas,
+     * de esta manera se puede obtener el bundle en cualquier momento
+     * debido a que se encuentra en la clase App y los algunas vistas no estaban
+     * funcionando correctamente al no tener el bundle
+     * @return un objeto de tipo Bundle que contiene el idioma
+     */
+    private ResourceBundle getBundle(){
+
+        if(lenguaje.equals("en")){
+            Locale locale = new Locale("en", "US");
+            return ResourceBundle.getBundle("persistencia/languages/subasta/language", locale);
+        }
+        else{
+            Locale locale = new Locale("es", "ES");
+            return ResourceBundle.getBundle("persistencia/languages/subasta/language", locale);
+        }
+    }
+
 
     /**
      * METODO ENCARGADO DE INICIALIZAR  LO QUE LA
@@ -103,6 +123,7 @@ public class App extends Application {
      */
     private void inicializarApp(){
         empresaSubasta = ModelFactoryController.getInstance();
+        lenguaje = "en";
     }
 
     /**
@@ -113,7 +134,7 @@ public class App extends Application {
      */
     public void loadScene(String scenePath) {
         //cargo el fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(scenePath));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(scenePath), getBundle());
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -138,7 +159,7 @@ public class App extends Application {
      * @return el pane que se encuentra en la ruta
      */
     public AnchorPane obtenerPane(String ruta) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), getBundle());
         try {
             AnchorPane root = loader.load();
             IApplication controller = loader.getController();
@@ -156,7 +177,7 @@ public class App extends Application {
      * @param mensaje el mensaje que se quiere mostrar
      */
     public void abrirAlerta(String mensaje) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameAlerta));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameAlerta), getBundle());
         try {
             AnchorPane root = loader.load();
             IApplication controller = loader.getController();
@@ -214,7 +235,7 @@ public class App extends Application {
      */
 
     public void abrirLogin() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameIniciarSesion));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameIniciarSesion), getBundle());
         try {
             AnchorPane container = loader.load();
             IApplication controller = loader.getController();
