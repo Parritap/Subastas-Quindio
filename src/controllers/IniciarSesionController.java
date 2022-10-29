@@ -98,48 +98,7 @@ public class IniciarSesionController implements IApplication, Inicializable {
        circulos = new Circle[]{circulo1, circulo2, circulo3, circulo4, circulo5, circulo6};
     }
 
-    /**
-     * Metodo que realiza un fade in en el circulo
-     */
-     private void fadeInCircles() {
-         while (true){
 
-             new Thread(() -> {
-                 //genero un tiempo aleatorio entre 8 y 20
-                 int tiempoAleatorio = (int) (Math.random() * 12 + 8);
-                 //genero un color RGB aleatorio
-                 int colorAleatorio = (int) (Math.random() * 255);
-                 int colorAleatorio2 = (int) (Math.random() * 255);
-                 int colorAleatorio3 = (int) (Math.random() * 255);
-                 //obtengo el circulo que se va a animar
-                 Circle circulo = circulos[((int) (Math.random() * 6))];
-                 //le asigno el radio aleatorio
-                 circulo.setRadius(((int) (Math.random() * 20 + 10)));
-                 //le asigno el color aleatorio
-                 circulo.setFill(Utils.rgbToColor(colorAleatorio, colorAleatorio2, colorAleatorio3));
-                 //asigno una posición aleatoria
-                 circulo.setCenterX(((int) (Math.random() * 1000)));
-                 circulo.setCenterY(((int) (Math.random() * 1000)));
-                 //verifico que el círculo no se salga de la pantalla
-                 if (circulo.getCenterX() + circulo.getRadius() > 1000) {
-                        circulo.setCenterX(circulo.getCenterX() - circulo.getRadius());
-                 }
-                 fadeInSingularCircle(circulo, tiempoAleatorio);
-             }).start();
-         }
-
-
-     }
-
-     private void fadeInSingularCircle(Circle circulo1, int duration){
-         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(duration), circulo1);
-         fadeTransition.setFromValue(0.0);
-         fadeTransition.setToValue(0.3);
-         fadeTransition.setCycleCount(1);
-         fadeTransition.setAutoReverse(true);
-         fadeTransition.play();
-
-     }
 
     public void irLogin(ActionEvent ignoredEvent) {
         application.loadScene(Utils.frameInicio);

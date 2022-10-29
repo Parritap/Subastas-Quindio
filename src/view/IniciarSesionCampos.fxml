@@ -71,7 +71,7 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </PasswordField>
-            <Button fx:id="btn_iniciarSesion" mnemonicParsing="false" prefHeight="42.0" prefWidth="152.0" style="-fx-background-color: #98918F;" text="Iniciar Sesion" textFill="WHITE">
+            <Button fx:id="btn_iniciarSesion" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="42.0" prefWidth="152.0" style="-fx-background-color: #98918F;" text="Iniciar Sesion" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -79,7 +79,7 @@
                   <Insets left="180.0" top="50.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btn_iniciarSesion1" mnemonicParsing="false" prefHeight="54.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="     Iniciar sesion con google" textFill="WHITE">
+            <Button fx:id="btn_iniciarSesion1" mnemonicParsing="false" onAction="#lanzarAlerta" prefHeight="54.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="     Iniciar sesion con google" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -97,7 +97,7 @@
                   <Insets left="70.0" top="30.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btn_iniciarSesion11" mnemonicParsing="false" prefHeight="38.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="Iniciar sesion con facebook" textFill="WHITE">
+            <Button fx:id="btn_iniciarSesion11" mnemonicParsing="false" onAction="#lanzarAlerta" prefHeight="38.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="Iniciar sesion con facebook" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="41.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                      <image>

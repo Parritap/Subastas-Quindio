@@ -5,8 +5,6 @@ package controllers;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.SnapshotParameters;
-import javafx.scene.effect.BoxBlur;
-import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.*;
 
@@ -16,9 +14,7 @@ public class MilkGlassPane extends Region {
     // circle container
     private final Pane container;
 
-    // blur (milk glass effect)
-    private final BoxBlur blur;
-    private final double initialBlur = 15;
+
 
     // background image
     private WritableImage image;
@@ -26,11 +22,7 @@ public class MilkGlassPane extends Region {
 
     public MilkGlassPane(Pane container) {
 
-        // milk glass effect:
-        // set the blur and color adjust effects
-        blur = new BoxBlur(initialBlur, initialBlur, 3);
-        setEffect(blur);
-        blur.setInput(new ColorAdjust(0, 0, 0.4, 0.0));
+
 
         // circle container
         this.container = container;

@@ -32,7 +32,7 @@
                </input>
             </Shadow>
          </effect></AnchorPane>
-      <Button fx:id="btn_iniciarSesion" layoutX="672.0" layoutY="504.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="152.0" style="-fx-background-color: #98918F;" text="Iniciar Sesion" textFill="WHITE">
+      <Button fx:id="btn_iniciarSesion" layoutX="672.0" layoutY="504.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="42.0" prefWidth="152.0" style="-fx-background-color: #98918F;" text="Iniciar Sesion" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -56,7 +56,7 @@
          </font>
       </Label>
       <Line endX="1332.0" endY="-7.62939453125E-6" layoutX="162.0" layoutY="89.0" startX="-164.99998474121094" startY="-7.62939453125E-6" stroke="WHITE" strokeWidth="3.0" />
-      <Button fx:id="btn_iniciarSesion1" layoutX="551.0" layoutY="590.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="     Iniciar sesion con google" textFill="WHITE">
+      <Button fx:id="btn_iniciarSesion1" layoutX="551.0" layoutY="590.0" mnemonicParsing="false" onAction="#lanzarAlerta" prefHeight="54.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="     Iniciar sesion con google" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -71,7 +71,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btn_iniciarSesion11" layoutX="552.0" layoutY="667.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="Iniciar sesion con facebook" textFill="WHITE">
+      <Button fx:id="btn_iniciarSesion11" layoutX="552.0" layoutY="667.0" mnemonicParsing="false" onAction="#lanzarAlerta" prefHeight="38.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="Iniciar sesion con facebook" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="41.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                <image>

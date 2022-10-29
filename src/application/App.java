@@ -218,9 +218,9 @@ public class App extends Application {
             // background style for the container
             container.setStyle("-fx-background-color: White");
             // create a scene with size 1280x800
-            Scene scene = new Scene(rootPane, 1280, 800);
+            Scene scene = new Scene(rootPane, 1492, 900);
             // number of nodes that shall be spawned
-            int spawnNodes = 800;
+            int spawnNodes = 100;
             // spawn the nodes (circles)
             for (int i = 0; i < spawnNodes; i++) {
                 spawnNode(scene, container);
@@ -230,6 +230,7 @@ public class App extends Application {
             milkGlassPane.setMaxSize(600, 400);
             // add the milk glass pane to the root pane
             rootPane.getChildren().add(milkGlassPane);
+            container.toFront();
             stage.setScene(scene);
             stage.setFullScreen(true);
 
@@ -239,8 +240,7 @@ public class App extends Application {
             throw new RuntimeException(e);
         }
     }
-
-
+    
 
     /**
      * Spawns a node (circle).
