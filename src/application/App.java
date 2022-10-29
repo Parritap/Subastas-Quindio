@@ -105,15 +105,14 @@ public class App extends Application {
      * @return un objeto de tipo Bundle que contiene el idioma
      */
     private ResourceBundle getBundle(){
-
+        Locale locale;
         if(lenguaje.equals("en")){
-            Locale locale = new Locale("en", "US");
-            return ResourceBundle.getBundle("persistencia/languages/subasta/language", locale);
+            locale = new Locale("en", "US");
         }
         else{
-            Locale locale = new Locale("es", "ES");
-            return ResourceBundle.getBundle("persistencia/languages/subasta/language", locale);
+            locale = new Locale("es", "ES");
         }
+        return ResourceBundle.getBundle("persistencia/languages/subasta/language", locale);
     }
 
 

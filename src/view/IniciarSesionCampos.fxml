@@ -17,7 +17,7 @@
 
 <AnchorPane prefHeight="942.0" prefWidth="1492.0" style="-fx-background-color: Transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.IniciarSesionController">
    <children>
-      <AnchorPane layoutX="445.0" layoutY="171.0" prefHeight="632.0" prefWidth="553.0" style="-fx-background-color: #615755; -fx-opacity: .5; -fx-background-radius: 50; -fx-border-radius: 50;" styleClass="border-image" stylesheets="@../resources/style.css">
+      <AnchorPane layoutX="445.0" layoutY="171.0" prefHeight="632.0" prefWidth="553.0" style="-fx-background-color: #252525; -fx-opacity: .5; -fx-background-radius: 50; -fx-border-radius: 50;" styleClass="border-image" stylesheets="@../resources/style.css">
          <effect>
             <Shadow height="1.0" radius="0.0" width="0.0">
                <color>

@@ -14,7 +14,6 @@ import java.util.Date;
 @ToString
 public class Anuncio implements Serializable {
 
-	private Integer idFoto;
 	//El anuncio contiene un producto
 	private Producto producto;
 	private String titulo;

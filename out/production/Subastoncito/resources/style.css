@@ -218,7 +218,7 @@
 
 .textFieldSubasta{
     -fx-background-color: Transparent;
-    -fx-text-fill: White;
+    -fx-text-fill: BLACK;
 }
 .barraScroll:vertical{
     /*se le cambia el color de la barra de scroll*/
