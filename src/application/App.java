@@ -27,6 +27,8 @@ import persistencia.logic.Persistencia;
 import utilities.Utils;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 @Getter
 @Setter
@@ -66,7 +68,12 @@ public class App extends Application {
 
         inicializarApp();
         //CARGO EL FRAME PRINCIPAL
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameInicio));
+
+        Locale locale = new Locale("en", "US");
+        ResourceBundle bundle = ResourceBundle.getBundle("persistencia/languages/subasta/language", locale);
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameInicio), bundle);
         Parent root = loader.load();
         IApplication frameInicialController = loader.getController();
         frameInicialController.setApplication(this);
