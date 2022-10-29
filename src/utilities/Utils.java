@@ -46,6 +46,8 @@ public class Utils {
     public static String[] lenguajes = {"English", "Español"};
     //Url del sonido al hacer clic
     public static final String URL_CLICK = "src/resources/soundClic.mp3";
+    //Url del sonido al hacer clic en un botón o item
+    public static final String URL_CLICK_BUTTON = "src/resources/clicButtons.mp3";
     //url del frame inicial donde se ubican las subastas
     public static final String frameInicio = "../view/Subastas.fxml";
     //Url de los item mostrados en mis subastas
@@ -107,8 +109,14 @@ public class Utils {
         mediaPlayer.play();
     }
 
-
-    public static Paint rgbToColor(int colorAleatorio, int colorAleatorio2, int colorAleatorio3) {
-        return javafx.scene.paint.Color.rgb(colorAleatorio, colorAleatorio2, colorAleatorio3);
+    /**
+     * Metodo que permite generar un sonido al hacer clic
+     * en un boton o en un item
+      */
+    public static void playClic() {
+        javafx.scene.media.Media media = new javafx.scene.media.Media(new File(URL_CLICK_BUTTON).toURI().toString());
+        javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
+        mediaPlayer.play();
     }
+
 }

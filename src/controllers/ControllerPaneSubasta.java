@@ -62,6 +62,7 @@ public class ControllerPaneSubasta implements IApplication, Inicializable {
      */
     @FXML
     void cargarImagen(ActionEvent ignoredEvent) {
+        Utils.playClic();
         byte[] imageByte = Utils.obtenerBytesImagen();
         imgAnuncio.setImage(new Image(new ByteArrayInputStream(imageByte), 199, 199, false, false));
         this.bytesImg = imageByte;
@@ -74,6 +75,7 @@ public class ControllerPaneSubasta implements IApplication, Inicializable {
      */
     @FXML
     void crearAnuncio(ActionEvent ignoredEvent) {
+        Utils.playClic();
         //si no hay un cliente activo no se puede crear un anuncio
         if(application.getClienteActivo() == null){
             application.abrirAlerta("Debe crear una cuenta antes de publicar un anuncio");

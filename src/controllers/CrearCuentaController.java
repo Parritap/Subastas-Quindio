@@ -98,6 +98,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
      */
     @FXML
     void cargarPerfil(MouseEvent ignoredEvent) {
+        Utils.playClic();
         Image img = new Image(new ByteArrayInputStream(Utils.obtenerBytesImagen()), 199, 199, false, false);
         circleImage.setFill(new ImagePattern(img));
     }
@@ -108,6 +109,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
      */
     @FXML
     void crearCuenta(ActionEvent event) {
+        Utils.playClic();
         //Los campos de textos requeridos para crear el usuario
         //cliente activo es el cliente que tiene la application
         if(cargarCampos() && application.getClienteActivo() == null){
@@ -141,6 +143,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
      */
     @FXML
     void actualizarCuenta(ActionEvent event) {
+        Utils.playClic();
         cargarCampos();
         Usuario usuario = new Usuario(name, edad, cedula, correo, direccion, telefono, contrasenia);
         try {
@@ -235,6 +238,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
      */
     @FXML
     void setValueComboBox(ActionEvent event) {
+        Utils.playClic();
         Object itemSeleccionado =  event.getSource();
         if(itemSeleccionado == itemMastercard) cmbBoxPago.setText("Mastercard");
         else if( itemSeleccionado == itemPaypal) cmbBoxPago.setText("Paypal");
