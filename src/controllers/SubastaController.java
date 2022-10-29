@@ -11,6 +11,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
@@ -22,7 +23,6 @@ import javafx.scene.layout.VBox;
 import model.Anuncio;
 import model.Language;
 import model.ModelFactoryController;
-import model.Rol;
 import utilities.Utils;
 
 import java.io.ByteArrayInputStream;
@@ -45,6 +45,12 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
         //object.cambiarIdioma(Language.ENGLISH);
     }
 
+    @FXML
+    private TextField txtfBarraBusqueda;
+
+    @FXML
+    private Button btnFiltrar;
+
 
     //Variables globales
     private App application;
@@ -55,7 +61,7 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
     @FXML
     private ComboBox<String> comboLanguages;
     @FXML
-    private Button brn_LogIn;
+    private Button btnLogIn;
 
     @FXML
     private Label lblAdName;
@@ -215,7 +221,7 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
         //metodo que permite recorrer los anuncios y cargarlos en el pane scroll
         cargarAnuncioAlScroll();
 
-        if (application.getClienteActivo() != null) brn_LogIn.setVisible(false);
+        if (application.getClienteActivo() != null) btnLogIn.setVisible(false);
         comboLanguages.getItems().addAll(Utils.lenguajes);
 
         if (application.getClienteActivo() == null) {
@@ -243,9 +249,9 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
         if (event.getSource() == btnAccount) {
             btnAccount.setScaleX(1.1);
             btnAccount.setScaleY(1.1);
-        } else if (event.getSource() == brn_LogIn) {
-            brn_LogIn.setScaleX(1.1);
-            brn_LogIn.setScaleY(1.1);
+        } else if (event.getSource() == btnLogIn) {
+            btnLogIn.setScaleX(1.1);
+            btnLogIn.setScaleY(1.1);
         }
     }
 
@@ -260,9 +266,9 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
         if (event.getSource() == btnAccount) {
             btnAccount.setScaleX(1);
             btnAccount.setScaleY(1);
-        } else if (event.getSource() == brn_LogIn) {
-            brn_LogIn.setScaleX(1);
-            brn_LogIn.setScaleY(1);
+        } else if (event.getSource() == btnLogIn) {
+            btnLogIn.setScaleX(1);
+            btnLogIn.setScaleY(1);
         }
     }
 
