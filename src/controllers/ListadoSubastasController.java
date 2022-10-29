@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 import model.Anuncio;
 import java.util.ArrayList;
 
-public class controllerListadoSubastas implements IApplication, Inicializable {
+public class ListadoSubastasController implements IApplication, Inicializable {
 
     private App application;
 

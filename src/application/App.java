@@ -50,7 +50,8 @@ public class App extends Application {
     private String lenguaje;
 
     //El lenguaje estará en español por defecto.
-    private Language language = Language.SPANISH;
+    //Variable es estatica para no tener que crear varios métodos que extraigan la misma de su instancia de App.
+    public static Language language = Language.ENGLISH;
     /**
      * Main
      * @param args args
@@ -74,7 +75,9 @@ public class App extends Application {
         //y generalizarlo para todos los frames
         //también cree una variable de instancia para el idioma
         //se inicia en inglés y se encuentra en el metodo inicializarApp
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameInicio), getBundle());
+
+        String ruta = Utils.frameInicio;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
         Parent root = loader.load();
         IApplication frameInicialController = loader.getController();
         frameInicialController.setApplication(this);
@@ -106,13 +109,14 @@ public class App extends Application {
      */
     private ResourceBundle getBundle(){
         Locale locale;
-        if(lenguaje.equals("en")){
+        if(language.equals(Language.ENGLISH)){
             locale = new Locale("en", "US");
         }
         else{
-            locale = new Locale("es", "ES");
+            locale = new Locale("es", "CO"); //CO = Colombia según el código de paises.
+            //Param más informacion: https://www.datosmundial.com/codigos-de-pais.php
         }
-        return ResourceBundle.getBundle("persistencia/languages/subasta/language", locale);
+        return ResourceBundle.getBundle("persistencia/languages/subastas/language", locale);
     }
 
 

@@ -1,10 +1,14 @@
 package utilities;
 
+import application.App;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.Language;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -13,36 +17,36 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Utils {
 
-    private static String[] auxClasesConTexto= {"Button","Label", "TextField"};
+    private static String[] auxClasesConTexto = {"Button", "Label", "TextField"};
     public static final ArrayList<String> CLASES_CON_TEXTO_FX = new ArrayList<>(List.of(auxClasesConTexto));
 
     // Circle colors
-    public  static final Color[] colors = {
-            new Color(0.2,0.5,0.8, 1.0).saturate().brighter().brighter(),
-            new Color(0.3,0.2,0.7,1.0).saturate().brighter().brighter(),
-            new Color(0.8,0.3,0.9,1.0).saturate().brighter().brighter(),
-            new Color(0.4,0.3,0.9,1.0).saturate().brighter().brighter(),
-            new Color(0.2,0.5,0.7,1.0).saturate().brighter().brighter()};
+    public static final Color[] colors = {
+            new Color(0.2, 0.5, 0.8, 1.0).saturate().brighter().brighter(),
+            new Color(0.3, 0.2, 0.7, 1.0).saturate().brighter().brighter(),
+            new Color(0.8, 0.3, 0.9, 1.0).saturate().brighter().brighter(),
+            new Color(0.4, 0.3, 0.9, 1.0).saturate().brighter().brighter(),
+            new Color(0.2, 0.5, 0.7, 1.0).saturate().brighter().brighter()};
 
-    /**DEVUELVE TRUE SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS
+    /**
+     * DEVUELVE TRUE SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS
      * EN LOS DEMOS ARGUMENTOS
-     * @param source CADENA QUE SE COMPARA
+     *
+     * @param source  CADENA QUE SE COMPARA
      * @param targets CADENAS A LAS QUE PODRÍA SER IGUAL SOURCE
      * @return SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS EN TARGET
-     * */
-    public static Boolean isNot(String source, String[] targets){
-        for(String target: targets){
-            if(source.equals(target)) return false;
+     */
+    public static Boolean isNot(String source, String[] targets) {
+        for (String target : targets) {
+            if (source.equals(target)) return false;
         }
         return true;
     }
+
     public static String[] lenguajes = {"English", "Español"};
     //Url del sonido al hacer clic
     public static final String URL_CLICK = "src/resources/soundClic.mp3";
@@ -79,9 +83,10 @@ public class Utils {
     /**
      * Metodo que permite abrir el FileChooser
      * y elegir una imagen que será cargada y guardada en el modelo
+     *
      * @return btImagen arreglo con los bits de la imagen
      */
-    public static byte[] obtenerBytesImagen(){
+    public static byte[] obtenerBytesImagen() {
         //el file chooser permite abrir el explorador
         FileChooser dc = new FileChooser();
         File file = dc.showOpenDialog(new Stage());
@@ -99,11 +104,11 @@ public class Utils {
     /**
      * metodo que permite reproducir un sonido al hacer clic
      * en un boton o en un item
-     * @param url url del sonido
      *
+     * @param url url del sonido
      */
 
-    public static void playSound(String url){
+    public static void playSound(String url) {
         javafx.scene.media.Media media = new javafx.scene.media.Media(new File(url).toURI().toString());
         javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
         mediaPlayer.play();
@@ -112,11 +117,37 @@ public class Utils {
     /**
      * Metodo que permite generar un sonido al hacer clic
      * en un boton o en un item
-      */
+     */
     public static void playClic() {
-        javafx.scene.media.Media media = new javafx.scene.media.Media(new File(URL_CLICK_BUTTON).toURI().toString());
-        javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
-        mediaPlayer.play();
+
+        //DO NOTHING
+
+        //javafx.scene.media.Media media = new javafx.scene.media.Media(new File(URL_CLICK_BUTTON).toURI().toString());
+        //javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
+        //mediaPlayer.play();
+
+
+    }
+
+
+    public static ResourceBundle getBundle(String rutaFXML) {
+        //Particionar la ruta de donde viene el archivo fxml
+        //Luego obtener el nombre del archivo fxml
+        //Finalmente obtener el bundle con el nombre del archivo fxml de acuerdo al parámetro Language encontrado en la aplicación.
+
+        String[] listasRutaArchivo = rutaFXML.split("/"); //Obtenemos la lista particionada de la ruta del archivo fxml
+        String aux = listasRutaArchivo[listasRutaArchivo.length - 1];//Esto retorna: "nombreArchivo.fxml"
+        String paquete = aux.substring(0, aux.length() - 5);//Esto retorna "NombreArchivo";
+        paquete = paquete.toLowerCase(); //Los paquetes por estándar vienen en minúscula. Esto es importante.
+
+        //Aquí preguntamos cuál es el lenguaje de App, y dependiendo de eso retornamos uno u otro objeto Locale conteniendo el idioma y país.
+        Locale l =(App.language == Language.ENGLISH ? new Locale("en", "US") :  new Locale("es", "CO")); //"CO" significa "Colombia"
+
+        //El nombre del paquete debe ser idéntico al nombre del archivo FXML sin su extensión, de otra forma, este método no sire para nada, o peor
+        //Ocasionará errores en el código (Sadness and frustration...)
+        return ResourceBundle.getBundle("persistencia/languages/" + paquete+ "/language", l);
     }
 
 }
+
+

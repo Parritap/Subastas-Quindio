@@ -20,7 +20,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
-public class ControllerPaneSubasta implements IApplication, Inicializable {
+public class PaneSubastaController implements IApplication, Inicializable {
 
 
     private App application;
