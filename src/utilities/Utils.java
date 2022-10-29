@@ -136,7 +136,7 @@ public class Utils {
      * entonces el código dará error.
      *
      * @param rutaFXML Ruta al archivo FXML
-     * @return Archivo .properties que contiene el texto para los elementos de la vista en el idioma especificado en App.language
+     * @return Objeto Resourcebundle que contiene el idioma especificado en App.language
      */
     public static ResourceBundle getBundle(String rutaFXML) {
         //Particionar la ruta de donde viene el archivo fxml
