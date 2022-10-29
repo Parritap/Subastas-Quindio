@@ -3,7 +3,7 @@
 Esta applicacion es un proyecto para la materia de programación 3, se encuentra escrita en lenguaje java
 y el diseño se fundamenta en css
 
-## Getting Started
+## Comenzamos
 
 El proyecto ha sido desarrollado por:
 
