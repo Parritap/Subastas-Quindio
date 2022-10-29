@@ -121,6 +121,9 @@
          <font>
             <Font size="32.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Label layoutX="414.0" layoutY="24.0" prefHeight="49.0" prefWidth="628.0" style="-fx-background-color: #252525; -fx-background-radius: 30;" text="                    Iniciar sesión en Subastas Quindío" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
