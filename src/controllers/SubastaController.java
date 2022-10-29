@@ -268,7 +268,7 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
 
     @FXML
     void iniciarSesion(ActionEvent event) {
-        application.loadScene(Utils.iniciarSesion);
+        application.abrirLogin();
     }
 
 

@@ -16,10 +16,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="840.0" stylesheets="@../resources/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CrearCuentaController">
+<AnchorPane prefHeight="836.0" prefWidth="840.0" stylesheets="@../resources/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CrearCuentaController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="716.0" layoutX="17.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="822.0" />
       <BorderPane prefHeight="800.0" prefWidth="840.0">
          <top>
             <AnchorPane prefHeight="89.0" prefWidth="840.0" BorderPane.alignment="CENTER">
@@ -164,7 +166,7 @@
                   <TextField fx:id="txtTelefono" layoutX="300.0" layoutY="571.0" prefHeight="26.0" prefWidth="449.0" promptText="Escriba aquí su telefono..." styleClass="styleTextField" />
                </children>
                <BorderPane.margin>
-                  <Insets left="50.0" top="30.0" />
+                  <Insets left="50.0" top="50.0" />
                </BorderPane.margin>
             </AnchorPane>
          </center>

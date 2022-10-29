@@ -1,5 +1,6 @@
 package utilities;
 
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
@@ -15,7 +16,13 @@ import java.time.ZoneOffset;
 public class Utils {
 
 
-
+    // Circle colors
+    public  static final Color[] colors = {
+            new Color(0.2,0.5,0.8, 1.0).saturate().brighter().brighter(),
+            new Color(0.3,0.2,0.7,1.0).saturate().brighter().brighter(),
+            new Color(0.8,0.3,0.9,1.0).saturate().brighter().brighter(),
+            new Color(0.4,0.3,0.9,1.0).saturate().brighter().brighter(),
+            new Color(0.2,0.5,0.7,1.0).saturate().brighter().brighter()};
 
     /**DEVUELVE TRUE SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS
      * EN LOS DEMOS ARGUMENTOS
@@ -38,6 +45,8 @@ public class Utils {
     public static final String SUBASTA_ITEM = "../view/subastaItem.fxml";
     //url del frame del panel de cuenta
     public static final String frameCuenta = "../view/Cuenta.fxml";
+
+    public static final String frameIniciarSesion = "../view/IniciarSesionCampos.fxml";
     //Url de la imagen por defecto al crear cuenta
     public static final String profileImage = "/resources/profile.png";
     //Url del pane de los anuncios

@@ -11,20 +11,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="942.0" prefWidth="1492.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.IniciarSesionController">
+<AnchorPane prefHeight="942.0" prefWidth="1492.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.IniciarSesionController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#191919" height="947.0" layoutX="-3.0" layoutY="-5.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1506.0" />
-      <Label layoutX="527.0" layoutY="23.0" text="Iniciar sesión en Subastas Quindío" textFill="WHITE">
+      <Label layoutX="424.0" layoutY="23.0" prefHeight="40.0" prefWidth="628.0" style="-fx-background-color: #252525; -fx-background-radius: 30;" text="                    Iniciar sesión en Subastas Quindío" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="444.0" layoutY="153.0" prefHeight="623.0" prefWidth="570.0" style="-fx-background-color: #615755; -fx-opacity: .5; -fx-background-radius: 50;" styleClass="border-image" stylesheets="@../resources/style.css">
+      <AnchorPane layoutX="458.0" layoutY="163.0" prefHeight="623.0" prefWidth="570.0" style="-fx-background-color: #615755; -fx-opacity: .5; -fx-background-radius: 50;" styleClass="border-image" stylesheets="@../resources/style.css">
          <effect>
             <Shadow height="1.0" radius="0.0" width="0.0">
                <color>
@@ -34,41 +31,32 @@
                   <Blend opacity="0.0" />
                </input>
             </Shadow>
-         </effect>
-         <children>
-            <Circle fx:id="circulo6" fill="#ffa81f" layoutX="86.0" layoutY="108.0" radius="174.0" stroke="WHITE" strokeType="INSIDE" style="-fx-opacity: .2;" />
-         </children></AnchorPane>
-      <Button fx:id="btn_iniciarSesion" layoutX="652.0" layoutY="504.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="42.0" prefWidth="152.0" style="-fx-background-color: #98918F;" text="Iniciar Sesion" textFill="WHITE">
+         </effect></AnchorPane>
+      <Button fx:id="btn_iniciarSesion" layoutX="672.0" layoutY="504.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="152.0" style="-fx-background-color: #98918F;" text="Iniciar Sesion" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Label layoutX="524.0" layoutY="377.0" text="Contraseña" textFill="WHITE">
+      <Label layoutX="534.0" layoutY="377.0" text="Contraseña" textFill="WHITE">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="txtField_email" layoutX="527.0" layoutY="295.0" prefHeight="42.0" prefWidth="387.0" promptText="Email" style="-fx-background-color: #98918F;">
+      <TextField fx:id="txtField_email" layoutX="540.0" layoutY="300.0" prefHeight="42.0" prefWidth="387.0" promptText="Email" style="-fx-background-color: #98918F;">
          <font>
             <Font size="22.0" />
          </font></TextField>
-      <Label layoutX="640.0" layoutY="178.0" text="Iniciar Sesión" textFill="WHITE">
+      <Label layoutX="644.0" layoutY="178.0" text="Iniciar Sesión" textFill="WHITE">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <Label layoutX="527.0" layoutY="246.0" text="Email" textFill="WHITE">
+      <Label layoutX="540.0" layoutY="247.0" text="Email" textFill="WHITE">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
       <Line endX="1332.0" endY="-7.62939453125E-6" layoutX="162.0" layoutY="89.0" startX="-164.99998474121094" startY="-7.62939453125E-6" stroke="WHITE" strokeWidth="3.0" />
-      <Button layoutX="52.0" layoutY="9.0" mnemonicParsing="false" onAction="#irLogin" prefHeight="72.0" prefWidth="67.0" styleClass="btnAtras" stylesheets="@../resources/style.css" text="&lt;">
-         <font>
-            <Font size="32.0" />
-         </font>
-      </Button>
-      <Circle fx:id="circulo1" fill="#ffa81f" layoutX="924.0" layoutY="666.0" radius="174.0" stroke="WHITE" strokeType="INSIDE" style="-fx-opacity: .2;" />
-      <Button fx:id="btn_iniciarSesion1" layoutX="540.0" layoutY="590.0" mnemonicParsing="false" onAction="#lanzarAlerta" prefHeight="54.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="     Iniciar sesion con google" textFill="WHITE">
+      <Button fx:id="btn_iniciarSesion1" layoutX="551.0" layoutY="590.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="     Iniciar sesion con google" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -83,7 +71,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btn_iniciarSesion11" layoutX="541.0" layoutY="667.0" mnemonicParsing="false" onAction="#lanzarAlerta" prefHeight="38.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="Iniciar sesion con facebook" textFill="WHITE">
+      <Button fx:id="btn_iniciarSesion11" layoutX="552.0" layoutY="667.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="Iniciar sesion con facebook" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="41.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -98,14 +86,15 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <PasswordField fx:id="txt_contrasenia" layoutX="527.0" layoutY="431.0" prefHeight="43.0" prefWidth="387.0" promptText="Password" style="-fx-background-color: #98918F;">
+      <PasswordField fx:id="txt_contrasenia" layoutX="540.0" layoutY="431.0" prefHeight="43.0" prefWidth="387.0" promptText="Password" style="-fx-background-color: #98918F;">
          <font>
             <Font size="22.0" />
          </font>
       </PasswordField>
-      <Circle fx:id="circulo2" fill="#ffa81f" layoutX="249.0" layoutY="346.0" radius="174.0" stroke="WHITE" strokeType="INSIDE" style="-fx-opacity: .2;" />
-      <Circle fx:id="circulo3" fill="#ffa81f" layoutX="1222.0" layoutY="311.0" radius="174.0" stroke="WHITE" strokeType="INSIDE" style="-fx-opacity: .2;" />
-      <Circle fx:id="circulo4" fill="#ffa81f" layoutX="337.0" layoutY="694.0" radius="174.0" stroke="WHITE" strokeType="INSIDE" style="-fx-opacity: .2;" />
-      <Circle fx:id="circulo5" fill="#ffa81f" layoutX="1307.0" layoutY="713.0" radius="174.0" stroke="WHITE" strokeType="INSIDE" style="-fx-opacity: .2;" />
+      <Button layoutX="52.0" layoutY="9.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="67.0" style="-fx-background-color: White; -fx-border-color: Black; -fx-background-radius: 50; -fx-border-radius: 50;" text="&lt;">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

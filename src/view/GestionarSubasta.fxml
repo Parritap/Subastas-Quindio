@@ -19,25 +19,22 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <AnchorPane layoutX="47.0" layoutY="208.0" prefHeight="316.0" prefWidth="777.0" style="-fx-background-color: #3D3D3D; -fx-background-radius: 30;" />
-      <AnchorPane layoutX="44.0" layoutY="595.0" prefHeight="86.0" prefWidth="777.0" style="-fx-background-color: #3D3D3D; -fx-background-radius: 30;" />
-      <Label layoutX="388.0" layoutY="620.0" text="Valor inicial del anuncio" textFill="WHITE" />
-      <TextField fx:id="txtValorAnuncio" layoutX="548.0" layoutY="611.0" prefHeight="27.0" prefWidth="251.0" promptText="1234567" styleClass="textFieldSubasta" stylesheets="@../resources/style.css" />
-      <TextField fx:id="txtTitleAnuncio" layoutX="154.0" layoutY="614.0" prefHeight="26.0" prefWidth="199.0" promptText="Ad title..." styleClass="textFieldSubasta" stylesheets="@../resources/style.css" />
-      <Label layoutX="65.0" layoutY="548.0" text="Detalles del anuncio" />
-      <Label layoutX="40.0" layoutY="502.0" prefHeight="71.0" prefWidth="13.0" text=".">
-         <font>
-            <Font size="58.0" />
-         </font>
-      </Label>
-      <Label layoutX="68.0" layoutY="624.0" text="Titulo" textFill="WHITE" />
-      <TextArea fx:id="txtDescripcionProducto" layoutX="248.0" layoutY="355.0" prefHeight="116.0" prefWidth="281.0" promptText="Escriba aquí de que se trata su producto..." />
-      <Label layoutX="68.0" layoutY="395.0" text="Descripcion del producto" textFill="WHITE" />
-      <Label layoutX="65.0" layoutY="269.0" prefHeight="17.0" prefWidth="148.0" text="Nombre del producto:" textFill="WHITE" />
-      <Line endX="192.5" layoutX="349.0" layoutY="289.0" startX="-100.0" stroke="WHITE" />
-      <Line endX="100.0" layoutX="254.0" layoutY="640.0" startX="-100.0" stroke="WHITE" />
-      <Line endX="144.0" layoutX="655.0" layoutY="637.0" startX="-100.0" stroke="WHITE" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="192.0" layoutX="596.0" layoutY="226.0" stroke="WHITE" strokeType="INSIDE" style="-fx-arc-height: 40; -fx-arc-width: 40;" width="199.0" />
+      <AnchorPane layoutX="47.0" layoutY="208.0" prefHeight="322.0" prefWidth="777.0" style="-fx-border-color: BLACK;">
+         <children>
+            <Label layoutX="33.0" layoutY="125.0" text="Descripcion del producto" />
+            <Label layoutX="32.0" layoutY="63.0" prefHeight="17.0" prefWidth="148.0" text="Nombre del producto:" />
+         </children></AnchorPane>
+      <AnchorPane layoutX="44.0" layoutY="583.0" prefHeight="98.0" prefWidth="777.0" style="-fx-border-color: BLACK;" />
+      <Label layoutX="388.0" layoutY="620.0" text="Valor inicial del anuncio" />
+      <TextField fx:id="txtValorAnuncio" layoutX="548.0" layoutY="611.0" prefHeight="27.0" prefWidth="251.0" promptText="1234567" style="-fx-alignment: CENTER;" styleClass="textFieldSubasta" stylesheets="@../resources/style.css" />
+      <TextField fx:id="txtTitleAnuncio" layoutX="154.0" layoutY="614.0" prefHeight="26.0" prefWidth="199.0" promptText="Ad title..." style="-fx-alignment: CENTER;" styleClass="textFieldSubasta" stylesheets="@../resources/style.css" />
+      <Label layoutX="388.0" layoutY="543.0" prefHeight="29.0" prefWidth="145.0" text="Detalles del anuncio" />
+      <Label layoutX="68.0" layoutY="624.0" text="Titulo" />
+      <TextArea fx:id="txtDescripcionProducto" layoutX="76.0" layoutY="355.0" prefHeight="116.0" prefWidth="453.0" promptText="Escriba aquí de que se trata su producto..." wrapText="true" />
+      <Line endX="192.5" layoutX="349.0" layoutY="289.0" startX="-100.0" />
+      <Line endX="100.0" layoutX="254.0" layoutY="640.0" startX="-100.0" />
+      <Line endX="144.0" layoutX="655.0" layoutY="637.0" startX="-100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="192.0" layoutX="596.0" layoutY="226.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 40; -fx-arc-width: 40;" width="199.0" />
       <Label layoutX="58.0" layoutY="14.0" prefHeight="43.0" prefWidth="694.0" style="-fx-background-color: #252525; -fx-background-radius: 30;" text="Crear mi anuncio" textFill="WHITE">
          <font>
             <Font size="20.0" />
@@ -48,8 +45,8 @@
       </Label>
       <Line endX="709.0" layoutX="127.0" layoutY="149.0" startX="-127.0" stroke="#252525" strokeWidth="3.0" />
       <Label layoutX="55.0" layoutY="255.0" />
-      <Label layoutX="70.0" layoutY="176.0" text="Detalles del producto" />
-      <TextField fx:id="txtNameProduct" layoutX="251.0" layoutY="267.0" prefHeight="26.0" prefWidth="281.0" promptText="Product Name..." styleClass="textFieldSubasta" stylesheets="@../resources/style.css">
+      <Label layoutX="374.0" layoutY="174.0" prefHeight="17.0" prefWidth="136.0" text="Detalles del producto" />
+      <TextField fx:id="txtNameProduct" layoutX="247.0" layoutY="267.0" prefHeight="26.0" prefWidth="294.0" promptText="Product Name..." style="-fx-alignment: CENTER;" styleClass="textFieldSubasta" stylesheets="@../resources/style.css">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -65,11 +62,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="49.0" layoutY="134.0" prefHeight="53.0" prefWidth="13.0" text=".">
-         <font>
-            <Font size="58.0" />
-         </font>
-      </Label>
       <Label layoutX="14.0" layoutY="67.0" text=".">
          <font>
             <Font size="62.0" />
