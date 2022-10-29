@@ -129,7 +129,15 @@ public class Utils {
 
     }
 
-
+    /**
+     * Método que manipula la ruta (dada como parámetro) de un archivo FXML para crear su
+     * ResourceBundle de acuerdo también a la variable pública estática App.Language
+     * NOTA: Si el archivo [.properties] no existe dentro de src/persistencia/languages/[nombreArchivoFXML]
+     * entonces el código dará error.
+     *
+     * @param rutaFXML Ruta al archivo FXML
+     * @return Archivo .properties que contiene el texto para los elementos de la vista en el idioma especificado en App.language
+     */
     public static ResourceBundle getBundle(String rutaFXML) {
         //Particionar la ruta de donde viene el archivo fxml
         //Luego obtener el nombre del archivo fxml
@@ -141,11 +149,11 @@ public class Utils {
         paquete = paquete.toLowerCase(); //Los paquetes por estándar vienen en minúscula. Esto es importante.
 
         //Aquí preguntamos cuál es el lenguaje de App, y dependiendo de eso retornamos uno u otro objeto Locale conteniendo el idioma y país.
-        Locale l =(App.language == Language.ENGLISH ? new Locale("en", "US") :  new Locale("es", "CO")); //"CO" significa "Colombia"
+        Locale l = (App.language == Language.ENGLISH ? new Locale("en", "US") : new Locale("es", "CO")); //"CO" significa "Colombia"
 
         //El nombre del paquete debe ser idéntico al nombre del archivo FXML sin su extensión, de otra forma, este método no sire para nada, o peor
         //Ocasionará errores en el código (Sadness and frustration...)
-        return ResourceBundle.getBundle("persistencia/languages/" + paquete+ "/language", l);
+        return ResourceBundle.getBundle("persistencia/languages/" + paquete + "/language", l);
     }
 
 }
