@@ -154,7 +154,7 @@ public class Persistencia {
      */
     public static void serializarAnuncio(Anuncio anuncio) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         //serializa los atributos base de anuncio
-        serializarObj(anuncio, "idAux", "foto", "listaPujas");
+        serializarObj(anuncio, "idAux", "foto", "listaPujas", "listaAnuncios");
         Persistencia.escribirCabecera(new Puja(), "usuario");
         //serializa las pujas correspondientes a ese anuncio en otro archivo
         ArchivoUtil.guardarArchivo(

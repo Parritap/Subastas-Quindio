@@ -46,12 +46,10 @@ public class App extends Application {
     //Cliente activo es una variable que me identifica si un cliente ya ha iniciado sesión en la app
     private Usuario clienteActivo;
     private CuentaController cuentaController;
-    //Variable que me identifica el idioma de la aplicación
-    private String lenguaje;
 
     //El lenguaje estará en español por defecto.
-    //Variable es estatica para no tener que crear varios métodos que extraigan la misma de su instancia de App.
-    public static Language language = Language.ENGLISH;
+    //Variable es static para no tener que crear varios métodos que extraigan la misma de su instancia de App.
+    public static Language language = Language.SPANISH;
     /**
      * Main
      * @param args args
@@ -126,7 +124,6 @@ public class App extends Application {
      */
     private void inicializarApp(){
         empresaSubasta = ModelFactoryController.getInstance();
-        lenguaje = "en";
     }
 
     /**
