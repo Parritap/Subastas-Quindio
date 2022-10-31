@@ -84,9 +84,8 @@ public class IProducto implements CRUD<Producto>, Serializable {
     public static int ordenar(String campo, Producto prod1, Producto prod2) {
         int resultado = 0;
 
-        switch (campo) {
-            case "precioInicial" -> resultado = prod1.getPrecioInicial().compareTo(prod2.getPrecioInicial());
-            case "nombre" -> resultado = prod1.getNombre().compareTo(prod2.getNombre());
+        if ("nombre".equals(campo)) {
+            resultado = prod1.getNombre().compareTo(prod2.getNombre());
         }
         return resultado;
     }

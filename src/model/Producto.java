@@ -12,7 +12,6 @@ public  class Producto implements Serializable {
 
     //VARIABLES GLOBALES
     private Integer id;
-    private Integer precioInicial;
     private static int idAux;
     private String descripcion;
     private String nombre;
@@ -27,11 +26,10 @@ public  class Producto implements Serializable {
         id = ++ idAux;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        estado = Estado.NUEVO;
     }
 
-    public Producto(){
-
-    }
+    public Producto(){}
 
     public boolean compararId(Integer id){
         return this.id.compareTo(id) == 0;
