@@ -7,7 +7,7 @@ import lombok.ToString;
 import java.io.Serializable;
 @Getter
 @Setter
-@ToString
+
 public  class Producto implements Serializable {
 
     //VARIABLES GLOBALES
@@ -35,4 +35,13 @@ public  class Producto implements Serializable {
         return this.id.compareTo(id) == 0;
     }
 
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", descripcion='" + descripcion + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", estado=" + estado +
+                '}';
+    }
 }

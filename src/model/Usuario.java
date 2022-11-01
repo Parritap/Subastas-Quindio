@@ -106,14 +106,14 @@ public class Usuario implements Serializable {
 
 
 	public void addAnuncio(Anuncio anuncio) {
-		//boolean flag = true;
-		/*for (Anuncio anuncioAux : this.listaAnuncios) {
+		boolean flag = true;
+		for (Anuncio anuncioAux : this.listaAnuncios) {
 			if (anuncioAux.equals(anuncio)) {
 				flag = false;
 				break;
 			}
 		}
-		if (flag) listaAnuncios.add(anuncio);*/
+		if (flag) listaAnuncios.add(anuncio);
 		listaAnuncios.add(anuncio);
 	}
 

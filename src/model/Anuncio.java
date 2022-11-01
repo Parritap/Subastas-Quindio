@@ -104,15 +104,14 @@ public class Anuncio implements Serializable {
 
 	@Override
 	public String toString() {
-		return "producto=" + producto +
+		return "producto=" + producto.getNombre() +
 				", titulo='" + titulo + '\'' +
 				", nombreAnunciante='" + nombreAnunciante + '\'' +
 				", fechaPublicacion=" + fechaPublicacion +
-				", fechaTerminacion=" + fechaTerminacion +
+				", fechaTerminacion=" + fechaTerminacion.toString() +
 				", valorInicial=" + valorInicial +
-				", listaPujas=" + listaPujas +
 				", idListaPujas=" + idListaPujas +
-				", usuario=" + usuario +
+				", usuario=" + usuario.getName() +
 				", estado=" + estado +
 				", fueMostrado=" + fueMostrado +
 				", id=" + id;
