@@ -1,6 +1,5 @@
 package persistencia.logic;
 
-
 import model.*;
 import utilities.Utils;
 

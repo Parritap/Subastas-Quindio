@@ -28,3 +28,4 @@ LecturaException, usuario alejo@gmail.com no encontrado, 2, Excepcion
 LecturaException, usuario jose@gmail.com no encontrado, 2, Excepcion
 LecturaException, usuario jose@gmail.com no encontrado, 2, Excepcion
 se creo el usuario 1:Alejandro, 1, Creacion de usuario
+El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión., 1, Inicio de sesión
