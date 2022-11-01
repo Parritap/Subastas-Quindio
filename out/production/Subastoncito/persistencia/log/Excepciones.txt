@@ -1,31 +1,3 @@
-Oct 22, 2022 7:43:27 PM persistencia.logic.ArchivoUtil guardarRegistroLog
-WARNING: Excepcion,LecturaException, usuario estebanparra946@gmail.com no encontrado,2022-10-22
-Oct 22, 2022 7:43:27 PM persistencia.logic.ArchivoUtil guardarRegistroLog
-WARNING: Excepcion,LecturaException, usuario estebanparra946@gmail.com no encontrado,2022-10-22
-Oct 22, 2022 9:08:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
-WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,2022-10-22
-Oct 22, 2022 9:08:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
-WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,2022-10-22
-se creo el usuario 1:a, 1, Creacion de usuario
-LecturaException, usuario a no encontrado, 2, Excepcion
-LecturaException, usuario a no encontrado, 2, Excepcion
-LecturaException, usuario a no encontrado, 2, Excepcion
-LecturaException, usuario a no encontrado, 2, Excepcion
-se creo el usuario 1:a, 1, Creacion de usuario
-se creo el usuario 1:a, 1, Creacion de usuario
-LecturaException, usuario alejo@gmail.com no encontrado, 2, Excepcion
-LecturaException, usuario alejo@gmail.com no encontrado, 2, Excepcion
-se creo el usuario 1:Alejandro, 1, Creacion de usuario
-El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión., 1, Inicio de sesión
-LecturaException, usuario alejo@gmail.com no encontrado, 2, Excepcion
-LecturaException, usuario alejo@gmail.com no encontrado, 2, Excepcion
-se creo el usuario 1:Alejandro, 1, Creacion de usuario
-El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión., 1, Inicio de sesión
-se creo el usuario 1:Jose, 1, Creacion de usuario
-El usuario de nombre Jose y correo jose@gmail.com ha iniciado sesión., 1, Inicio de sesión
-LecturaException, usuario alejo@gmail.com no encontrado, 2, Excepcion
-LecturaException, usuario alejo@gmail.com no encontrado, 2, Excepcion
-LecturaException, usuario jose@gmail.com no encontrado, 2, Excepcion
-LecturaException, usuario jose@gmail.com no encontrado, 2, Excepcion
-se creo el usuario 1:Alejandro, 1, Creacion de usuario
-El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión., 1, Inicio de sesión
+
+Nov 01, 2022 4:57:44 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-01

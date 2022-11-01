@@ -14,10 +14,7 @@ import model.Anuncio;
 import model.ModelFactoryController;
 import model.Producto;
 import utilities.Utils;
-
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
 public class PaneSubastaController implements IApplication, Inicializable {
 
@@ -105,6 +102,9 @@ public class PaneSubastaController implements IApplication, Inicializable {
     private boolean cargarCamposTextos() {
         String mensaje = "";
         //obtengo la info de los txt
+        if(bytesImg == null){
+            mensaje += "Agregue una imagen para el producto \n";
+        }
         if (!txtNameProduct.getText().equals("")) {
             nombreProducto = txtNameProduct.getText();
         } else {
