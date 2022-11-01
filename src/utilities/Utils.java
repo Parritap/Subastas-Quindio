@@ -100,13 +100,11 @@ public class Utils {
         FileChooser dc = new FileChooser();
         File file = dc.showOpenDialog(new Stage());
         //obtengo el arreglo de bits de la imagen
-        byte[] btImagen;
+        byte[] btImagen = new byte[0];
         //cargo los bits de la imagen
         try {
             btImagen = Files.readAllBytes(file.toPath());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        } catch (IOException ignored) {}
         return btImagen;
     }
 

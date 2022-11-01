@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import exceptions.ContraseniaNoValidaException;
 import exceptions.CorreoNoValidoException;
 import exceptions.EscrituraException;
@@ -128,7 +127,7 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
      * METODO QUE RECIBE UN USUARIO CON ATRIBUTOS ESPECIFICOS, BUSCA EL USUARIO ALMACENADO EN
      * LA LISTA Y LE SETTEA LOS ATRIBUTOS
      *
-     * @param id           SE BUSCA EL USUARIO ALMACENADO
+     * @param id SE BUSCA EL USUARIO ALMACENADO
      * @param nuevoUsuario CONTIENE LOS ATRIBUTOS A SETTEAR
      * @throws LecturaException SI NO ENCUENTRA EL OBJETO LANZA UNA EXCEPCION
      */

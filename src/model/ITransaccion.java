@@ -6,9 +6,10 @@ import exceptions.LecturaException;
 import interfaces.CRUD;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
+
 @Getter
 @Setter
 public class ITransaccion implements CRUD<Transaccion>, Serializable {
@@ -24,7 +25,7 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
     @Override
     public Transaccion buscarId(Integer id) throws CRUDExceptions {
         for (Transaccion transaccion : listaTransacciones) {
-            if (transaccion.getId() == id) {
+            if (Objects.equals(transaccion.getId(), id)) {
                 return transaccion;
             }
         }
@@ -36,7 +37,7 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
      * @param transaccionBuscada    TRANSACCION QUE QUEREMOS VERIFICAR SI EXISTE*/
     public Boolean noExisteTransaccion(Transaccion transaccionBuscada){
         for(Transaccion transaccion: listaTransacciones) {
-            if (transaccion.getId() == transaccionBuscada.getId()) {
+            if (Objects.equals(transaccion.getId(), transaccionBuscada.getId())) {
                 return false;
             }
         }
@@ -44,9 +45,8 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
     }
 
     /**utilizado para agregar una transaccion en listaTransaccion
-     * @param transaccion transaccion a egregar
-     * @return void
-     * */
+     * @param transaccion transaccion a agregar
+     */
     @Override
     public void crear(Transaccion transaccion) throws CRUDExceptions {
         if (noExisteTransaccion(transaccion)) {
@@ -56,12 +56,12 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
     }
 
     /**
-     * @param id id  por el cual se va a buscar el objeto a actualizar
+     * @param id id por el cual se va a buscar el objeto a actualizar
      * */
     @Override
     public void actualizar (Integer id, Transaccion nuevaTransaccion) throws CRUDExceptions {
         for(int i=0; i< listaTransacciones.size(); i++){
-            if(listaTransacciones.get(i).getId() == id){
+            if(Objects.equals(listaTransacciones.get(i).getId(), id)){
                 listaTransacciones.set(i, nuevaTransaccion);
             }
         }
@@ -69,7 +69,6 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
 
     /**
      * Metodos utilizado para eliminar un elemento de listaTransaccion
-     * @return void
      * @param id id del objeto que se pretende eliminar
      *
      * */
@@ -110,7 +109,7 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
      * @param dir tipo de orden, si es descendente o ascendente
      * */
     @Override
-    public ArrayList<Transaccion> listar (String campo, TipoOrden dir) throws CRUDExceptions {
+    public ArrayList<Transaccion> listar (String campo, TipoOrden dir){
         ArrayList<Transaccion> listaOrdenada = listaTransacciones;
         listaOrdenada.sort((a, b) -> {
             int resultado = 0;

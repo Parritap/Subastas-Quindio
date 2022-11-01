@@ -166,7 +166,7 @@ public class IProducto implements CRUD<Producto>, Serializable {
 
     /**
      * Metodo que devuelve la lista de productos en un String
-     * @return
+     * @return Devuelve un string con la informacion de los productos
      */
     public String getStringProductos() {
         StringBuilder stringProductos = new StringBuilder();

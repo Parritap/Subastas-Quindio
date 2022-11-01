@@ -90,9 +90,8 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 *  Método que verifica si existe un anuncio antes de crearlo
 	 * @param anuncio Anuncio a comparar.
 	 * @return True si el anuncio NO EXISTE
-	 * @throws EscrituraException Si el anuncio ya existe.
 	 */
-	private boolean existeAnuncio(Anuncio anuncio) throws EscrituraException {
+	private boolean existeAnuncio(Anuncio anuncio){
 		for (Anuncio aux: listaAnuncios){
 			if(aux.equals(anuncio)){
 				return false;
@@ -195,10 +194,10 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 * @return String con la informacion de cada anuncio
 	 */
     public String getStringAnuncios() {
-		String anuncios = "";
+		StringBuilder anuncios = new StringBuilder();
 		for (Anuncio anuncio : listaAnuncios) {
-			anuncios += anuncio.getStringAnuncio() + "\n";
+			anuncios.append(anuncio.getStringAnuncio()).append("\n");
 		}
-		return anuncios;
+		return anuncios.toString();
     }
 }

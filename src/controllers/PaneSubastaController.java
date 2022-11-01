@@ -59,9 +59,12 @@ public class PaneSubastaController implements IApplication, Inicializable {
     @FXML
     void cargarImagen(ActionEvent ignoredEvent) {
         Utils.playSound(Utils.URL_CLICK_BUTTON);
-        byte[] imageByte = Utils.obtenerBytesImagen();
-        imgAnuncio.setImage(new Image(new ByteArrayInputStream(imageByte), 199, 199, false, false));
-        this.bytesImg = imageByte;
+        try {
+            byte[] imageByte = Utils.obtenerBytesImagen();
+            imgAnuncio.setImage(new Image(new ByteArrayInputStream(imageByte), 199, 199, false, false));
+            this.bytesImg = imageByte;
+        }catch (Exception ignored){}
+
     }
 
     /**
@@ -103,7 +106,7 @@ public class PaneSubastaController implements IApplication, Inicializable {
         String mensaje = "";
         //obtengo la info de los txt
         if(bytesImg == null){
-            mensaje += "Agregue una imagen para el producto \n";
+            mensaje += "Agregue una imagen para el producto \n ";
         }
         if (!txtNameProduct.getText().equals("")) {
             nombreProducto = txtNameProduct.getText();
