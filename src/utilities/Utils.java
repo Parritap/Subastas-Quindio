@@ -21,6 +21,10 @@ import java.util.*;
 
 public class Utils {
 
+    public static void main(String[] args) {
+        //do nothing
+    }
+
     private static String[] auxClasesConTexto = {"Button", "Label", "TextField"};
     public static final ArrayList<String> CLASES_CON_TEXTO_FX = new ArrayList<>(List.of(auxClasesConTexto));
 
