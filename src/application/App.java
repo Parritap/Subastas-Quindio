@@ -73,7 +73,6 @@ public class App extends Application {
         //y generalizarlo para todos los frames
         //también cree una variable de instancia para el idioma
         //se inicia en inglés y se encuentra en el metodo inicializarApp
-
         String ruta = Utils.frameInicio;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
         Parent root = loader.load();
@@ -89,7 +88,8 @@ public class App extends Application {
         stage.minWidthProperty();
         stage.setOnCloseRequest(event->{
             try {
-                Persistencia.serializarEmpresaUnificado();
+                //Persistencia.serializarEmpresaUnificado();
+                Persistencia.serializarEmpresa();
             }
             catch (Exception e){
                 e.printStackTrace();

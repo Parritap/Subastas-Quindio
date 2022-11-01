@@ -26,7 +26,7 @@
          <top>
             <AnchorPane prefHeight="89.0" prefWidth="840.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="anchorPane_crearMiCuenta" layoutX="163.0" layoutY="23.0" onMouseClicked="#crearCuentaOnMouseClicked" prefHeight="57.0" prefWidth="515.0" style="-fx-background-color: #252525; -fx-background-radius: 30;">
+                  <AnchorPane fx:id="anchorPane_crearMiCuenta" layoutX="163.0" layoutY="23.0" prefHeight="57.0" prefWidth="515.0" style="-fx-background-color: #252525; -fx-background-radius: 30;">
                      <children>
                         <Label layoutX="195.0" layoutY="17.0" text="Crear mi cuenta" textFill="WHITE">
                            <font>

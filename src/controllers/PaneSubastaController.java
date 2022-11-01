@@ -85,8 +85,6 @@ public class PaneSubastaController implements IApplication, Inicializable {
             Anuncio anuncio = new Anuncio(tituloAnuncio, bytesImg, valorInicialAnuncio);
             anuncio.setProducto(producto);
             anuncio.setUsuario(application.getClienteActivo());
-            System.out.println("anuncio = " + anuncio);
-
             application.getClienteActivo().addAnuncio(anuncio);
             try {
                 ModelFactoryController.crearAnuncio(anuncio, producto, application.getClienteActivo());

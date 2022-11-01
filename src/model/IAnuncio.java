@@ -69,13 +69,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 */
 	@Override
 	public void add(Anuncio anuncio) throws CRUDExceptions {
-		if (existeAnuncio(anuncio)) {
-			listaAnuncios.add(anuncio);
-			System.out.println(" Agrego anuncio ");
-			for (Anuncio anuncio1 : listaAnuncios) {
-				System.out.println(anuncio1.toString());
-			}
-		}
+		crear(anuncio);
 	}
 
 	/**
@@ -87,7 +81,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	private boolean existeAnuncio(Anuncio anuncio) throws EscrituraException {
 		for (Anuncio aux: listaAnuncios){
 			if(aux.equals(anuncio)){
-				throw new EscrituraException("Ya existe un anuncio con esas características", "intentando crear un anuncio ya existente");
+				return false;
 			}
 		}
 		return true;
@@ -125,21 +119,20 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 				flag = true;
 			}
 		}
-		if(!flag) throw new EscrituraException("No se ha podido eliminar el anuncio", "el anuncio con id "+id+" no se ha podidio eliminar");
+		if(!flag) throw new EscrituraException("No se ha podido eliminar el anuncio", "el anuncio con id "+id+" no se ha podido eliminar");
 	}
 
 	/**compara los elementos y ns dice si uno es mayor que el otro
 	 * @param campo atributo por el cual se van a comparar los elementos
 	 * @param anuncio1 anuncio a comparar
-	 * @param anuncio2 anuncion a comparar
+	 * @param anuncio2 anuncio a comparar
 	 * */
 
 	public static int ordenar(String campo, Anuncio anuncio1, Anuncio anuncio2) {
 		int resultado = 0;
 
-		switch (campo) {
-			case "nombreAnunciante" -> resultado = anuncio1.getNombreAnunciante().compareTo(anuncio2.getNombreAnunciante());
-			case "valorInicial" -> resultado = anuncio1.getValorInicial().compareTo(anuncio2.getValorInicial());
+		if ("valorInicial".equals(campo)) {
+			resultado = anuncio1.getValorInicial().compareTo(anuncio2.getValorInicial());
 		}
 		return resultado;
 	}

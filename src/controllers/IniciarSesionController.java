@@ -4,15 +4,12 @@ import application.App;
 import exceptions.LecturaException;
 import interfaces.IApplication;
 import interfaces.Inicializable;
-import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.media.MediaView;
-import javafx.scene.shape.Circle;
-import javafx.util.Duration;
 import lombok.Getter;
 import lombok.Setter;
 import persistencia.logic.Persistencia;
@@ -27,21 +24,6 @@ public class IniciarSesionController implements IApplication, Inicializable {
 
     private String email;
     private String contrasenia;
-    @FXML
-    private Circle circulo1;
-
-    @FXML
-    private Circle circulo2;
-    @FXML
-    private Circle circulo3;
-    @FXML
-    private Circle circulo4;
-    @FXML
-    private Circle circulo5;
-    @FXML
-    private Circle circulo6;
-
-    private Circle [] circulos;
 
     @FXML
     private MediaView mediaEffect;
@@ -93,10 +75,6 @@ public class IniciarSesionController implements IApplication, Inicializable {
         return true;
     }
 
-    @FXML
-    void initialize() {
-       circulos = new Circle[]{circulo1, circulo2, circulo3, circulo4, circulo5, circulo6};
-    }
 
 
 

@@ -3,8 +3,9 @@ package persistencia.logic;
 import exceptions.CRUDExceptions;
 import exceptions.LecturaException;
 import model.*;
-import java.io.File;
-import java.io.IOException;
+import utilities.Utils;
+
+import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -85,25 +86,8 @@ public class Persistencia {
         ArchivoUtil.guardarArchivo(ModelFactoryController.getRutaObjetos(obj), atributos.substring(2), true);
     }
 
-    /**
-     * guarda el objeto empresa en modelo.xml
-     */
-    public static void serializarEmpresaXML() throws Exception {
-        ArchivoUtil.salvarRecursoSerializadoXML(ModelFactoryController.getRutaSerializado("model.xml"), deserializarEmpresa());
-    }
 
-    public static void serializarEmpresaUnificado() throws Exception {
-        serializarEmpresaXML();
-        serializarEmpresaBinario();
-        ArchivoUtil.copiarArchivo(ModelFactoryController.getRutaObjetos("Transaccion.txt"), ModelFactoryController.getRutaRespaldo("Transaccion"));
-    }
 
-    /**
-     * guarda el objeto empresa en modelo.dat
-     */
-    public static void serializarEmpresaBinario() throws Exception {
-        ArchivoUtil.salvarRecursoSerializado(ModelFactoryController.getRutaSerializado("model.dat"), deserializarEmpresa());
-    }
 
     public static EmpresaSubasta deserializarEmpresaBinario() throws CRUDExceptions {
         try {
@@ -315,57 +299,6 @@ public class Persistencia {
         throw new LecturaException("estado no valido", "Estado " + dato + " no valido");
     }
 
-    /**
-     * metodo que permite deserializar todos los objetos pertenecientes a empresa
-     */
-
-    public static EmpresaSubasta deserializarEmpresa() throws IOException, CRUDExceptions, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
-        EmpresaSubasta empresaSubasta = new EmpresaSubasta();
-        //Deserializar usuarios
-        empresaSubasta.setIUsuario(new IUsuario());
-        ArrayList<String> usuarios = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos("Usuario.txt"));
-        for (int i = 1; i < usuarios.size(); i++) {
-            //deserializar un usuario y lo agrega a la lista de empresas
-            String props = usuarios.get(i);
-            Usuario usr = new Usuario();
-            deserializarUsuario(usr, props);
-            empresaSubasta.getIUsuario().add(usr);
-        }
-        //Deserializar anuncios
-        empresaSubasta.setIAnuncio(new IAnuncio());
-        ArrayList<String> anuncios = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos("Anuncio.txt"));
-        for (int i = 1; i < anuncios.size(); i++) {
-            //deserializar un anuncio y lo agrega a la lista de empresas
-            String props = anuncios.get(i);
-            Anuncio anuncio = new Anuncio();
-            deserializarAnuncio(anuncio, props);
-            empresaSubasta.getIAnuncio().add(anuncio);
-        }
-
-        //Deserializar productos
-        empresaSubasta.setIProducto(new IProducto());
-        ArrayList<String> productos = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos("Producto.txt"));
-        for (int i = 1; i < productos.size(); i++) {
-            //deserialize un producto y lo agrega a la lista de empresas
-            String props = productos.get(i);
-            Producto producto = new Producto();
-            deserializarProducto(producto, props);
-            empresaSubasta.getIProducto().add(producto);
-        }
-
-        //Deserializar transacciones
-        empresaSubasta.setITransaccion(new ITransaccion());
-        ArrayList<String> transacciones = ArchivoUtil.leerArchivo(ModelFactoryController.getRutaObjetos("Transaccion.txt"));
-        for (int i = 1; i < transacciones.size(); i++) {
-            //deserializar una transaccion y lo agrega a la lista de empresas
-            String props = transacciones.get(i);
-            Transaccion transaccion = new Transaccion();
-            deserializarTransaccion(transaccion, props);
-            empresaSubasta.getITransaccion().add(transaccion);
-        }
-
-        return empresaSubasta;
-    }
 
     /**
      * Deserializar una lista de pujas, estas siguen un formato especial, p. ej:
@@ -392,7 +325,6 @@ public class Persistencia {
                 //significant que ya pasamos por todas las pujas correspondientes a ese ID
                 break;
             }
-
             if (indicator == 1) {
                 //ya pasamos por el ID buscado, significa que podemos deserializar la puja actual
                 Puja miembroPuja = new Puja();
@@ -403,8 +335,6 @@ public class Persistencia {
                 //pasamos por el ID buscado
                 indicator++;
             }
-
-
         }
         return resultado;
     }
@@ -518,4 +448,41 @@ public class Persistencia {
         return new ArrayList<>(Arrays.asList(aux2));
     }
 
+
+
+    //SERIALIZACION ALEJANDRO
+    /**
+     * Metodo que permite serializar un objeto en un archivo
+     * @param obj objeto que queremos serializar
+     */
+
+    public static void serializarObjeto(Object obj, String ruta) throws IOException {
+        FileOutputStream fos = new FileOutputStream(ruta);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(obj);
+        oos.close();
+        fos.close();
+    }
+
+    /**
+     * Metodo que permite serializar un objeto en un archivo
+     * @param ruta objeto que queremos serializar
+     */
+    public static Object deserializarObjeto(String ruta) throws IOException, ClassNotFoundException {
+        FileInputStream fis = new FileInputStream(ruta);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        Object obj = ois.readObject();
+        ois.close();
+        fis.close();
+        return obj;
+    }
+
+
+    public static void serializarEmpresa() {
+        try {
+            serializarObjeto(ModelFactoryController.getInstance(), Utils.RUTA_EMPRESA_SER);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

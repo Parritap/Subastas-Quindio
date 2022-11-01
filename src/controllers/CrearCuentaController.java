@@ -268,8 +268,4 @@ public class CrearCuentaController implements IApplication, Inicializable {
         cuentaController = application.getCuentaController();
     }
 
-    @FXML
-    void crearCuentaOnMouseClicked(MouseEvent event) {
-
-    }
 }

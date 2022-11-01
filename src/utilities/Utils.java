@@ -1,31 +1,21 @@
 package utilities;
 
 import application.App;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Language;
-
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
 
 public class Utils {
 
-    public static void main(String[] args) {
-        //do nothing
-    }
 
-    private static String[] auxClasesConTexto = {"Button", "Label", "TextField"};
+    private static final String[] auxClasesConTexto = {"Button", "Label", "TextField"};
     public static final ArrayList<String> CLASES_CON_TEXTO_FX = new ArrayList<>(List.of(auxClasesConTexto));
 
     // Circle colors
@@ -82,6 +72,11 @@ public class Utils {
     public static final ZoneOffset ZONE_OFFSET = OffsetDateTime.now().getOffset();
     //Url del nuevo pane de crearCuenta
     public static final String crearCuente = "../view/CrearCuenta.fxml";
+    //-------------------------------RUTAS DE LA SERIALIZACIÓN------------------------------------------
+    //Ruta de la carpeta de la empresa
+    public static final String RUTA_EMPRESA_SER = "src/persistencia/archivos/empresa.ser";
+
+
 
 
     /**
@@ -140,7 +135,7 @@ public class Utils {
      * entonces el código dará error.
      *
      * @param rutaFXML Ruta al archivo FXML
-     * @return Objeto Resourcebundle que contiene el idioma especificado en App.language
+     * @return Objeto Resource-bundle que contiene el idioma especificado en App.language
      */
     public static ResourceBundle getBundle(String rutaFXML) {
         //Particionar la ruta de donde viene el archivo fxml
@@ -159,6 +154,7 @@ public class Utils {
         //Ocasionará errores en el código (Sadness and frustration...)
         return ResourceBundle.getBundle("persistencia/languages/" + paquete + "/language", l);
     }
+
 
 }
 

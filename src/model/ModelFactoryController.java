@@ -39,7 +39,7 @@ public class ModelFactoryController {
     }
 
     public static void deserializarEmpresa() throws CRUDExceptions {
-        empresaSubasta  = Persistencia.deserializarEmpresaXML();
+        empresaSubasta  = Persistencia.deserializarEmpresaBinario();
         //hace una copia de seguridad del xml
         Persistencia.respaldarXML();
     }

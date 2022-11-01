@@ -41,7 +41,7 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
 
     public static void main(String[] args) {
         SubastaController object = new SubastaController();
-        object.printThisFiels();
+        object.printThisFields();
         //object.cambiarIdioma(Language.ENGLISH);
     }
 
@@ -116,8 +116,8 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
         try {
             //recorro la lista de anuncios y los convierto en un item controller
             for (Anuncio anuncio : this.listaAnuncios) {
-
-                if (!anuncio.getFueMostrado()) {
+                if (anuncio !=  null && !anuncio.getFueMostrado()) {
+                    System.out.println("anuncio = " + anuncio);
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
                     AnchorPane anchorPane = fxmlLoader.load();
@@ -213,6 +213,7 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
 
     @Override
     public void inicializarComponentes() {
+        System.out.println("inicializo");
         paneInfoAnuncio.setVisible(false);
         //obtengo la lista de anuncios disponibles en la empresa
         this.listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios());
@@ -306,7 +307,7 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
         }
     }
 
-    public void printThisFiels (){
+    public void printThisFields (){
         Field [] fields = getClass().getDeclaredFields();
         for (Field field : fields) {
             System.out.println(field.getName());
