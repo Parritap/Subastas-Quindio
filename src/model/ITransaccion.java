@@ -4,10 +4,13 @@ import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import interfaces.CRUD;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+@Getter
+@Setter
 public class ITransaccion implements CRUD<Transaccion>, Serializable {
 
     ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
@@ -138,5 +141,9 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
         return "ITransaccion{" +
                 "listaTransacciones=" + listaTransacciones.toString() +
                 '}';
+    }
+
+    public void actualizarTransaccion(ITransaccion iTransaccion) {
+        listaTransacciones.addAll(iTransaccion.getListaTransacciones());
     }
 }

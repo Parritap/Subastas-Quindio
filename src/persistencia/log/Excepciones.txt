@@ -9,3 +9,7 @@ WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,2022-10-
 se creo el usuario 1:a, 1, Creacion de usuario
 LecturaException, usuario a no encontrado, 2, Excepcion
 LecturaException, usuario a no encontrado, 2, Excepcion
+LecturaException, usuario a no encontrado, 2, Excepcion
+LecturaException, usuario a no encontrado, 2, Excepcion
+se creo el usuario 1:a, 1, Creacion de usuario
+se creo el usuario 1:a, 1, Creacion de usuario

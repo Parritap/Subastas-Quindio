@@ -7,3 +7,9 @@ WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,2022-10-
 Oct 22, 2022 9:08:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,2022-10-22
 se creo el usuario 1:a, 1, Creacion de usuario
+LecturaException, usuario a no encontrado, 2, Excepcion
+LecturaException, usuario a no encontrado, 2, Excepcion
+LecturaException, usuario a no encontrado, 2, Excepcion
+LecturaException, usuario a no encontrado, 2, Excepcion
+se creo el usuario 1:a, 1, Creacion de usuario
+se creo el usuario 1:a, 1, Creacion de usuario

@@ -150,4 +150,8 @@ public class IProducto implements CRUD<Producto>, Serializable {
                 "listaProductos=" + listaProductos.toString() +
                 '}';
     }
+
+    public void actualizarProductos(IProducto iProducto) {
+        listaProductos.addAll(iProducto.getListaProductos());
+    }
 }

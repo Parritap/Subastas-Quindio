@@ -213,7 +213,6 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
 
     @Override
     public void inicializarComponentes() {
-        System.out.println("inicializo");
         paneInfoAnuncio.setVisible(false);
         //obtengo la lista de anuncios disponibles en la empresa
         this.listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios());

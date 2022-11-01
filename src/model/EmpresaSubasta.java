@@ -89,4 +89,13 @@ public class EmpresaSubasta implements Runnable, Serializable {
                 ", iTransaccion=" + iTransaccion.toString() +
                 '}';
     }
+
+    public void actualizarImplementaciones(EmpresaSubasta empresaSubastaAux) {
+
+        iUsuario.actualizarUsuarios(empresaSubastaAux.getIUsuario());
+        iAnuncio.actualizarAnuncios(empresaSubastaAux.getIAnuncio());
+        iProducto.actualizarProductos(empresaSubastaAux.getIProducto());
+        iTransaccion.actualizarTransaccion(empresaSubastaAux.getITransaccion());
+
+    }
 }

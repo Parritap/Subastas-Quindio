@@ -28,6 +28,15 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
         listaUsuarios = new ArrayList<>();
     }
 
+
+    /**
+     * Metodo que actualiza todos los usuarios, sirve para cuando se deserializar
+     * @param iUsuario objeto que contiene la lista usuarios
+     */
+    public void actualizarUsuarios(IUsuario iUsuario) {
+        listaUsuarios.addAll(iUsuario.getListaUsuarios());
+    }
+
     /**
      * METODO QUE DEVUELVE LA LISTA DE USUARIOS
      *
@@ -101,8 +110,8 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
     @Override
     public void crear(Usuario usuario) throws EscrituraException {
         if (usuario != null && !existeUsuario(usuario)) {
-            usuario.setEstado(Estado.NUEVO);
             listaUsuarios.add(usuario);
+            System.out.println("Se agregó un usuario" );
         } else {
             throw new EscrituraException("Ya existe un usuario con esas caracteristicas", "se intento crear un usuario ya existente ("+ (usuario != null ? usuario.getCedula() : null) +")");
         }

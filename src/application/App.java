@@ -90,6 +90,7 @@ public class App extends Application {
             try {
                 //Persistencia.serializarEmpresaUnificado();
                 System.out.println(" serializo " );
+                System.out.println(ModelFactoryController.getInstance());
                 Persistencia.serializarEmpresaBinario();
             }
             catch (Exception e){
@@ -226,7 +227,8 @@ public class App extends Application {
             throw new LecturaException("La contraseña es incorrecta", "La contraseña pasada no es valida");
         }
         clienteActivo = usuario;
-        ArchivoUtil.guardarRegistroLog("El usuario de nombre " + clienteActivo.getName()+ " y correo "+ usuario.getCorreo() + " ha iniciado sesión.", 1, "Inicio de sesión",Utils.RUTA_LOG_TXT);
+        ArchivoUtil.guardarRegistroLog("El usuario de nombre " + clienteActivo.getName()+ " y correo "+ usuario.getCorreo() + " ha iniciado sesión.",
+                1, "Inicio de sesión",Utils.RUTA_LOG_TXT);
         loadScene(Utils.frameInicio);
     }
 

@@ -39,7 +39,10 @@ public class ModelFactoryController {
     }
 
     public static void deserializarEmpresa() throws CRUDExceptions {
-        empresaSubasta  = Persistencia.deserializarEmpresaBinario();
+        EmpresaSubasta empresaSubastaAux = Persistencia.deserializarEmpresaBinario();
+        //actualizo las variables inscritas dentro de empresa
+        if(empresaSubasta != null && empresaSubastaAux != null) empresaSubasta.actualizarImplementaciones(empresaSubastaAux);
+
         System.out.println("empresaSubasta = " + empresaSubasta);
         //hace una copia de seguridad del xml
     }
@@ -55,7 +58,7 @@ public class ModelFactoryController {
         return getInstance().getListaAnuncios();
     }
 
-    public static void crearUsuario(Usuario usuario) throws EscrituraException, IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public static void crearUsuario(Usuario usuario) throws EscrituraException{
         //serializa el usuario
         empresaSubasta.crearUsuario(usuario);
     }
