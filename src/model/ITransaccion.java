@@ -155,4 +155,17 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
             }
         }
     }
+
+    /**
+     * Metodo que devuelve un string con toda la informacion de la lista de transacciones
+     * @return String con toda la informacion de la lista de transacciones
+     */
+    public String getStringTransacciones() {
+        StringBuilder stringUsuarios = new StringBuilder();
+        for (Transaccion transaccion : listaTransacciones) {
+            stringUsuarios.append(transaccion.getStringTransaccion());
+            stringUsuarios.append("\n");
+        }
+        return stringUsuarios.toString();
+    }
 }

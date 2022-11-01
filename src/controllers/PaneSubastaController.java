@@ -90,7 +90,7 @@ public class PaneSubastaController implements IApplication, Inicializable {
                 application.abrirAlerta("Anuncio creado correctamente");
             } catch (CRUDExceptions e) {
                 application.abrirAlerta(e.getMessage());
-            } catch (IOException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }

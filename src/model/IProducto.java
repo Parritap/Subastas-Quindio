@@ -163,4 +163,17 @@ public class IProducto implements CRUD<Producto>, Serializable {
             }
         }
     }
+
+    /**
+     * Metodo que devuelve la lista de productos en un String
+     * @return
+     */
+    public String getStringProductos() {
+        StringBuilder stringProductos = new StringBuilder();
+        for (Producto listaProductos : listaProductos) {
+            stringProductos.append(listaProductos.getStringProducto());
+            stringProductos.append("\n");
+        }
+        return stringProductos.toString();
+    }
 }

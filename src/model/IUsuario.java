@@ -242,12 +242,15 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
     }
 
     /**
-     * To string
+     * Este metodo retorna un string con toda la informacion de la lista de usuarios
+     * @return stringUsuarios
      */
-    @Override
-    public String toString() {
-        return "UsuarioDAO{" +
-                "listaUsuarios=" + listaUsuarios.toString() +
-                '}';
+    public String getStringUsuarios() {
+        StringBuilder stringUsuarios = new StringBuilder();
+        for (Usuario listaUsuario : listaUsuarios) {
+            stringUsuarios.append(listaUsuario.getStringUsuario());
+            stringUsuarios.append("\n");
+        }
+        return stringUsuarios.toString();
     }
 }

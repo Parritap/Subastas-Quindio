@@ -77,6 +77,15 @@ public class Utils {
     public static final String RUTA_EMPRESA_SER = "src/persistencia/archivos/empresa.ser";
     //Ruta del archivo donde se guardan los registros log
     public static final String RUTA_LOG_TXT = "src/persistencia/log/excepciones.txt";
+    //Ruta de la serializacion de los usuarios en txt
+    public static final String RUTA_USUARIOS_TXT = "src/persistencia/archivos/Usuario.txt";
+    //Ruta de la serializacion de los anuncios en txt
+    public static final String RUTA_ANUNCIOS_TXT = "src/persistencia/archivos/Anuncio.txt";
+    //Ruta de la serializacion de los productos en txt
+    public static final String RUTA_PRODUCTOS_TXT = "src/persistencia/archivos/Producto.txt";
+    //Ruta de la serializacion de las Transacciones en txt
+    public static final String RUTA_TRANSACCIONES_TXT = "src/persistencia/archivos/Transaccion.txt";
+
 
 
 

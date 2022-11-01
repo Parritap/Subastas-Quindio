@@ -89,9 +89,8 @@ public class App extends Application {
         stage.setOnCloseRequest(event->{
             try {
                 //Persistencia.serializarEmpresaUnificado();
-                System.out.println(" serializo " );
-                System.out.println(ModelFactoryController.getInstance());
                 Persistencia.serializarEmpresaBinario();
+                Persistencia.serializarEmpresaTXT();
             }
             catch (Exception e){
                 e.printStackTrace();

@@ -189,4 +189,16 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 				" listaAnuncios=" + listaAnuncios.toString() +
 				'}';
 	}
+
+	/**
+	 * Se encarga de recorrer la lista de anuncios y devolver un string con la informacion de cada anuncio
+	 * @return String con la informacion de cada anuncio
+	 */
+    public String getStringAnuncios() {
+		String anuncios = "";
+		for (Anuncio anuncio : listaAnuncios) {
+			anuncios += anuncio.getStringAnuncio() + "\n";
+		}
+		return anuncios;
+    }
 }

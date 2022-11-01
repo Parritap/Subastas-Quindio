@@ -17,3 +17,15 @@ LecturaException, usuario alejo@gmail.com no encontrado, 2, Excepcion
 LecturaException, usuario alejo@gmail.com no encontrado, 2, Excepcion
 se creo el usuario 1:Alejandro, 1, Creacion de usuario
 El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión., 1, Inicio de sesión
+LecturaException, usuario alejo@gmail.com no encontrado, 2, Excepcion
+LecturaException, usuario alejo@gmail.com no encontrado, 2, Excepcion
+se creo el usuario 1:Alejandro, 1, Creacion de usuario
+El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión., 1, Inicio de sesión
+se creo el usuario 1:Jose, 1, Creacion de usuario
+El usuario de nombre Jose y correo jose@gmail.com ha iniciado sesión., 1, Inicio de sesión
+LecturaException, usuario alejo@gmail.com no encontrado, 2, Excepcion
+LecturaException, usuario alejo@gmail.com no encontrado, 2, Excepcion
+LecturaException, usuario jose@gmail.com no encontrado, 2, Excepcion
+LecturaException, usuario jose@gmail.com no encontrado, 2, Excepcion
+se creo el usuario 1:Alejandro, 1, Creacion de usuario
+El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión., 1, Inicio de sesión

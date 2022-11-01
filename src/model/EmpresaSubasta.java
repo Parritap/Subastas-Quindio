@@ -5,7 +5,7 @@ import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import lombok.Getter;
 import lombok.Setter;
-import persistencia.logic.Persistencia;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -102,5 +102,37 @@ public class EmpresaSubasta implements Runnable, Serializable {
         iProducto.actualizarProductos(empresaSubastaAux.getIProducto());
         iTransaccion.actualizarTransaccion(empresaSubastaAux.getITransaccion());
 
+    }
+
+    /**
+     * Metodo que devuelve la informacion de los usuarios contenidos en un string
+     * @return string con la informacion de los usuarios
+     */
+    public String getStringUsuarios() {
+        return iUsuario.getStringUsuarios();
+    }
+
+    /**
+     * Metodo que devuelve la informacion de los productos contenidos en un string
+     * @return string con la informacion de los productos
+     */
+    public String getStringProductos() {
+        return iProducto.getStringProductos();
+    }
+
+    /**
+     * Metodo que devuelve la informacion de los anuncios contenidos en un string
+     * @return string con la informacion de los anuncios
+     */
+    public String getStringTransacciones() {
+        return iTransaccion.getStringTransacciones();
+    }
+
+    /**
+     * Metodo que devuelve la informacion de los anuncios contenidos en un string
+     * @return string con la informacion de los anuncios
+     */
+    public String getStringAnuncios() {
+        return iAnuncio.getStringAnuncios();
     }
 }

@@ -11,7 +11,8 @@ public class ArchivoUtil {
 
     //-------------------------SERIALIZACION BINARIA-------------------------
     /**
-     * Metodo que permite serializar un objeto en un archivo
+     * Metodo que permite serializar un objeto en un archivo,
+     * el objeto debe ser serializable
      */
     public static void serializarBinario(String rutaEmpresaSer, EmpresaSubasta instance) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(rutaEmpresaSer))) {
@@ -22,10 +23,9 @@ public class ArchivoUtil {
     }
 
 
-    //-------------------------DESERIALIZATION BINARIA-------------------------
-
     /**
-     * Metodo que permite deserializar un objeto en un archivo
+     * Metodo que permite deserializar un objeto en un archivo binario
+     * @param rutaEmpresaSer la ruta donde se encuentra el archivo
      */
 
     public static Object deserializarBinario(String rutaEmpresaSer) {
@@ -37,6 +37,24 @@ public class ArchivoUtil {
         return null;
     }
 
+
+    //-------------------------SERIALIZACION TXT-------------------------
+
+
+
+
+
+
+    //-------------------------SERIALIZACION XML-------------------------
+
+
+
+
+
+
+
+
+    //-------------------------SERIALIZACION DE LOS LOG-------------------------
     /**
      * Metodo que escribe un registro en el log de excepciones en el archivo de texto
      * @param s mensaje de la excepcion
@@ -49,6 +67,20 @@ public class ArchivoUtil {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaLogTxt, true))) {
             bw.write(s + ", " + nivelDeExcepcion + ", " + excepcion);
             bw.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Este metodo permite escribir en un txt dada la ruta
+     * y el contenido
+     * @param ruta es la ruta donde se escribirá el contenido
+     * @param string es el contenido que se va a escribir
+     */
+    public static void serializarTxt(String ruta, String string) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ruta))) {
+            bw.write(string);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -114,4 +114,16 @@ public class Anuncio implements Serializable {
 				", fueMostrado=" + fueMostrado +
 				", id=" + id;
 	}
+
+	public String getStringAnuncio() {
+		StringBuilder arrobas = new StringBuilder("@@");
+		//concateno todos los atributos separados por arroba
+		return arrobas + producto.getNombre() + arrobas
+				+ titulo + arrobas +
+				fechaPublicacion +
+				arrobas + fechaTerminacion.toString()
+				+ arrobas + valorInicial + arrobas
+				+ idListaPujas + arrobas + usuario.getName()
+				+ arrobas + estado + arrobas + fueMostrado + arrobas + id + arrobas;
+	}
 }
