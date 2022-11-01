@@ -1,5 +1,6 @@
 package model;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -7,17 +8,17 @@ import lombok.ToString;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 @Getter
 @Setter
-@ToString
+@EqualsAndHashCode
 public class Anuncio implements Serializable {
 
 	//El anuncio contiene un producto
 	private Producto producto;
 	private String titulo;
-	private Date fecha;
 	private String nombreAnunciante;
 	private byte[] imageSrc; //Es necesario cambiar la imagen a String, y contener solo la ruta para tener flexibilidad
 	private LocalDateTime fechaPublicacion;
@@ -99,5 +100,21 @@ public class Anuncio implements Serializable {
 			}
 		}
 		return masAlto+"";
+	}
+
+	@Override
+	public String toString() {
+		return "producto=" + producto +
+				", titulo='" + titulo + '\'' +
+				", nombreAnunciante='" + nombreAnunciante + '\'' +
+				", fechaPublicacion=" + fechaPublicacion +
+				", fechaTerminacion=" + fechaTerminacion +
+				", valorInicial=" + valorInicial +
+				", listaPujas=" + listaPujas +
+				", idListaPujas=" + idListaPujas +
+				", usuario=" + usuario +
+				", estado=" + estado +
+				", fueMostrado=" + fueMostrado +
+				", id=" + id;
 	}
 }
