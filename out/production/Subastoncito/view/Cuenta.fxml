@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CuentaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CuentaController">
     <BorderPane fx:id="borderPane" layoutX="6.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../resources/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <left>
             <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../resources/style.css" BorderPane.alignment="CENTER">
@@ -36,22 +36,22 @@
                <children>
                   <VBox layoutX="32.0" layoutY="39.0" prefHeight="671.0" prefWidth="378.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#paneMyAccount" prefHeight="59.0" prefWidth="378.0" styleClass="btnOpciones" stylesheets="@../resources/style.css" text="Administrar mi cuenta">
+                        <Button mnemonicParsing="false" onAction="#paneMyAccount" prefHeight="59.0" prefWidth="378.0" styleClass="btnOpciones" stylesheets="@../resources/style.css" text="%btn.administrarCuenta">
                            <VBox.margin>
                               <Insets top="30.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="btnListadoSubasta" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" onAction="#paneListadoSubasta" prefHeight="59.0" prefWidth="378.0" styleClass="btnOpciones" text="Ver mi listado de subastas">
+                        <Button fx:id="btnListadoSubasta" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" onAction="#paneListadoSubasta" prefHeight="59.0" prefWidth="378.0" styleClass="btnOpciones" text="%btn.verMiListadoDeSubastas">
                            <VBox.margin>
                               <Insets top="50.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="btnHacerSubasta" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" onAction="#hacerSubasta" prefHeight="59.0" prefWidth="378.0" styleClass="btnOpciones" text="Realizar subasta">
+                        <Button fx:id="btnHacerSubasta" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" onAction="#hacerSubasta" prefHeight="59.0" prefWidth="378.0" styleClass="btnOpciones" text="%btn.realizarSubasta">
                            <VBox.margin>
                               <Insets top="50.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="btnCerrarSesion" layoutX="10.0" layoutY="258.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="59.0" prefWidth="378.0" styleClass="btnOpciones" text="Cerrar sesión">
+                        <Button fx:id="btnCerrarSesion" layoutX="10.0" layoutY="258.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="59.0" prefWidth="378.0" styleClass="btnOpciones" text="%btn.cerrarSesion">
                            <VBox.margin>
                               <Insets top="300.0" />
                            </VBox.margin>

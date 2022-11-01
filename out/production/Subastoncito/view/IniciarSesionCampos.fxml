@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="942.0" prefWidth="1492.0" style="-fx-background-color: Transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.IniciarSesionController">
+<AnchorPane prefHeight="942.0" prefWidth="1492.0" style="-fx-background-color: Transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.IniciarSesionController">
    <children>
       <AnchorPane layoutX="445.0" layoutY="171.0" prefHeight="632.0" prefWidth="553.0" style="-fx-background-color: #252525; -fx-opacity: .5; -fx-background-radius: 50; -fx-border-radius: 50;" styleClass="border-image" stylesheets="@../resources/style.css">
          <effect>
@@ -31,7 +31,7 @@
       </AnchorPane>
       <VBox layoutX="464.0" layoutY="187.0" prefHeight="613.0" prefWidth="513.0">
          <children>
-            <Label prefHeight="38.0" prefWidth="517.0" style="-fx-alignment: CENTER;" text="Iniciar Sesión" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Label prefHeight="38.0" prefWidth="517.0" style="-fx-alignment: CENTER;" text="%label.login" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="31.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <Label prefHeight="35.0" prefWidth="523.0" text="Email" textFill="WHITE">
+            <Label prefHeight="35.0" prefWidth="523.0" text="%email" textFill="WHITE">
                <font>
                   <Font size="29.0" />
                </font>
@@ -47,7 +47,7 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="txtField_email" prefHeight="43.0" prefWidth="470.0" promptText="Email" style="-fx-background-color: #98918F;">
+            <TextField fx:id="txtField_email" prefHeight="43.0" prefWidth="470.0" promptText="%txtf.email" style="-fx-background-color: #98918F;">
                <font>
                   <Font size="22.0" />
                </font>
@@ -55,7 +55,7 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </TextField>
-            <Label prefHeight="31.0" prefWidth="532.0" text="Contraseña" textFill="WHITE">
+            <Label prefHeight="31.0" prefWidth="532.0" text="%label.password" textFill="WHITE">
                <font>
                   <Font size="26.0" />
                </font>
@@ -63,7 +63,7 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </Label>
-            <PasswordField fx:id="txt_contrasenia" prefHeight="43.0" prefWidth="470.0" promptText="Password" style="-fx-background-color: #98918F;">
+            <PasswordField fx:id="txt_contrasenia" prefHeight="43.0" prefWidth="470.0" promptText="%passwordField" style="-fx-background-color: #98918F;">
                <font>
                   <Font size="22.0" />
                </font>
@@ -71,7 +71,7 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </PasswordField>
-            <Button fx:id="btn_iniciarSesion" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="42.0" prefWidth="152.0" style="-fx-background-color: #98918F;" text="Iniciar Sesion" textFill="WHITE">
+            <Button fx:id="btn_iniciarSesion" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="42.0" prefWidth="152.0" style="-fx-background-color: #98918F;" text="%btn.login" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -79,7 +79,7 @@
                   <Insets left="180.0" top="50.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btn_iniciarSesion1" mnemonicParsing="false" onAction="#lanzarAlerta" prefHeight="54.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="     Iniciar sesion con google" textFill="WHITE">
+            <Button fx:id="btn_iniciarSesion1" mnemonicParsing="false" onAction="#lanzarAlerta" prefHeight="54.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="%btn.init.google" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -97,7 +97,7 @@
                   <Insets left="70.0" top="30.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btn_iniciarSesion11" mnemonicParsing="false" onAction="#lanzarAlerta" prefHeight="38.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="Iniciar sesion con facebook" textFill="WHITE">
+            <Button fx:id="btn_iniciarSesion11" mnemonicParsing="false" onAction="#lanzarAlerta" prefHeight="38.0" prefWidth="379.0" style="-fx-background-color: #98918F;" text="%btn.init.facebook" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="41.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -125,7 +125,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="414.0" layoutY="24.0" prefHeight="49.0" prefWidth="628.0" style="-fx-background-color: #252525; -fx-background-radius: 30;" text="                    Iniciar sesión en Subastas Quindío" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label layoutX="414.0" layoutY="24.0" prefHeight="49.0" prefWidth="628.0" style="-fx-background-color: #252525; -fx-background-radius: 30;" text="%label.welcome" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="28.0" />
          </font>

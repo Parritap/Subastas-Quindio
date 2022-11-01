@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="221.0" prefWidth="477.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AlertaController">
+<AnchorPane prefHeight="221.0" prefWidth="477.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AlertaController">
    <children>
       <BorderPane layoutX="18.0" layoutY="18.0" prefHeight="181.0" prefWidth="447.0" style="-fx-background-color: #252525; -fx-background-radius: 30;">
          <bottom>
             <HBox prefHeight="60.0" prefWidth="445.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#cancelarAction" styleClass="btnActualizarCuenta" stylesheets="@../resources/style.css" text="Cancelar" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#cancelarAction" styleClass="btnActualizarCuenta" stylesheets="@../resources/style.css" text="%cancelar" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="100.0" top="10.0" />
                      </HBox.margin>
@@ -22,7 +22,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#aceptarAction" styleClass="btnCrearCuenta" stylesheets="@../resources/style.css" text="Aceptar">
+                  <Button mnemonicParsing="false" onAction="#aceptarAction" styleClass="btnCrearCuenta" stylesheets="@../resources/style.css" text="%aceptar">
                      <HBox.margin>
                         <Insets left="100.0" top="10.0" />
                      </HBox.margin>

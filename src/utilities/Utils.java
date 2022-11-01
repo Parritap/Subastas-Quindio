@@ -75,8 +75,7 @@ public class Utils {
     //-------------------------------RUTAS DE LA SERIALIZACIÓN------------------------------------------
     //Ruta de la carpeta de la empresa
     public static final String RUTA_EMPRESA_SER = "src/persistencia/archivos/empresa.ser";
-
-
+    public static final String crearCuenta = "../view/CrearCuenta.fxml";
 
 
     /**

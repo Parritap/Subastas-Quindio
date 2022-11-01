@@ -49,7 +49,7 @@ public class App extends Application {
 
     //El lenguaje estará en español por defecto.
     //Variable es static para no tener que crear varios métodos que extraigan la misma de su instancia de App.
-    public static Language language = Language.SPANISH;
+    public static Language language = Language.ENGLISH;
     /**
      * Main
      * @param args args
@@ -134,7 +134,7 @@ public class App extends Application {
      */
     public void loadScene(String scenePath) {
         //cargo el fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(scenePath), getBundle());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(scenePath), Utils.getBundle(scenePath));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -154,12 +154,12 @@ public class App extends Application {
 
     /**
      * Metodo que carga un FXML y devuelve ese pane
-     *
+     * @param ruta ruta del fxml
      * @param ruta donde se encuentra el pane
      * @return el pane que se encuentra en la ruta
      */
     public AnchorPane obtenerPane(String ruta) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), getBundle());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
         try {
             AnchorPane root = loader.load();
             IApplication controller = loader.getController();
@@ -177,7 +177,8 @@ public class App extends Application {
      * @param mensaje el mensaje que se quiere mostrar
      */
     public void abrirAlerta(String mensaje) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameAlerta), getBundle());
+        String ruta = Utils.frameAlerta;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
         try {
             AnchorPane root = loader.load();
             IApplication controller = loader.getController();
@@ -226,7 +227,7 @@ public class App extends Application {
         }
         clienteActivo = usuario;
         ArchivoUtil.guardarRegistroLog("El usuario de nombre " + clienteActivo.getName()+ " y correo "+ usuario.getCorreo() + " ha iniciado sesión.", 1, "Inicio de sesión", ModelFactoryController.getRutaLogs("InicioSesion.log"));
-        loadScene(Utils.frameInicio);
+        loadScene(Utils.frameInicio );
     }
 
 
@@ -235,7 +236,8 @@ public class App extends Application {
      */
 
     public void abrirLogin() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameIniciarSesion), getBundle());
+        String ruta = Utils.frameIniciarSesion;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
         try {
             AnchorPane container = loader.load();
             IApplication controller = loader.getController();
