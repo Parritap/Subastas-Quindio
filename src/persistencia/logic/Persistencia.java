@@ -3,7 +3,6 @@ package persistencia.logic;
 
 import model.*;
 import utilities.Utils;
-import java.io.*;
 
 public class Persistencia {
 

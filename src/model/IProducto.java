@@ -151,7 +151,16 @@ public class IProducto implements CRUD<Producto>, Serializable {
                 '}';
     }
 
+    /**
+     * Metodo que actualiza la lista productos, que
+     * se contienen en el Iproducto pasados por parametros
+     * @param iProducto objeto que contiene la lista de los productos
+     */
     public void actualizarProductos(IProducto iProducto) {
-        listaProductos.addAll(iProducto.getListaProductos());
+        for (Producto producto : iProducto.getListaProductos()) {
+            if (!listaProductos.contains(producto)) {
+                listaProductos.add(producto);
+            }
+        }
     }
 }

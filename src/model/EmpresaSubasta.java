@@ -90,6 +90,11 @@ public class EmpresaSubasta implements Runnable, Serializable {
                 '}';
     }
 
+    /**
+     * Este metodo permite actualizar las implementaciones cargadas de la
+     * persistencia
+     * @param empresaSubastaAux es la version de la empresa guardada en la persistencia
+     */
     public void actualizarImplementaciones(EmpresaSubasta empresaSubastaAux) {
 
         iUsuario.actualizarUsuarios(empresaSubastaAux.getIUsuario());

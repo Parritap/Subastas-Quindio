@@ -143,7 +143,16 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
                 '}';
     }
 
+    /**
+     * Metodo que actualiza la lista productos, que
+     * se contienen en el Iproducto pasados por parametros
+     * @param iTransaccion objeto que contiene la lista de los productos
+     */
     public void actualizarTransaccion(ITransaccion iTransaccion) {
-        listaTransacciones.addAll(iTransaccion.getListaTransacciones());
+        for (Transaccion transaccion : iTransaccion.getListaTransacciones()) {
+            if (!listaTransacciones.contains(transaccion)) {
+                listaTransacciones.add(transaccion);
+            }
+        }
     }
 }

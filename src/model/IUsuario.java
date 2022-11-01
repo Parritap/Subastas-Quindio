@@ -34,7 +34,13 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
      * @param iUsuario objeto que contiene la lista usuarios
      */
     public void actualizarUsuarios(IUsuario iUsuario) {
-        listaUsuarios.addAll(iUsuario.getListaUsuarios());
+        //se agregan los usuarios contenidos en iUsuario
+        //se filtran y solo se agregan los que no están en la lista
+        iUsuario.getListaUsuarios().forEach(usuario -> {
+            if (!listaUsuarios.contains(usuario)) {
+                listaUsuarios.add(usuario);
+            }
+        });
     }
 
     /**
