@@ -13,7 +13,6 @@ import javafx.scene.image.ImageView;
 import model.Anuncio;
 import model.ModelFactoryController;
 import model.Producto;
-import persistencia.logic.Persistencia;
 import utilities.Utils;
 
 import java.io.ByteArrayInputStream;
@@ -62,7 +61,7 @@ public class PaneSubastaController implements IApplication, Inicializable {
      */
     @FXML
     void cargarImagen(ActionEvent ignoredEvent) {
-        Utils.playClic();
+        Utils.playSound(Utils.URL_CLICK_BUTTON);
         byte[] imageByte = Utils.obtenerBytesImagen();
         imgAnuncio.setImage(new Image(new ByteArrayInputStream(imageByte), 199, 199, false, false));
         this.bytesImg = imageByte;
@@ -75,7 +74,7 @@ public class PaneSubastaController implements IApplication, Inicializable {
      */
     @FXML
     void crearAnuncio(ActionEvent ignoredEvent) {
-        Utils.playClic();
+        Utils.playSound(Utils.URL_CLICK_BUTTON);
         //si no hay un cliente activo no se puede crear un anuncio
         if(application.getClienteActivo() == null){
             application.abrirAlerta("Debe crear una cuenta antes de publicar un anuncio");
@@ -90,7 +89,6 @@ public class PaneSubastaController implements IApplication, Inicializable {
                 ModelFactoryController.crearAnuncio(anuncio, producto, application.getClienteActivo());
                 application.abrirAlerta("Anuncio creado correctamente");
             } catch (CRUDExceptions e) {
-                Persistencia.registrarExcepcion(e, "Fallo en la creacion de anuncios", 2);
                 application.abrirAlerta(e.getMessage());
             } catch (IOException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
                 throw new RuntimeException(e);
@@ -129,8 +127,7 @@ public class PaneSubastaController implements IApplication, Inicializable {
             try {
                 valorInicialAnuncio = Double.parseDouble(txtValorAnuncio.getText());
             }catch (NumberFormatException e){
-                Persistencia.registrarExcepcion(e, "Error al convertir caracter en numero", 1);
-                mensaje += "Debe ingresar un valor numerico para el precio inicial\n";
+                mensaje += "Debe ingresar un valor númerico para el precio inicial\n";
             }
         }else{
             mensaje+="Debe ingresar valores númerico en el valor del anuncio";

@@ -202,7 +202,7 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
      */
     @FXML
     void loadAccount(ActionEvent ignoredEvent) {
-        Utils.playClic();
+        Utils.playSound(Utils.URL_CLICK_BUTTON);
         application.loadScene(Utils.frameCuenta);
     }
 
@@ -276,7 +276,7 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
 
     @FXML
     void iniciarSesion(ActionEvent event) {
-        Utils.playClic();
+        Utils.playSound(Utils.URL_CLICK_BUTTON);
         application.abrirLogin();
     }
 

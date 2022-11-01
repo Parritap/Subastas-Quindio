@@ -15,7 +15,6 @@ import javafx.scene.shape.Circle;
 import model.ModelFactoryController;
 import model.Usuario;
 import persistencia.logic.ArchivoUtil;
-import persistencia.logic.Persistencia;
 import utilities.Utils;
 import java.io.ByteArrayInputStream;
 
@@ -98,7 +97,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
      */
     @FXML
     void cargarPerfil(MouseEvent ignoredEvent) {
-        Utils.playClic();
+        Utils.playSound(Utils.URL_CLICK_BUTTON);
         Image img = new Image(new ByteArrayInputStream(Utils.obtenerBytesImagen()), 199, 199, false, false);
         circleImage.setFill(new ImagePattern(img));
     }
@@ -109,7 +108,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
      */
     @FXML
     void crearCuenta(ActionEvent event) {
-        Utils.playClic();
+        Utils.playSound(Utils.URL_CLICK_BUTTON);
         //Los campos de textos requeridos para crear el usuario
         //cliente activo es el cliente que tiene la application
         if(cargarCampos() && application.getClienteActivo() == null){
@@ -122,13 +121,13 @@ public class CrearCuentaController implements IApplication, Inicializable {
                 application.abrirAlerta("El usuario se agregó correctamente");
                 application.setClienteActivo(usuario);
                 btnCrearCuenta.setVisible(false);
-                ArchivoUtil.guardarRegistroLog("se creo el usuario "+usuario.getId()+":"+usuario.getName(), 1, "Creacion de usuario", ModelFactoryController.getRutaLogs("CreacionUsuario"));
+                ArchivoUtil.guardarRegistroLog("se creo el usuario "+usuario.getId()+":"+usuario.getName(), 1,
+                        "Creacion de usuario", Utils.RUTA_LOG_TXT);
                 btnActualizarCuenta.setVisible(true);
                 cuentaController.mostrarBotonesBarraLateral();
             } catch (EscrituraException e) {
                 //si el usuario ya existe entonces se lanza una excepcion
                 application.abrirAlerta(e.getMessage());
-                Persistencia.registrarExcepcion(e, "El usuario ya existe", 1);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -143,7 +142,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
      */
     @FXML
     void actualizarCuenta(ActionEvent event) {
-        Utils.playClic();
+        Utils.playSound(Utils.URL_CLICK_BUTTON);
         cargarCampos();
         Usuario usuario = new Usuario(name, edad, cedula, correo, direccion, telefono, contrasenia);
         try {
@@ -238,7 +237,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
      */
     @FXML
     void setValueComboBox(ActionEvent event) {
-        Utils.playClic();
+        Utils.playSound(Utils.URL_CLICK_BUTTON);
         Object itemSeleccionado =  event.getSource();
         if(itemSeleccionado == itemMastercard) cmbBoxPago.setText("Mastercard");
         else if( itemSeleccionado == itemPaypal) cmbBoxPago.setText("Paypal");

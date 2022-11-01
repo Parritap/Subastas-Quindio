@@ -3,8 +3,8 @@ package exceptions;
 
 import lombok.Getter;
 import lombok.Setter;
-import model.ModelFactoryController;
 import persistencia.logic.ArchivoUtil;
+import utilities.Utils;
 
 import java.time.LocalDate;
 
@@ -17,12 +17,8 @@ public class EmpresaException extends RuntimeException{
     public EmpresaException(String mensaje,  String mensajeLog){
         super(mensaje);
         fecha= LocalDate.now();
-        ArchivoUtil.guardarRegistroLog(this.getClass().getSimpleName()+", "+mensajeLog, nivelDeExcepcion, "Excepcion", ModelFactoryController.getRutaLogs("Excepciones.txt"));
+        ArchivoUtil.guardarRegistroLog(this.getClass().getSimpleName()+", "+mensajeLog, nivelDeExcepcion, "Excepcion", Utils.RUTA_LOG_TXT);
     }
 
-    public EmpresaException (){
-        super();
-        fecha = LocalDate.now();
-    }
 
 }

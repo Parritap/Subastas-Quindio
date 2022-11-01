@@ -75,7 +75,8 @@ public class Utils {
     //-------------------------------RUTAS DE LA SERIALIZACIÓN------------------------------------------
     //Ruta de la carpeta de la empresa
     public static final String RUTA_EMPRESA_SER = "src/persistencia/archivos/empresa.ser";
-
+    //Ruta del archivo donde se guardan los registros log
+    public static final String RUTA_LOG_TXT = "src/persistencia/log/excepciones.txt";
 
 
 
@@ -113,20 +114,6 @@ public class Utils {
         mediaPlayer.play();
     }
 
-    /**
-     * Metodo que permite generar un sonido al hacer clic
-     * en un boton o en un item
-     */
-    public static void playClic() {
-
-        //DO NOTHING
-
-        //javafx.scene.media.Media media = new javafx.scene.media.Media(new File(URL_CLICK_BUTTON).toURI().toString());
-        //javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
-        //mediaPlayer.play();
-
-
-    }
 
     /**
      * Método que manipula la ruta (dada como parámetro) de un archivo FXML para crear su

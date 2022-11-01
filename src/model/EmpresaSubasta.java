@@ -38,7 +38,6 @@ public class EmpresaSubasta implements Runnable, Serializable {
      */
     public void crearUsuario(Usuario usuario) throws EscrituraException {
         iUsuario.crear(usuario);
-        Persistencia.registrarAccion("Se ha creado el usuario con email "+usuario.getCorreo(), "Creacion de usuario", ModelFactoryController.getRutaRegistroAcciones());
     }
 
     /**
@@ -67,17 +66,14 @@ public class EmpresaSubasta implements Runnable, Serializable {
         anuncio.setProducto(producto);
         anuncio.setUsuario(clienteActivo);
         iAnuncio.add(anuncio);
-        Persistencia.registrarAccion("Se ha creado un anuncio con el id: " + anuncio.getId(), "Creacion de anuncio", ModelFactoryController.getRutaRegistroAcciones());
     }
 
     public void actualizarUsuario(Usuario clienteActivo, Usuario usuario) throws LecturaException {
         iUsuario.actualizar(clienteActivo.getId(), usuario);
-        Persistencia.registrarAccion("Se actualizó el usuario con correo: " + clienteActivo.getCorreo(), "Actualizacion de usuario", ModelFactoryController.getRutaRegistroAcciones());
     }
 
     public void addAnuncio(Anuncio anuncio) throws CRUDExceptions {
         iAnuncio.add(anuncio);
-        Persistencia.registrarAccion("Se agregó el anuncio con id: " + anuncio.getId(), "Anuncio agregado", ModelFactoryController.getRutaRegistroAcciones());
     }
 
     /**
