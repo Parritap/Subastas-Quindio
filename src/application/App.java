@@ -100,27 +100,6 @@ public class App extends Application {
         });
         stage.show();
     }
-
-    /**
-     * Este metodo permite generalizar el bundle de los idiomas,
-     * de esta manera se puede obtener el bundle en cualquier momento
-     * debido a que se encuentra en la clase App y los algunas vistas no estaban
-     * funcionando correctamente al no tener el bundle
-     * @return un objeto de tipo Bundle que contiene el idioma
-     */
-    private ResourceBundle getBundle(){
-        Locale locale;
-        if(language.equals(Language.ENGLISH)){
-            locale = new Locale("en", "US");
-        }
-        else{
-            locale = new Locale("es", "CO"); //CO = Colombia según el código de paises.
-            //Param más informacion: https://www.datosmundial.com/codigos-de-pais.php
-        }
-        return ResourceBundle.getBundle("persistencia/languages/subastas/language", locale);
-    }
-
-
     /**
      * METODO ENCARGADO DE INICIALIZAR  LO QUE LA
      * APPLICATION NECESITE
