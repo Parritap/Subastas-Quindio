@@ -119,7 +119,6 @@ public class ArchivoUtil {
             mesN+=""+mes;
         }
         fechaSistema = mesN+"-"+diaN;
-
     }
 
 }
