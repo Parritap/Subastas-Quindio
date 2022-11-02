@@ -123,6 +123,7 @@ public class CuentaController implements IApplication, Inicializable {
             btnCerrarSesion.setVisible(true);
         }
     }
+
     /**
      * Metodos implementados debido a la interfaz
      * @return instancia de Application
@@ -140,8 +141,6 @@ public class CuentaController implements IApplication, Inicializable {
     public void setApplication(App application) {
         this.application=application;
     }
-
-
 
     /**
      * Metodo que cierra la sesión del usuario

@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.media.MediaView;
 import lombok.Getter;
 import lombok.Setter;
-import persistencia.logic.Persistencia;
 import utilities.Utils;
 
 
@@ -46,7 +45,6 @@ public class IniciarSesionController implements IApplication, Inicializable {
             }
         } catch (LecturaException e) {
             limpiarCampos();
-            Persistencia.registrarExcepcion(e, "Error al iniciar sesion, credenciales incorrectas", 1);
             application.abrirAlerta("La contraseña o el email son incorrectos, por favor intente de nuevo");
         }
 

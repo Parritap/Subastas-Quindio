@@ -56,15 +56,6 @@ public class Usuario implements Serializable {
 		this.rol = Rol.CLIENTE;
 	}
 
-	public Usuario(ArrayList<Puja> listaPujas){
-		this.id = ++idAux;
-		this.activo = true;
-		this.idListaPujas = ModelFactoryController.darIdListaPuja();
-		this.cantAnuncios = 0;
-		this.listaPujas = listaPujas;
-		this.rol = Rol.CLIENTE;
-	}
-
 	public Usuario(){}
 
 	/**
@@ -91,6 +82,11 @@ public class Usuario implements Serializable {
 		this.password = nuevoUsuario.getPassword();
     }
 
+	/**
+	 * Permite comparar dos objetos
+	 * @param o el objeto con el que se va a comparar
+	 * @return true || false
+	 */
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -99,12 +95,10 @@ public class Usuario implements Serializable {
 		return Objects.equals(name, usuario.name) && Objects.equals(cedula, usuario.cedula);
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(name, age, cedula, correo, cantAnuncios, direccion, password, telefono, listaPujas, activo, estado, id);
-	}
-
-
+	/**
+	 * Metodo que agrega un anuncio a la lista de un usuario
+	 * @param anuncio el anuncio que se va a agregar
+	 */
 	public void addAnuncio(Anuncio anuncio) {
 		boolean flag = true;
 		for (Anuncio anuncioAux : this.listaAnuncios) {
@@ -117,5 +111,41 @@ public class Usuario implements Serializable {
 		listaAnuncios.add(anuncio);
 	}
 
+	/**
+	 * Verifica si un usuario tiene el rol de admin
+	 * @return true || false
+	 */
 	public boolean isAdmin() {return this.rol == Rol.ADMINISTRADOR;}
+
+	/**
+	 *Este metodo devuelve toda la info del usuario en un string
+	 * para serializarlo en un txt
+	 * @return string con la info del usuario
+	 */
+	public String getStringUsuario() {
+		StringBuilder arrobas = new StringBuilder("@@");
+		//concateno todos los atributos separados por arroba
+		return arrobas +
+				name +
+				arrobas +
+				age +
+				arrobas +
+				cedula +
+				arrobas +
+				correo +
+				arrobas +
+				cantAnuncios +
+				arrobas +
+				direccion +
+				arrobas +
+				password +
+				arrobas +
+				telefono +
+				arrobas +
+				estado +
+				arrobas +
+				id +
+				arrobas +
+				rol;
+	}
 }

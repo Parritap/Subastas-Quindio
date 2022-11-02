@@ -28,6 +28,8 @@ import utilities.Utils;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -38,11 +40,6 @@ import java.util.ArrayList;
  */
 public class SubastaController implements IApplication, Inicializable {
 
-    public static void main(String[] args) {
-        SubastaController object = new SubastaController();
-        object.printThisFields();
-        //object.cambiarIdioma(Language.ENGLISH);
-    }
 
     @FXML
     private TextField txtfBarraBusqueda;
@@ -201,7 +198,7 @@ public class SubastaController implements IApplication, Inicializable {
      */
     @FXML
     void loadAccount(ActionEvent ignoredEvent) {
-        Utils.playClic();
+        Utils.playSound(Utils.URL_CLICK_BUTTON);
         application.loadScene(Utils.frameCuenta);
     }
 
@@ -212,7 +209,6 @@ public class SubastaController implements IApplication, Inicializable {
 
     @Override
     public void inicializarComponentes() {
-        System.out.println("inicializo");
         paneInfoAnuncio.setVisible(false);
         //obtengo la lista de anuncios disponibles en la empresa
         this.listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios());
@@ -275,7 +271,7 @@ public class SubastaController implements IApplication, Inicializable {
 
     @FXML
     void iniciarSesion(ActionEvent event) {
-        Utils.playClic();
+        Utils.playSound(Utils.URL_CLICK_BUTTON);
         application.abrirLogin();
     }
 

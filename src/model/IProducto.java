@@ -150,4 +150,30 @@ public class IProducto implements CRUD<Producto>, Serializable {
                 "listaProductos=" + listaProductos.toString() +
                 '}';
     }
+
+    /**
+     * Metodo que actualiza la lista productos, que
+     * se contienen en el Iproducto pasados por parametros
+     * @param iProducto objeto que contiene la lista de los productos
+     */
+    public void actualizarProductos(IProducto iProducto) {
+        for (Producto producto : iProducto.getListaProductos()) {
+            if (!listaProductos.contains(producto)) {
+                listaProductos.add(producto);
+            }
+        }
+    }
+
+    /**
+     * Metodo que devuelve la lista de productos en un String
+     * @return Devuelve un string con la informacion de los productos
+     */
+    public String getStringProductos() {
+        StringBuilder stringProductos = new StringBuilder();
+        for (Producto listaProductos : listaProductos) {
+            stringProductos.append(listaProductos.getStringProducto());
+            stringProductos.append("\n");
+        }
+        return stringProductos.toString();
+    }
 }

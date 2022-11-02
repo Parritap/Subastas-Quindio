@@ -2,10 +2,6 @@ package model;
 
 import exceptions.LecturaException;
 import persistencia.logic.Persistencia;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.nio.file.Paths;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
@@ -39,73 +35,11 @@ public class ModelFactoryController {
     }
 
     public static void deserializarEmpresa() throws CRUDExceptions {
-        empresaSubasta  = Persistencia.deserializarEmpresaBinario();
+        EmpresaSubasta empresaSubastaAux = Persistencia.deserializarEmpresaBinario();
+        //actualizo las variables inscritas dentro de empresa
+        if(empresaSubasta != null && empresaSubastaAux != null) empresaSubasta.actualizarImplementaciones(empresaSubastaAux);
+
         //hace una copia de seguridad del xml
-        Persistencia.respaldarXML();
-    }
-
-    //Los metodos getRuta... sirven para obtener las rutas
-    //especificadas en el taller
-
-    /**
-     * Método que Retorna el siguiente string: C:\Users\esteb\IdeaProjects\Subastoncito\src
-     * @return "C:\Users\esteb\IdeaProjects\Subastoncito\src".
-     */
-    public static String getRutaBase(){
-        return Paths.get("").toAbsolutePath().toString()+"\\src";
-    }
-
-    /**
-     * Devuelve la ruta del log de las excepciones.
-     * @return ruta de log de excepciones.
-     */
-    public static String getRutaLogException(){
-        return getRutaBase()+"\\persistencia\\exceptions\\registroExcepciones.log";
-    }
-
-    public static String getRutaLogAcciones (){
-        return getRutaBase()+"\\persistencia\\exceptions\\registroAcciones.log";
-    }
-
-    /**devuelve la ruta en la que se guarda el log
-     * @param nombreArchivo nombre del archivo en el que se guarda el log
-     * @return ruta en la que se va a guardar el log*/
-    public static String getRutaLogs(String nombreArchivo){
-        return getRutaBase()+"\\persistencia\\log\\"+nombreArchivo;
-    }
-
-    public static String getRutaRegistroAcciones (){
-        return getRutaBase()+"\\persistencia\\log\\Acciones.log";
-    }
-
-    public static String getRutaObjetos(String nombreArchivo){
-        return getRutaBase()+"\\persistencia\\archivos\\"+nombreArchivo;
-    }
-
-    //CONSTRUYE LA RUTA EN BASE AL NOMBRE DE LA CLASE
-    public static String getRutaObjetos(Object obj){
-        Class<?> claseObj = obj.getClass();
-        return getRutaBase()+"\\persistencia\\archivos\\"+claseObj.getSimpleName()+".txt";
-    }
-
-    /**devuelve la ruta de respaldo con el formato que debe tener
-     * el nombre del archivo
-     * */
-
-    public static String getRutaRespaldo(String nombreArchivo){
-        String[] componentes = nombreArchivo.split("\\.");
-        String nombre  = componentes[0];
-        String formato="";
-        if(componentes.length > 1) {
-            formato = componentes[1];
-        }
-        LocalDateTime f = LocalDateTime.now();
-        return  getRutaBase()+"\\persistencia\\respaldo\\"+nombre+"__"+f.getDayOfMonth()+f.getMonthValue()+(f.getYear()%100)+
-                "__"+f.getHour()+"__"+f.getMinute()+"__"+f.getSecond()+"."+formato;
-    }
-
-    public static String getRutaSerializado(String nombreArchivo){
-        return  getRutaBase()+"\\persistencia\\"+nombreArchivo;
     }
 
     /**da un ID para la lista de pujas, usualmente a objetos Usuario o Anuncio
@@ -115,22 +49,79 @@ public class ModelFactoryController {
         idListaPujas++;
         return idListaPujas;
     }
+
+    /**
+     * Metodo que devuelve la lista de usuarios contenida en la empresa
+     * @return lista de usuarios
+     */
     public static ArrayList<Anuncio> getlistaAnuncios() {
         return getInstance().getListaAnuncios();
     }
 
-    public static void crearUsuario(Usuario usuario) throws EscrituraException, IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-        //serializa el usuario
-        Persistencia.serializarUsuario(usuario);
+    /**
+     * metodo que permite crear un usuario, el usuario se crea en la instancia de la empresa contenida
+     * en el singleton
+     * @param usuario el usuario que se va a crear
+     * @throws EscrituraException si no se puede crear el usuario
+     */
+    public static void crearUsuario(Usuario usuario) throws EscrituraException{
         empresaSubasta.crearUsuario(usuario);
     }
 
-    public static void crearAnuncio(Anuncio anuncio, Producto producto, Usuario clienteActivo) throws CRUDExceptions, IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    /**
+     * Metodo que permite crear anuncios en el singleton
+     * @param anuncio que se va a crear
+     * @param producto el producto que contiene el anuncio
+     * @param clienteActivo el cliente que lo creo
+     */
+    public static void crearAnuncio(Anuncio anuncio, Producto producto, Usuario clienteActivo) throws CRUDExceptions{
         empresaSubasta.crearAnuncio(anuncio, producto, clienteActivo);
-        Persistencia.serializarAnuncio(anuncio);
     }
 
+    /**
+     * Permite actualizar la informacion de un usuario
+     * @param clienteActivo el cliente activo con su informacion actual
+     * @param usuario un objeto usuario auxiliar que contiene la informacion a actualizar
+     * @throws LecturaException si no se puede actualizar
+     */
     public static void actualizarUsuario(Usuario clienteActivo, Usuario usuario) throws LecturaException {
         empresaSubasta.actualizarUsuario(clienteActivo, usuario);
+    }
+
+    /**
+     * Este metodo devuelve un String con la forma de serializar todos los usuarios
+     * @return String con la lista de usuarios serializada
+     */
+    public static String getStringUsuarios() {
+        return empresaSubasta.getStringUsuarios();
+    }
+
+    /**
+     * Este metodo devuelve un String con la forma de serializar todos los anuncios
+     * @return String con la lista de anuncios serializada
+     */
+    public static String getStringProductos() {
+        return empresaSubasta.getStringProductos();
+    }
+
+    /**
+     * Este metodo devuelve un String con la forma de serializar todos los productos
+     * @return String con la lista de productos serializada
+     */
+    public static String getStringTransacciones() {
+        return empresaSubasta.getStringTransacciones();
+    }
+
+    public static String getStringAnuncios() {
+        return empresaSubasta.getStringAnuncios();
+    }
+
+    /**
+     * Metodo que devuelve todos los anuncios de un cliente
+     * @param clienteActivo el cliente que creo los anuncios
+     * @return una lista de anuncios
+     */
+    public static ArrayList<Anuncio> getlistaAnuncios(Usuario clienteActivo) {
+        return empresaSubasta.getListaAnuncios(clienteActivo);
     }
 }

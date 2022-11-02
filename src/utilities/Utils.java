@@ -70,12 +70,22 @@ public class Utils {
     public static final String frameAlerta = "../view/Alerta.fxml";
     //Variable que contiene la zona horaria
     public static final ZoneOffset ZONE_OFFSET = OffsetDateTime.now().getOffset();
-    //Url del nuevo pane de crearCuenta
-    public static final String crearCuente = "../view/CrearCuenta.fxml";
-    //-------------------------------RUTAS DE LA SERIALIZACIÓN------------------------------------------
     //Ruta de la carpeta de la empresa
     public static final String RUTA_EMPRESA_SER = "src/persistencia/archivos/empresa.ser";
+    //Url del nuevo pane de crearCuenta//-------------------------------RUTAS DE LA SERIALIZACIÓN------------------------------------------
     public static final String crearCuenta = "../view/CrearCuenta.fxml";
+    //Ruta del archivo donde se guardan los registros log
+    public static final String RUTA_LOG_TXT = "src/persistencia/log/excepciones.txt";
+    //Ruta de la serializacion de los usuarios en txt
+    public static final String RUTA_USUARIOS_TXT = "src/persistencia/archivos/Usuario.txt";
+    //Ruta de la serializacion de los anuncios en txt
+    public static final String RUTA_ANUNCIOS_TXT = "src/persistencia/archivos/Anuncio.txt";
+    //Ruta de la serializacion de los productos en txt
+    public static final String RUTA_PRODUCTOS_TXT = "src/persistencia/archivos/Producto.txt";
+    //Ruta de la serializacion de las Transacciones en txt
+    public static final String RUTA_TRANSACCIONES_TXT = "src/persistencia/archivos/Transaccion.txt";
+
+
 
 
     /**
@@ -89,13 +99,11 @@ public class Utils {
         FileChooser dc = new FileChooser();
         File file = dc.showOpenDialog(new Stage());
         //obtengo el arreglo de bits de la imagen
-        byte[] btImagen;
+        byte[] btImagen = new byte[0];
         //cargo los bits de la imagen
         try {
             btImagen = Files.readAllBytes(file.toPath());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        } catch (IOException ignored) {}
         return btImagen;
     }
 
@@ -112,20 +120,6 @@ public class Utils {
         mediaPlayer.play();
     }
 
-    /**
-     * Metodo que permite generar un sonido al hacer clic
-     * en un boton o en un item
-     */
-    public static void playClic() {
-
-        //DO NOTHING
-
-        //javafx.scene.media.Media media = new javafx.scene.media.Media(new File(URL_CLICK_BUTTON).toURI().toString());
-        //javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
-        //mediaPlayer.play();
-
-
-    }
 
     /**
      * Método que manipula la ruta (dada como parámetro) de un archivo FXML para crear su

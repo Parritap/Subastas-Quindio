@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import exceptions.ContraseniaNoValidaException;
 import exceptions.CorreoNoValidoException;
 import exceptions.EscrituraException;
@@ -26,6 +25,21 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
 
     public IUsuario() {
         listaUsuarios = new ArrayList<>();
+    }
+
+
+    /**
+     * Metodo que actualiza todos los usuarios, sirve para cuando se deserializar
+     * @param iUsuario objeto que contiene la lista usuarios
+     */
+    public void actualizarUsuarios(IUsuario iUsuario) {
+        //se agregan los usuarios contenidos en iUsuario
+        //se filtran y solo se agregan los que no están en la lista
+        iUsuario.getListaUsuarios().forEach(usuario -> {
+            if (!listaUsuarios.contains(usuario)) {
+                listaUsuarios.add(usuario);
+            }
+        });
     }
 
     /**
@@ -101,8 +115,8 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
     @Override
     public void crear(Usuario usuario) throws EscrituraException {
         if (usuario != null && !existeUsuario(usuario)) {
-            usuario.setEstado(Estado.NUEVO);
             listaUsuarios.add(usuario);
+            System.out.println("Se agregó un usuario" );
         } else {
             throw new EscrituraException("Ya existe un usuario con esas caracteristicas", "se intento crear un usuario ya existente ("+ (usuario != null ? usuario.getCedula() : null) +")");
         }
@@ -113,7 +127,7 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
      * METODO QUE RECIBE UN USUARIO CON ATRIBUTOS ESPECIFICOS, BUSCA EL USUARIO ALMACENADO EN
      * LA LISTA Y LE SETTEA LOS ATRIBUTOS
      *
-     * @param id           SE BUSCA EL USUARIO ALMACENADO
+     * @param id SE BUSCA EL USUARIO ALMACENADO
      * @param nuevoUsuario CONTIENE LOS ATRIBUTOS A SETTEAR
      * @throws LecturaException SI NO ENCUENTRA EL OBJETO LANZA UNA EXCEPCION
      */
@@ -227,12 +241,15 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
     }
 
     /**
-     * To string
+     * Este metodo retorna un string con toda la informacion de la lista de usuarios
+     * @return stringUsuarios
      */
-    @Override
-    public String toString() {
-        return "UsuarioDAO{" +
-                "listaUsuarios=" + listaUsuarios.toString() +
-                '}';
+    public String getStringUsuarios() {
+        StringBuilder stringUsuarios = new StringBuilder();
+        for (Usuario listaUsuario : listaUsuarios) {
+            stringUsuarios.append(listaUsuario.getStringUsuario());
+            stringUsuarios.append("\n");
+        }
+        return stringUsuarios.toString();
     }
 }

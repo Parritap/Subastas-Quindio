@@ -17,7 +17,21 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	//SE CAMBIA EL HASHMAP POR UN ARRAYLIST, DEBIDO A QUE SE INVIRTIO LA DEPENDENCIA DEL ID
 	public ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
 
-	//METODO QUE DEVUELVE LA LISTA ANUNCIO
+	/**
+	 * Metodo que actualiza la lista de anuncios, se actualiza
+	 * con la lista contenida en el objeto pasado por parametro
+	 * se filtra para no aniadir los que ya están en la lista
+	 * @param iAnuncio objeto que contiene la lista de anuncios
+	 */
+    public void actualizarAnuncios(IAnuncio iAnuncio) {
+		for (Anuncio anuncio : iAnuncio.getListaAnuncios()) {
+			if (!listaAnuncios.contains(anuncio)) {
+				listaAnuncios.add(anuncio);
+			}
+		}
+    }
+
+    //METODO QUE DEVUELVE LA LISTA ANUNCIO
 
 	/**
 	 * Método que retorna la lista de anuncios.
@@ -76,9 +90,8 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 *  Método que verifica si existe un anuncio antes de crearlo
 	 * @param anuncio Anuncio a comparar.
 	 * @return True si el anuncio NO EXISTE
-	 * @throws EscrituraException Si el anuncio ya existe.
 	 */
-	private boolean existeAnuncio(Anuncio anuncio) throws EscrituraException {
+	private boolean existeAnuncio(Anuncio anuncio){
 		for (Anuncio aux: listaAnuncios){
 			if(aux.equals(anuncio)){
 				return false;
@@ -174,5 +187,27 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		return "Empresa{" +
 				" listaAnuncios=" + listaAnuncios.toString() +
 				'}';
+	}
+
+	/**
+	 * Se encarga de recorrer la lista de anuncios y devolver un string con la informacion de cada anuncio
+	 * @return String con la informacion de cada anuncio
+	 */
+    public String getStringAnuncios() {
+		StringBuilder anuncios = new StringBuilder();
+		for (Anuncio anuncio : listaAnuncios) {
+			anuncios.append(anuncio.getStringAnuncio()).append("\n");
+		}
+		return anuncios.toString();
+    }
+
+	public ArrayList<Anuncio> getListaAnuncio(Usuario clienteActivo) {
+		ArrayList<Anuncio> listaAnunciosCliente = new ArrayList<>();
+		for (Anuncio anuncio : listaAnuncios) {
+			if (anuncio.getUsuario().equals(clienteActivo)) {
+				listaAnunciosCliente.add(anuncio);
+			}
+		}
+		return listaAnunciosCliente;
 	}
 }

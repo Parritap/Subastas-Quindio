@@ -1,7 +1,7 @@
 package exceptions;
 
-import model.ModelFactoryController;
 import persistencia.logic.ArchivoUtil;
+import utilities.Utils;
 
 /**
  * Clase encargada de lanzar una excepcion de tipo anuncio exception
@@ -14,7 +14,9 @@ public class AnuncioException  extends  EmpresaException{
     public AnuncioException (String mensaje,  String mensajeLog){
 
         super(mensaje, mensajeLog);
-        //guarda el log, utiliza el nombre de la clase para indicarlo en el log                                              //todas las excepciones se guardan en Excepcion.txt
-        ArchivoUtil.guardarRegistroLog(this.getClass().getSimpleName()+", "+mensajeLog, nivelDeExcepcion, "Excepcion", ModelFactoryController.getRutaLogs("Excepciones.txt"));
+        //guarda el log, utiliza el nombre de la clase para indicarlo en el log
+        // todas las excepciones se guardan en Excepcion.txt
+        ArchivoUtil.guardarRegistroLog(this.getClass().getSimpleName()+", "+mensajeLog, nivelDeExcepcion,
+                "Excepcion", Utils.RUTA_LOG_TXT);
     }
 }

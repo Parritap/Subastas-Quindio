@@ -8,13 +8,11 @@ import javafx.scene.control.Label;
 import lombok.Getter;
 import lombok.Setter;
 import model.Anuncio;
-
-import java.text.DateFormat;
 import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
-public class subastaItemController implements IApplication, Inicializable {
+public class SubastaItemController implements IApplication, Inicializable {
 
     private App application;
 

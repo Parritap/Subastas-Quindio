@@ -2,8 +2,6 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-
 import java.io.Serializable;
 @Getter
 @Setter
@@ -43,5 +41,21 @@ public  class Producto implements Serializable {
                 ", nombre='" + nombre + '\'' +
                 ", estado=" + estado +
                 '}';
+    }
+
+    /**
+     * Metodo que devuelve todos los atributos de la clase en un String separados por una arroba
+     * @return String con todos los atributos de la clase separados por una arroba
+     */
+    public String getStringProducto() {
+        StringBuilder arrobas = new StringBuilder("@@");
+        return (arrobas.append(id)
+                .append("@@")
+                .append(nombre)
+                .append("@@")
+                .append(descripcion)
+                .append("@@")
+                .append(estado)
+                .append("@@")).toString();
     }
 }

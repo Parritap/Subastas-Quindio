@@ -4,8 +4,12 @@ import application.App;
 import interfaces.IApplication;
 import interfaces.Inicializable;
 import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import model.Anuncio;
+import model.ModelFactoryController;
+import utilities.Utils;
+
 import java.util.ArrayList;
 
 public class ListadoSubastasController implements IApplication, Inicializable {
@@ -27,29 +31,16 @@ public class ListadoSubastasController implements IApplication, Inicializable {
 
     @Override
     public void inicializarComponentes() {
-        ArrayList<Anuncio> listadoAnuncio = new ArrayList<>();
+        ArrayList<Anuncio> listadoAnuncio;
         try {
-            listadoAnuncio = application.getClienteActivo().getListaAnuncios();
-        } catch (Exception e) {
-            //Do nothing.
-        }
-        for (int i = 0; i < listadoAnuncio.size(); i++) {
-            System.out.println(listadoAnuncio.get(i));
-        }
-        /*for (Anuncio anuncio : listadoAnuncio) {
-            for (int i = 0; i <100 ; i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(Utils.SUBASTA_ITEM));
-                try {
-                    AnchorPane anchorPane = fxmlLoader.load();
-                    subastaItemController itemController = fxmlLoader.getController();
-                    itemController.setAnuncio(anuncio);
-                    itemController.setApplication(application);
-                    itemController.inicializarComponentes();
-                    VBoxMisSubastas.getChildren().add(anchorPane);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+            listadoAnuncio = ModelFactoryController.getlistaAnuncios(application.getClienteActivo());
+            if(listadoAnuncio != null){
+                //filtro los anuncios que esten duplicados en listadoAnuncio
+                for (Anuncio anuncio : listadoAnuncio) {
+                    AnchorPane pane = application.obtenerPaneAnuncio(Utils.SUBASTA_ITEM, anuncio);
+                    VBoxMisSubastas.getChildren().add(pane);
                 }
             }
-        }*/
+        } catch (Exception ignored) {}
     }
 }

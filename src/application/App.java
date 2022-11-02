@@ -3,6 +3,8 @@ package application;
 import controllers.AlertaController;
 import controllers.CuentaController;
 import controllers.MilkGlassPane;
+import controllers.SubastaItemController;
+import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import interfaces.IApplication;
 import interfaces.Inicializable;
@@ -89,7 +91,8 @@ public class App extends Application {
         stage.setOnCloseRequest(event->{
             try {
                 //Persistencia.serializarEmpresaUnificado();
-                Persistencia.serializarEmpresa();
+                Persistencia.serializarEmpresaBinario();
+                Persistencia.serializarEmpresaTXT();
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -154,7 +157,6 @@ public class App extends Application {
 
     /**
      * Metodo que carga un FXML y devuelve ese pane
-     * @param ruta ruta del fxml
      * @param ruta donde se encuentra el pane
      * @return el pane que se encuentra en la ruta
      */
@@ -171,6 +173,29 @@ public class App extends Application {
             throw new RuntimeException(e);
         }
     }
+
+
+    /**
+     * Metodo que carga un FXML y devuelve ese pane este metodo es especifico para anuncios
+     * @param ruta donde se encuentra el pane
+     * @return el pane que se encuentra en la ruta
+     */
+    public AnchorPane obtenerPaneAnuncio(String ruta, Anuncio anuncio) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
+        try {
+            AnchorPane root = loader.load();
+            IApplication controller = loader.getController();
+            controller.setApplication(this);
+            SubastaItemController controller1 = (SubastaItemController) controller;
+            controller1.setAnuncio(anuncio);
+            Inicializable controllerInicializable = (Inicializable) controller;
+            controllerInicializable.inicializarComponentes();
+            return root;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     /**
      * Metodo que abre un stage con un mensaje
@@ -213,7 +238,7 @@ public class App extends Application {
     /**
      * Método que verífica las credenciales de un usuario y de ser correctas cambia el usuario activo.
      *
-     * @param email       el email del usuario
+     * @param email el email del usuario
      * @param contrasenia la contraseña del usuario
      * @throws LecturaException De haber algún error en las credenciales.
      */
@@ -226,8 +251,9 @@ public class App extends Application {
             throw new LecturaException("La contraseña es incorrecta", "La contraseña pasada no es valida");
         }
         clienteActivo = usuario;
-        ArchivoUtil.guardarRegistroLog("El usuario de nombre " + clienteActivo.getName()+ " y correo "+ usuario.getCorreo() + " ha iniciado sesión.", 1, "Inicio de sesión", ModelFactoryController.getRutaLogs("InicioSesion.log"));
-        loadScene(Utils.frameInicio );
+        ArchivoUtil.guardarRegistroLog("El usuario de nombre " + clienteActivo.getName()+ " y correo "+ usuario.getCorreo() + " ha iniciado sesión.",
+                1, "Inicio de sesión",Utils.RUTA_LOG_TXT);
+        loadScene(Utils.frameInicio);
     }
 
 
