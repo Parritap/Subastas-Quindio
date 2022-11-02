@@ -130,7 +130,6 @@ public class App extends Application {
     /**
      * Este metodo permite cambiar el scene del stage global
      * de la application
-     *
      * @param scenePath el nombre de la scene que queremos cargar
      */
     public void loadScene(String scenePath) {
@@ -155,7 +154,6 @@ public class App extends Application {
 
     /**
      * Metodo que carga un FXML y devuelve ese pane
-     *
      * @param ruta donde se encuentra el pane
      * @return el pane que se encuentra en la ruta
      */
@@ -213,7 +211,7 @@ public class App extends Application {
     /**
      * Método que verífica las credenciales de un usuario y de ser correctas cambia el usuario activo.
      *
-     * @param email       el email del usuario
+     * @param email el email del usuario
      * @param contrasenia la contraseña del usuario
      * @throws LecturaException De haber algún error en las credenciales.
      */

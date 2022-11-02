@@ -85,7 +85,7 @@ public class ItemController implements IApplication, Inicializable {
                     this.stop();
                     //actualizo los anuncios contenidos
                     subastaController.actualizarAnuncios();
-                    anuncio.setFueMostrado(true);
+                    anuncio.setFueMostrado(false);
                 }else {
                     lblTiempo.setText("Tiempo restante "+minutos+" minutos "+segundos +" segundos");
                 }

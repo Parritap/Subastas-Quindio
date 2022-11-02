@@ -24,7 +24,6 @@ import model.Anuncio;
 import model.Language;
 import model.ModelFactoryController;
 import utilities.Utils;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -40,11 +39,6 @@ import java.util.ArrayList;
  */
 public class SubastaController implements IApplication, Inicializable, LanguageInterchangeable {
 
-    public static void main(String[] args) {
-        SubastaController object = new SubastaController();
-        object.printThisFields();
-        //object.cambiarIdioma(Language.ENGLISH);
-    }
 
     @FXML
     private TextField txtfBarraBusqueda;
@@ -117,7 +111,7 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
         try {
             //recorro la lista de anuncios y los convierto en un item controller
             for (Anuncio anuncio : this.listaAnuncios) {
-                if (anuncio !=  null && !anuncio.getFueMostrado() && anuncio.getFechaTerminacion().isBefore(LocalDateTime.now())) {
+                if (anuncio !=  null && anuncio.getFechaTerminacion().isAfter(LocalDateTime.now())) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
                     AnchorPane anchorPane = fxmlLoader.load();
@@ -286,7 +280,7 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
     }
 
     /**
-     * Método aun no terminado.
+     * Método aún no terminado.
      * La idea es recorrer todos los labels de esta clase, y depende del idioma seleccionado, cambiar el texto de cada label
      * El texto de cada label se encontrará en el archivo de propiedades correspondiente al idioma seleccionado.
      * Este método debe ser llamado dentro del método inicializarComponentes().
