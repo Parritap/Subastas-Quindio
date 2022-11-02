@@ -289,10 +289,7 @@ public class SubastaController implements IApplication, Inicializable {
 
     @FXML
     void cambiarLenguaje(ActionEvent event) throws Exception {
-
-        Language language = Utils.stringToLanguage(comboLanguages.getValue());
-        App.language  = language;
-
+        App.language  = Utils.stringToLanguage(comboLanguages.getValue());
         application.loadScene(Utils.frameInicio);
 
     }
