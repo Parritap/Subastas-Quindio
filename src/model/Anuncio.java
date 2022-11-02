@@ -138,4 +138,8 @@ public class Anuncio implements Serializable {
 		result = 31 * result + Arrays.hashCode(imageSrc);
 		return result;
 	}
+
+	public boolean getFueMostrado() {
+			return fueMostrado;
+	}
 }
