@@ -4,7 +4,6 @@ import controllers.AlertaController;
 import controllers.CuentaController;
 import controllers.MilkGlassPane;
 import controllers.SubastaItemController;
-import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import interfaces.IApplication;
 import interfaces.Inicializable;
@@ -51,7 +50,7 @@ public class App extends Application {
 
     //El lenguaje estará en español por defecto.
     //Variable es static para no tener que crear varios métodos que extraigan la misma de su instancia de App.
-    public static Language language = Language.SPANISH;
+    public static Language language = Language.ENGLISH;
     /**
      * Main
      * @param args args

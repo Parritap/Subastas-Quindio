@@ -51,3 +51,11 @@ Nov 01, 2022 8:53:34 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 WARNING: Excepcion,LecturaException, usuario alejo@gmail.com no encontrado,11-01
 Nov 01, 2022 8:54:11 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de usuario,se creo el usuario 1:Alejandro,11-01
+Nov 01, 2022 9:01:17 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario admin no encontrado,11-01
+Nov 01, 2022 9:01:17 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario admin no encontrado,11-01
+Nov 01, 2022 9:51:55 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-01
+Nov 02, 2022 12:21:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02

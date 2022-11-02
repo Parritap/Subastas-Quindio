@@ -29,7 +29,6 @@ public class ArchivoUtil {
         }
     }
 
-
     /**
      * Metodo que permite deserializar un objeto en un archivo binario
      * @param rutaEmpresaSer la ruta donde se encuentra el archivo
@@ -46,19 +45,23 @@ public class ArchivoUtil {
     }
 
 
-    //-------------------------SERIALIZACION TXT-------------------------
+    //-------------------------SERIALIZACION TXT-----------------------------
 
-
-
-
-
+    /**
+     * Este metodo permite escribir en un txt dada la ruta
+     * y el contenido
+     * @param ruta es la ruta donde se escribirá el contenido
+     * @param string es el contenido que se va a escribir
+     */
+    public static void serializarTxt(String ruta, String string) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ruta))) {
+            bw.write(string);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     //-------------------------SERIALIZACION XML-------------------------
-
-
-
-
-
 
 
 
@@ -119,17 +122,4 @@ public class ArchivoUtil {
 
     }
 
-    /**
-     * Este metodo permite escribir en un txt dada la ruta
-     * y el contenido
-     * @param ruta es la ruta donde se escribirá el contenido
-     * @param string es el contenido que se va a escribir
-     */
-    public static void serializarTxt(String ruta, String string) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ruta))) {
-            bw.write(string);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
