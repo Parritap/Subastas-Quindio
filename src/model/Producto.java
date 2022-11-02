@@ -2,6 +2,8 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
+import model.enums.Estado;
+
 import java.io.Serializable;
 @Getter
 @Setter

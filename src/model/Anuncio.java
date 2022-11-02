@@ -1,8 +1,9 @@
 package model;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import model.enums.Estado;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package model;
+package model.enums;
 
 /**
  * PERMITE DEFINIR EL TIPO CON EL

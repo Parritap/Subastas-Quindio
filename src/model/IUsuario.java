@@ -8,6 +8,8 @@ import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import interfaces.CRUD;
 import lombok.Data;
+import model.enums.Estado;
+import model.enums.TipoOrden;
 
 /**
  * Implementación de usuarios, en esta clase solo se gestionan las acciones

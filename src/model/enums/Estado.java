@@ -1,4 +1,4 @@
-package model;
+package model.enums;
 
 /**
  * CLASE QUE DEFINE UN ESTADO PARA UN CLIENTE

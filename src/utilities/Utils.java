@@ -4,7 +4,7 @@ import application.App;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import model.Language;
+import model.enums.Language;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

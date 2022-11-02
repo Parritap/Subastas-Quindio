@@ -21,15 +21,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Anuncio;
-import model.Language;
+import model.enums.Language;
 import model.ModelFactoryController;
 import utilities.Utils;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**

@@ -2,7 +2,7 @@ package interfaces;
 
 import java.util.ArrayList;
 import exceptions.CRUDExceptions;
-import model.TipoOrden;
+import model.enums.TipoOrden;
 
 /**
  * Esta clase se encarga de implementar los crud en una
