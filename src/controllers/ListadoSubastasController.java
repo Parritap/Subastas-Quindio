@@ -30,10 +30,15 @@ public class ListadoSubastasController implements IApplication, Inicializable {
 
     @Override
     public void inicializarComponentes() {
-        ArrayList<Anuncio> listadoAnuncio = new ArrayList<>();
+        ArrayList<Anuncio> listadoAnuncio;
         try {
-            
-
+            listadoAnuncio = application.getClienteActivo().getListaAnuncios();
+            if(listadoAnuncio != null){
+                for (Anuncio anuncio : listadoAnuncio) {
+                    AnchorPane pane = application.obtenerPaneAnuncio(Utils.SUBASTA_ITEM, anuncio);
+                    VBoxMisSubastas.getChildren().add(pane);
+                }
+            }
         } catch (Exception ignored) {}
     }
 }

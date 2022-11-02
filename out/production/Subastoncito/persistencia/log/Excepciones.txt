@@ -27,3 +27,5 @@ Nov 01, 2022 7:40:02 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-01
 Nov 01, 2022 7:43:37 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-01
+Nov 01, 2022 7:59:47 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-01

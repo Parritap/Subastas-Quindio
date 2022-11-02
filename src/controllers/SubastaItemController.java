@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
-public class subastaItemController implements IApplication, Inicializable {
+public class SubastaItemController implements IApplication, Inicializable {
 
     private App application;
 

@@ -3,6 +3,7 @@ package application;
 import controllers.AlertaController;
 import controllers.CuentaController;
 import controllers.MilkGlassPane;
+import controllers.SubastaItemController;
 import exceptions.LecturaException;
 import interfaces.IApplication;
 import interfaces.Inicializable;
@@ -170,6 +171,29 @@ public class App extends Application {
             throw new RuntimeException(e);
         }
     }
+
+
+    /**
+     * Metodo que carga un FXML y devuelve ese pane este metodo es especifico para anuncios
+     * @param ruta donde se encuentra el pane
+     * @return el pane que se encuentra en la ruta
+     */
+    public AnchorPane obtenerPaneAnuncio(String ruta, Anuncio anuncio) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), getBundle());
+        try {
+            AnchorPane root = loader.load();
+            IApplication controller = loader.getController();
+            controller.setApplication(this);
+            SubastaItemController controller1 = (SubastaItemController) controller;
+            controller1.setAnuncio(anuncio);
+            Inicializable controllerInicializable = (Inicializable) controller;
+            controllerInicializable.inicializarComponentes();
+            return root;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     /**
      * Metodo que abre un stage con un mensaje
