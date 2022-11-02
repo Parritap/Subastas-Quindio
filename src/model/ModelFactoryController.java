@@ -115,4 +115,13 @@ public class ModelFactoryController {
     public static String getStringAnuncios() {
         return empresaSubasta.getStringAnuncios();
     }
+
+    /**
+     * Metodo que devuelve todos los anuncios de un cliente
+     * @param clienteActivo el cliente que creo los anuncios
+     * @return una lista de anuncios
+     */
+    public static ArrayList<Anuncio> getlistaAnuncios(Usuario clienteActivo) {
+        return empresaSubasta.getListaAnuncios(clienteActivo);
+    }
 }

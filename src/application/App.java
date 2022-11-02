@@ -4,6 +4,7 @@ import controllers.AlertaController;
 import controllers.CuentaController;
 import controllers.MilkGlassPane;
 import controllers.SubastaItemController;
+import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import interfaces.IApplication;
 import interfaces.Inicializable;

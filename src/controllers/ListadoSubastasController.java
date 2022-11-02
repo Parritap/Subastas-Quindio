@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import model.Anuncio;
+import model.ModelFactoryController;
 import utilities.Utils;
 
 import java.util.ArrayList;
@@ -32,8 +33,9 @@ public class ListadoSubastasController implements IApplication, Inicializable {
     public void inicializarComponentes() {
         ArrayList<Anuncio> listadoAnuncio;
         try {
-            listadoAnuncio = application.getClienteActivo().getListaAnuncios();
+            listadoAnuncio = ModelFactoryController.getlistaAnuncios(application.getClienteActivo());
             if(listadoAnuncio != null){
+                //filtro los anuncios que esten duplicados en listadoAnuncio
                 for (Anuncio anuncio : listadoAnuncio) {
                     AnchorPane pane = application.obtenerPaneAnuncio(Utils.SUBASTA_ITEM, anuncio);
                     VBoxMisSubastas.getChildren().add(pane);

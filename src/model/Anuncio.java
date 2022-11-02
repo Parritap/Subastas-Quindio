@@ -6,10 +6,11 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 
 @Getter
 @Setter
-@EqualsAndHashCode
 public class Anuncio implements Serializable {
 
 	//El anuncio contiene un producto
@@ -97,10 +98,6 @@ public class Anuncio implements Serializable {
 		return masAlto+"";
 	}
 
-	public Boolean getFueMostrado() {
-		return fueMostrado;
-	}
-
 	@Override
 	public String toString() {
 		return "producto=" + producto.getNombre() +
@@ -125,5 +122,20 @@ public class Anuncio implements Serializable {
 				+ arrobas + valorInicial + arrobas
 				+ idListaPujas + arrobas + usuario.getName()
 				+ arrobas + estado + arrobas + fueMostrado + arrobas + id + arrobas;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Anuncio anuncio = (Anuncio) o;
+		return titulo.equals(anuncio.titulo) && Arrays.equals(imageSrc, anuncio.imageSrc) && valorInicial.equals(anuncio.valorInicial) && usuario.equals(anuncio.usuario);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = Objects.hash(titulo, fechaPublicacion, fechaTerminacion, valorInicial, usuario);
+		result = 31 * result + Arrays.hashCode(imageSrc);
+		return result;
 	}
 }

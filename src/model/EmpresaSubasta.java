@@ -134,4 +134,13 @@ public class EmpresaSubasta implements Runnable, Serializable {
     public String getStringAnuncios() {
         return iAnuncio.getStringAnuncios();
     }
+
+    /**
+     * Metodo que dado un usuario devuelve su lista de anuncios
+     * @param clienteActivo el cliente que solicita la lista de anuncios
+     * @return lista de anuncios del usuario
+     */
+    public ArrayList<Anuncio> getListaAnuncios(Usuario clienteActivo) {
+        return iAnuncio.getListaAnuncio(clienteActivo);
+    }
 }

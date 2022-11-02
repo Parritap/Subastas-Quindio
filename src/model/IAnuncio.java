@@ -200,4 +200,14 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		}
 		return anuncios.toString();
     }
+
+	public ArrayList<Anuncio> getListaAnuncio(Usuario clienteActivo) {
+		ArrayList<Anuncio> listaAnunciosCliente = new ArrayList<>();
+		for (Anuncio anuncio : listaAnuncios) {
+			if (anuncio.getUsuario().equals(clienteActivo)) {
+				listaAnunciosCliente.add(anuncio);
+			}
+		}
+		return listaAnunciosCliente;
+	}
 }
