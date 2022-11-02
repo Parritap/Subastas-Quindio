@@ -2,3 +2,27 @@ Nov 01, 2022 4:28:54 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-01
 Nov 01, 2022 4:29:59 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de usuario,se creo el usuario 1:Juan Esteban Parra Parra,11-01
+Nov 02, 2022 1:07:23 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:Admin,11-02
+Nov 02, 2022 1:08:03 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario admin no encontrado,11-02
+Nov 02, 2022 1:08:03 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario admin no encontrado,11-02
+Nov 02, 2022 1:09:13 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:ADMIN,11-02
+Nov 02, 2022 1:09:47 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario admin no encontrado,11-02
+Nov 02, 2022 1:09:47 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario admin no encontrado,11-02
+Nov 02, 2022 1:12:54 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo@gmail.com no encontrado,11-02
+Nov 02, 2022 1:12:54 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo@gmail.com no encontrado,11-02
+Nov 02, 2022 1:13:25 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:parra,11-02
+Nov 02, 2022 1:13:57 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-02
+Nov 02, 2022 1:14:15 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-02
+Nov 02, 2022 1:29:59 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-02
