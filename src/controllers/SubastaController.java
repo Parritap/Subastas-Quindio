@@ -3,7 +3,6 @@ package controllers;
 import application.App;
 import interfaces.IApplication;
 import interfaces.Inicializable;
-import interfaces.LanguageInterchangeable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import model.Anuncio;
 import model.Language;
 import model.ModelFactoryController;
@@ -28,7 +28,6 @@ import utilities.Utils;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 /**
@@ -37,7 +36,7 @@ import java.util.ArrayList;
  *
  * @author alejandroarias
  */
-public class SubastaController implements IApplication, Inicializable, LanguageInterchangeable {
+public class SubastaController implements IApplication, Inicializable {
 
     public static void main(String[] args) {
         SubastaController object = new SubastaController();
@@ -286,32 +285,23 @@ public class SubastaController implements IApplication, Inicializable, LanguageI
 
     }
 
-    /**
-     * Método aun no terminado.
-     * La idea es recorrer todos los labels de esta clase, y depende del idioma seleccionado, cambiar el texto de cada label
-     * El texto de cada label se encontrará en el archivo de propiedades correspondiente al idioma seleccionado.
-     * Este método debe ser llamado dentro del método inicializarComponentes().
-     */
-    @Override
-    public void cambiarIdioma(Language language) throws NoSuchMethodException {
-
-
-
-        Field [] fields = getClass().getDeclaredFields();
-        for (Field field : fields) {
-            if (field.getType().getSimpleName().equals("Button")) {
-
-                String labelName = field.getName();
-                Method m = field.getClass().getMethod("setText", String.class);
-            }
-        }
-    }
 
     public void printThisFields (){
         Field [] fields = getClass().getDeclaredFields();
         for (Field field : fields) {
             System.out.println(field.getName());
         }
+    }
+
+    @FXML
+    void cambiarLenguaje(ActionEvent event) throws Exception {
+
+        String str = comboLanguages.getValue();
+        Language language = Utils.stringToLanguage(str);
+        App.language  = language;
+
+        application.getStage().close();
+        application.start(new Stage());
     }
 
 }

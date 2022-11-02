@@ -267,7 +267,7 @@
                      <Font name="Cambria Bold" size="18.0" />
                   </font>
                </Label>
-               <ComboBox fx:id="comboLanguages" prefWidth="150.0" promptText="English" styleClass="comboBoxLanguage" stylesheets="@../resources/style.css">
+               <ComboBox fx:id="comboLanguages" onAction="#cambiarLenguaje" prefWidth="150.0" promptText="English" styleClass="comboBoxLanguage" stylesheets="@../resources/style.css">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>

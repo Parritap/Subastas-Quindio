@@ -154,6 +154,10 @@ public class Utils {
         return ResourceBundle.getBundle("persistencia/languages/" + paquete + "/language", l);
     }
 
+    public static Language stringToLanguage (String str) {
+        return (str.equals("English") ? Language.ENGLISH : Language.SPANISH);
+    }
+
 
 }
 
