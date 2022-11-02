@@ -13,6 +13,11 @@ import java.util.ArrayList;
 @Setter
 public class EmpresaSubasta implements Runnable, Serializable {
 
+    //Para no romper el programa en cada computadora que deserialicemos el proyecto, lo que haremos será
+    //declarar una constante con el numero se serialización específico para esta clase.
+
+    private static final long serialVersionUID = -619891098261150697L;
+
     //VARIABLES GLOBALES
     private IAnuncio iAnuncio;
     private IUsuario iUsuario;

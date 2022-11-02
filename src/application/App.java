@@ -69,7 +69,6 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        stage.setAlwaysOnTop(true);
         inicializarApp();
         //CARGO EL FRAME PRINCIPAL
         //cambié la obtención del bundle para no acoplarlo a este metodo

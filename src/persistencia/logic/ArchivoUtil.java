@@ -37,8 +37,14 @@ public class ArchivoUtil {
 
     public static Object deserializarBinario(String rutaEmpresaSer) {
         //se intenta deserializar el objeto y se retorna
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(rutaEmpresaSer))) {
-            return ois.readObject();
+        try  {
+            FileInputStream fis = new FileInputStream(rutaEmpresaSer);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            EmpresaSubasta e = (EmpresaSubasta) ois.readObject();
+            ois.close();
+            fis.close();
+            return e;
+
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

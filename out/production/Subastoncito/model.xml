@@ -25,7 +25,7 @@
       </void>
       <void property="estado">
        <object class="java.lang.Enum" id="Estado0" method="valueOf">
-        <class>model.Estado</class>
+        <class>model.enums.Estado</class>
         <string>NUEVO</string>
        </object>
       </void>
