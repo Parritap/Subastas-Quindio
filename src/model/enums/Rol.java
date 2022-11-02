@@ -1,4 +1,4 @@
-package model;
+package model.enums;
 
 /**
  * Esta clase contiene el rol de un usuario, el cual puede ser

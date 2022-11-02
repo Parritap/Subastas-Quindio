@@ -3,6 +3,9 @@ package model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import model.enums.Estado;
+import model.enums.Rol;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;

@@ -61,7 +61,7 @@ public class CuentaController implements IApplication, Inicializable {
      * Metodo que inicializa los panes que se cargan al hacer clic
      */
     private void cargarPanes() {
-        paneCrearCuenta = application.obtenerPane(Utils.crearCuente);
+        paneCrearCuenta = application.obtenerPane(Utils.crearCuenta);
         paneListadoSubasta = application.obtenerPane(Utils.listadoSubasta);
         paneRealizarSubasta = application.obtenerPane(Utils.realizarSubasta);
     }

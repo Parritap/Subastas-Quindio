@@ -1,8 +1,9 @@
 package model;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import model.enums.Estado;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -137,5 +138,9 @@ public class Anuncio implements Serializable {
 		int result = Objects.hash(titulo, fechaPublicacion, fechaTerminacion, valorInicial, usuario);
 		result = 31 * result + Arrays.hashCode(imageSrc);
 		return result;
+	}
+
+	public boolean getFueMostrado() {
+			return fueMostrado;
 	}
 }

@@ -2,6 +2,9 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
+import model.enums.Estado;
+import model.enums.TipoProducto;
+
 import java.io.Serializable;
 @Getter
 @Setter
@@ -14,6 +17,8 @@ public  class Producto implements Serializable {
     private String descripcion;
     private String nombre;
     private Estado estado;
+
+    private TipoProducto tipoProducto;
 
     /**
      * CONSTRUCTOR

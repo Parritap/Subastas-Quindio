@@ -1,7 +1,7 @@
 package interfaces;
 
 import exceptions.CRUDExceptions;
-import model.TipoOrden;
+import model.enums.TipoOrden;
 import java.util.ArrayList;
 
 /**

@@ -9,6 +9,8 @@ import exceptions.LecturaException;
 import interfaces.CRUD;
 import lombok.Getter;
 import lombok.Setter;
+import model.enums.Estado;
+import model.enums.TipoOrden;
 
 @Getter
 @Setter

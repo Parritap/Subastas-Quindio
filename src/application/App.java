@@ -23,6 +23,7 @@ import javafx.util.Duration;
 import lombok.Getter;
 import lombok.Setter;
 import model.*;
+import model.enums.Language;
 import persistencia.logic.ArchivoUtil;
 import persistencia.logic.Persistencia;
 import utilities.Utils;
@@ -99,27 +100,6 @@ public class App extends Application {
         });
         stage.show();
     }
-
-    /**
-     * Este metodo permite generalizar el bundle de los idiomas,
-     * de esta manera se puede obtener el bundle en cualquier momento
-     * debido a que se encuentra en la clase App y los algunas vistas no estaban
-     * funcionando correctamente al no tener el bundle
-     * @return un objeto de tipo Bundle que contiene el idioma
-     */
-    private ResourceBundle getBundle(){
-        Locale locale;
-        if(language.equals(Language.ENGLISH)){
-            locale = new Locale("en", "US");
-        }
-        else{
-            locale = new Locale("es", "CO"); //CO = Colombia según el código de paises.
-            //Param más informacion: https://www.datosmundial.com/codigos-de-pais.php
-        }
-        return ResourceBundle.getBundle("persistencia/languages/subastas/language", locale);
-    }
-
-
     /**
      * METODO ENCARGADO DE INICIALIZAR  LO QUE LA
      * APPLICATION NECESITE
@@ -131,11 +111,12 @@ public class App extends Application {
     /**
      * Este metodo permite cambiar el scene del stage global
      * de la application
+     *
      * @param scenePath el nombre de la scene que queremos cargar
      */
     public void loadScene(String scenePath) {
         //cargo el fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(scenePath), getBundle());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(scenePath), Utils.getBundle(scenePath));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -159,7 +140,7 @@ public class App extends Application {
      * @return el pane que se encuentra en la ruta
      */
     public AnchorPane obtenerPane(String ruta) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), getBundle());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
         try {
             AnchorPane root = loader.load();
             IApplication controller = loader.getController();
@@ -179,7 +160,7 @@ public class App extends Application {
      * @return el pane que se encuentra en la ruta
      */
     public AnchorPane obtenerPaneAnuncio(String ruta, Anuncio anuncio) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), getBundle());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
         try {
             AnchorPane root = loader.load();
             IApplication controller = loader.getController();
@@ -200,7 +181,8 @@ public class App extends Application {
      * @param mensaje el mensaje que se quiere mostrar
      */
     public void abrirAlerta(String mensaje) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameAlerta), getBundle());
+        String ruta = Utils.frameAlerta;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
         try {
             AnchorPane root = loader.load();
             IApplication controller = loader.getController();
@@ -259,7 +241,8 @@ public class App extends Application {
      */
 
     public void abrirLogin() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameIniciarSesion), getBundle());
+        String ruta = Utils.frameIniciarSesion;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
         try {
             AnchorPane container = loader.load();
             IApplication controller = loader.getController();

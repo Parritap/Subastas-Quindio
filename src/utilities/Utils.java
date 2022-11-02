@@ -4,7 +4,7 @@ import application.App;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import model.Language;
+import model.enums.Language;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -70,11 +70,10 @@ public class Utils {
     public static final String frameAlerta = "../view/Alerta.fxml";
     //Variable que contiene la zona horaria
     public static final ZoneOffset ZONE_OFFSET = OffsetDateTime.now().getOffset();
-    //Url del nuevo pane de crearCuenta
-    public static final String crearCuente = "../view/CrearCuenta.fxml";
-    //-------------------------------RUTAS DE LA SERIALIZACIÓN------------------------------------------
     //Ruta de la carpeta de la empresa
     public static final String RUTA_EMPRESA_SER = "src/persistencia/archivos/empresa.ser";
+    //Url del nuevo pane de crearCuenta//-------------------------------RUTAS DE LA SERIALIZACIÓN------------------------------------------
+    public static final String crearCuenta = "../view/CrearCuenta.fxml";
     //Ruta del archivo donde se guardan los registros log
     public static final String RUTA_LOG_TXT = "src/persistencia/log/excepciones.txt";
     //Ruta de la serializacion de los usuarios en txt
@@ -116,9 +115,9 @@ public class Utils {
      */
 
     public static void playSound(String url) {
-        javafx.scene.media.Media media = new javafx.scene.media.Media(new File(url).toURI().toString());
-        javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
-        mediaPlayer.play();
+     //  javafx.scene.media.Media media = new javafx.scene.media.Media(new File(url).toURI().toString());
+     //  javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
+     //  mediaPlayer.play();
     }
 
 
@@ -147,6 +146,10 @@ public class Utils {
         //El nombre del paquete debe ser idéntico al nombre del archivo FXML sin su extensión, de otra forma, este método no sire para nada, o peor
         //Ocasionará errores en el código (Sadness and frustration...)
         return ResourceBundle.getBundle("persistencia/languages/" + paquete + "/language", l);
+    }
+
+    public static Language stringToLanguage (String str) {
+        return (str.equals("English") ? Language.ENGLISH : Language.SPANISH);
     }
 
 

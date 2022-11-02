@@ -3,7 +3,7 @@ package interfaces;
 import java.util.ArrayList;
 
 import exceptions.CRUDExceptions;
-import model.TipoOrden;
+import model.enums.TipoOrden;
 
 /**
  * Esta interfaz permite obtener secciones de las listas, es decir,
