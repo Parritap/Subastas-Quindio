@@ -26,6 +26,7 @@ public class Utils {
             new Color(0.4, 0.3, 0.9, 1.0).saturate().brighter().brighter(),
             new Color(0.2, 0.5, 0.7, 1.0).saturate().brighter().brighter()};
 
+
     /**
      * DEVUELVE TRUE SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS
      * EN LOS DEMOS ARGUMENTOS
@@ -48,6 +49,8 @@ public class Utils {
     public static final String URL_CLICK_BUTTON = "src/resources/clicButtons.mp3";
     //url del frame inicial donde se ubican las subastas
     public static final String frameInicio = "../view/Subastas.fxml";
+    //url del frame menu contextual
+    public static final String frameMenuContextual = "../view/menuContextual.fxml";
     //Url de los item mostrados en mis subastas
     public static final String SUBASTA_ITEM = "../view/subastaItem.fxml";
     //url del frame del panel de cuenta

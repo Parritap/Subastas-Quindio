@@ -14,6 +14,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -28,6 +30,8 @@ import model.enums.Language;
 import persistencia.logic.ArchivoUtil;
 import persistencia.logic.Persistencia;
 import utilities.Utils;
+
+import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -96,6 +100,7 @@ public class App extends Application {
             catch (Exception e){
                 e.printStackTrace();
             }
+            stageAlerta.close();
         });
         stage.show();
     }
@@ -114,8 +119,14 @@ public class App extends Application {
      * @param scenePath el nombre de la scene que queremos cargar
      */
     public void loadScene(String scenePath) {
+        FXMLLoader loader;
         //cargo el fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(scenePath), Utils.getBundle(scenePath));
+        if(!scenePath.equals(Utils.anuncioItem)){
+            loader = new FXMLLoader(getClass().getResource(scenePath), Utils.getBundle(scenePath));
+        }else {
+            loader = new FXMLLoader(getClass().getResource(scenePath));
+        }
+
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -159,7 +170,7 @@ public class App extends Application {
      * @return el pane que se encuentra en la ruta
      */
     public AnchorPane obtenerPaneAnuncio(String ruta, Anuncio anuncio) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
         try {
             AnchorPane root = loader.load();
             IApplication controller = loader.getController();
@@ -335,4 +346,33 @@ public class App extends Application {
         timeline.play();
     }
 
+    /**
+     * Metodo que muestra un menu contextual
+     */
+    public void mostrarMenuContextual() {
+        if(stageAlerta != null){
+            stageAlerta.close();
+        }
+        //obtengo la posición del mouse
+        double x = MouseInfo.getPointerInfo().getLocation().getX();
+        double y = MouseInfo.getPointerInfo().getLocation().getY();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameMenuContextual));
+        AnchorPane pane;
+        try {
+            AnchorPane root = loader.load();
+            Scene scene = new Scene(root);
+            stageAlerta = new Stage();
+            stageAlerta.setScene(scene);
+            //elimino la barra del título
+            stageAlerta.initStyle(StageStyle.UNDECORATED);
+            stageAlerta.setX(x);
+            stageAlerta.setY(y);
+            stage.setFullScreen(false);
+            stageAlerta.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

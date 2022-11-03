@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="110.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SubastaItemController">
    <children>
-      <HBox prefHeight="77.0" prefWidth="672.0" style="-fx-background-color: #252525; -fx-background-radius: 20;" styleClass="border-image" stylesheets="@../resources/style.css">
+      <HBox onMouseClicked="#MostrarOpciones" prefHeight="77.0" prefWidth="672.0" style="-fx-background-color: #252525; -fx-background-radius: 20;" styleClass="border-image" stylesheets="@../resources/style.css">
          <children>
             <Label fx:id="lblNameAnuncio" prefHeight="57.0" prefWidth="142.0" text="Anuncio" textFill="WHITE">
                <HBox.margin>

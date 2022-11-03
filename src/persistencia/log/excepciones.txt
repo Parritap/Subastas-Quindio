@@ -22,3 +22,55 @@ Nov 02, 2022 8:49:54 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 WARNING: Excepcion,LecturaException, usuario A no encontrado,11-02
 Nov 02, 2022 8:49:54 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 WARNING: Excepcion,LecturaException, usuario A no encontrado,11-02
+Nov 02, 2022 9:04:44 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:Alejandro,11-02
+Nov 02, 2022 9:09:04 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo@gmail.com no encontrado,11-02
+Nov 02, 2022 9:09:04 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo@gmail.com no encontrado,11-02
+Nov 02, 2022 9:09:29 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo@gmail.com no encontrado,11-02
+Nov 02, 2022 9:09:29 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo@gmail.com no encontrado,11-02
+Nov 02, 2022 9:10:51 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:Alejandro,11-02
+Nov 02, 2022 9:11:56 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:17:43 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:19:43 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:20:35 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:24:40 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:26:00 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:26:56 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:28:58 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:31:37 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:34:27 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:35:27 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:37:10 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:37:55 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:39:19 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:40:57 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:42:14 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:43:34 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:44:04 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:44:59 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02
+Nov 02, 2022 9:45:42 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo@gmail.com ha iniciado sesión.,11-02

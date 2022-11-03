@@ -5,6 +5,7 @@ import interfaces.IApplication;
 import interfaces.Inicializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import lombok.Getter;
 import lombok.Setter;
 import model.Anuncio;
@@ -66,5 +67,14 @@ public class SubastaItemController implements IApplication, Inicializable {
         lblValorInicial.setText("$"+anuncio.getValorInicial());
         lblValorMasAlto.setText("$"+anuncio.getValorMasAlto());
         lblTotalPujas.setText(anuncio.getTotalPujas());
+    }
+
+    @FXML
+    void MostrarOpciones(MouseEvent event) {
+        //verifico si el evento fue generado por el boton derecho del mouse
+        if(event.getButton().toString().equals("SECONDARY")){
+            //muestro el menu contextual
+            application.mostrarMenuContextual();
+        }
     }
 }

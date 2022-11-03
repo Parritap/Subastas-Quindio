@@ -225,3 +225,9 @@
     -fx-background: #252525;
     
 }
+.styleButtonsContextual{
+
+    -fx-background-color: White;
+    -fx-border-color: Black;
+    -fx-cursor: Hand;
+}

@@ -38,9 +38,12 @@ public class ListadoSubastasController implements IApplication, Inicializable {
                 //filtro los anuncios que esten duplicados en listadoAnuncio
                 for (Anuncio anuncio : listadoAnuncio) {
                     AnchorPane pane = application.obtenerPaneAnuncio(Utils.SUBASTA_ITEM, anuncio);
+                    //Añado el pane al VBox
                     VBoxMisSubastas.getChildren().add(pane);
                 }
             }
-        } catch (Exception ignored) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -28,6 +28,7 @@ import utilities.Utils;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -110,8 +111,7 @@ public class SubastaController implements IApplication, Inicializable {
         try {
             //recorro la lista de anuncios y los convierto en un item controller
             for (Anuncio anuncio : this.listaAnuncios) {
-                if (anuncio !=  null && !anuncio.getFueMostrado()) {
-                    System.out.println("anuncio = " + anuncio);
+                if (anuncio !=  null && LocalDateTime.now().isBefore(anuncio.getFechaTerminacion())) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
                     AnchorPane anchorPane = fxmlLoader.load();
