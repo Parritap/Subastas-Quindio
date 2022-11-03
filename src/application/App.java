@@ -19,6 +19,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,8 +30,6 @@ import persistencia.logic.Persistencia;
 import utilities.Utils;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 @Getter
 @Setter
@@ -192,6 +191,8 @@ public class App extends Application {
             Scene scene = new Scene(root);
             stageAlerta = new Stage();
             stageAlerta.setScene(scene);
+            //elimino la barra del título
+            stageAlerta.initStyle(StageStyle.UNDECORATED);
             stage.setFullScreen(false);
             stageAlerta.show();
         } catch (IOException e) {

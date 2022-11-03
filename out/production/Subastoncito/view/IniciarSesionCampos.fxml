@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="942.0" prefWidth="1492.0" style="-fx-background-color: Transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.IniciarSesionController">
+<AnchorPane prefHeight="942.0" prefWidth="1492.0" style="-fx-background-color: Transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.IniciarSesionController">
    <children>
       <AnchorPane layoutX="445.0" layoutY="171.0" prefHeight="632.0" prefWidth="553.0" style="-fx-background-color: #252525; -fx-opacity: .5; -fx-background-radius: 50; -fx-border-radius: 50;" styleClass="border-image" stylesheets="@../resources/style.css">
          <effect>
@@ -125,7 +125,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="414.0" layoutY="24.0" prefHeight="49.0" prefWidth="628.0" style="-fx-background-color: #252525; -fx-background-radius: 30;" text="%label.welcome" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label layoutX="414.0" layoutY="24.0" prefHeight="49.0" prefWidth="628.0" style="-fx-background-color: #252525; -fx-background-radius: 30; -fx-alignment: CENTER;" text="%label.welcome" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="28.0" />
          </font>

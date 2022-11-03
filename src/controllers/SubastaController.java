@@ -231,6 +231,12 @@ public class SubastaController implements IApplication, Inicializable {
             panePujas.setLayoutX(panePujas.getLayoutX() + 300);
         }
 
+        if(App.language == Language.SPANISH) {
+            comboLanguages.setPromptText("Seleccionar idioma");
+        }else{
+            comboLanguages.setPromptText("Select language");
+        }
+
     }
 
     /**
