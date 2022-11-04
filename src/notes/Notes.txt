@@ -7,3 +7,15 @@
 //se debe agregar el enum rol al diagrama de clases, este contiene los roles de los usuarios (admin, usuario)
 //Agregar el enum tipo de producto al diagrama de clases y enlazarlo con la clase producto
 //aniadir el valor minimo de una puja a la clase anuncio en el diagrama de clases
+
+
+11/04/2022
+
+- Hacer funcionar las pujas
+- Permitir actualizar un anuncio
+- Crear funcionalidad -> Chat
+- No mostrar los anuncios propios de un usuario
+- Cuando se haga un puja, generar los registros de las pujas en la GUI.
+- Enlazar la aplicacion con un servidor externo.
+- Hacer el modelo de clases para el chat.
+- Revisar por qué el sonido solo funciona para MAC.
