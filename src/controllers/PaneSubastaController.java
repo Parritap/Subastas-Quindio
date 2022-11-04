@@ -13,6 +13,7 @@ import model.Anuncio;
 import model.ModelFactoryController;
 import model.Producto;
 import model.enums.TipoProducto;
+import persistencia.logic.ArchivoUtil;
 import utilities.Utils;
 import java.io.ByteArrayInputStream;
 
@@ -95,17 +96,28 @@ public class PaneSubastaController implements IApplication, Inicializable {
             limpiarCamposTextos();
             //si los campos de texto están completos creo el anuncio
         }else if (cargarCamposTextos()) {
+            //creo el producto con los datos de la vista
             Producto producto = new Producto(nombreProducto, descripcion);
             Long l = Long.parseLong(String.valueOf(minutosSubasta));
+            //creo el anuncio con los datos de la vista
             Anuncio anuncio = new Anuncio(tituloAnuncio, bytesImg, valorInicialAnuncio,l);
             anuncio.setValorMinimo(valorMinimoPuja);
             producto.setTipoProducto(tipoProductoSelected);
+            //agrego el producto al anuncio
             anuncio.setProducto(producto);
             anuncio.setUsuario(application.getClienteActivo());
             application.getClienteActivo().addAnuncio(anuncio);
             try {
+                //agrego el anuncio a la lista de anuncios del modelo
                 ModelFactoryController.crearAnuncio(anuncio, producto, application.getClienteActivo());
+                //guardo los registros log en un archivo
+                ArchivoUtil.guardarRegistroLog("se creo el anuncio "+anuncio.getId()+":"+anuncio.getTitulo(), 1,
+                        "Creacion de anuncio", Utils.RUTA_LOG_TXT);
+                ArchivoUtil.guardarRegistroLog("se creo el producto "+producto.getId()+":"+producto.getNombre(), 1,
+                        "Creacion de producto", Utils.RUTA_LOG_TXT);
+                //informo al usuario que el anuncio fue creado
                 application.abrirAlerta("Anuncio creado correctamente");
+                //limpio los campos de texto
                 limpiarCamposTextos();
             } catch (CRUDExceptions e) {
                 application.abrirAlerta(e.getMessage());
@@ -214,7 +226,7 @@ public class PaneSubastaController implements IApplication, Inicializable {
     @FXML
     void initialize() {
         SpinnerValueFactory<Integer> valueFactory = //
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 120, 5);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 60, 5);
         spinnerMinutos.setValueFactory(valueFactory);
         cmbBoxTipoProducto.getItems().addAll(tiposProductos);
     }

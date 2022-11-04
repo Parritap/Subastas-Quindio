@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.Setter;
 import model.enums.Estado;
 import model.enums.TipoOrden;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -42,10 +41,15 @@ public class IProducto implements CRUD<Producto>, Serializable {
         throw new LecturaException("No se encontró el producto con ese ID", "no se ha encontrado el producto con id "+id);
     }
 
-
-    private boolean noExisteProducto(Producto producto) throws EscrituraException {
-        for (Producto aux: listaProductos){
-            if(aux.equals(producto)) throw new EscrituraException("Ya existe un producto con esas caracteristicas", "intentando crer un producto ya existente"+producto.getNombre()+", "+producto.getId());
+    /**
+     * Metodo que verifica si un producto existe en la lista
+     * @param producto La acción de verificar si existe un producto
+     */
+    public boolean existeProducto(Producto producto) {
+        for (Producto producto1 : listaProductos) {
+            if (producto1.compararId(producto.getId())) {
+                return false;
+            }
         }
         return true;
     }
@@ -53,7 +57,7 @@ public class IProducto implements CRUD<Producto>, Serializable {
     //crea un Producto y lo agrega a la lista
     @Override
     public void crear(Producto producto) throws CRUDExceptions {
-        if(noExisteProducto(producto)) {
+        if(existeProducto(producto)) {
             producto.setEstado(Estado.NUEVO);
             listaProductos.add(producto);
         }
@@ -116,31 +120,9 @@ public class IProducto implements CRUD<Producto>, Serializable {
     /**agrega un producto a la lista*/
     @Override
     public void add(Producto producto) throws CRUDExceptions {
-        if (!noExisteProducto(producto)) {
+        if (existeProducto(producto)) {
             listaProductos.add(producto);
         }
-    }
-
-    /**lista los productos de manera ordenada comparators por un atributo
-     * @param criterio lambda que se utilizara para saber cuando un elemento es mayor a otro
-     * @param orden orden en el que se listaran los elementos, si ascendente o descendente.
-     * */
-    public ArrayList<Producto> listar(Comparar criterio, TipoOrden orden) throws CRUDExceptions {
-        ArrayList<Producto> productos = this.listar();
-        ArrayList<Producto> productosOrdenados = new ArrayList<>();
-        //índice en el que vamos a insertar cada elemento al ordenar
-        int ind = 0;
-        for (Producto producto: productos) {
-            for (int j = 0; j < productosOrdenados.size(); j++) {
-                ind = j;
-                if (orden == TipoOrden.ASCENDENTE && !criterio.esMayor(producto, productosOrdenados.get(j))) break;
-                if (orden == TipoOrden.DESCENDENTE && criterio.esMayor(producto, productosOrdenados.get(j))) break;
-            }
-            if (ind >= productosOrdenados.size() - 1) productosOrdenados.add(producto);
-            productosOrdenados.add(ind, producto);
-        }
-
-        return productosOrdenados;
     }
 
     /**
