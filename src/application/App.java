@@ -375,8 +375,22 @@ public class App extends Application {
         }
     }
 
-    public void eliminarAnuncio() {
-        ModelFactoryController.eliminarAnuncio(anuncioClicked);
-        abrirAlerta("Anuncio eliminado");
+    public void abrirActualizarAnuncio(Anuncio anuncioClicked) {
+        String ruta = Utils.realizarSubasta;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
+        try {
+            AnchorPane container = loader.load();
+            IApplication controller = loader.getController();
+            controller.setApplication(this);
+            Scene scene = new Scene(container);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setFullScreen(false);
+            stage.show();
+            ((PaneSubastaController) controller).cargarActualizarAnuncio(anuncioClicked);
+            stageAlerta.hide();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

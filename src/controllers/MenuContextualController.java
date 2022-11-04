@@ -15,12 +15,13 @@ public class MenuContextualController implements IApplication {
     private App application;
     @FXML
     void actualizarAnuncio(ActionEvent event) {
-
+        listadoSubastasController.actualizarAnuncio();
+        listadoSubastasController.actualizarVBox();
     }
 
     @FXML
     void eliminarAnuncio(ActionEvent event) {
-        application.eliminarAnuncio();
+        listadoSubastasController.eliminarAnuncio();
         listadoSubastasController.actualizarVBox();
     }
 

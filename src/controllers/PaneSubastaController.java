@@ -21,11 +21,13 @@ public class PaneSubastaController implements IApplication, Inicializable {
 
 
     private App application;
-
     //Nodos de la GUI
     @FXML
+    private Label lblTituloAnuncio;
+    @FXML
     private ComboBox<String> cmbBoxTipoProducto;
-
+    @FXML
+    private Button btnCrearAnuncio;
     @FXML
     private Spinner<Integer> spinnerMinutos;
     @FXML
@@ -229,6 +231,7 @@ public class PaneSubastaController implements IApplication, Inicializable {
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 60, 5);
         spinnerMinutos.setValueFactory(valueFactory);
         cmbBoxTipoProducto.getItems().addAll(tiposProductos);
+        lblTituloAnuncio.setText("Crear anuncio");
     }
 
     //Metodos implementados por la interfaz
@@ -244,4 +247,19 @@ public class PaneSubastaController implements IApplication, Inicializable {
 
     @Override
     public void inicializarComponentes() {}
+
+    public void cargarActualizarAnuncio(Anuncio anuncioClicked) {
+        lblTituloAnuncio.setText("Actualizar anuncio");
+        btnCrearAnuncio.setText("Actualizar anuncio");
+        txtNameProduct.setText(anuncioClicked.getProducto().getNombre());
+        txtDescripcionProducto.setText(anuncioClicked.getProducto().getDescripcion());
+        txtTitleAnuncio.setText(anuncioClicked.getTitulo());
+        txtValorAnuncio.setText(String.valueOf(anuncioClicked.getValorInicial()));
+        txtValorMinimoPuja.setText(String.valueOf(anuncioClicked.getValorMinimo()));
+        spinnerMinutos.getValueFactory().setValue(anuncioClicked.getMinutosSubasta());
+        cmbBoxTipoProducto.getSelectionModel().select(anuncioClicked.getProducto().getTipoProducto().toString());
+        imgAnuncio.setImage(new Image(new ByteArrayInputStream(anuncioClicked.getImageSrc())));
+
+
+    }
 }

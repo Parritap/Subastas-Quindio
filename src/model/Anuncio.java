@@ -5,6 +5,7 @@ import lombok.Setter;
 import model.enums.Estado;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -145,4 +146,11 @@ public class Anuncio implements Serializable {
 		return result;
 	}
 
+	/**
+	 * Metodo que devuelve el tiempo restante para que termine el anuncio
+	 * @return el tiempo restante en formato MM
+	 */
+	public Integer getMinutosSubasta() {
+		return (int) ChronoUnit.MINUTES.between(fechaPublicacion, fechaTerminacion);
+	}
 }

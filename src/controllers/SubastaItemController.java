@@ -82,7 +82,7 @@ public class SubastaItemController implements IApplication, Inicializable {
 
     @FXML
     void setAnuncioClicked(MouseEvent event) {
-        application.setAnuncioClicked(anuncio);
+        listadoSubastasController.setAnuncioClicked(anuncio);
         listadoSubastasController.inicializarComponentes();
     }
 }

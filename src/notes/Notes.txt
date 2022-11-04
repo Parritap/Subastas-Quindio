@@ -1,12 +1,7 @@
 //Este archivo contiene notas o ideas para agregar al proyecto, no eliminar
 
 
--agregar ContraseniaNoValidaException al diagrama de clases
-//se debe cambiar la clase producto como clase normal en el modelo uml
-//se debe cambiar la cardinalidad
-//se debe agregar el enum rol al diagrama de clases, este contiene los roles de los usuarios (admin, usuario)
-//Agregar el enum tipo de producto al diagrama de clases y enlazarlo con la clase producto
-//aniadir el valor minimo de una puja a la clase anuncio en el diagrama de clases
+
 
 
 11/04/2022

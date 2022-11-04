@@ -16,7 +16,7 @@
 
 <AnchorPane prefHeight="833.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaneSubastaController">
    <children>
-      <Button layoutX="355.0" layoutY="771.0" mnemonicParsing="false" onAction="#crearAnuncio" styleClass="btnCrearCuenta" stylesheets="@../resources/style.css" text="%btn.crearAnuncio">
+      <Button fx:id="btnCrearAnuncio" layoutX="355.0" layoutY="771.0" mnemonicParsing="false" onAction="#crearAnuncio" styleClass="btnCrearCuenta" stylesheets="@../resources/style.css" text="%btn.crearAnuncio">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -43,7 +43,7 @@
       <Line endX="100.0" layoutX="274.0" layoutY="635.0" startX="-100.0" />
       <Line endX="144.0" layoutX="663.0" layoutY="632.0" startX="-95.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="192.0" layoutX="596.0" layoutY="226.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 40; -fx-arc-width: 40;" width="199.0" />
-      <Label layoutX="58.0" layoutY="14.0" prefHeight="43.0" prefWidth="694.0" style="-fx-background-color: #252525; -fx-background-radius: 30;" text="%label.crearMiAnuncio" textFill="WHITE">
+      <Label fx:id="lblTituloAnuncio" layoutX="58.0" layoutY="14.0" prefHeight="43.0" prefWidth="694.0" style="-fx-background-color: #252525; -fx-background-radius: 30;" text="%label.crearMiAnuncio" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>

@@ -264,3 +264,43 @@ Nov 04, 2022 2:34:09 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-04
 Nov 04, 2022 2:35:02 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-04
+Nov 04, 2022 2:39:35 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-04
+Nov 04, 2022 3:03:39 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-04
+Nov 04, 2022 3:24:14 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo@gmail.com no encontrado,11-04
+Nov 04, 2022 3:24:14 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo@gmail.com no encontrado,11-04
+Nov 04, 2022 3:24:24 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-04
+Nov 04, 2022 3:38:52 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-04
+Nov 04, 2022 3:41:09 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:Vendo doritos,11-04
+Nov 04, 2022 3:41:09 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:Doritos,11-04
+Nov 04, 2022 3:54:24 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-04
+Nov 04, 2022 3:54:24 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-04
+Nov 04, 2022 3:54:29 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-04
+Nov 04, 2022 3:54:29 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-04
+Nov 04, 2022 3:54:40 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-04
+Nov 04, 2022 3:54:40 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-04
+Nov 04, 2022 3:54:56 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-04
+Nov 04, 2022 3:54:56 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-04
+Nov 04, 2022 3:57:55 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:alejo,11-04
+Nov 04, 2022 3:58:39 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:Vendo doritos,11-04
+Nov 04, 2022 3:58:39 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:Doritos,11-04
+Nov 04, 2022 4:00:08 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre alejo y correo alejo ha iniciado sesión.,11-04

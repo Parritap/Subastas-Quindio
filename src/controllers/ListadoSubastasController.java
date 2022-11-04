@@ -19,6 +19,8 @@ import java.util.ArrayList;
 @Setter
 public class ListadoSubastasController implements IApplication, Inicializable {
 
+    private Anuncio anuncioClicked;
+
     private App application;
 
     @FXML
@@ -55,10 +57,19 @@ public class ListadoSubastasController implements IApplication, Inicializable {
         }
     }
 
+    public void eliminarAnuncio(){
+        ModelFactoryController.eliminarAnuncio(anuncioClicked);
+        application.abrirAlerta("Anuncio eliminado");
+    }
     /**
      * Metodo llamado desde el menu contextual para eliminar un anuncio
      */
     public void actualizarVBox() {
         inicializarComponentes();
+    }
+
+    public void actualizarAnuncio() {
+        application.abrirActualizarAnuncio(anuncioClicked);
+
     }
 }
