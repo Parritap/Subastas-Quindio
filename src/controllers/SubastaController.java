@@ -188,7 +188,7 @@ public class SubastaController implements IApplication, Inicializable {
      */
     @FXML
     void verPujasCompletas(MouseEvent ignoredEvent) {
-
+        application.loadScene(Utils.frameChat);
     }
 
     //metodos implementados por la interfaz

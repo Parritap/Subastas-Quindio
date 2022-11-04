@@ -10,18 +10,17 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="941.0" prefWidth="1481.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChatController">
    <children>
-      <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../resources/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <left>
-            <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../resources/style.css" BorderPane.alignment="CENTER">
+      <HBox prefHeight="937.0" prefWidth="1362.0">
+         <children>
+            <VBox prefHeight="949.0" prefWidth="408.0" styleClass="right-bar" stylesheets="@../resources/style.css">
                <children>
                   <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                      <children>
@@ -32,16 +31,16 @@
                         </Label>
                      </children>
                   </HBox>
-                  <AnchorPane prefHeight="641.0" prefWidth="395.0" styleClass="paneViewChat" stylesheets="@../resources/style.css">
+                  <AnchorPane prefHeight="761.0" prefWidth="397.0" styleClass="paneViewChat" stylesheets="@../resources/style.css">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" top="30.0" />
                      </VBox.margin>
                      <children>
-                        <VBox layoutX="1.0" layoutY="88.0" prefHeight="523.0" prefWidth="396.0" style="-fx-background-color: White;">
+                        <VBox layoutX="1.0" layoutY="88.0" prefHeight="647.0" prefWidth="396.0" style="-fx-background-color: White; -fx-border-color: White;">
                            <children>
-                              <ScrollPane prefHeight="527.0" prefWidth="396.0" style="-fx-background-color: White;" styleClass="barraScroll" stylesheets="@../resources/style.css">
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="647.0" prefWidth="394.0" style="-fx-background-color: White; -fx-border-color: White;" styleClass="barraScroll" stylesheets="@../resources/style.css">
                                 <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="520.0" prefWidth="392.0" style="-fx-background-color: White;" />
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="642.0" prefWidth="387.0" style="-fx-background-color: White; -fx-border-color: White;" />
                                 </content>
                               </ScrollPane>
                            </children>
@@ -55,24 +54,12 @@
                   </AnchorPane>
                </children>
             </VBox>
-         </left>
-         <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="937.0" prefWidth="902.0">
                <children>
-                  <Label prefHeight="62.0" prefWidth="878.0" style="-fx-alignment: CENTER; -fx-background-color: White;" text="Habla con el anunciante">
-                     <font>
-                        <Font size="37.0" />
-                     </font>
-                  </Label>
-                  <Line endX="770.1959838867188" endY="0.29290086030960083" startX="-100.0" startY="0.30800414085388184" strokeWidth="3.0">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Line>
-                  <AnchorPane prefHeight="701.0" prefWidth="878.0" style="-fx-background-color: WHITE;">
+                  <AnchorPane layoutX="33.0" layoutY="92.0" prefHeight="807.0" prefWidth="865.0" style="-fx-background-color: WHITE;">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="700.0" layoutX="17.0" stroke="BLACK" strokeType="INSIDE" width="848.0" />
-                        <AnchorPane layoutX="17.0" layoutY="17.0" prefHeight="652.0" prefWidth="828.0">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="803.0" layoutX="17.0" stroke="BLACK" strokeType="INSIDE" width="848.0" />
+                        <AnchorPane layoutX="20.0" layoutY="7.0" prefHeight="794.0" prefWidth="843.0">
                            <children>
                               <HBox prefHeight="77.0" prefWidth="827.0">
                                  <children>
@@ -127,21 +114,21 @@
                                     </ImageView>
                                  </children>
                               </HBox>
-                              <ScrollPane hbarPolicy="NEVER" layoutX="20.0" layoutY="67.0" prefHeight="542.0" prefWidth="805.0" style="-fx-background-color: #D8DAE1;" stylesheets="@../resources/style.css">
+                              <ScrollPane hbarPolicy="NEVER" layoutX="20.0" layoutY="67.0" prefHeight="631.0" prefWidth="805.0" style="-fx-background-color: #D8DAE1;" stylesheets="@../resources/style.css">
                                  <styleClass>
                                     <String fx:value="transparent" />
                                     <String fx:value="barraScroll" />
                                  </styleClass>
                                  <content>
-                                    <AnchorPane prefHeight="539.0" prefWidth="806.0" style="-fx-background-color: #D8DAE1;" />
+                                    <AnchorPane prefHeight="628.0" prefWidth="806.0" style="-fx-background-color: #D8DAE1;" />
                                  </content>
                               </ScrollPane>
-                              <TextField layoutX="107.0" layoutY="614.0" prefHeight="59.0" prefWidth="565.0" promptText="Escriba su mensaje aquí..." style="-fx-background-color: WHITE; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30;">
+                              <TextField layoutX="106.0" layoutY="715.0" prefHeight="59.0" prefWidth="565.0" promptText="Escriba su mensaje aquí..." style="-fx-background-color: WHITE; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30;">
                                  <font>
                                     <Font size="25.0" />
                                  </font>
                               </TextField>
-                              <ImageView fitHeight="48.0" fitWidth="91.0" layoutX="38.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="48.0" fitWidth="91.0" layoutX="38.0" layoutY="723.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/documento.png" />
                                  </image>
@@ -149,7 +136,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </ImageView>
-                              <Button layoutX="684.0" layoutY="617.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="139.0" style="-fx-background-color: WHITE; -fx-border-color: BLACK; -fx-border-radius: 30;" text="Enviar">
+                              <Button layoutX="696.0" layoutY="718.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="139.0" style="-fx-background-color: WHITE; -fx-border-color: BLACK; -fx-border-radius: 30;" text="Enviar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -157,13 +144,19 @@
                            </children>
                         </AnchorPane>
                      </children>
-                     <VBox.margin>
-                        <Insets top="30.0" />
-                     </VBox.margin>
                   </AnchorPane>
+                  <Label layoutX="36.0" layoutY="-4.0" prefHeight="62.0" prefWidth="878.0" style="-fx-alignment: CENTER; -fx-background-color: White;" text="Habla con el anunciante">
+                     <font>
+                        <Font size="37.0" />
+                     </font>
+                  </Label>
+                  <Line endX="889.9671630859375" endY="0.2928962707519531" layoutX="14.0" layoutY="61.0" startX="0.546356201171875" startY="0.2928962707519531" strokeWidth="3.0" />
                </children>
-            </VBox>
-         </center>
-      </BorderPane>
+               <HBox.margin>
+                  <Insets left="60.0" />
+               </HBox.margin>
+            </AnchorPane>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

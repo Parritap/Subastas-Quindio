@@ -49,6 +49,8 @@ public class Utils {
     public static final String URL_CLICK_BUTTON = "src/resources/clicButtons.mp3";
     //url del frame inicial donde se ubican las subastas
     public static final String frameInicio = "../view/Subastas.fxml";
+    //Url del chat de la aplicación
+    public static final String frameChat = "../view/Chat.fxml";
     //url del frame menu contextual
     public static final String frameMenuContextual = "../view/menuContextual.fxml";
     //Url de los item mostrados en mis subastas

@@ -117,7 +117,7 @@ public class App extends Application {
     public void loadScene(String scenePath) {
         FXMLLoader loader;
         //cargo el fxml
-        if(!scenePath.equals(Utils.anuncioItem)){
+        if(!(scenePath.equals(Utils.anuncioItem) || scenePath.equals(Utils.frameChat))){
             loader = new FXMLLoader(getClass().getResource(scenePath), Utils.getBundle(scenePath));
         }else {
             loader = new FXMLLoader(getClass().getResource(scenePath));
