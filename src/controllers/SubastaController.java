@@ -20,10 +20,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Anuncio;
+import model.ModelFactoryController;
 import model.enums.Estado;
 import model.enums.Language;
-import model.ModelFactoryController;
 import utilities.Utils;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -38,35 +39,56 @@ import java.util.ArrayList;
 public class SubastaController implements IApplication, Inicializable {
 
 
-    @FXML
-    private TextField txtfBarraBusqueda;
-
-    @FXML
-    private Button btnFiltrar;
-
-
     //Variables globales
     private App application;
+
+    @FXML
+    private ImageView adSelectedImage;
 
     @FXML
     private Button btnAccount;
 
     @FXML
-    private ComboBox<String> comboLanguages;
+    private Button btnFiltrar;
+
     @FXML
     private Button btnLogIn;
+
+    @FXML
+    private ComboBox<String> comboLanguages;
+
+    @FXML
+    private GridPane grid;
+
+    @FXML
+    private Label lbl;
 
     @FXML
     private Label lblAdName;
 
     @FXML
-    private VBox paneInfoAnuncio;
-
-    @FXML
     private Label lblAdPrice;
 
     @FXML
-    private ImageView adSelectedImage;
+    private Label lblFechaAnunciado;
+
+    @FXML
+    private Label lblFechaTerminacion;
+
+    @FXML
+    private Label lblNombreAnunciante;
+
+    @FXML
+    private Label lblTelAnunciante;
+
+    @FXML
+    private Label lblValorActualProducto;
+
+    @FXML
+    private Label lblValorInicialProducto;
+
+    @FXML
+    private VBox paneInfoAnuncio;
 
     @FXML
     private HBox panePujas;
@@ -75,7 +97,7 @@ public class SubastaController implements IApplication, Inicializable {
     private HBox paneVistaAdmin;
 
     @FXML
-    private GridPane grid;
+    private TextField txtfBarraBusqueda;
 
     //Contiene los anuncios de la empresa en un momento dado
     private final ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
@@ -131,10 +153,19 @@ public class SubastaController implements IApplication, Inicializable {
      * @param anuncio EL ANUNCIO QUE SE VA A ACTUALIZAR
      */
     public void setProductSelected(Anuncio anuncio) {
-        paneInfoAnuncio.setVisible(true);
+
+        this.paneInfoAnuncio.setVisible(true);
+
         //obtengo los atributos del anuncio por defecto
         this.lblAdName.setText(anuncio.getTitulo());
         this.lblAdPrice.setText("$" + anuncio.getValorInicial());
+        this.lblFechaAnunciado.setText(anuncio.getFechaPublicacion().toString());
+        this.lblFechaTerminacion.setText(anuncio.getFechaTerminacion().toString());
+        this.lblValorActualProducto.setText(anuncio.getValorActual().toString());
+        this.lblValorInicialProducto.setText(anuncio.getValorInicial().toString());
+        this.lblNombreAnunciante.setText(anuncio.getUsuario().getName());
+        this.lblTelAnunciante.setText(anuncio.getUsuario().getTelefono());
+
         //cargo la ruta de la imagen y la cargo en el anuncio
         Image image = new Image(new ByteArrayInputStream(anuncio.getImageSrc()));
         this.adSelectedImage.setImage(image);

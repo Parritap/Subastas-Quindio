@@ -20,6 +20,8 @@ public class Anuncio implements Serializable {
 	private LocalDateTime fechaPublicacion;
 	private LocalDateTime fechaTerminacion;
 	private Double valorInicial;
+
+	private Double valorActual;
 	private ArrayList<Puja> listaPujas;
 	private Integer idListaPujas;
 
@@ -49,6 +51,7 @@ public class Anuncio implements Serializable {
 		this.titulo = tituloAnuncio;
 		this.imageSrc = bytesImg;
 		this.valorInicial = valorInicialAnuncio;
+		this.valorActual = valorInicial; //Creo que aun no se ha hecho un método para actualizar el valor actual. TRABAJAR EN ELLO.
 		this.fechaPublicacion = LocalDateTime.now();
 		this.fechaTerminacion = this.fechaPublicacion.plusMinutes(minutosDuracionAnuncio);
 		this.idListaPujas = ModelFactoryController.darIdListaPuja();
@@ -56,6 +59,7 @@ public class Anuncio implements Serializable {
 		this.fueMostrado = false;
 		this.estado = Estado.NUEVO;
 		this.id = ++idAux;
+
 	}
 
 
