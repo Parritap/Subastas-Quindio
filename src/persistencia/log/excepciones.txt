@@ -196,3 +196,35 @@ Nov 04, 2022 11:43:01 AM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de anuncio,se creo el anuncio 1:s,11-04
 Nov 04, 2022 11:43:01 AM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de producto,se creo el producto 1:d,11-04
+Nov 04, 2022 11:45:55 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-04
+Nov 04, 2022 11:56:20 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-04
+Nov 04, 2022 11:56:41 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:sa,11-04
+Nov 04, 2022 11:56:41 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:as,11-04
+Nov 04, 2022 11:58:25 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-04
+Nov 04, 2022 11:58:46 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:das,11-04
+Nov 04, 2022 11:58:46 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:dssda,11-04
+Nov 04, 2022 12:01:11 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-04
+Nov 04, 2022 12:01:32 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:fsd,11-04
+Nov 04, 2022 12:01:32 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:fsd,11-04
+Nov 04, 2022 12:04:58 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-04
+Nov 04, 2022 12:05:19 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:dqw,11-04
+Nov 04, 2022 12:05:19 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:dqw,11-04
+Nov 04, 2022 12:06:12 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-04
+Nov 04, 2022 12:06:51 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:as,11-04
+Nov 04, 2022 12:06:51 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:wq,11-04

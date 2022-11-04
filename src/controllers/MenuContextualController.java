@@ -4,9 +4,14 @@ import application.App;
 import interfaces.IApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class MenuContextualController implements IApplication {
 
+    private ListadoSubastasController listadoSubastasController;
     private App application;
     @FXML
     void actualizarAnuncio(ActionEvent event) {
@@ -16,6 +21,7 @@ public class MenuContextualController implements IApplication {
     @FXML
     void eliminarAnuncio(ActionEvent event) {
         application.eliminarAnuncio();
+        listadoSubastasController.actualizarVBox();
     }
 
     @FXML

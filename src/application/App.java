@@ -198,7 +198,7 @@ public class App extends Application {
             AlertaController controllerAux = (AlertaController) controller;
             controllerAux.setMensaje(mensaje);
             Scene scene = new Scene(root);
-            stageAlerta = new Stage();
+            stageAlerta= new Stage();
             stageAlerta.setScene(scene);
             //elimino la barra del título
             stageAlerta.initStyle(StageStyle.UNDECORATED);
@@ -220,7 +220,7 @@ public class App extends Application {
      * Metodo que cierra la alerta con el mensaje
      */
     public void cerrarAlerta() {
-        stageAlerta.close();
+        stageAlerta.hide();
     }
 
 
@@ -347,9 +347,9 @@ public class App extends Application {
     /**
      * Metodo que muestra un menu contextual
      */
-    public void mostrarMenuContextual() {
+    public void mostrarMenuContextual(ListadoSubastasController listado) {
         if(stageAlerta != null){
-            stageAlerta.close();
+            stageAlerta.hide();
         }
         //obtengo la posición del mouse
         double x = MouseInfo.getPointerInfo().getLocation().getX();
@@ -360,6 +360,7 @@ public class App extends Application {
             AnchorPane root = loader.load();
             MenuContextualController controller = loader.getController();
             controller.setApplication(this);
+            controller.setListadoSubastasController(listado);
             Scene scene = new Scene(root);
             stageAlerta = new Stage();
             stageAlerta.setScene(scene);

@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 import model.Anuncio;
 import model.ModelFactoryController;
+import model.enums.Estado;
 import utilities.Utils;
 
 import java.util.ArrayList;
@@ -37,19 +38,29 @@ public class ListadoSubastasController implements IApplication, Inicializable {
 
     @Override
     public void inicializarComponentes() {
+        VBoxMisSubastas.getChildren().clear();
         ArrayList<Anuncio> listadoAnuncio;
         try {
             listadoAnuncio = ModelFactoryController.getlistaAnuncios(application.getClienteActivo());
             if(listadoAnuncio != null){
                 //filtro los anuncios que esten duplicados en listadoAnuncio
                 for (Anuncio anuncio : listadoAnuncio) {
-                    AnchorPane pane = application.obtenerPaneAnuncio(Utils.SUBASTA_ITEM, anuncio, this);
-                    //Añado el pane al VBox
-                    VBoxMisSubastas.getChildren().add(pane);
+                    if(!(anuncio.getEstado() == Estado.ELIMINADO)){
+                        AnchorPane pane = application.obtenerPaneAnuncio(Utils.SUBASTA_ITEM, anuncio, this);
+                        //Añado el pane al VBox
+                        VBoxMisSubastas.getChildren().add(pane);
+                    }
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Metodo llamado desde el menu contextual para eliminar un anuncio
+     */
+    public void actualizarVBox() {
+        inicializarComponentes();
     }
 }

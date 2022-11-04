@@ -76,7 +76,7 @@ public class SubastaItemController implements IApplication, Inicializable {
         //verifico si el evento fue generado por el boton derecho del mouse
         if(event.getButton().toString().equals("SECONDARY")){
             //muestro el menu contextual
-            application.mostrarMenuContextual();
+            application.mostrarMenuContextual(listadoSubastasController);
         }
     }
 
