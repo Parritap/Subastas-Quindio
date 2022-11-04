@@ -76,7 +76,7 @@
                                        <Font size="15.0" />
                                     </font>
                                  </Label>
-                                 <Label fx:id="lblAdName" prefHeight="26.0" prefWidth="114.0" text="Peach" textFill="WHITE">
+                                 <Label fx:id="lblAdName" prefHeight="23.0" prefWidth="268.0" text="Peach" textFill="WHITE">
                                     <font>
                                        <Font size="15.0" />
                                     </font>
@@ -93,7 +93,7 @@
                                        <Font size="15.0" />
                                     </font>
                                  </Label>
-                                 <Label fx:id="lblAdPrice" prefHeight="27.0" prefWidth="138.0" text="\$2.99" textFill="WHITE">
+                                 <Label fx:id="lblAdPrice" prefHeight="27.0" prefWidth="241.0" text="\$2.99" textFill="WHITE">
                                     <font>
                                        <Font size="15.0" />
                                     </font>
@@ -110,7 +110,7 @@
                                        <Font size="15.0" />
                                     </font>
                                  </Label>
-                                 <Label fx:id="fechaAnunciado" prefHeight="27.0" prefWidth="200.0" text="30-10-2022" textFill="WHITE">
+                                 <Label fx:id="lblFechaAnunciado" prefHeight="27.0" prefWidth="200.0" text="30-10-2022" textFill="WHITE">
                                     <font>
                                        <Font size="15.0" />
                                     </font>
@@ -127,7 +127,7 @@
                                        <Font size="15.0" />
                                     </font>
                                  </Label>
-                                 <Label fx:id="fechaTerminacion" prefHeight="27.0" prefWidth="208.0" text="31-10-2022" textFill="WHITE">
+                                 <Label fx:id="lblFechaTerminacion" prefHeight="27.0" prefWidth="208.0" text="31-10-2022" textFill="WHITE">
                                     <font>
                                        <Font size="15.0" />
                                     </font>
@@ -144,7 +144,7 @@
                                        <Font size="15.0" />
                                     </font>
                                  </Label>
-                                 <Label fx:id="valor" prefHeight="27.0" prefWidth="186.0" text="\$ 1.000.000" textFill="WHITE">
+                                 <Label fx:id="lblValorInicialProducto" prefHeight="27.0" prefWidth="186.0" text="\$ 1.000.000" textFill="WHITE">
                                     <font>
                                        <Font size="15.0" />
                                     </font>
@@ -161,7 +161,7 @@
                                        <Font size="15.0" />
                                     </font>
                                  </Label>
-                                 <Label fx:id="fruitPriceLabel1111" prefHeight="27.0" prefWidth="185.0" text="\$ 1.200.000" textFill="WHITE">
+                                 <Label fx:id="lblValorActualProducto" prefHeight="27.0" prefWidth="185.0" text="\$ 1.200.000" textFill="WHITE">
                                     <font>
                                        <Font size="15.0" />
                                     </font>
@@ -184,7 +184,7 @@
                                        <Font size="15.0" />
                                     </font>
                                  </Label>
-                                 <Label fx:id="fruitPriceLabel12" prefHeight="27.0" prefWidth="241.0" text="Alejandro Arias" textFill="WHITE">
+                                 <Label fx:id="lblNombreAnunciante" prefHeight="27.0" prefWidth="241.0" text="Alejandro Arias" textFill="WHITE">
                                     <font>
                                        <Font size="15.0" />
                                     </font>
@@ -201,7 +201,7 @@
                                        <Font size="15.0" />
                                     </font>
                                  </Label>
-                                 <Label fx:id="fruitPriceLabel121" prefHeight="27.0" prefWidth="243.0" text="3123458990" textFill="WHITE">
+                                 <Label fx:id="lblTelAnunciante" prefHeight="27.0" prefWidth="243.0" text="3123458990" textFill="WHITE">
                                     <font>
                                        <Font size="15.0" />
                                     </font>
