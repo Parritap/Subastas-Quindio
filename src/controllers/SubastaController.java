@@ -236,7 +236,6 @@ public class SubastaController implements IApplication, Inicializable {
         }else{
             comboLanguages.setPromptText("Select language");
         }
-
     }
 
     /**

@@ -100,7 +100,7 @@ public class App extends Application {
             catch (Exception e){
                 e.printStackTrace();
             }
-            stageAlerta.close();
+            if (stageAlerta != null ) stageAlerta.close();
         });
         stage.show();
     }
