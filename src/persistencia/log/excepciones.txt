@@ -242,3 +242,17 @@ Nov 04, 2022 12:18:57 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de anuncio,se creo el anuncio 2:pa,11-04
 Nov 04, 2022 12:18:57 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de producto,se creo el producto 2:pa,11-04
+Nov 04, 2022 12:28:20 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-04
+Nov 04, 2022 12:28:20 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-04
+Nov 04, 2022 12:28:26 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-04
+Nov 04, 2022 12:29:24 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:Juan Esteban Parra Parra,11-04
+Nov 04, 2022 12:29:51 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Juan Esteban Parra Parra y correo parra ha iniciado sesión.,11-04
+Nov 04, 2022 12:31:40 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:JOJO!,11-04
+Nov 04, 2022 12:31:40 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:Un JOJO,11-04
