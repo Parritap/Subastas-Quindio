@@ -59,7 +59,7 @@
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="62.0" prefWidth="878.0" style="-fx-alignment: CENTER;" text="Habla con el anunciante">
+                  <Label prefHeight="62.0" prefWidth="878.0" style="-fx-alignment: CENTER; -fx-background-color: White;" text="Habla con el anunciante">
                      <font>
                         <Font size="37.0" />
                      </font>
@@ -69,7 +69,7 @@
                         <Insets />
                      </VBox.margin>
                   </Line>
-                  <AnchorPane prefHeight="701.0" prefWidth="878.0">
+                  <AnchorPane prefHeight="701.0" prefWidth="878.0" style="-fx-background-color: WHITE;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="700.0" layoutX="17.0" stroke="BLACK" strokeType="INSIDE" width="848.0" />
                         <AnchorPane layoutX="17.0" layoutY="17.0" prefHeight="652.0" prefWidth="828.0">

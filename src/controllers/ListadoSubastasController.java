@@ -21,8 +21,6 @@ public class ListadoSubastasController implements IApplication, Inicializable {
 
     private App application;
 
-
-
     @FXML
     private VBox VBoxMisSubastas;
 
