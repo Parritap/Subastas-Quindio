@@ -124,4 +124,9 @@ public class ModelFactoryController {
     public static ArrayList<Anuncio> getlistaAnuncios(Usuario clienteActivo) {
         return empresaSubasta.getListaAnuncios(clienteActivo);
     }
+
+    public static void eliminarAnuncio(Anuncio anuncioClicked) {
+        empresaSubasta.eliminarAnuncio(anuncioClicked);
+    }
+
 }

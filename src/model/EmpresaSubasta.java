@@ -5,6 +5,8 @@ import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -13,9 +15,10 @@ import java.util.ArrayList;
 @Setter
 public class EmpresaSubasta implements Runnable, Serializable {
 
-    //Para no romper el programa en cada computadora que deserialicemos el proyecto, lo que haremos será
+    //Para no romper el programa en cada computadora que deserializes el proyecto, lo que haremos será
     //declarar una constante con el numero se serialización específico para esta clase.
 
+    @Serial
     private static final long serialVersionUID = -619891098261150697L;
 
     //VARIABLES GLOBALES
@@ -58,9 +61,7 @@ public class EmpresaSubasta implements Runnable, Serializable {
      * Este metodo define las acciones para cuando se inicie el hilo
      */
     @Override
-    public void run() {
-
-    }
+    public void run() {}
 
     public ArrayList<Anuncio> getListaAnuncios() {
         return iAnuncio.getListaAnuncio();
@@ -147,5 +148,9 @@ public class EmpresaSubasta implements Runnable, Serializable {
      */
     public ArrayList<Anuncio> getListaAnuncios(Usuario clienteActivo) {
         return iAnuncio.getListaAnuncio(clienteActivo);
+    }
+
+    public void eliminarAnuncio(Anuncio anuncioClicked) {
+        iAnuncio.eliminar(anuncioClicked);
     }
 }

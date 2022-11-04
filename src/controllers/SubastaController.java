@@ -19,15 +19,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import model.Anuncio;
+import model.enums.Estado;
 import model.enums.Language;
 import model.ModelFactoryController;
 import utilities.Utils;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -82,22 +80,6 @@ public class SubastaController implements IApplication, Inicializable {
     //Contiene los anuncios de la empresa en un momento dado
     private final ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
 
-
-    /**
-     * Este metodo carga un anuncio a la barra lateral de la app
-     * (LA BARRA NARANJA)
-     *
-     * @param anuncio El anuncio que se va a ubicar como seleccionado por defecto
-     */
-
-    private void loadFirstAd(Anuncio anuncio) {
-        paneInfoAnuncio.setVisible(true);
-        //obtengo los atributos del anuncio por defecto
-        this.lblAdName.setText(anuncio.getTitulo());
-        this.lblAdPrice.setText("$" + anuncio.getValorInicial());
-        //cargo la ruta de la imagen y la cargo en el anuncio
-    }
-
     /**
      * Metodo que recorre la lista de anuncios y los carga al pane scroll
      */
@@ -111,7 +93,7 @@ public class SubastaController implements IApplication, Inicializable {
         try {
             //recorro la lista de anuncios y los convierto en un item controller
             for (Anuncio anuncio : this.listaAnuncios) {
-                if (anuncio !=  null && LocalDateTime.now().isBefore(anuncio.getFechaTerminacion())) {
+                if (anuncio !=  null && LocalDateTime.now().isBefore(anuncio.getFechaTerminacion()) && (anuncio.getEstado() != Estado.ELIMINADO)) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
                     AnchorPane anchorPane = fxmlLoader.load();
@@ -149,6 +131,7 @@ public class SubastaController implements IApplication, Inicializable {
      * @param anuncio EL ANUNCIO QUE SE VA A ACTUALIZAR
      */
     public void setProductSelected(Anuncio anuncio) {
+        paneInfoAnuncio.setVisible(true);
         //obtengo los atributos del anuncio por defecto
         this.lblAdName.setText(anuncio.getTitulo());
         this.lblAdPrice.setText("$" + anuncio.getValorInicial());
@@ -212,7 +195,6 @@ public class SubastaController implements IApplication, Inicializable {
         this.listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios());
         //si existe al menos un anuncio selecciono el primero como anuncio por defecto
         //para ser mostrado en la barra lateral
-        if (this.listaAnuncios.size() > 0) this.loadFirstAd(this.listaAnuncios.get(0));
         //metodo que permite recorrer los anuncios y cargarlos en el pane scroll
         cargarAnuncioAlScroll();
 
@@ -271,29 +253,30 @@ public class SubastaController implements IApplication, Inicializable {
             btnLogIn.setScaleY(1);
         }
     }
-
+    /**
+     * Metodo que carga la vista de login
+     */
     @FXML
     void iniciarSesion(ActionEvent event) {
+        //reproducir sonido
         Utils.playSound(Utils.URL_CLICK_BUTTON);
+        //cargar vista de login
         application.abrirLogin();
     }
 
-
+    /**
+     * Metodo que filtra los anuncios por categoria
+     */
     @FXML
     void filtrarAnuncios(InputMethodEvent event) {
 
     }
 
-
-    public void printThisFields (){
-        Field [] fields = getClass().getDeclaredFields();
-        for (Field field : fields) {
-            System.out.println(field.getName());
-        }
-    }
-
+    /**
+     * Metodo que permite cambiar el idioma de la app
+     */
     @FXML
-    void cambiarLenguaje(ActionEvent event) throws Exception {
+    void cambiarLenguaje(ActionEvent event){
         App.language  = Utils.stringToLanguage(comboLanguages.getValue());
         application.loadScene(Utils.frameInicio);
 

@@ -17,6 +17,8 @@ public class SubastaItemController implements IApplication, Inicializable {
 
     private App application;
 
+    private ListadoSubastasController listadoSubastasController;
+
     @FXML
     private Label lblFechaPublicado;
 
@@ -76,5 +78,11 @@ public class SubastaItemController implements IApplication, Inicializable {
             //muestro el menu contextual
             application.mostrarMenuContextual();
         }
+    }
+
+    @FXML
+    void setAnuncioClicked(MouseEvent event) {
+        application.setAnuncioClicked(anuncio);
+        listadoSubastasController.inicializarComponentes();
     }
 }

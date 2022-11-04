@@ -6,8 +6,7 @@ import interfaces.IApplication;
 import interfaces.Inicializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Anuncio;
@@ -22,7 +21,13 @@ public class PaneSubastaController implements IApplication, Inicializable {
     private App application;
 
     //Nodos de la GUI
+    @FXML
+    private ComboBox<String> cmbBoxTipoProducto;
 
+    @FXML
+    private Spinner<Integer> spinnerMinutos;
+    @FXML
+    private TextField txtValorMinimoPuja;
     @FXML
     private ImageView imgAnuncio;
 
@@ -37,6 +42,8 @@ public class PaneSubastaController implements IApplication, Inicializable {
 
     @FXML
     private TextField txtValorAnuncio;
+
+    private String[] tiposProductos ={"tecnología", "hogar", "deportes", "vehículos", "bien raíz", "otros"};
 
     //Estas variables contendrán la informacion ya filtrada de los campos de textos
     private byte[] bytesImg;
@@ -138,6 +145,14 @@ public class PaneSubastaController implements IApplication, Inicializable {
 
         if(!mensaje.equals("")) application.abrirAlerta(mensaje);
         return mensaje.equals("");
+    }
+
+    @FXML
+    void initialize() {
+        SpinnerValueFactory<Integer> valueFactory = //
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 120, 5);
+        spinnerMinutos.setValueFactory(valueFactory);
+        cmbBoxTipoProducto.getItems().addAll(tiposProductos);
     }
 
 

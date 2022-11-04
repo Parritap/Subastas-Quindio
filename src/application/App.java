@@ -1,9 +1,6 @@
 package application;
 
-import controllers.AlertaController;
-import controllers.CuentaController;
-import controllers.MilkGlassPane;
-import controllers.SubastaItemController;
+import controllers.*;
 import exceptions.LecturaException;
 import interfaces.IApplication;
 import interfaces.Inicializable;
@@ -14,8 +11,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -30,7 +25,6 @@ import model.enums.Language;
 import persistencia.logic.ArchivoUtil;
 import persistencia.logic.Persistencia;
 import utilities.Utils;
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
@@ -39,7 +33,6 @@ import java.util.HashMap;
 @Setter
 
 public class App extends Application {
-
     //Instancia del singleton
     private static EmpresaSubasta empresaSubasta;
     //Contiene las rutas de todos los frames, la llave es el frame a mostrar
@@ -51,6 +44,8 @@ public class App extends Application {
     //Cliente activo es una variable que me identifica si un cliente ya ha iniciado sesión en la app
     private Usuario clienteActivo;
     private CuentaController cuentaController;
+
+    private Anuncio anuncioClicked;
 
     //El lenguaje estará en español por defecto.
     //Variable es static para no tener que crear varios métodos que extraigan la misma de su instancia de App.
@@ -169,12 +164,14 @@ public class App extends Application {
      * @param ruta donde se encuentra el pane
      * @return el pane que se encuentra en la ruta
      */
-    public AnchorPane obtenerPaneAnuncio(String ruta, Anuncio anuncio) {
+    public AnchorPane obtenerPaneAnuncio(String ruta, Anuncio anuncio, ListadoSubastasController listadoSubastasController) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
         try {
             AnchorPane root = loader.load();
             IApplication controller = loader.getController();
             controller.setApplication(this);
+            SubastaItemController controllerAnuncio = (SubastaItemController) controller;
+            controllerAnuncio.setListadoSubastasController(listadoSubastasController);
             SubastaItemController controller1 = (SubastaItemController) controller;
             controller1.setAnuncio(anuncio);
             Inicializable controllerInicializable = (Inicializable) controller;
@@ -358,9 +355,10 @@ public class App extends Application {
         double y = MouseInfo.getPointerInfo().getLocation().getY();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.frameMenuContextual));
-        AnchorPane pane;
         try {
             AnchorPane root = loader.load();
+            MenuContextualController controller = loader.getController();
+            controller.setApplication(this);
             Scene scene = new Scene(root);
             stageAlerta = new Stage();
             stageAlerta.setScene(scene);
@@ -373,6 +371,10 @@ public class App extends Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public void eliminarAnuncio() {
+        ModelFactoryController.eliminarAnuncio(anuncioClicked);
+        abrirAlerta("Anuncio eliminado");
     }
 }

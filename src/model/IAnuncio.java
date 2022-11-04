@@ -212,4 +212,14 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		}
 		return listaAnunciosCliente;
 	}
+
+	/**
+	 * Actualizo el estado del anuncioClickeado
+	 * @param anuncioClicked anuncio que se va a actualizar
+	 */
+    public void eliminar(Anuncio anuncioClicked) {
+		//busco el anuncio en la lista y lo cambio su estado ha eliminado
+		anuncioClicked.setEstado(Estado.ELIMINADO);
+	}
+
 }

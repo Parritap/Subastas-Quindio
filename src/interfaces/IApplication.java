@@ -1,6 +1,7 @@
 package interfaces;
 
 import application.App;
+import controllers.ListadoSubastasController;
 
 /**
  * Esta interfaz debe ser aplicada a los
@@ -17,4 +18,5 @@ public interface IApplication {
     App getApplication();
     //settear application
     void setApplication(App application);
+
 }

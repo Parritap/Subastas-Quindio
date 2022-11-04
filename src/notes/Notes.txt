@@ -5,3 +5,4 @@
 //se debe cambiar la clase producto como clase normal en el modelo uml
 //se debe cambiar la cardinalidad
 //se debe agregar el enum rol al diagrama de clases, este contiene los roles de los usuarios (admin, usuario)
+//Agregar el enum tipo de producto al diagrama de clases y enlazarlo con la clase producto
