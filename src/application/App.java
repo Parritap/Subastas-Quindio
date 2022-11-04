@@ -161,7 +161,7 @@ public class App extends Application {
 
 
     /**
-     * Metodo que carga un FXML y devuelve ese pane este metodo es especifico para anuncios
+     * Metodo que carga un FXML y devuelve ese pane este metodo es específico para anuncios
      * @param ruta donde se encuentra el pane
      * @return el pane que se encuentra en la ruta
      */
@@ -310,7 +310,7 @@ public class App extends Application {
         // add the container to the circle container
         container.getChildren().add(node);
 
-        // create a timeline that fades the circle in and and out and also moves
+        // create a timeline that fades the circle in and out and also moves
         // it across the screen
         Timeline timeline = new Timeline(
                 new KeyFrame(
