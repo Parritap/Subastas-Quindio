@@ -91,6 +91,7 @@ public class App extends Application {
                 //Persistencia.serializarEmpresaUnificado();
                 Persistencia.serializarEmpresaBinario();
                 Persistencia.serializarEmpresaTXT();
+                if (stageAlerta != null ) stageAlerta.close();
             }
             catch (Exception e){
                 e.printStackTrace();

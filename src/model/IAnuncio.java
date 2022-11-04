@@ -18,7 +18,6 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
 	//SE CAMBIA EL HASHMAP POR UN ARRAYLIST, DEBIDO A QUE SE INVIRTIO LA DEPENDENCIA DEL ID
 	public ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
-
 	/**
 	 * Metodo que actualiza la lista de anuncios, se actualiza
 	 * con la lista contenida en el objeto pasado por parametro

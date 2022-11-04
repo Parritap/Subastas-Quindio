@@ -3,7 +3,6 @@ package model;
 import lombok.Getter;
 import lombok.Setter;
 import model.enums.Estado;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -23,6 +22,8 @@ public class Anuncio implements Serializable {
 	private Double valorInicial;
 	private ArrayList<Puja> listaPujas;
 	private Integer idListaPujas;
+
+	private Double valorMinimo;
 	private  Usuario usuario; //El usuario que realiza el anuncio
 	/**
 	 * creo la variable Estado para indicar cuando un Anuncio ha sido eliminado, actualizado
@@ -44,12 +45,12 @@ public class Anuncio implements Serializable {
 
 	public Anuncio(){}
 
-	public Anuncio(String tituloAnuncio, byte[] bytesImg, Double valorInicialAnuncio) {
+	public Anuncio(String tituloAnuncio, byte[] bytesImg, Double valorInicialAnuncio, Long minutosDuracionAnuncio) {
 		this.titulo = tituloAnuncio;
 		this.imageSrc = bytesImg;
 		this.valorInicial = valorInicialAnuncio;
 		this.fechaPublicacion = LocalDateTime.now();
-		this.fechaTerminacion = this.fechaPublicacion.plusMinutes(5L);
+		this.fechaTerminacion = this.fechaPublicacion.plusMinutes(minutosDuracionAnuncio);
 		this.idListaPujas = ModelFactoryController.darIdListaPuja();
 		this.listaPujas = new ArrayList<>();
 		this.fueMostrado = false;
@@ -140,7 +141,4 @@ public class Anuncio implements Serializable {
 		return result;
 	}
 
-	public boolean getFueMostrado() {
-			return fueMostrado;
-	}
 }

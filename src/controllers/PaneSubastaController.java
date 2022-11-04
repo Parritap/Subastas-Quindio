@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import model.Anuncio;
 import model.ModelFactoryController;
 import model.Producto;
+import model.enums.TipoProducto;
 import utilities.Utils;
 import java.io.ByteArrayInputStream;
 
@@ -43,7 +44,7 @@ public class PaneSubastaController implements IApplication, Inicializable {
     @FXML
     private TextField txtValorAnuncio;
 
-    private String[] tiposProductos ={"tecnología", "hogar", "deportes", "vehículos", "bien raíz", "otros"};
+    private final String[] tiposProductos ={"tecnología", "hogar", "deportes", "vehículos", "bien raíz", "otros"};
 
     //Estas variables contendrán la informacion ya filtrada de los campos de textos
     private byte[] bytesImg;
@@ -56,6 +57,12 @@ public class PaneSubastaController implements IApplication, Inicializable {
     private String tituloAnuncio;
 
     private Double valorInicialAnuncio;
+
+    private Integer minutosSubasta;
+
+    private TipoProducto tipoProductoSelected;
+
+    private Double valorMinimoPuja;
 
 
     /**
@@ -85,16 +92,21 @@ public class PaneSubastaController implements IApplication, Inicializable {
         //si no hay un cliente activo no se puede crear un anuncio
         if(application.getClienteActivo() == null){
             application.abrirAlerta("Debe crear una cuenta antes de publicar un anuncio");
+            limpiarCamposTextos();
             //si los campos de texto están completos creo el anuncio
         }else if (cargarCamposTextos()) {
             Producto producto = new Producto(nombreProducto, descripcion);
-            Anuncio anuncio = new Anuncio(tituloAnuncio, bytesImg, valorInicialAnuncio);
+            Long l = Long.parseLong(String.valueOf(minutosSubasta));
+            Anuncio anuncio = new Anuncio(tituloAnuncio, bytesImg, valorInicialAnuncio,l);
+            anuncio.setValorMinimo(valorMinimoPuja);
+            producto.setTipoProducto(tipoProductoSelected);
             anuncio.setProducto(producto);
             anuncio.setUsuario(application.getClienteActivo());
             application.getClienteActivo().addAnuncio(anuncio);
             try {
                 ModelFactoryController.crearAnuncio(anuncio, producto, application.getClienteActivo());
                 application.abrirAlerta("Anuncio creado correctamente");
+                limpiarCamposTextos();
             } catch (CRUDExceptions e) {
                 application.abrirAlerta(e.getMessage());
             } catch (Exception e) {
@@ -140,11 +152,63 @@ public class PaneSubastaController implements IApplication, Inicializable {
                 mensaje += "Debe ingresar un valor númerico para el precio inicial\n";
             }
         }else{
-            mensaje+="Debe ingresar valores númerico en el valor del anuncio";
+            mensaje+="Debe ingresar valores númerico en el valor del anuncio \n";
         }
+        minutosSubasta = spinnerMinutos.getValue();
 
+        tipoProductoSelected = getTipoProductoSelected();
+
+        try {
+            valorMinimoPuja = Double.parseDouble(txtValorMinimoPuja.getText());
+        } catch (NumberFormatException e){
+            mensaje += "Debe ingresar un valor númerico para el valor minimo de la puja\n";
+        }
+        if(tipoProductoSelected == null){
+            mensaje += "Debe seleccionar un tipo de producto\n";
+        }
         if(!mensaje.equals("")) application.abrirAlerta(mensaje);
         return mensaje.equals("");
+    }
+
+    /**
+     * Este metodo permite limpiar los campos de texto a
+     * su estado inicial
+     */
+    private void limpiarCamposTextos() {
+        txtNameProduct.setText("");
+        txtDescripcionProducto.setText("");
+        txtTitleAnuncio.setText("");
+        txtValorAnuncio.setText("");
+        txtValorMinimoPuja.setText("");
+        imgAnuncio.setImage(null);
+        bytesImg = null;
+        spinnerMinutos.getValueFactory().setValue(5);
+        cmbBoxTipoProducto.getSelectionModel().select(0);
+    }
+
+    /**
+     * Metodo que obtiene el tipo de producto seleccionado en el combobox
+     * @return tipo de producto seleccionado
+     */
+    private TipoProducto getTipoProductoSelected() {
+        if(cmbBoxTipoProducto.getValue() != null){
+            String tipoProducto = cmbBoxTipoProducto.getValue();
+            switch (tipoProducto){
+                case "tecnología":
+                    return TipoProducto.TECNOLOGIA;
+                case "hogar":
+                    return TipoProducto.HOGAR;
+                case "deportes":
+                    return TipoProducto.DEPORTES;
+                case "vehículos":
+                    return TipoProducto.VEHICULOS;
+                case "bien raíz":
+                    return TipoProducto.BIEN_RAIZ;
+                case "otros":
+                    return TipoProducto.OTROS;
+            }
+        }
+        return null;
     }
 
     @FXML
@@ -154,8 +218,6 @@ public class PaneSubastaController implements IApplication, Inicializable {
         spinnerMinutos.setValueFactory(valueFactory);
         cmbBoxTipoProducto.getItems().addAll(tiposProductos);
     }
-
-
 
     //Metodos implementados por la interfaz
     @Override

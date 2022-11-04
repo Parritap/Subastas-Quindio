@@ -69,6 +69,7 @@ public class EmpresaSubasta implements Runnable, Serializable {
 
     public void crearAnuncio(Anuncio anuncio, Producto producto, Usuario clienteActivo) throws CRUDExceptions {
         anuncio.setProducto(producto);
+        iProducto.add(producto);
         anuncio.setUsuario(clienteActivo);
         iAnuncio.add(anuncio);
     }
