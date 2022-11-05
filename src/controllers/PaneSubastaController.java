@@ -67,6 +67,10 @@ public class PaneSubastaController implements IApplication, Inicializable {
 
     private Double valorMinimoPuja;
 
+    private Integer idAnuncioClicked;
+
+    private Integer idProductoClicked;
+
 
     /**
      * Metodo que carga una imagen a la vista
@@ -85,12 +89,50 @@ public class PaneSubastaController implements IApplication, Inicializable {
     }
 
     /**
-     * Metodo que crea un anuncio
+     * Metodo que recibe el evento del boton de la gui,
+     * se diferencia cuando el boton es para actualizar o crear
      *
      * @param ignoredEvent generado al hacer clic
      */
     @FXML
     void crearAnuncio(ActionEvent ignoredEvent) {
+        if(btnCrearAnuncio.getText().contains("Todo bien!") ||
+                btnCrearAnuncio.getText().contains("Everything ok!") ) {
+            crearAnuncio();
+        }else{
+            actualizarAnuncio();
+        }
+    }
+
+    /**
+     * Metodo que actualiza un anuncio, este se llama cuando en el boton de la vista
+     * se encuentra el texto "Actualizar anuncio"
+     */
+    private void actualizarAnuncio() {
+        Utils.playSound(Utils.URL_CLICK_BUTTON);
+        if(cargarCamposTextos()){
+            //creo el producto con los datos de la vista
+            Producto producto = new Producto(nombreProducto, descripcion);
+            producto.setId(idProductoClicked);
+            Long l = Long.parseLong(String.valueOf(minutosSubasta));
+            //creo el anuncio con los datos de la vista
+            Anuncio anuncio = new Anuncio(tituloAnuncio, bytesImg, valorInicialAnuncio,l);
+            anuncio.setValorMinimo(valorMinimoPuja);
+            producto.setTipoProducto(tipoProductoSelected);
+            anuncio.setId(idAnuncioClicked);
+
+            ModelFactoryController.actualizarAnuncio(anuncio, producto);
+            application.abrirAlerta("El anuncio se ha actualizado");
+            application.closeUpdateAdd();
+        }
+
+    }
+
+    /**
+     * Metodo que permite crear un anuncio, es
+     * llamado cuando en el boton de la vista se muestra la palabra "Crear anuncio"
+     */
+    public void crearAnuncio(){
         Utils.playSound(Utils.URL_CLICK_BUTTON);
         //si no hay un cliente activo no se puede crear un anuncio
         if(application.getClienteActivo() == null){
@@ -127,8 +169,8 @@ public class PaneSubastaController implements IApplication, Inicializable {
                 throw new RuntimeException(e);
             }
         }
-
     }
+
 
     /**
      * Este metodo obtiene toda la información de los campos de texto
@@ -259,7 +301,7 @@ public class PaneSubastaController implements IApplication, Inicializable {
         spinnerMinutos.getValueFactory().setValue(anuncioClicked.getMinutosSubasta());
         cmbBoxTipoProducto.getSelectionModel().select(anuncioClicked.getProducto().getTipoProducto().toString());
         imgAnuncio.setImage(new Image(new ByteArrayInputStream(anuncioClicked.getImageSrc())));
-
-
+        idAnuncioClicked = anuncioClicked.getId();
+        idProductoClicked = anuncioClicked.getProducto().getId();
     }
 }

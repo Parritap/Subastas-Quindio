@@ -38,6 +38,9 @@ public class CrearCuentaController implements IApplication, Inicializable {
     private MenuItem itemPaypal;
 
     @FXML
+    private Label lblCrearActualizarCuenta;
+
+    @FXML
     private MenuItem itemVisa;
 
     @FXML
@@ -89,6 +92,8 @@ public class CrearCuentaController implements IApplication, Inicializable {
 
     private String contrasenia;
 
+    private byte[] fotoPerfil;
+
     private CuentaController cuentaController;
 
     /**
@@ -98,8 +103,12 @@ public class CrearCuentaController implements IApplication, Inicializable {
     @FXML
     void cargarPerfil(MouseEvent ignoredEvent) {
         Utils.playSound(Utils.URL_CLICK_BUTTON);
-        Image img = new Image(new ByteArrayInputStream(Utils.obtenerBytesImagen()), 199, 199, false, false);
-        circleImage.setFill(new ImagePattern(img));
+        fotoPerfil = Utils.obtenerBytesImagen();
+        if(fotoPerfil != null){
+            Image img = new Image(new ByteArrayInputStream(fotoPerfil), 199, 199, false, false);
+            circleImage.setFill(new ImagePattern(img));
+        }
+
     }
 
     /**
@@ -114,6 +123,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
         if(cargarCampos() && application.getClienteActivo() == null){
             //creo el usuario con los datos obtenidos en el txt
             Usuario usuario = new Usuario(name, edad, cedula, correo, direccion, telefono, contrasenia);
+            usuario.setFotoPerfil(fotoPerfil);
             //el singleton agrega el usuario a la lista
             try {
                 ModelFactoryController.crearUsuario(usuario);
@@ -188,18 +198,25 @@ public class CrearCuentaController implements IApplication, Inicializable {
         if(!txtTelefono.getText().equals("")){
             telefono = txtTelefono.getText();
         }else {
-            mensaje += "Agregue un telefono";
+            mensaje += "Agregue un telefono\n";
         }
 
         if(!txtPassword.getText().equals("")){
             contrasenia = txtPassword.getText();
         }else {
-            mensaje += "Agregue una contraseña";
+            mensaje += "Agregue una contraseña\n";
         }
+
+        if(fotoPerfil == null){
+            mensaje += "Agregue una foto de perfil\n";
+        }
+
         if(!mensaje.equals("")){
             application.abrirAlerta(mensaje);
             return false;
         }
+
+
 
         return true;
     }
@@ -229,6 +246,9 @@ public class CrearCuentaController implements IApplication, Inicializable {
         txtDireccion.setText("");
         cmbBoxPago.setText("Efectivo");
         txtTelefono.setText("");
+        Image img = new Image(Utils.profileImage, 199, 199, false, false);
+        circleImage.setFill(new ImagePattern(img));
+        lblCrearActualizarCuenta.setText("Actualizar cuenta");
     }
 
     /**

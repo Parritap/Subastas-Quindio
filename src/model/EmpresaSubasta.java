@@ -46,15 +46,6 @@ public class EmpresaSubasta implements Runnable, Serializable {
         iUsuario.crear(usuario);
     }
 
-    /**
-     * METODO QUE VERIFICA LA EXISTENCIA DE UN USUARIO PASADO POR
-     * PARAMETRO
-     * @param usuario QUE SE DESEA VERIFICAR
-     * @return TRUE || FALSE
-     */
-    public boolean existeUsuario(Usuario usuario) {
-        return iUsuario.existeUsuario(usuario);
-    }
 
     /**
      * Este metodo define las acciones para cuando se inicie el hilo
@@ -75,10 +66,6 @@ public class EmpresaSubasta implements Runnable, Serializable {
 
     public void actualizarUsuario(Usuario clienteActivo, Usuario usuario) throws LecturaException {
         iUsuario.actualizar(clienteActivo.getId(), usuario);
-    }
-
-    public void addAnuncio(Anuncio anuncio) throws CRUDExceptions {
-        iAnuncio.add(anuncio);
     }
 
     /**
@@ -152,5 +139,10 @@ public class EmpresaSubasta implements Runnable, Serializable {
 
     public void eliminarAnuncio(Anuncio anuncioClicked) {
         iAnuncio.eliminar(anuncioClicked);
+    }
+
+    public void actualizarAnuncio(Anuncio anuncio, Producto producto) {
+        iProducto.actualizar(producto);
+        iAnuncio.actualizar(anuncio, producto);
     }
 }

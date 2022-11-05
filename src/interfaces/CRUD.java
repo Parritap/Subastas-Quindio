@@ -11,14 +11,7 @@ import model.enums.TipoOrden;
  *  Algunos ejemplos de tipo T pueden ser Cliente, Producto, etc
  */
 public interface CRUD<T> extends Ordenable<T>, Paginable<T> {
-	
-	
-	/**
-	 * Metodo que devuelve un arrayList del tipo T
-	 * @return un Arraylist que contiene el total de elementos
-	 */
-	ArrayList<T> listar() throws CRUDExceptions; 
-	
+
 	/**
 	 * MÉTODO QUE PERMITE BUSCAR UN OBJETO DADO SU ID
 	 * @param id por el que se va a buscar
@@ -32,22 +25,7 @@ public interface CRUD<T> extends Ordenable<T>, Paginable<T> {
 	 * implementaciones, pero antes se debe verificar que no exista un T con las mismas
 	 *            caracteristicas
 	 */
-	void crear(T obj) throws CRUDExceptions; 
-	
-	/**
-	 * Metodo que permite actualizar un objeto de tipo T
-	 * @param obj contiene todos los atributos que se van a actualizar
-	 * @param id es id con el que se va a buscar el objeto a actualizar
-	 */
-	void actualizar(Integer id,T obj)  throws CRUDExceptions;
-
-
-	/**
-	 * Metodo que permite eliminar un elemento de tipo T dado su id
-	 * @param id por el que se va a eliminar el objeto
-	 */
-	// aquí también hice un cambio
-	void Eliminar(Integer id)  throws CRUDExceptions;
+	void crear(T obj) throws CRUDExceptions;
 
 	/**
 	 * Metodo que permite ordenar una lista auxiliar de la lista principal
@@ -62,8 +40,8 @@ public interface CRUD<T> extends Ordenable<T>, Paginable<T> {
 
 	/**
 	 * Metodo que permite añadir un objeto de tipo T
-	 * @param obj
-	 * @throws CRUDExceptions
+	 * @param obj La acción de crear es añadirlo a las listas de las implementaciones,
+	 * @throws CRUDExceptions se puede lanzar una excepción por alguna lectura
 	 */
 	void add(T obj) throws CRUDExceptions;
 

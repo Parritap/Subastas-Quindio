@@ -1,7 +1,6 @@
 package model;
 
 import exceptions.CRUDExceptions;
-import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import interfaces.CRUD;
 import lombok.Getter;
@@ -10,25 +9,12 @@ import model.enums.Estado;
 import model.enums.TipoOrden;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Objects;
 
 @Getter
 @Setter
 public class IProducto implements CRUD<Producto>, Serializable {
 
     private ArrayList<Producto> listaProductos = new ArrayList<>();
-
-    /**
-     * devuelve la lista con todos los productos
-     * @return un arraylist con todos los productos
-     * */
-    @Override
-    public ArrayList<Producto> listar() throws LecturaException {
-        if(listaProductos.size() == 0){
-            throw new LecturaException("No hay Productos para listar", "intentando acceder a una lista de productos vacía");
-        }
-        return listaProductos;
-    }
 
     @Override
     public Producto buscarId(Integer id) throws LecturaException {
@@ -62,30 +48,6 @@ public class IProducto implements CRUD<Producto>, Serializable {
             listaProductos.add(producto);
         }
     }
-
-    //actualiza un producto con cierto ID a un nuevoProducto
-    @Override
-    public void actualizar(Integer id, Producto nuevoProducto) throws CRUDExceptions {
-        for(int i=0; i<listaProductos.size(); i++){
-            if(Objects.equals(listaProductos.get(i).getId(), id)){
-                listaProductos.set(i,nuevoProducto);
-            }
-        }
-    }
-
-    @Override
-    public void Eliminar(Integer id) throws CRUDExceptions {
-        boolean flag = false;
-        for (Producto producto : listaProductos) {
-            if (producto.compararId(id)) {
-                producto.setEstado(Estado.ELIMINADO);
-                flag = true;
-                break;
-            }
-        }
-        if(!flag) throw new EscrituraException("No se ha podido eliminar el producto", "no se ha podido eliminar el producto con id "+id);
-    }
-
 
     /**compara los elementos y ns dice si uno es mayor que el otro*/
     public static int ordenar(String campo, Producto prod1, Producto prod2) {
@@ -159,5 +121,15 @@ public class IProducto implements CRUD<Producto>, Serializable {
             stringProductos.append("\n");
         }
         return stringProductos.toString();
+    }
+
+    public void actualizar(Producto producto) {
+        for (Producto producto1 : listaProductos) {
+            if (producto1.compararId(producto.getId())) {
+                producto1.setNombre(producto.getNombre());
+                producto1.setEstado(Estado.ACTUALIZADO);
+                producto1.setTipoProducto(producto.getTipoProducto());
+            }
+        }
     }
 }

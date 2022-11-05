@@ -129,4 +129,7 @@ public class ModelFactoryController {
         empresaSubasta.eliminarAnuncio(anuncioClicked);
     }
 
+    public static void actualizarAnuncio(Anuncio anuncio, Producto producto) {
+        empresaSubasta.actualizarAnuncio(anuncio, producto);
+    }
 }

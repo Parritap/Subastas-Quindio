@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import model.enums.Estado;
 import model.enums.TipoProducto;
-
 import java.io.Serializable;
+
 @Getter
 @Setter
 
@@ -62,5 +62,15 @@ public  class Producto implements Serializable {
                 .append("@@")
                 .append(estado)
                 .append("@@")).toString();
+    }
+    /**
+     * Metodo equals que compara dos productos
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Producto producto = (Producto) o;
+        return nombre.equals(producto.nombre) && estado == producto.estado && tipoProducto == producto.tipoProducto;
     }
 }

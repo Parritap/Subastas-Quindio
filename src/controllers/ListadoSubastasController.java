@@ -70,6 +70,6 @@ public class ListadoSubastasController implements IApplication, Inicializable {
 
     public void actualizarAnuncio() {
         application.abrirActualizarAnuncio(anuncioClicked);
-
+        actualizarVBox();
     }
 }

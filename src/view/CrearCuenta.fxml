@@ -19,16 +19,16 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="836.0" prefWidth="840.0" stylesheets="@../resources/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CrearCuentaController">
+<AnchorPane prefHeight="836.0" prefWidth="840.0" stylesheets="@../resources/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CrearCuentaController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="716.0" layoutX="17.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="822.0" />
       <BorderPane prefHeight="800.0" prefWidth="840.0">
          <top>
             <AnchorPane prefHeight="89.0" prefWidth="840.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="anchorPane_crearMiCuenta" layoutX="163.0" layoutY="23.0" prefHeight="57.0" prefWidth="515.0" style="-fx-background-color: #252525; -fx-background-radius: 30;">
+                  <AnchorPane layoutX="163.0" layoutY="23.0" prefHeight="57.0" prefWidth="515.0" style="-fx-background-color: #252525; -fx-background-radius: 30;">
                      <children>
-                        <Label layoutX="195.0" layoutY="17.0" text="%label.createAccount" textFill="WHITE">
+                        <Label fx:id="lblCrearActualizarCuenta" layoutX="195.0" layoutY="17.0" text="%label.createAccount" textFill="WHITE">
                            <font>
                               <Font size="19.0" />
                            </font>

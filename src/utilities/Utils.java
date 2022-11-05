@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.enums.Language;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -91,8 +92,6 @@ public class Utils {
     public static final String RUTA_TRANSACCIONES_TXT = "src/persistencia/archivos/Transaccion.txt";
 
 
-
-
     /**
      * Metodo que permite abrir el FileChooser
      * y elegir una imagen que será cargada y guardada en el modelo
@@ -108,7 +107,8 @@ public class Utils {
         //cargo los bits de la imagen
         try {
             btImagen = Files.readAllBytes(file.toPath());
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         return btImagen;
     }
 
@@ -120,9 +120,9 @@ public class Utils {
      */
 
     public static void playSound(String url) {
-     //  javafx.scene.media.Media media = new javafx.scene.media.Media(new File(url).toURI().toString());
-     //  javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
-     //  mediaPlayer.play();
+       /* javafx.scene.media.Media media = new javafx.scene.media.Media(new File(url).toURI().toString());
+        javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
+        mediaPlayer.play();*/
     }
 
 
@@ -153,7 +153,7 @@ public class Utils {
         return ResourceBundle.getBundle("persistencia/languages/" + paquete + "/language", l);
     }
 
-    public static Language stringToLanguage (String str) {
+    public static Language stringToLanguage(String str) {
         return (str.equals("English") ? Language.ENGLISH : Language.SPANISH);
     }
 

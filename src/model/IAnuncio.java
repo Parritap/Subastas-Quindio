@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Objects;
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
@@ -31,22 +30,6 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 			}
 		}
     }
-
-    //METODO QUE DEVUELVE LA LISTA ANUNCIO
-
-	/**
-	 * Método que retorna la lista de anuncios.
-	 * @return Arraylist con lista de anuncios.
-	 * @throws LecturaException De no haber ningún anuncio, id est, .size() = 0;
-	 */
-	@Override
-	public ArrayList<Anuncio> listar() throws LecturaException {
-
-		if(listaAnuncios.size() == 0){
-			throw new LecturaException("No hay Anuncios para listar", "intentando acceder a una lista de anuncios vacia");
-		}
-		return listaAnuncios;
-	}
 
 	/**
 	 * Método que buscar por el identificador del anuncio.
@@ -100,42 +83,6 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		}
 		return true;
 	}
-
-
-	/**
-	 * METODO QUE PERMITE ACTUALIZAR UN ANUNCIO DADO UN NUEVO
-	 * ANUNCIO CON LOS NUEVOS ATRIBUTOS Y EL ID DEL ANUNCIO
-	 * QUE SE VA A ACTUALIZAR
-	 * @param id ID DEL ANUNCIO A ACTUALIZAR
-	 * @param nuevoAnuncio ANUNCIO QUE CONTIENE LOS NUEVOS ATRIBUTOS
-	 * @throws EscrituraException LANZA UNA EXCEPCION SI NO ENCUENTRA EL ANUNCIO
-	 */
-	@Override
-	public void actualizar(Integer id, Anuncio nuevoAnuncio) throws EscrituraException {
-		for(int i=0; i<listaAnuncios.size(); i++){
-			if(Objects.equals(listaAnuncios.get(i).getId(), id)){
-				listaAnuncios.set(i,nuevoAnuncio);
-			}
-		}
-	}
-
-	/**
-	 * Elimina un anuncio con base al identificador (id) pasado en el parametro.
-	 * @param id Identificador
-	 * @throws EscrituraException De no encontrar y eliminar el anuncio buscado.
-	 */
-	@Override
-	public void Eliminar(Integer id) throws EscrituraException {
-		boolean flag = false;
-		for (Anuncio listaAnuncio : listaAnuncios) {
-			if (listaAnuncio.compararId(id)) {
-				listaAnuncio.setEstado(Estado.ELIMINADO);
-				flag = true;
-			}
-		}
-		if(!flag) throw new EscrituraException("No se ha podido eliminar el anuncio", "el anuncio con id "+id+" no se ha podido eliminar");
-	}
-
 	/**compara los elementos y ns dice si uno es mayor que el otro
 	 * @param campo atributo por el cual se van a comparar los elementos
 	 * @param anuncio1 anuncio a comparar
@@ -202,6 +149,11 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		return anuncios.toString();
     }
 
+	/**
+	 * Metodo que devuelve la lista anuncios de un usuario específico
+	 * @param clienteActivo es el usuario que solicita su listaAnuncios
+	 * @return una lista de anuncios
+	 */
 	public ArrayList<Anuncio> getListaAnuncio(Usuario clienteActivo) {
 		ArrayList<Anuncio> listaAnunciosCliente = new ArrayList<>();
 		for (Anuncio anuncio : listaAnuncios) {
@@ -213,7 +165,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	}
 
 	/**
-	 * Actualizo el estado del anuncioClickeado
+	 * Actualizo el estado del anuncioClicker
 	 * @param anuncioClicked anuncio que se va a actualizar
 	 */
     public void eliminar(Anuncio anuncioClicked) {
@@ -221,4 +173,26 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		anuncioClicked.setEstado(Estado.ELIMINADO);
 	}
 
+	/**
+	 * Metodo que permite actualizar un anuncio dado otro que contiene
+	 *la informacion a actualizar
+	 * @param anuncio contiene los atributos a actualizar
+	 * @param producto es el producto que contiene el anuncio
+	 */
+	public void actualizar(Anuncio anuncio, Producto producto) {
+		//busco el anuncio en la lista
+		for (Anuncio anuncio1 : listaAnuncios) {
+			if (anuncio1.compararId(anuncio.getId())) {
+				System.out.println("estoy actualizando el anuncio"  );
+				listaAnuncios.remove(anuncio1);
+				anuncio1.setProducto(producto);
+				//actualizo todos los datos del anuncio1 con los datos del anuncio pasado por parametro
+				anuncio1.setValorMinimo(anuncio.getValorMinimo());
+				anuncio1.setImageSrc(anuncio.getImageSrc());
+				anuncio1.setTitulo(anuncio.getTitulo());
+				anuncio1.setEstado(Estado.ACTUALIZADO);
+				listaAnuncios.add(anuncio1);
+			}
+		}
+	}
 }

@@ -40,6 +40,8 @@ public class App extends Application {
     private HashMap<String, String> rutas;
     //ventana general de la application
     private Stage stage;
+
+    private Stage actualizarAdd;
     private Stage stageAlerta;
     //Cliente activo es una variable que me identifica si un cliente ya ha iniciado sesión en la app
     private Usuario clienteActivo;
@@ -383,14 +385,21 @@ public class App extends Application {
             IApplication controller = loader.getController();
             controller.setApplication(this);
             Scene scene = new Scene(container);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setFullScreen(false);
-            stage.show();
+            actualizarAdd = new Stage();
+            actualizarAdd.setScene(scene);
+            actualizarAdd.setFullScreen(false);
+            actualizarAdd.show();
             ((PaneSubastaController) controller).cargarActualizarAnuncio(anuncioClicked);
             stageAlerta.hide();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * Metodo que permite cerrar el stage de actualizar anuncio
+     */
+    public void closeUpdateAdd() {
+        actualizarAdd.close();
     }
 }

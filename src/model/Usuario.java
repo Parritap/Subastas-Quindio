@@ -34,6 +34,8 @@ public class Usuario implements Serializable {
 	//Este atributo permite saber el estado del usuario, Eliminado, Nuevo, Actualizado
 	private Estado estado;
 	private Integer id;
+
+	private byte[] fotoPerfil;
 	private ArrayList<Anuncio> listaAnuncios;
 	private Rol rol;
 

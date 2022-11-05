@@ -136,7 +136,7 @@ public class Anuncio implements Serializable {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Anuncio anuncio = (Anuncio) o;
-		return titulo.equals(anuncio.titulo) && Arrays.equals(imageSrc, anuncio.imageSrc) && valorInicial.equals(anuncio.valorInicial) && usuario.equals(anuncio.usuario);
+		return titulo.equals(anuncio.titulo) && valorInicial.equals(anuncio.valorInicial) && usuario.equals(anuncio.usuario);
 	}
 
 	@Override

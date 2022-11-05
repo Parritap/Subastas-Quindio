@@ -2,13 +2,10 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import exceptions.ContraseniaNoValidaException;
-import exceptions.CorreoNoValidoException;
 import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import interfaces.CRUD;
 import lombok.Data;
-import model.enums.Estado;
 import model.enums.TipoOrden;
 
 /**
@@ -45,20 +42,6 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
     }
 
     /**
-     * METODO QUE DEVUELVE LA LISTA DE USUARIOS
-     *
-     * @return LISTA DE USUARIOS
-     * @throws LecturaException SI EL ARREGLO ESTA VACIO LANZA UNA EXCEPCION
-     */
-    @Override
-    public ArrayList<Usuario> listar() throws LecturaException {
-        if (listaUsuarios.size() == 0) {
-            throw new LecturaException("No hay Anuncios para listar", "intento de acceso a una lista de usuarios vacia");
-        }
-        return listaUsuarios;
-    }
-
-    /**
      * METODO QUE BUSCA POR EL ID, SI NO LO ENCUENTRA LANZA UNA EXCEPCION
      *
      * @param id ID POR EL QUE SE BUSCA EL USUARIO
@@ -90,24 +73,6 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
         throw new LecturaException("No se encontró el usuario con ese correo", "usuario "+correo+" no encontrado");
     }
 
-    public Usuario buscarUsuario(String nombre, String password, String correo) throws LecturaException {
-        for(Usuario usr: listaUsuarios){
-            if(usr.getName().equals(nombre)){
-                if(usr.getPassword().equals(password)){
-                    if(usr.getCorreo().equals(correo))
-                        return usr;
-                    else
-                        throw new CorreoNoValidoException("correo no valido", "el usuario "+usr.getId()+" intento ingresar con un correo no valido");
-                }
-                else{
-                    throw new ContraseniaNoValidaException("contraseña no valida", "usuario "+nombre+" intento ingresar con una contraseña no valida");
-                }
-            }
-        }
-
-        throw new LecturaException("usuario no encontrado", "usuario "+nombre+" no encontrado");
-    }
-
     /**
      * METODO QUE CREA UN USUARIO PERO ANTES VERIFICA SI EXISTE, SI EXISTE LO CREA SI NO LANZA UNA EXCEPCION
      *
@@ -116,7 +81,7 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
      */
     @Override
     public void crear(Usuario usuario) throws EscrituraException {
-        if (usuario != null && !existeUsuario(usuario)) {
+        if (usuario != null && existeUsuario(usuario)) {
             listaUsuarios.add(usuario);
             System.out.println("Se agregó un usuario" );
         } else {
@@ -133,31 +98,10 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
      * @param nuevoUsuario CONTIENE LOS ATRIBUTOS A SETTEAR
      * @throws LecturaException SI NO ENCUENTRA EL OBJETO LANZA UNA EXCEPCION
      */
-
-    @Override
     public void actualizar(Integer id, Usuario nuevoUsuario) throws LecturaException {
         Usuario usuarioAlmacenado = buscarId(id);
         usuarioAlmacenado.actualizarAtributos(nuevoUsuario);
     }
-
-    /**
-     * METODO QUE PERMITE ELIMINAR UN USUARIO DADO SU ID
-     *
-     * @param id PARAMETRO POR EL QUE SE BUSCA EL USUARIO
-     * @throws EscrituraException si no encuentra un usuario con ese id lanza una excepcion
-     */
-    @Override
-    public void Eliminar(Integer id) throws EscrituraException {
-        boolean flag = false;
-        for (Usuario usuarioAux : listaUsuarios) {
-            if (usuarioAux.compararId(id)) {
-                usuarioAux.setEstado(Estado.ELIMINADO);
-                flag = true;
-            }
-        }
-        if (!flag) throw new EscrituraException("No se ha podido eliminar el usuario ", "No se ha podido eliminar el usuario "+id);
-    }
-
     /**
      * Este método permite ordenar por un atributo y el tipo de orden,
      * ya sea ascendente o descendente
@@ -186,7 +130,7 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
      */
     @Override
     public void add(Usuario obj) {
-        if (!existeUsuario(obj)) {
+        if (existeUsuario(obj)) {
             listaUsuarios.add(obj);
         }
     }
@@ -225,11 +169,11 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
      * @return true || false
      */
     public boolean existeUsuario(Usuario usuario) {
-        if(usuario == null) return false;
+        if(usuario == null) return true;
         for (Usuario aux : listaUsuarios) {
-            if (aux.equals(usuario)) return true;
+            if (aux.equals(usuario)) return false;
         }
-        return false;
+        return true;
     }
 
     /**

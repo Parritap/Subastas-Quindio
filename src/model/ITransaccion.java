@@ -1,14 +1,12 @@
 package model;
 
 import exceptions.CRUDExceptions;
-import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import interfaces.CRUD;
 import lombok.Getter;
 import lombok.Setter;
 import model.enums.Estado;
 import model.enums.TipoOrden;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -18,12 +16,7 @@ import java.util.Objects;
 public class ITransaccion implements CRUD<Transaccion>, Serializable {
 
     ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
-    @Override
-    public ArrayList<Transaccion> listar() throws CRUDExceptions {
-            if(listaTransacciones.size() >0)
-                return this.listaTransacciones;
-            throw new LecturaException("No hay Transacciones para listar", "intentando acceder a una lista de transacciones vacía");
-    }
+
 
     @Override
     public Transaccion buscarId(Integer id) throws CRUDExceptions {
@@ -61,7 +54,6 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
     /**
      * @param id id por el cual se va a buscar el objeto a actualizar
      * */
-    @Override
     public void actualizar (Integer id, Transaccion nuevaTransaccion) throws CRUDExceptions {
         for(int i=0; i< listaTransacciones.size(); i++){
             if(Objects.equals(listaTransacciones.get(i).getId(), id)){
@@ -69,27 +61,6 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
             }
         }
     }
-
-    /**
-     * Metodos utilizado para eliminar un elemento de listaTransaccion
-     * @param id id del objeto que se pretende eliminar
-     *
-     * */
-    @Override
-    public void Eliminar (Integer id) throws CRUDExceptions {
-        boolean flag = false;
-        for (Transaccion transacion: listaTransacciones) {
-            if (transacion.compararId(id)) {
-                transacion.setEstado(Estado.ELIMINADO);
-                flag = true;
-                break;
-            }
-        }
-        if(!flag) throw new EscrituraException("No se ha podido eliminar la transaccion", "no se ha podido eliminar la transaccion "+id);
-    }
-
-
-
     /**
      * determina quien es el mayor entre las dos transacciones a o b
      * @param campo atributo por el cual se van a comparar las dos transacciones

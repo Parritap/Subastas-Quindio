@@ -14,3 +14,6 @@
 - Enlazar la aplicacion con un servidor externo.
 - Hacer el modelo de clases para el chat.
 - Revisar por qué el sonido solo funciona para MAC.
+
+11/05/22
+-agregar byte[] como foto de perfil al uml en la clase usuario
