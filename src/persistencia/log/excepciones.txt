@@ -338,3 +338,27 @@ Nov 05, 2022 8:03:35 AM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-05
 Nov 05, 2022 8:05:47 AM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-05
+Nov 05, 2022 8:15:49 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:a,11-05
+Nov 05, 2022 8:16:27 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:do,11-05
+Nov 05, 2022 8:16:27 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:do,11-05
+Nov 05, 2022 8:17:33 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-05
+Nov 05, 2022 8:17:33 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-05
+Nov 05, 2022 8:17:39 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-05
+Nov 05, 2022 8:17:39 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-05
+Nov 05, 2022 8:17:57 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-05
+Nov 05, 2022 8:17:57 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-05
+Nov 05, 2022 8:18:22 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:a,11-05
+Nov 05, 2022 8:19:00 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:do,11-05
+Nov 05, 2022 8:19:00 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:do,11-05

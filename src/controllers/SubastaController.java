@@ -257,6 +257,7 @@ public class SubastaController implements IApplication, Inicializable {
      * anuncios que se encuentran en el modelo
      */
     private void actualizarListaAnuncios() {
+        listaAnuncios.clear();
         this.listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios());
         listaAnuncios.forEach(e-> System.out.println(e+"\n"));
     }
