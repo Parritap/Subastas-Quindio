@@ -122,6 +122,9 @@ public class PaneSubastaController implements IApplication, Inicializable {
             anuncio.setId(idAnuncioClicked);
 
             ModelFactoryController.actualizarAnuncio(anuncio, producto);
+            //Escribo el log de la creacion del anuncio
+            ArchivoUtil.guardarRegistroLog("actualizó el anuncio "+anuncio.getId()+":"+anuncio.getTitulo(), 1,
+                    "Actualización de anuncio", Utils.RUTA_LOG_TXT);
             application.abrirAlerta("El anuncio se ha actualizado");
             application.closeUpdateAdd();
         }

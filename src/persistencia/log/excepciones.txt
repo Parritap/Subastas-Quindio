@@ -362,3 +362,41 @@ Nov 05, 2022 8:19:00 AM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de anuncio,se creo el anuncio 1:do,11-05
 Nov 05, 2022 8:19:00 AM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de producto,se creo el producto 1:do,11-05
+Nov 05, 2022 8:33:44 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-05
+Nov 05, 2022 8:33:44 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-05
+Nov 05, 2022 9:16:48 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:Alejandro,11-05
+Nov 05, 2022 9:17:19 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:d,11-05
+Nov 05, 2022 9:17:19 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:d,11-05
+Nov 05, 2022 9:18:13 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Actualización de anuncio,actualizó el anuncio 1:e,11-05
+Nov 05, 2022 9:23:05 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-05
+Nov 05, 2022 9:23:05 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-05
+Nov 05, 2022 9:24:07 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-05
+Nov 05, 2022 9:24:08 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-05
+Nov 05, 2022 9:24:33 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:asf,11-05
+Nov 05, 2022 9:24:53 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-05
+Nov 05, 2022 9:24:53 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-05
+Nov 05, 2022 9:25:11 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-05
+Nov 05, 2022 9:25:11 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-05
+Nov 05, 2022 9:25:17 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-05
+Nov 05, 2022 9:25:17 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-05
+Nov 05, 2022 9:25:43 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre asf y correo alejo ha iniciado sesión.,11-05
+Nov 05, 2022 9:37:27 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre asf y correo alejo ha iniciado sesión.,11-05

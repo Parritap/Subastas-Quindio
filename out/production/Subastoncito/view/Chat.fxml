@@ -24,7 +24,15 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                      <children>
-                        <Label contentDisplay="CENTER" prefHeight="58.0" prefWidth="330.0" text="Subastas Quindio" textAlignment="CENTER" textFill="#fff9f9">
+                        <Button mnemonicParsing="false" onAction="#cargarInicio" prefHeight="33.0" prefWidth="32.0" styleClass="btnAtras" stylesheets="@../resources/style.css" text="&lt;">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label contentDisplay="CENTER" prefHeight="58.0" prefWidth="324.0" text="  Subastas Quindio" textAlignment="CENTER" textFill="#fff9f9">
                            <font>
                               <Font name="Cambria Bold" size="40.0" />
                            </font>
