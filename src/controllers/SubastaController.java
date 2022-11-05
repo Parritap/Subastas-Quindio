@@ -106,6 +106,7 @@ public class SubastaController implements IApplication, Inicializable {
      * Metodo que recorre la lista de anuncios y los carga al pane scroll
      */
     private void cargarAnuncioAlScroll() {
+        actualizarListaAnuncios();
         //elimino todos los elementos del grid
         this.grid.getChildren().clear();
         //defino la columna y la fila del gridPane
@@ -223,7 +224,7 @@ public class SubastaController implements IApplication, Inicializable {
     public void inicializarComponentes() {
         paneInfoAnuncio.setVisible(false);
         //obtengo la lista de anuncios disponibles en la empresa
-        this.listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios());
+        actualizarListaAnuncios();
         //si existe al menos un anuncio selecciono el primero como anuncio por defecto
         //para ser mostrado en la barra lateral
         //metodo que permite recorrer los anuncios y cargarlos en el pane scroll
@@ -249,6 +250,15 @@ public class SubastaController implements IApplication, Inicializable {
         }else{
             comboLanguages.setPromptText("Select language");
         }
+    }
+
+    /**
+     * Metodo que actualiza la lista de anuncios con los
+     * anuncios que se encuentran en el modelo
+     */
+    private void actualizarListaAnuncios() {
+        this.listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios());
+        listaAnuncios.forEach(e-> System.out.println(e+"\n"));
     }
 
     /**
@@ -312,5 +322,8 @@ public class SubastaController implements IApplication, Inicializable {
         application.loadScene(Utils.frameInicio);
 
     }
+
+
+
 
 }

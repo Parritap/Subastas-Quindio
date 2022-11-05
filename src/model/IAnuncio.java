@@ -124,7 +124,14 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 	 * @return listaAnuncios
 	 */
     public ArrayList<Anuncio> getListaAnuncio() {
-		return listaAnuncios;
+		//filtro los anuncios para que no me retorne los que tienen el mismo id
+		ArrayList<Anuncio> listaFiltrada = new ArrayList<>();
+		for (Anuncio anuncio : listaAnuncios) {
+			if (!listaFiltrada.contains(anuncio) && anuncio.getEstado() != Estado.ELIMINADO) {
+				listaFiltrada.add(anuncio);
+			}
+		}
+		return listaFiltrada;
     }
 
 	/**
@@ -183,15 +190,13 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 		//busco el anuncio en la lista
 		for (Anuncio anuncio1 : listaAnuncios) {
 			if (anuncio1.compararId(anuncio.getId())) {
-				System.out.println("estoy actualizando el anuncio"  );
-				listaAnuncios.remove(anuncio1);
 				anuncio1.setProducto(producto);
 				//actualizo todos los datos del anuncio1 con los datos del anuncio pasado por parametro
 				anuncio1.setValorMinimo(anuncio.getValorMinimo());
 				anuncio1.setImageSrc(anuncio.getImageSrc());
 				anuncio1.setTitulo(anuncio.getTitulo());
 				anuncio1.setEstado(Estado.ACTUALIZADO);
-				listaAnuncios.add(anuncio1);
+				break;
 			}
 		}
 	}

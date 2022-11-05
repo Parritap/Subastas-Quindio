@@ -129,6 +129,7 @@ public class IProducto implements CRUD<Producto>, Serializable {
                 producto1.setNombre(producto.getNombre());
                 producto1.setEstado(Estado.ACTUALIZADO);
                 producto1.setTipoProducto(producto.getTipoProducto());
+                break;
             }
         }
     }
