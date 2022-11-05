@@ -158,7 +158,8 @@ public class ItemController implements IApplication, Inicializable {
      */
     private void setProductSelected(){
         
-        subastaController.setProductSelected(anuncio);
+        subastaController.setAnuncioSeleccionado(anuncio);
+        subastaController.setProductSelected();
         //genero un sonido al hacer clic
         Utils.playSound(Utils.URL_CLICK);
         

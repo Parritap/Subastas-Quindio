@@ -132,4 +132,12 @@ public class ModelFactoryController {
     public static void actualizarAnuncio(Anuncio anuncio, Producto producto) {
         empresaSubasta.actualizarAnuncio(anuncio, producto);
     }
+
+    public static void desactivarAnuncios() {
+        empresaSubasta.getIAnuncio().desactivarAnuncios();
+    }
+
+    public static void hacerPuja (Usuario usuario, Anuncio anuncio, Double valorPuja) {
+        empresaSubasta.hacerPuja(usuario, anuncio, valorPuja);
+    }
 }
