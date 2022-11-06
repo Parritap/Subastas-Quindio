@@ -11,6 +11,7 @@ import model.Anuncio;
 import model.Chat;
 import model.Usuario;
 import model.enums.Estado;
+import services.Service;
 import utilities.Utils;
 
 import java.util.ArrayList;
@@ -32,9 +33,12 @@ public class ChatController implements IApplication, Inicializable {
         if (listaChats != null) {
             //filtro los chats que esten duplicados en listaChats
             for (Chat chat : listaChats) {
-                AnchorPane pane = application.obtenerChatItem(chat);
-                //Añado el pane al VBox
-                vboxListaChats.getChildren().add(pane);
+                for (int i = 0; i < 100; i++) {
+                    AnchorPane pane = application.obtenerChatItem(chat, this);
+                    //Añado el pane al VBox
+                    vboxListaChats.getChildren().add(pane);
+                }
+
             }
         }
 
@@ -58,5 +62,9 @@ public class ChatController implements IApplication, Inicializable {
     @FXML
     void cargarInicio(ActionEvent event) {
         application.loadScene(Utils.frameInicio);
+    }
+
+    public void cargarChat(Chat chat) {
+        Service.cargarChat(chat, paneChat);
     }
 }

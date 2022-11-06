@@ -46,7 +46,7 @@
                            <children>
                               <ScrollPane hbarPolicy="NEVER" prefHeight="647.0" prefWidth="394.0" style="-fx-background-color: White; -fx-border-color: White;" styleClass="barraScroll" stylesheets="@../resources/style.css">
                                  <content>
-                                    <VBox fx:id="vboxListaChats" prefHeight="641.0" prefWidth="394.0" style="-fx-background-color: WHITE;" />
+                                    <VBox fx:id="vboxListaChats" prefHeight="641.0" prefWidth="373.0" style="-fx-background-color: WHITE;" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -56,6 +56,7 @@
                               <Font size="27.0" />
                            </font>
                         </Label>
+                        <Line endX="100.0" layoutX="196.0" layoutY="63.0" startX="-100.0" strokeWidth="3.0" />
                      </children>
                   </AnchorPane>
                </children>

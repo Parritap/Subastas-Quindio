@@ -406,7 +406,7 @@ public class App extends Application {
         actualizarAdd.close();
     }
 
-    public AnchorPane obtenerChatItem(Chat chat) {
+    public AnchorPane obtenerChatItem(Chat chat, ChatController chatController) {
         String ruta = Utils.CHAT_ITEM;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
         try {
@@ -415,6 +415,7 @@ public class App extends Application {
             controller.setApplication(this);
             controller.setChat(chat);
             controller.inicializarComponentes();
+            controller.setChatController(chatController);
             return container;
         } catch (IOException e) {
             throw new RuntimeException(e);

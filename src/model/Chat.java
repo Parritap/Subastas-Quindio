@@ -3,6 +3,7 @@ package model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,11 +12,14 @@ import java.util.ArrayList;
  */
 @Setter
 @Getter
-public class Chat {
+public class Chat implements Serializable {
     private Usuario usuarioReceptor;
     private ArrayList<String> listaMensajes;
 
     //---------------------------------------CONSTRUCTOR PARA EL CHAT---------------------------------------
+    public Chat() {
+        this.listaMensajes = new ArrayList<>();
+    }
     public Chat(Usuario usuarioReceptor) {
         this.usuarioReceptor = usuarioReceptor;
         listaMensajes = new ArrayList<>();
