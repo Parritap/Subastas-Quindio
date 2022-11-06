@@ -24,24 +24,31 @@ public class Usuario implements Serializable {
 	private String password;
 
 	private String telefono;
-
+	//contiene la lista de pujas de un usuario
 	private ArrayList<Puja> listaPujas;
-
+	//contiene el id de las pujas que ha hecho el usuario
 	private Integer idListaPujas;
 	//Este atributo permite conocer si el cliente actual esta activo en la app
 	private Boolean activo;
+	//Este atributo permite gestionar la creacion de id para los usuarios
 	private static Integer idAux = 0;
 	//Este atributo permite saber el estado del usuario, Eliminado, Nuevo, Actualizado
 	private Estado estado;
+	//id del usuario
 	private Integer id;
-
+	//arreglo que contiene los bytes de una imagen
 	private byte[] fotoPerfil;
+	//
 	private ArrayList<Anuncio> listaAnuncios;
+	//si es un admin o un cliente
 	private Rol rol;
+	//lista de chats, aquí se contienen los mensajes que se han enviado a este usuario,
+	//los usuarios que han enviado mensajes y los mensajes que ha enviado este usuario
+	private ArrayList<Chat> listaChats;
 
 
-	//Constructores
 
+	//---------------------------------------CONSTRUCTOR PARA EL USUARIO---------------------------------------
 
 	public Usuario(String name, Integer age, String cedula, String correo, String direccion, String telefono, String password) {
 		this.name = name;
@@ -62,6 +69,8 @@ public class Usuario implements Serializable {
 	}
 
 	public Usuario(){}
+
+	//---------------------------------------METODOS---------------------------------------
 
 	/**
 	 * Metodo que permite comparar dos id, el del usuario actual y el
