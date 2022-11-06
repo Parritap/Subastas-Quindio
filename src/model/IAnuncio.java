@@ -241,5 +241,16 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
         anuncio.setValorActual(valorPuja);
         usuario.getListaPujas().add(puja);
     }
-}
+
+    public ArrayList<Anuncio> filtrarAnuncioPorAsuario(Usuario u) {
+        //En caso de que no haya ningún usuario activo, esto es, que no haya iniciado sesión, se devolverá la lista de anuncios completa.
+        if(u==null) return this.listaAnuncios;
+
+        ArrayList<Anuncio> lista = new ArrayList<>();
+        for (Anuncio a: listaAnuncios) {
+            if (!a.getUsuario().equals(u)) lista.add(a);
+        }
+        return lista;
+        }
+    }
 

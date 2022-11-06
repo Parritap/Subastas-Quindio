@@ -140,4 +140,10 @@ public class ModelFactoryController {
     public static void hacerPuja (Usuario usuario, Anuncio anuncio, Double valorPuja) {
         empresaSubasta.hacerPuja(usuario, anuncio, valorPuja);
     }
+
+    public static ArrayList<Anuncio> obtenerListaAnunciosSegunUsuario(Usuario u) {
+
+        return empresaSubasta.getIAnuncio().filtrarAnuncioPorAsuario(u);
+
+    }
 }

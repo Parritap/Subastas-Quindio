@@ -472,3 +472,83 @@ Nov 06, 2022 7:39:41 AM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Parra y correo parra ha iniciado sesión.,11-06
 Nov 06, 2022 7:57:11 AM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Parra y correo parra ha iniciado sesión.,11-06
+Nov 06, 2022 11:12:08 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:parra,11-06
+Nov 06, 2022 11:13:18 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:JOJO,11-06
+Nov 06, 2022 11:13:18 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:JOJO,11-06
+Nov 06, 2022 11:14:05 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 2:carlos,11-06
+Nov 06, 2022 11:14:55 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre carlos y correo carlos ha iniciado sesión.,11-06
+Nov 06, 2022 11:30:07 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-06
+Nov 06, 2022 12:39:34 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-06
+Nov 06, 2022 12:39:34 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-06
+Nov 06, 2022 12:39:40 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario parra no encontrado,11-06
+Nov 06, 2022 12:39:40 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario parra no encontrado,11-06
+Nov 06, 2022 12:39:50 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario carlos no encontrado,11-06
+Nov 06, 2022 12:39:50 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario carlos no encontrado,11-06
+Nov 06, 2022 12:40:16 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:parra,11-06
+Nov 06, 2022 12:41:57 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:JOJO!,11-06
+Nov 06, 2022 12:41:57 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:Un jojo,11-06
+Nov 06, 2022 12:43:30 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 2:carlos,11-06
+Nov 06, 2022 12:43:44 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:43:44 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:43:49 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:43:49 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:43:55 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre carlos y correo carlos ha iniciado sesión.,11-06
+Nov 06, 2022 12:44:14 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:44:14 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:44:20 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:44:20 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:44:53 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre carlos y correo carlos ha iniciado sesión.,11-06
+Nov 06, 2022 12:49:52 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:Parra,11-06
+Nov 06, 2022 12:50:06 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:50:06 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:50:19 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:50:19 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:50:23 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario carlosc  no encontrado,11-06
+Nov 06, 2022 12:50:23 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario carlosc  no encontrado,11-06
+Nov 06, 2022 12:50:43 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre carlos y correo carlos ha iniciado sesión.,11-06
+Nov 06, 2022 12:50:52 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:50:52 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:51:12 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:alex,11-06
+Nov 06, 2022 12:51:58 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:JOJO2 ,11-06
+Nov 06, 2022 12:51:58 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:JOJO 2 ,11-06
+Nov 06, 2022 12:52:09 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre alex y correo alex ha iniciado sesión.,11-06
