@@ -133,7 +133,7 @@ public class SubastaController implements IApplication, Inicializable {
 
         try {
             //recorro la lista de anuncios y los convierto en un item controller
-            for (Anuncio anuncio : this.listaAnuncios) {
+            for (Anuncio anuncio : ModelFactoryController.obtenerListaAnunciosSegunUsuario(application.getClienteActivo())) {
                 if (anuncio != null && LocalDateTime.now().isBefore(anuncio.getFechaTerminacion()) && (anuncio.getEstado() != Estado.ELIMINADO)) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
