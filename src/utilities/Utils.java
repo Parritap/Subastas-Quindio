@@ -1,6 +1,7 @@
 package utilities;
 
 import application.App;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -72,6 +73,10 @@ public class Utils {
     public static final String RUTA_TRANSACCIONES_TXT = "src/persistencia/archivos/Transaccion.txt";
     //Ruta de los items de los chats
     public static final String CHAT_ITEM = "../view/ChatItem.fxml";
+    public static String LOGO_EMPRESA = "/resources/iconSubastaQuindio.png";
+
+    public static final String CHAT_CLIENTE = "../view/client-chat-view.fxml";
+    public static final String CHAT_SERVER = "../view/server-chat-view.fxml";
 
     /**
      * Metodo que permite abrir el FileChooser
@@ -137,8 +142,7 @@ public class Utils {
     public static Language stringToLanguage(String str) {
         return (str.equals("English") ? Language.ENGLISH : Language.SPANISH);
     }
-
-
+    
 }
 
 

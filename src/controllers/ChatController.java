@@ -65,6 +65,6 @@ public class ChatController implements IApplication, Inicializable {
     }
 
     public void cargarChat(Chat chat) {
-        Service.cargarChat(chat, paneChat);
+        paneChat = application.cargarChat(chat);
     }
 }

@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -49,6 +50,8 @@ public class App extends Application {
 
     private Anuncio anuncioClicked;
 
+    private boolean isServerEnabled;
+
     //El lenguaje estará en español por defecto.
     //Variable es static para no tener que crear varios métodos que extraigan la misma de su instancia de App.
     public static Language language = Language.ENGLISH;
@@ -86,6 +89,8 @@ public class App extends Application {
         inicializableController.inicializarComponentes();
         Scene scene = new Scene(root);
         this.stage = stage;
+        //cambio el icono principal de la app
+        stage.getIcons().add(new Image(Utils.LOGO_EMPRESA));
         stage.setScene(scene);
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
@@ -419,6 +424,25 @@ public class App extends Application {
             return container;
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public AnchorPane cargarChat(Chat chat) {
+
+        if(!isServerEnabled){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.CHAT_SERVER));
+            try {
+                AnchorPane container = loader.load();
+                ServerController controller = loader.getController();
+                controller.setApplication(this);
+                controller.setChat(chat);
+                controller.inicializarComponentes();
+                return container;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            return null;
         }
     }
 }

@@ -1,8 +1,10 @@
 package controllers;
 
+import application.App;
+import interfaces.IApplication;
+import interfaces.Inicializable;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -13,14 +15,21 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import lombok.Getter;
+import lombok.Setter;
+import model.Chat;
 import services.server.Server;
-
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class ServerController implements Initializable {
+@Setter
+@Getter
+public class ServerController implements IApplication, Inicializable {
+
+    private App application;
+
+    private Chat chat;
+
     @FXML
     private Button button_send;
     @FXML
@@ -31,8 +40,8 @@ public class ServerController implements Initializable {
     private ScrollPane sp_main;
     private Server server;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    @FXML
+    public void initialize() {
         try{
             server = new Server(new ServerSocket(1234));
             System.out.println("Connected to Client!");
@@ -97,4 +106,18 @@ public class ServerController implements Initializable {
         Platform.runLater(() -> vBox.getChildren().add(hBox));
     }
 
+    @Override
+    public App getApplication() {
+        return application;
+    }
+
+    @Override
+    public void setApplication(App application) {
+        this.application=application;
+    }
+
+    @Override
+    public void inicializarComponentes() {
+
+    }
 }
