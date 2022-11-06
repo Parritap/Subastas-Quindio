@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -47,9 +45,9 @@
                         <VBox layoutX="1.0" layoutY="88.0" prefHeight="647.0" prefWidth="396.0" style="-fx-background-color: White; -fx-border-color: White;">
                            <children>
                               <ScrollPane hbarPolicy="NEVER" prefHeight="647.0" prefWidth="394.0" style="-fx-background-color: White; -fx-border-color: White;" styleClass="barraScroll" stylesheets="@../resources/style.css">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="642.0" prefWidth="387.0" style="-fx-background-color: White; -fx-border-color: White;" />
-                                </content>
+                                 <content>
+                                    <VBox fx:id="vboxListaChats" prefHeight="641.0" prefWidth="394.0" style="-fx-background-color: WHITE;" />
+                                 </content>
                               </ScrollPane>
                            </children>
                         </VBox>
@@ -66,91 +64,61 @@
                <children>
                   <AnchorPane layoutX="33.0" layoutY="92.0" prefHeight="807.0" prefWidth="865.0" style="-fx-background-color: WHITE;">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="803.0" layoutX="17.0" stroke="BLACK" strokeType="INSIDE" width="848.0" />
-                        <AnchorPane layoutX="20.0" layoutY="7.0" prefHeight="794.0" prefWidth="843.0">
+                        <HBox prefHeight="77.0" prefWidth="827.0">
                            <children>
-                              <HBox prefHeight="77.0" prefWidth="827.0">
-                                 <children>
-                                    <ImageView fitHeight="68.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
-                                       <HBox.margin>
-                                          <Insets left="30.0" />
-                                       </HBox.margin>
-                                       <image>
-                                          <Image url="@../resources/crearCuenta.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label prefHeight="67.0" prefWidth="469.0" text="Nombre del anunciante">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="30.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <ImageView fitHeight="42.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                                       <HBox.margin>
-                                          <Insets left="20.0" top="10.0" />
-                                       </HBox.margin>
-                                       <image>
-                                          <Image url="@../resources/telefonoIcon.png" />
-                                       </image>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </ImageView>
-                                    <ImageView fitHeight="42.0" fitWidth="52.0" layoutX="547.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../resources/facetime.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="30.0" top="10.0" />
-                                       </HBox.margin>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </ImageView>
-                                    <ImageView fitHeight="45.0" fitWidth="50.0" layoutX="678.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../resources/setting.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="30.0" top="10.0" />
-                                       </HBox.margin>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </ImageView>
-                                 </children>
-                              </HBox>
-                              <ScrollPane hbarPolicy="NEVER" layoutX="20.0" layoutY="67.0" prefHeight="631.0" prefWidth="805.0" style="-fx-background-color: WHITE;" stylesheets="@../resources/style.css">
-                                 <styleClass>
-                                    <String fx:value="transparent" />
-                                    <String fx:value="barraScroll" />
-                                 </styleClass>
-                                 <content>
-                                    <AnchorPane prefHeight="628.0" prefWidth="806.0" style="-fx-background-color: White;" />
-                                 </content>
-                              </ScrollPane>
-                              <TextField layoutX="106.0" layoutY="715.0" prefHeight="59.0" prefWidth="565.0" promptText="Escriba su mensaje aquí..." style="-fx-background-color: WHITE; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30;">
-                                 <font>
-                                    <Font size="25.0" />
-                                 </font>
-                              </TextField>
-                              <ImageView fitHeight="48.0" fitWidth="91.0" layoutX="38.0" layoutY="723.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="68.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
                                  <image>
-                                    <Image url="@../resources/documento.png" />
+                                    <Image url="@../resources/crearCuenta.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="67.0" prefWidth="469.0" text="Nombre del anunciante">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ImageView fitHeight="42.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="10.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../resources/telefonoIcon.png" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </ImageView>
-                              <Button layoutX="696.0" layoutY="718.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="139.0" style="-fx-background-color: WHITE; -fx-border-color: BLACK; -fx-border-radius: 30;" text="Enviar">
+                              <ImageView fitHeight="42.0" fitWidth="52.0" layoutX="547.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/facetime.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="30.0" top="10.0" />
+                                 </HBox.margin>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
-                              </Button>
+                              </ImageView>
+                              <ImageView fitHeight="45.0" fitWidth="50.0" layoutX="678.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/setting.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="30.0" top="10.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
                            </children>
-                        </AnchorPane>
+                        </HBox>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="803.0" layoutX="17.0" stroke="BLACK" strokeType="INSIDE" width="848.0" />
+                        <AnchorPane fx:id="paneChat" layoutX="30.0" layoutY="69.0" prefHeight="711.0" prefWidth="813.0" />
                      </children>
                   </AnchorPane>
                   <Label layoutX="36.0" layoutY="-4.0" prefHeight="62.0" prefWidth="878.0" style="-fx-alignment: CENTER; -fx-background-color: White;" text="Habla con el anunciante">

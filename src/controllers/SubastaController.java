@@ -43,8 +43,6 @@ public class SubastaController implements IApplication, Inicializable {
      * Anuncio cargado al dar click en el panel de AnuncioItem.fxml
      */
     private Anuncio anuncioSeleccionado;
-    ///////////////////////
-
 
     //Variables globales
     private App application;
@@ -111,9 +109,6 @@ public class SubastaController implements IApplication, Inicializable {
 
     //Contiene los anuncios de la empresa en un momento dado
     private final ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
-
-
-    ////////////////////////////////////////////////////////////////////////////////
 
 
     public void setAnuncioSeleccionado(Anuncio anuncio) {
@@ -370,7 +365,7 @@ public class SubastaController implements IApplication, Inicializable {
             application.abrirAlerta("Para hacer una puja primero debe iniciar sesión");
             return;
         }
-        //verifico que el valor de la puja sea un numero
+        //verifico que el valor de la puja sea un número
         try {
             valorPuja = Double.parseDouble(txtfValorAPujar.getText());
         } catch (NumberFormatException e) {
@@ -393,6 +388,7 @@ public class SubastaController implements IApplication, Inicializable {
         //si no se cumple ninguna de las condiciones anteriores
         //se procede a realizar la puja
         ModelFactoryController.hacerPuja(application.getClienteActivo(), this.anuncioSeleccionado, valorPuja);
+        ModelFactoryController.crearChat(application.getClienteActivo(), this.anuncioSeleccionado.getVendedor());
         //refresco la lista de anuncios
         application.loadScene(Utils.frameInicio);
         application.abrirAlerta("Puja realizada con éxito");

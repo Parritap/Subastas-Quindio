@@ -137,16 +137,40 @@ public class EmpresaSubasta implements Runnable, Serializable {
         return iAnuncio.getListaAnuncio(clienteActivo);
     }
 
+    /**
+     * Metodo que permite eliminar un anuncio dado el anuncio
+     * @param anuncioClicked el anuncio que se desea eliminar
+     */
     public void eliminarAnuncio(Anuncio anuncioClicked) {
         iAnuncio.eliminar(anuncioClicked);
     }
 
+    /**
+     * Metodo que permite actualizar anuncios y el producto que contiene
+     * @param anuncio contiene la informacion con la que se va a actualizar
+     * @param producto producto que contiene el anuncio
+     */
     public void actualizarAnuncio(Anuncio anuncio, Producto producto) {
         iProducto.actualizar(producto);
         iAnuncio.actualizar(anuncio, producto);
     }
 
+    /**
+     * Metodo que permite hacer una puja en un anuncio
+     * @param usuario usuario que realiza la puja
+     * @param anuncio anuncio sobre el que se puja
+     * @param valorPuja valor con el que puja
+     */
     public void hacerPuja(Usuario usuario, Anuncio anuncio, Double valorPuja) {
         iAnuncio.hacerPuja(usuario, anuncio, valorPuja);
+    }
+
+    /**
+     * Metodo que permite crear un chat entre dos clientes a través de hacer una puja
+     * @param clienteActivo cliente que hace la puja
+     * @param vendedor cliente que publicó la puja
+     */
+    public void crearChat(Usuario clienteActivo, Usuario vendedor) {
+        iAnuncio.crearChat(clienteActivo, vendedor);
     }
 }

@@ -45,9 +45,9 @@
                         <VBox layoutX="1.0" layoutY="88.0" prefHeight="647.0" prefWidth="396.0" style="-fx-background-color: White; -fx-border-color: White;">
                            <children>
                               <ScrollPane hbarPolicy="NEVER" prefHeight="647.0" prefWidth="394.0" style="-fx-background-color: White; -fx-border-color: White;" styleClass="barraScroll" stylesheets="@../resources/style.css">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="642.0" prefWidth="387.0" style="-fx-background-color: White; -fx-border-color: White;" />
-                                </content>
+                                 <content>
+                                    <VBox fx:id="vboxListaChats" prefHeight="641.0" prefWidth="394.0" style="-fx-background-color: WHITE;" />
+                                 </content>
                               </ScrollPane>
                            </children>
                         </VBox>

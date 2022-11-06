@@ -44,9 +44,7 @@ public class ArchivoUtil {
             fis.close();
             return e;
 
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException | ClassNotFoundException ignored) {}
         return null;
     }
 

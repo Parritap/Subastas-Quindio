@@ -405,4 +405,19 @@ public class App extends Application {
     public void closeUpdateAdd() {
         actualizarAdd.close();
     }
+
+    public AnchorPane obtenerChatItem(Chat chat) {
+        String ruta = Utils.CHAT_ITEM;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
+        try {
+            AnchorPane container = loader.load();
+            ItemChatController controller = loader.getController();
+            controller.setApplication(this);
+            controller.setChat(chat);
+            controller.inicializarComponentes();
+            return container;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

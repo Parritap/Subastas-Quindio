@@ -112,6 +112,10 @@ public class ModelFactoryController {
         return empresaSubasta.getStringTransacciones();
     }
 
+    /**
+     * Este metodo devuelve un String con la forma de serializar todos los anuncios
+     * @return String con la lista de anuncios serializada
+     */
     public static String getStringAnuncios() {
         return empresaSubasta.getStringAnuncios();
     }
@@ -125,25 +129,56 @@ public class ModelFactoryController {
         return empresaSubasta.getListaAnuncios(clienteActivo);
     }
 
+    /**
+     * Metodo que permite eliminar un anuncio, dado ese anuncio
+     * @param anuncioClicked el anuncio que se va a eliminar
+     */
     public static void eliminarAnuncio(Anuncio anuncioClicked) {
         empresaSubasta.eliminarAnuncio(anuncioClicked);
     }
 
+    /**
+     * Metodo que permite actualizar un anuncio dado un anuncio con toda la informacion actualizada
+     * y el producto que contiene
+     * @param anuncio el anuncio con la informacion actualizada
+     * @param producto el producto que contiene el anuncio
+     */
     public static void actualizarAnuncio(Anuncio anuncio, Producto producto) {
         empresaSubasta.actualizarAnuncio(anuncio, producto);
     }
 
+    /**
+     * Metodo que desactiva un anuncio para que no se pueda ver
+     */
     public static void desactivarAnuncios() {
         empresaSubasta.getIAnuncio().desactivarAnuncios();
     }
 
+    /**
+     * metodo que permite crear una puja, la puja se crea en la instancia de la empresa contenida
+     * @param usuario el usuario que hace la puja
+     * @param anuncio el anuncio por el que se puja
+     * @param valorPuja cuanto puja
+     */
     public static void hacerPuja (Usuario usuario, Anuncio anuncio, Double valorPuja) {
         empresaSubasta.hacerPuja(usuario, anuncio, valorPuja);
     }
 
+    /**
+     * Metodo que devuelve la lista de pujas de un anuncio
+     * @param u el usuario que hizo la puja
+     * @return la lista de pujas
+     */
     public static ArrayList<Anuncio> obtenerListaAnunciosSegunUsuario(Usuario u) {
-
         return empresaSubasta.getIAnuncio().filtrarAnuncioPorAsuario(u);
+    }
 
+    /**
+     * Metodo que permite crear un chat cuando se hace una puja
+     * @param clienteActivo cliente que realiza la puja
+     * @param vendedor vendedor del anuncio
+     */
+    public static void crearChat(Usuario clienteActivo, Usuario vendedor) {
+        empresaSubasta.crearChat(clienteActivo, vendedor);
     }
 }

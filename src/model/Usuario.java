@@ -26,7 +26,7 @@ public class Usuario implements Serializable {
 	private String telefono;
 	//contiene la lista de pujas de un usuario
 	private ArrayList<Puja> listaPujas;
-	//contiene el id de las pujas que ha hecho el usuario
+	//contiene él, id de las pujas que ha hecho el usuario
 	private Integer idListaPujas;
 	//Este atributo permite conocer si el cliente actual esta activo en la app
 	private Boolean activo;
@@ -66,6 +66,7 @@ public class Usuario implements Serializable {
 		this.cantAnuncios = 0;
 		this.listaAnuncios = new ArrayList<>();
 		this.rol = Rol.CLIENTE;
+		this.listaChats = new ArrayList<>();
 	}
 
 	public Usuario(){}
@@ -161,5 +162,28 @@ public class Usuario implements Serializable {
 				id +
 				arrobas +
 				rol;
+	}
+
+	public ArrayList<String> crearChat(Usuario vendedor) {
+		//creo un chat con el vendedor
+		Chat chat = new Chat(vendedor);
+		//agrego el chat a la lista de chats del usuario
+		this.listaChats.add(chat);
+		return chat.getListaMensajes();
+	}
+
+	/**
+	 * Metodo que permite establecer la misma lista de mensajes que tiene el chat
+	 * para ambos usuarios
+	 * @param listaMensajes lista de mensajes que se va a establecer
+	 * @param clienteActivo el usuario que está activo
+	 */
+	public void setListaMensajes(ArrayList<String> listaMensajes, Usuario clienteActivo) {
+		for (Chat chat : this.listaChats) {
+			if (chat.getUsuarioReceptor().equals(clienteActivo)) {
+				chat.setListaMensajes(listaMensajes);
+				break;
+			}
+		}
 	}
 }

@@ -538,3 +538,75 @@ Nov 06, 2022 12:50:23 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 WARNING: Excepcion,LecturaException, usuario carlosc  no encontrado,11-06
 Nov 06, 2022 12:50:23 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 WARNING: Excepcion,LecturaException, usuario carlosc  no encontrado,11-06
+Nov 06, 2022 12:50:43 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre carlos y correo carlos ha iniciado sesión.,11-06
+Nov 06, 2022 12:50:52 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:50:52 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-06
+Nov 06, 2022 12:51:12 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:alex,11-06
+Nov 06, 2022 12:51:58 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:JOJO2 ,11-06
+Nov 06, 2022 12:51:58 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:JOJO 2 ,11-06
+Nov 06, 2022 12:52:09 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre alex y correo alex ha iniciado sesión.,11-06
+Nov 06, 2022 1:28:25 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario parra no encontrado,11-06
+Nov 06, 2022 1:28:25 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario parra no encontrado,11-06
+Nov 06, 2022 1:28:46 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario Parra no encontrado,11-06
+Nov 06, 2022 1:28:46 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario Parra no encontrado,11-06
+Nov 06, 2022 1:28:55 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario carlos no encontrado,11-06
+Nov 06, 2022 1:28:55 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario carlos no encontrado,11-06
+Nov 06, 2022 1:29:47 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:Alejandro,11-06
+Nov 06, 2022 1:30:40 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Alejandro y correo alejo ha iniciado sesión.,11-06
+Nov 06, 2022 1:31:20 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:anuncio,11-06
+Nov 06, 2022 1:31:20 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:anuncio,11-06
+Nov 06, 2022 1:32:32 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,EscrituraException, se intento crear un usuario ya existente (1002652342),11-06
+Nov 06, 2022 1:32:32 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,EscrituraException, se intento crear un usuario ya existente (1002652342),11-06
+Nov 06, 2022 1:32:45 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 3:Alejandro,11-06
+Nov 06, 2022 2:42:36 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-06
+Nov 06, 2022 2:42:36 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-06
+Nov 06, 2022 2:43:50 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-06
+Nov 06, 2022 2:43:50 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo no encontrado,11-06
+Nov 06, 2022 2:44:16 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo2 no encontrado,11-06
+Nov 06, 2022 2:44:16 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo2 no encontrado,11-06
+Nov 06, 2022 2:44:59 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo2 no encontrado,11-06
+Nov 06, 2022 2:44:59 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario alejo2 no encontrado,11-06
+Nov 06, 2022 2:58:57 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:A,11-06
+Nov 06, 2022 3:01:22 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:alejo,11-06
+Nov 06, 2022 3:01:52 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 2:alejo,11-06
+Nov 06, 2022 3:02:09 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre alejo y correo alejo ha iniciado sesión.,11-06
+Nov 06, 2022 3:02:21 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre alejo y correo alejo2 ha iniciado sesión.,11-06
+Nov 06, 2022 3:03:19 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:a,11-06
+Nov 06, 2022 3:03:19 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:a,11-06
+Nov 06, 2022 3:03:39 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre alejo y correo alejo ha iniciado sesión.,11-06

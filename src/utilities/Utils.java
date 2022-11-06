@@ -15,10 +15,6 @@ import java.util.*;
 
 public class Utils {
 
-
-    private static final String[] auxClasesConTexto = {"Button", "Label", "TextField"};
-    public static final ArrayList<String> CLASES_CON_TEXTO_FX = new ArrayList<>(List.of(auxClasesConTexto));
-
     // Circle colors
     public static final Color[] colors = {
             new Color(0.2, 0.5, 0.8, 1.0).saturate().brighter().brighter(),
@@ -26,22 +22,6 @@ public class Utils {
             new Color(0.8, 0.3, 0.9, 1.0).saturate().brighter().brighter(),
             new Color(0.4, 0.3, 0.9, 1.0).saturate().brighter().brighter(),
             new Color(0.2, 0.5, 0.7, 1.0).saturate().brighter().brighter()};
-
-
-    /**
-     * DEVUELVE TRUE SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS
-     * EN LOS DEMOS ARGUMENTOS
-     *
-     * @param source  CADENA QUE SE COMPARA
-     * @param targets CADENAS A LAS QUE PODRÍA SER IGUAL SOURCE
-     * @return SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS EN TARGET
-     */
-    public static Boolean isNot(String source, String[] targets) {
-        for (String target : targets) {
-            if (source.equals(target)) return false;
-        }
-        return true;
-    }
 
     public static String[] lenguajes = {"English", "Español"};
     //Url del sonido al hacer clic
@@ -90,7 +70,8 @@ public class Utils {
     public static final String RUTA_PRODUCTOS_TXT = "src/persistencia/archivos/Producto.txt";
     //Ruta de la serializacion de las Transacciones en txt
     public static final String RUTA_TRANSACCIONES_TXT = "src/persistencia/archivos/Transaccion.txt";
-
+    //Ruta de los items de los chats
+    public static final String CHAT_ITEM = "../view/ChatItem.fxml";
 
     /**
      * Metodo que permite abrir el FileChooser
@@ -120,7 +101,7 @@ public class Utils {
      */
 
     public static void playSound(String url) {
-       /* javafx.scene.media.Media media = new javafx.scene.media.Media(new File(url).toURI().toString());
+        /*javafx.scene.media.Media media = new javafx.scene.media.Media(new File(url).toURI().toString());
         javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
         mediaPlayer.play();*/
     }
@@ -128,7 +109,7 @@ public class Utils {
 
     /**
      * Método que manipula la ruta (dada como parámetro) de un archivo FXML para crear su
-     * ResourceBundle de acuerdo también a la variable pública estática App.Language
+     * ResourceBundle de acuerdo también a la variable pública estática App. Language
      * NOTA: Si el archivo [.properties] no existe dentro de src/persistencia/languages/[nombreArchivoFXML]
      * entonces el código dará error.
      *
@@ -140,7 +121,7 @@ public class Utils {
         //Luego obtener el nombre del archivo fxml
         //Finalmente obtener el bundle con el nombre del archivo fxml de acuerdo al parámetro Language encontrado en la aplicación.
 
-        String[] listasRutaArchivo = rutaFXML.split("/"); //Obtenemos la lista particionada de la ruta del archivo fxml
+        String[] listasRutaArchivo = rutaFXML.split("/"); //Obtenemos la lista partition de la ruta del archivo fxml
         String aux = listasRutaArchivo[listasRutaArchivo.length - 1];//Esto retorna: "nombreArchivo.fxml"
         String paquete = aux.substring(0, aux.length() - 5);//Esto retorna "NombreArchivo";
         paquete = paquete.toLowerCase(); //Los paquetes por estándar vienen en minúscula. Esto es importante.

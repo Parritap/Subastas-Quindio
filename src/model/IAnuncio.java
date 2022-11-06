@@ -230,13 +230,14 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
     /**
      * Método que permite añadir un puja al anuncio indicado por parámetro
+     *
      * @param usuario
      * @param anuncio
      * @param valorPuja
      */
     public void hacerPuja(Usuario usuario, Anuncio anuncio, Double valorPuja) {
 
-        Puja puja = new Puja(LocalDate.now(), usuario,  valorPuja);
+        Puja puja = new Puja(LocalDate.now(), usuario, valorPuja);
         anuncio.getListaPujas().add(puja);
         anuncio.setValorActual(valorPuja);
         usuario.getListaPujas().add(puja);
@@ -244,13 +245,28 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
     public ArrayList<Anuncio> filtrarAnuncioPorAsuario(Usuario u) {
         //En caso de que no haya ningún usuario activo, esto es, que no haya iniciado sesión, se devolverá la lista de anuncios completa.
-        if(u==null) return this.listaAnuncios;
+        if (u == null) return this.listaAnuncios;
 
         ArrayList<Anuncio> lista = new ArrayList<>();
-        for (Anuncio a: listaAnuncios) {
+        for (Anuncio a : listaAnuncios) {
             if (!a.getUsuario().equals(u)) lista.add(a);
         }
         return lista;
-        }
     }
+
+    /**
+     * Metodo que permite crear un chat entre dos usuarios
+     * @param clienteActivo usuario que realiza la puja
+     * @param vendedor dueño del anuncio
+     */
+    public void crearChat(Usuario clienteActivo, Usuario vendedor) {
+        //creo un chat entre el cliente y el vendedor, devuelve la misma lista
+        //para que se guarde en la lista de chats de los usuarios, ambos puedan guardar sus mensajes
+        ArrayList<String> listaMensajes = clienteActivo.crearChat(vendedor);
+        //creo el chat del vendedor
+        vendedor.crearChat(clienteActivo);
+        //actualizo la lista de mensajes para que ambos puedan acceder a la misma instancia
+        vendedor.setListaMensajes(listaMensajes, clienteActivo);
+    }
+}
 

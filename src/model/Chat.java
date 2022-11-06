@@ -13,10 +13,22 @@ import java.util.ArrayList;
 @Getter
 public class Chat {
     private Usuario usuarioReceptor;
-    private ArrayList<String> mensajes;
+    private ArrayList<String> listaMensajes;
 
+    //---------------------------------------CONSTRUCTOR PARA EL CHAT---------------------------------------
     public Chat(Usuario usuarioReceptor) {
         this.usuarioReceptor = usuarioReceptor;
-        mensajes = new ArrayList<>();
+        listaMensajes = new ArrayList<>();
+    }
+    //---------------------------------------METODOS---------------------------------------
+    /**
+     * Metodo que devuelve el último mensaje del chat
+     * @return el último mensaje del chat
+     */
+    public String getUltimoMensaje() {
+        if(listaMensajes.size() > 0) {
+            return listaMensajes.get(listaMensajes.size() - 1);
+        }
+        return "";
     }
 }

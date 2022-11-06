@@ -52,7 +52,7 @@ public class Anuncio implements Serializable {
 		this.titulo = tituloAnuncio;
 		this.imageSrc = bytesImg;
 		this.valorInicial = valorInicialAnuncio;
-		this.valorActual = valorInicial; //Creo que aun no se ha hecho un método para actualizar el valor actual. TRABAJAR EN ELLO.
+		this.valorActual = valorInicial; //Creo que aún no se ha hecho un método para actualizar el valor actual. TRABAJAR EN ELLO.
 		this.fechaPublicacion = LocalDateTime.now();
 		this.fechaTerminacion = this.fechaPublicacion.plusMinutes(minutosDuracionAnuncio);
 		this.idListaPujas = ModelFactoryController.darIdListaPuja();
@@ -153,4 +153,13 @@ public class Anuncio implements Serializable {
 	public Integer getMinutosSubasta() {
 		return (int) ChronoUnit.MINUTES.between(fechaPublicacion, fechaTerminacion);
 	}
+
+	/**
+	 * Metodo que retorna el creador del anuncio
+	 * se usa para crear el chat
+	 * @return el usuario creador del anuncio
+	 */
+    public Usuario getVendedor() {
+		return usuario;
+    }
 }

@@ -17,3 +17,4 @@
 
 11/05/22
 -agregar byte[] como foto de perfil al uml en la clase usuario
+-agregar una lista mensajes a un usuario
