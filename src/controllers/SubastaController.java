@@ -39,6 +39,13 @@ import java.util.ArrayList;
 public class SubastaController implements IApplication, Inicializable {
 
 
+    /**
+     * Anuncio cargado al dar click en el panel de AnuncioItem.fxml
+     */
+    private Anuncio anuncioSeleccionado;
+    ///////////////////////
+
+
     //Variables globales
     private App application;
 
@@ -99,8 +106,19 @@ public class SubastaController implements IApplication, Inicializable {
     @FXML
     private TextField txtfBarraBusqueda;
 
+    @FXML
+    private TextField txtfValorAPujar;
+
     //Contiene los anuncios de la empresa en un momento dado
     private final ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
+
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+
+    public void setAnuncioSeleccionado(Anuncio anuncio) {
+        this.anuncioSeleccionado = anuncio;
+    }
 
     /**
      * Metodo que recorre la lista de anuncios y los carga al pane scroll
@@ -116,7 +134,7 @@ public class SubastaController implements IApplication, Inicializable {
         try {
             //recorro la lista de anuncios y los convierto en un item controller
             for (Anuncio anuncio : this.listaAnuncios) {
-                if (anuncio !=  null && LocalDateTime.now().isBefore(anuncio.getFechaTerminacion()) && (anuncio.getEstado() != Estado.ELIMINADO)) {
+                if (anuncio != null && LocalDateTime.now().isBefore(anuncio.getFechaTerminacion()) && (anuncio.getEstado() != Estado.ELIMINADO)) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
                     AnchorPane anchorPane = fxmlLoader.load();
@@ -150,25 +168,23 @@ public class SubastaController implements IApplication, Inicializable {
     /**
      * Este metodo permite que al hacer clic en algún anuncio
      * se actualice el pane de la barra lateral izquierda
-     *
-     * @param anuncio EL ANUNCIO QUE SE VA A ACTUALIZAR
      */
-    public void setProductSelected(Anuncio anuncio) {
+    public void setProductSelected() {
 
         this.paneInfoAnuncio.setVisible(true);
 
         //obtengo los atributos del anuncio por defecto
-        this.lblAdName.setText(anuncio.getTitulo());
-        this.lblAdPrice.setText("$" + anuncio.getValorInicial());
-        this.lblFechaAnunciado.setText(anuncio.getFechaPublicacion().toString());
-        this.lblFechaTerminacion.setText(anuncio.getFechaTerminacion().toString());
-        this.lblValorActualProducto.setText(anuncio.getValorActual().toString());
-        this.lblValorInicialProducto.setText(anuncio.getValorInicial().toString());
-        this.lblNombreAnunciante.setText(anuncio.getUsuario().getName());
-        this.lblTelAnunciante.setText(anuncio.getUsuario().getTelefono());
+        this.lblAdName.setText(anuncioSeleccionado.getTitulo());
+        this.lblAdPrice.setText("$" + anuncioSeleccionado.getValorInicial());
+        this.lblFechaAnunciado.setText(anuncioSeleccionado.getFechaPublicacion().toString());
+        this.lblFechaTerminacion.setText(anuncioSeleccionado.getFechaTerminacion().toString());
+        this.lblValorActualProducto.setText(anuncioSeleccionado.getValorActual().toString());
+        this.lblValorInicialProducto.setText(anuncioSeleccionado.getValorInicial().toString());
+        this.lblNombreAnunciante.setText(anuncioSeleccionado.getUsuario().getName());
+        this.lblTelAnunciante.setText(anuncioSeleccionado.getUsuario().getTelefono());
 
         //cargo la ruta de la imagen y la cargo en el anuncio
-        Image image = new Image(new ByteArrayInputStream(anuncio.getImageSrc()));
+        Image image = new Image(new ByteArrayInputStream(anuncioSeleccionado.getImageSrc()));
         this.adSelectedImage.setImage(image);
     }
 
@@ -238,16 +254,16 @@ public class SubastaController implements IApplication, Inicializable {
             paneVistaAdmin.setVisible(false);
         }
 
-        if(application.getClienteActivo() != null && application.getClienteActivo().isAdmin()){
+        if (application.getClienteActivo() != null && application.getClienteActivo().isAdmin()) {
             paneVistaAdmin.setVisible(true);
-        }else{
+        } else {
             paneVistaAdmin.setVisible(false);
             panePujas.setLayoutX(panePujas.getLayoutX() + 300);
         }
 
-        if(App.language == Language.SPANISH) {
+        if (App.language == Language.SPANISH) {
             comboLanguages.setPromptText("Seleccionar idioma");
-        }else{
+        } else {
             comboLanguages.setPromptText("Select language");
         }
     }
@@ -294,6 +310,7 @@ public class SubastaController implements IApplication, Inicializable {
             btnLogIn.setScaleY(1);
         }
     }
+
     /**
      * Metodo que carga la vista de login
      */
@@ -317,13 +334,46 @@ public class SubastaController implements IApplication, Inicializable {
      * Metodo que permite cambiar el idioma de la app
      */
     @FXML
-    void cambiarLenguaje(ActionEvent event){
-        App.language  = Utils.stringToLanguage(comboLanguages.getValue());
+    void cambiarLenguaje(ActionEvent event) {
+        App.language = Utils.stringToLanguage(comboLanguages.getValue());
         application.loadScene(Utils.frameInicio);
-
     }
 
 
+    @FXML
+    private void realizarOferta(ActionEvent event) {
+
+        Double valorPuja = 0.0D;
+
+        if (this.application.getClienteActivo() == null) {
+            application.abrirAlerta("Para hacer una puja primero debe iniciar sesión");
+            return;
+        }
+
+        try {
+            valorPuja = Double.parseDouble(txtfValorAPujar.getText());
+        } catch (NumberFormatException e) {
+            application.abrirAlerta("EL valor a pujar solo puede contener números");
+            return;
+        }
+
+        if (valorPuja < 0) {
+            application.abrirAlerta("No son permitidos los valores negativos");
+            return;
+        }
+
+        if (valorPuja <= this.anuncioSeleccionado.getValorActual()){
+            application.abrirAlerta("El valor de la puja debe ser mayor al valor actual. \nValor actual: " + this.anuncioSeleccionado.getValorActual());
+            return;
+        }
+
+        ModelFactoryController.hacerPuja(application.getClienteActivo(), this.anuncioSeleccionado, valorPuja);
+       // System.out.println("Puja realizada: \nCliente que pujó: "+ application.getClienteActivo().getName() + "\nValor de la Puja:"  + valorPuja);
+    }
+
+    ;
 
 
 }
+
+

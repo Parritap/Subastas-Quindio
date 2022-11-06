@@ -145,4 +145,8 @@ public class EmpresaSubasta implements Runnable, Serializable {
         iProducto.actualizar(producto);
         iAnuncio.actualizar(anuncio, producto);
     }
+
+    public void hacerPuja(Usuario usuario, Anuncio anuncio, Double valorPuja) {
+        iAnuncio.hacerPuja(usuario, anuncio, valorPuja);
+    }
 }

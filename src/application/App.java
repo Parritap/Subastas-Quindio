@@ -70,6 +70,8 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
 
         inicializarApp();
+
+
         //CARGO EL FRAME PRINCIPAL
         //cambié la obtención del bundle para no acoplarlo a este metodo
         //y generalizarlo para todos los frames
@@ -94,6 +96,7 @@ public class App extends Application {
                 Persistencia.serializarEmpresaBinario();
                 Persistencia.serializarEmpresaTXT();
                 if (stageAlerta != null ) stageAlerta.close();
+
             }
             catch (Exception e){
                 e.printStackTrace();

@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SubastaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SubastaController">
    <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../resources/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <left>
          <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../resources/style.css" BorderPane.alignment="CENTER">
@@ -231,7 +231,7 @@
                            <Insets left="10.0" />
                         </HBox.margin>
                      </Label>
-                     <TextField prefHeight="26.0" prefWidth="197.0" promptText="%valorAPujar" styleClass="pujaTextfield" stylesheets="@../resources/style.css">
+                     <TextField fx:id="txtfValorAPujar" prefHeight="26.0" prefWidth="197.0" promptText="%valorAPujar" styleClass="pujaTextfield" stylesheets="@../resources/style.css">
                         <HBox.margin>
                            <Insets right="20.0" />
                         </HBox.margin>
@@ -241,7 +241,7 @@
                      <Insets top="10.0" />
                   </VBox.margin>
                </HBox>
-               <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../resources/style.css" text="%realizarOferta" textFill="#828282">
+               <Button mnemonicParsing="false" onAction="#realizarOferta" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../resources/style.css" text="%realizarOferta" textFill="#828282">
                   <VBox.margin>
                      <Insets bottom="20.0" top="30.0" />
                   </VBox.margin>

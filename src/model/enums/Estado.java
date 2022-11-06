@@ -5,5 +5,5 @@ package model.enums;
  */
 public enum Estado {
     //POSIBLES ESTADOS
-    ELIMINADO, ACTUALIZADO, NUEVO
+    ELIMINADO, ACTUALIZADO, NUEVO, ACTIVO, DESACTIVADO
 }
