@@ -2,11 +2,8 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import java.io.Serializable;
-import lombok.Data;
 import lombok.ToString;
-
 import java.time.LocalDate;
 
 @Getter

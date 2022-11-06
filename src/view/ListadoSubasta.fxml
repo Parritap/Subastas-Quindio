@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="786.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListadoSubastasController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="786.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListadoSubastasController">
    <children>
       <Label layoutX="27.0" layoutY="83.0" text="%label.misSubastas">
          <font>
@@ -26,9 +26,9 @@
          </font>
       </Label>
       <Line endX="725.0" layoutX="111.0" layoutY="481.0" startX="-111.0" strokeWidth="2.0" />
-      <ScrollPane layoutX="58.0" layoutY="510.0" prefHeight="236.0" prefWidth="690.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="69.0" layoutY="521.0" prefHeight="225.0" prefWidth="690.0">
          <content>
-            <VBox prefHeight="233.0" prefWidth="687.0" />
+            <VBox prefHeight="219.0" prefWidth="687.0" />
          </content>
       </ScrollPane>
       <AnchorPane layoutX="-3.0" layoutY="-1.0" prefHeight="68.0" prefWidth="844.0" style="-fx-background-color: #252525; -fx-background-radius: 30;" />
@@ -43,5 +43,9 @@
       <Label layoutX="486.0" layoutY="134.0" text="%label.valorInicial" />
       <Label layoutX="577.0" layoutY="134.0" text="%label.pujaMasAlta" />
       <Label layoutX="674.0" layoutY="134.0" text="%label.totalPujas" />
+      <Label layoutX="97.0" layoutY="496.0" prefHeight="17.0" prefWidth="60.0" text="Usuario" />
+      <Label layoutX="250.0" layoutY="496.0" prefHeight="17.0" prefWidth="116.0" text="Fecha de la puja" />
+      <Label layoutX="443.0" layoutY="496.0" prefHeight="17.0" prefWidth="116.0" text="Valor ofrecido" />
+      <Label layoutX="596.0" layoutY="496.0" prefHeight="17.0" prefWidth="116.0" text="Fue aceptada" />
    </children>
 </AnchorPane>

@@ -176,8 +176,8 @@ public class SubastaController implements IApplication, Inicializable {
         //obtengo los atributos del anuncio por defecto
         this.lblAdName.setText(anuncioSeleccionado.getTitulo());
         this.lblAdPrice.setText("$" + anuncioSeleccionado.getValorInicial());
-        this.lblFechaAnunciado.setText(anuncioSeleccionado.getFechaPublicacion().toString());
-        this.lblFechaTerminacion.setText(anuncioSeleccionado.getFechaTerminacion().toString());
+        this.lblFechaAnunciado.setText(formatearFecha(anuncioSeleccionado.getFechaPublicacion().toString()));
+        this.lblFechaTerminacion.setText(formatearFecha(anuncioSeleccionado.getFechaTerminacion().toString()));
         this.lblValorActualProducto.setText(anuncioSeleccionado.getValorActual().toString());
         this.lblValorInicialProducto.setText(anuncioSeleccionado.getValorInicial().toString());
         this.lblNombreAnunciante.setText(anuncioSeleccionado.getUsuario().getName());
@@ -186,6 +186,20 @@ public class SubastaController implements IApplication, Inicializable {
         //cargo la ruta de la imagen y la cargo en el anuncio
         Image image = new Image(new ByteArrayInputStream(anuncioSeleccionado.getImageSrc()));
         this.adSelectedImage.setImage(image);
+    }
+
+    /**
+     * Este metodo permite que al hacer clic en algún anuncio
+     * se actualice el pane de la barra lateral izquierda
+     *con la hora del anuncio adecuado
+     * @param toString es la fecha del anuncio
+     * @return la fecha formateada
+     */
+    private String formatearFecha(String toString) {
+        //split en la fecha para obtener la hora
+        String[] fecha = toString.split("T");
+        //split en la hora para obtener la hora y los minutos
+        return fecha[1].split("\\.")[0];
     }
 
     /**
@@ -231,7 +245,9 @@ public class SubastaController implements IApplication, Inicializable {
         application.loadScene(Utils.frameCuenta);
     }
 
-
+    /**
+     * Metodo que refresca la lista de anuncios en el frame
+     */
     public void actualizarAnuncios() {
         cargarAnuncioAlScroll();
     }
@@ -339,40 +355,48 @@ public class SubastaController implements IApplication, Inicializable {
         application.loadScene(Utils.frameInicio);
     }
 
-
+    /**
+     * Metodo que permite realizar una puja
+     * al anuncio
+     * @param event generado al hacer clic en hacer puja
+     */
     @FXML
     private void realizarOferta(ActionEvent event) {
-
-        Double valorPuja = 0.0D;
-
+        //defino el valor de la puja
+        double valorPuja;
+        //verifico que exista un cliente activo en la app
         if (this.application.getClienteActivo() == null) {
+            application.loadScene(Utils.frameInicio);
             application.abrirAlerta("Para hacer una puja primero debe iniciar sesión");
             return;
         }
-
+        //verifico que el valor de la puja sea un numero
         try {
             valorPuja = Double.parseDouble(txtfValorAPujar.getText());
         } catch (NumberFormatException e) {
+            application.loadScene(Utils.frameInicio);
             application.abrirAlerta("EL valor a pujar solo puede contener números");
             return;
         }
-
+        //verifico que el valor de la puja sea mayor a 0
         if (valorPuja < 0) {
+            application.loadScene(Utils.frameInicio);
             application.abrirAlerta("No son permitidos los valores negativos");
             return;
         }
-
+        //verifico que el valor de la puja sea mayor al valor actual de la puja
         if (valorPuja <= this.anuncioSeleccionado.getValorActual()){
+            application.loadScene(Utils.frameInicio);
             application.abrirAlerta("El valor de la puja debe ser mayor al valor actual. \nValor actual: " + this.anuncioSeleccionado.getValorActual());
             return;
         }
-
+        //si no se cumple ninguna de las condiciones anteriores
+        //se procede a realizar la puja
         ModelFactoryController.hacerPuja(application.getClienteActivo(), this.anuncioSeleccionado, valorPuja);
-       // System.out.println("Puja realizada: \nCliente que pujó: "+ application.getClienteActivo().getName() + "\nValor de la Puja:"  + valorPuja);
+        //refresco la lista de anuncios
+        application.loadScene(Utils.frameInicio);
+        application.abrirAlerta("Puja realizada con éxito");
     }
-
-    ;
-
 
 }
 
