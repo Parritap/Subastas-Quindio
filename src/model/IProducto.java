@@ -92,7 +92,7 @@ public class IProducto implements CRUD<Producto>, Serializable {
      */
     @Override
     public String toString() {
-        return "ProductoDAO{" +
+        return "Producto{" +
                 "listaProductos=" + listaProductos.toString() +
                 '}';
     }
