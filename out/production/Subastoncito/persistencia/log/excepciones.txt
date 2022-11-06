@@ -398,3 +398,5 @@ Nov 05, 2022 9:25:17 AM persistencia.logic.ArchivoUtil guardarRegistroLog
 WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-05
 Nov 05, 2022 9:25:43 AM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre asf y correo alejo ha iniciado sesión.,11-05
+Nov 05, 2022 9:37:27 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre asf y correo alejo ha iniciado sesión.,11-05
