@@ -25,6 +25,7 @@ import model.*;
 import model.enums.Language;
 import persistencia.logic.ArchivoUtil;
 import persistencia.logic.Persistencia;
+import services.Server;
 import utilities.Utils;
 import java.awt.*;
 import java.io.IOException;
@@ -52,6 +53,9 @@ public class App extends Application {
 
     private boolean isServerEnabled;
 
+    //Variable que va a contener el servidor
+    private Server server;
+
     //El lenguaje estará en español por defecto.
     //Variable es static para no tener que crear varios métodos que extraigan la misma de su instancia de App.
     public static Language language = Language.ENGLISH;
@@ -71,10 +75,7 @@ public class App extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-
         inicializarApp();
-
-
         //CARGO EL FRAME PRINCIPAL
         //cambié la obtención del bundle para no acoplarlo a este metodo
         //y generalizarlo para todos los frames
@@ -115,6 +116,15 @@ public class App extends Application {
      * APPLICATION NECESITE
      */
     private void inicializarApp(){
+        //Inicializo el servidor
+        try {
+            server = Server.getInstance(Utils.getIp());
+        } catch (IOException e) {
+            System.out.println("Error iniciando el servidor" );
+            e.printStackTrace();
+        }
+        Thread thread = new Thread(server);
+        thread.start();
         empresaSubasta = ModelFactoryController.getInstance();
     }
 
@@ -252,6 +262,8 @@ public class App extends Application {
         clienteActivo = usuario;
         ArchivoUtil.guardarRegistroLog("El usuario de nombre " + clienteActivo.getName()+ " y correo "+ usuario.getCorreo() + " ha iniciado sesión.",
                 1, "Inicio de sesión",Utils.RUTA_LOG_TXT);
+        //Actualizo la ip del usuario
+        clienteActivo.updateIP(Utils.getIp());
         loadScene(Utils.frameInicio);
     }
 
@@ -428,21 +440,10 @@ public class App extends Application {
     }
 
     public AnchorPane cargarChat(Chat chat) {
+        return null;
+    }
 
-        if(!isServerEnabled){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Utils.CHAT_SERVER));
-            try {
-                AnchorPane container = loader.load();
-                ServerController controller = loader.getController();
-                controller.setApplication(this);
-                controller.setChat(chat);
-                controller.inicializarComponentes();
-                return container;
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }else{
-            return null;
-        }
+    public void enviarMensaje(String text) {
+        clienteActivo.enviarMensaje(text);
     }
 }

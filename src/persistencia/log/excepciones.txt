@@ -682,3 +682,91 @@ Nov 06, 2022 6:18:21 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-06
 Nov 06, 2022 6:18:49 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-06
+Nov 06, 2022 8:36:30 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:c,11-06
+Nov 06, 2022 8:37:17 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-06
+Nov 06, 2022 8:37:17 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-06
+Nov 06, 2022 8:37:24 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-06
+Nov 06, 2022 8:37:24 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-06
+Nov 06, 2022 8:37:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-06
+Nov 06, 2022 8:37:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-06
+Nov 06, 2022 8:37:33 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre c y correo c ha iniciado sesión.,11-06
+Nov 07, 2022 8:56:37 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario c no encontrado,11-07
+Nov 07, 2022 8:56:37 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario c no encontrado,11-07
+Nov 07, 2022 8:56:58 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario c no encontrado,11-07
+Nov 07, 2022 8:56:58 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario c no encontrado,11-07
+Nov 07, 2022 9:58:26 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario c no encontrado,11-07
+Nov 07, 2022 9:58:27 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario c no encontrado,11-07
+Nov 07, 2022 9:58:45 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:c,11-07
+Nov 07, 2022 9:59:13 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 2:b,11-07
+Nov 07, 2022 9:59:31 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:f,11-07
+Nov 07, 2022 9:59:31 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:f,11-07
+Nov 07, 2022 9:59:48 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre c y correo c ha iniciado sesión.,11-07
+Nov 07, 2022 10:02:11 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario c no encontrado,11-07
+Nov 07, 2022 10:02:11 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario c no encontrado,11-07
+Nov 07, 2022 10:02:15 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-07
+Nov 07, 2022 10:02:15 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-07
+Nov 07, 2022 10:02:20 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-07
+Nov 07, 2022 10:02:20 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-07
+Nov 07, 2022 10:02:57 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-07
+Nov 07, 2022 10:02:57 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-07
+Nov 07, 2022 10:03:16 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:c,11-07
+Nov 07, 2022 10:03:37 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:sdf,11-07
+Nov 07, 2022 10:03:37 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:df,11-07
+Nov 07, 2022 10:04:07 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-07
+Nov 07, 2022 10:04:07 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-07
+Nov 07, 2022 10:04:11 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre c y correo c ha iniciado sesión.,11-07
+Nov 07, 2022 10:04:33 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 2:b,11-07
+Nov 07, 2022 10:06:41 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-07
+Nov 07, 2022 10:06:41 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-07
+Nov 07, 2022 10:06:46 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario d no encontrado,11-07
+Nov 07, 2022 10:06:46 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario d no encontrado,11-07
+Nov 07, 2022 10:06:51 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario c no encontrado,11-07
+Nov 07, 2022 10:06:51 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario c no encontrado,11-07
+Nov 07, 2022 10:08:06 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:a,11-07
+Nov 07, 2022 10:08:29 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:df,11-07
+Nov 07, 2022 10:08:29 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:vd,11-07
+Nov 07, 2022 10:08:54 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 2:b,11-07

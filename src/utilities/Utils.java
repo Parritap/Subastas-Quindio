@@ -1,14 +1,15 @@
 package utilities;
 
 import application.App;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.enums.Language;
-
+import persistencia.logic.ArchivoUtil;
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -59,7 +60,7 @@ public class Utils {
     public static final ZoneOffset ZONE_OFFSET = OffsetDateTime.now().getOffset();
     //Ruta de la carpeta de la empresa
     public static final String RUTA_EMPRESA_SER = "src/persistencia/archivos/empresa.ser";
-    //Url del nuevo pane de crearCuenta//-------------------------------RUTAS DE LA SERIALIZACIÓN------------------------------------------
+    //Url del nuevo pane de crearCuenta
     public static final String crearCuenta = "../view/CrearCuenta.fxml";
     //Ruta del archivo donde se guardan los registros log
     public static final String RUTA_LOG_TXT = "src/persistencia/log/excepciones.txt";
@@ -73,11 +74,27 @@ public class Utils {
     public static final String RUTA_TRANSACCIONES_TXT = "src/persistencia/archivos/Transaccion.txt";
     //Ruta de los items de los chats
     public static final String CHAT_ITEM = "../view/ChatItem.fxml";
+    //Ruta del logo de subastas quindio
     public static String LOGO_EMPRESA = "/resources/iconSubastaQuindio.png";
+    //Ruta de las direcciones ip de los equipos
+    public static final String RUTA_IP_TXT = "src/persistencia/archivos/IpConnected.txt";
 
-    public static final String CHAT_CLIENTE = "../view/client-chat-view.fxml";
-    public static final String CHAT_SERVER = "../view/server-chat-view.fxml";
-
+    //------------------------------------------METODOS UTILS------------------------------------------
+    /**
+     * Metodo que permite obtener la ip del equipo
+     * donde se está ejecutando la aplicación
+     * @return ip del equipo
+     */
+    public static String getIp() {
+        String ip = "";
+        try {
+            ip = InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        ArchivoUtil.serializarTxt(RUTA_IP_TXT, ip);
+        return ip;
+    }
     /**
      * Metodo que permite abrir el FileChooser
      * y elegir una imagen que será cargada y guardada en el modelo

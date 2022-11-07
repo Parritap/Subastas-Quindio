@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -118,8 +119,10 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="803.0" layoutX="17.0" stroke="BLACK" strokeType="INSIDE" width="848.0" />
-                        <AnchorPane fx:id="paneChat" layoutX="30.0" layoutY="69.0" prefHeight="711.0" prefWidth="813.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="647.0" layoutX="17.0" stroke="BLACK" strokeType="INSIDE" width="848.0" />
+                        <AnchorPane fx:id="paneChat" layoutX="30.0" layoutY="69.0" prefHeight="577.0" prefWidth="813.0" />
+                        <TextField fx:id="txtMensaje" layoutX="125.0" layoutY="673.0" prefHeight="31.0" prefWidth="306.0" style="-fx-background-color: GRAY;" />
+                        <Button layoutX="540.0" layoutY="676.0" mnemonicParsing="false" onAction="#enviarMensaje" text="Enviar" />
                      </children>
                   </AnchorPane>
                   <Label layoutX="36.0" layoutY="-4.0" prefHeight="62.0" prefWidth="878.0" style="-fx-alignment: CENTER; -fx-background-color: White;" text="Habla con el anunciante">

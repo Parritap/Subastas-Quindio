@@ -54,7 +54,7 @@ public class ItemChatController implements IApplication, Inicializable {
     @FXML
     void cargarChat(MouseEvent event) {
 
-        chatController.cargarChat(chat);
+        //chatController.cargarChat(chat);
     }
 
 

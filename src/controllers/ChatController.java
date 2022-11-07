@@ -5,13 +5,11 @@ import interfaces.IApplication;
 import interfaces.Inicializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import model.Anuncio;
 import model.Chat;
 import model.Usuario;
-import model.enums.Estado;
-import services.Service;
 import utilities.Utils;
 
 import java.util.ArrayList;
@@ -19,6 +17,9 @@ import java.util.ArrayList;
 public class ChatController implements IApplication, Inicializable {
 
     private App application;
+
+    @FXML
+    private TextField txtMensaje;
     @FXML
     private AnchorPane paneChat;
 
@@ -63,6 +64,13 @@ public class ChatController implements IApplication, Inicializable {
     void cargarInicio(ActionEvent event) {
         application.loadScene(Utils.frameInicio);
     }
+
+    @FXML
+    void enviarMensaje(ActionEvent event) {
+        application.enviarMensaje(txtMensaje.getText());
+    }
+
+
 
     public void cargarChat(Chat chat) {
         paneChat = application.cargarChat(chat);
