@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
@@ -193,11 +194,17 @@ public class ModelFactoryController {
         }
 
 
-        Puja  p11 = new Puja(LocalDate.now(), u1, 200D);
-        Puja  p12 = new Puja(LocalDate.now(), u1, 300D);
+        Puja  p11 = new Puja(LocalDateTime.now(), u1, 200D, a1);
+        Puja  p12 = new Puja(LocalDateTime.now(), u1, 300D, a1);
 
-        Puja  p21 = new Puja(LocalDate.now(), u2, 200D);
-        Puja  p22 = new Puja(LocalDate.now(), u2, 300D);
+        Puja  p21 = new Puja(LocalDateTime.now(), u2, 200D, a2);
+        Puja  p22 = new Puja(LocalDateTime.now(), u2, 300D, a2);
+
+        u1.getListaPujas().add(p11);
+        u1.getListaPujas().add(p12);
+
+        u2.getListaPujas().add(p21);
+        u2.getListaPujas().add(p22);
 
         a1.getListaPujas().add(p11);
         a1.getListaPujas().add(p12);
@@ -205,4 +212,14 @@ public class ModelFactoryController {
         a2.getListaPujas().add(p21);
         a2.getListaPujas().add(p22);
     }
+
+    /**
+     * Retorna una lista de pujas de un usuario pasado como parámetro.
+     * @param clienteActivo cliente que se supone es el activo.
+     * @return Lista pujas
+     */
+    public static ArrayList<Puja> getListaPujas(Usuario clienteActivo) {
+        return getInstance().getIUsuario().getListaPujas(clienteActivo);
+    }
+
 }

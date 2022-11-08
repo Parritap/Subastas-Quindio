@@ -50,6 +50,7 @@ public class SubastaItemController implements IApplication, Inicializable {
 
 
 
+
     @Override
     public App getApplication() {
         return application;

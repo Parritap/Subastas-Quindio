@@ -6,6 +6,7 @@ import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import interfaces.CRUD;
 import lombok.Data;
+import model.enums.Estado;
 import model.enums.TipoOrden;
 
 /**
@@ -197,5 +198,15 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
             stringUsuarios.append("\n");
         }
         return stringUsuarios.toString();
+    }
+
+    /**
+     * Retorna una lista de pujas se
+     * @param clienteActivo|
+     * @return
+     */
+    public ArrayList<Puja> getListaPujas(Usuario clienteActivo) {
+        ArrayList<Puja> lista = new ArrayList<>(clienteActivo.getListaPujas());
+        return lista;
     }
 }

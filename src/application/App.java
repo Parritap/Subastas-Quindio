@@ -190,6 +190,25 @@ public class App extends Application {
     }
 
 
+    public AnchorPane obtenerPanePuja (String ruta, Puja puja, ListadoSubastasController listadoSubastasController){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
+        try {
+            //Me pregunto por qué tengo que castear tantas veces un objeto si su forma natural ya implemente los métodos buscados...
+            AnchorPane root = loader.load();
+            IApplication controller = loader.getController();
+            controller.setApplication(this);
+            SubastaPujaController controllerAnuncio = (SubastaPujaController) controller;
+            controllerAnuncio.setListadoSubastasController(listadoSubastasController);
+            SubastaPujaController controller1 = (SubastaPujaController) controller;
+            controller1.setPuja(puja);
+            ((Inicializable) controller).inicializarComponentes();
+            return root;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     /**
      * Metodo que abre un stage con un mensaje
      * @param mensaje el mensaje que se quiere mostrar

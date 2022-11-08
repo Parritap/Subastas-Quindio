@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import exceptions.CRUDExceptions;
@@ -236,7 +237,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
      */
     public void hacerPuja(Usuario usuario, Anuncio anuncio, Double valorPuja) {
 
-        Puja puja = new Puja(LocalDate.now(), usuario,  valorPuja);
+        Puja puja = new Puja(LocalDateTime.now(), usuario,  valorPuja, anuncio);
         anuncio.getListaPujas().add(puja);
         anuncio.setValorActual(valorPuja);
         usuario.getListaPujas().add(puja);

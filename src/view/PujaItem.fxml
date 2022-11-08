@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.PujaItem"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane onMouseClicked="#setPujaClicked" prefHeight="0.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SubastaPujaController">
+   <children>
+      <HBox onMouseClicked="#MostrarOpciones" prefHeight="77.0" prefWidth="672.0" style="-fx-background-color: #252525; -fx-background-radius: 20;" styleClass="border-image" stylesheets="@../resources/style.css">
+         <children>
+            <Label fx:id="lblNombreAnuncio" prefHeight="57.0" prefWidth="210.0" text="nombreAnuncio" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="lblFechaPuja" layoutX="20.0" layoutY="20.0" prefHeight="57.0" prefWidth="149.0" text="fechaPuja" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="lblValorOfrecido" layoutX="123.0" layoutY="20.0" prefHeight="57.0" prefWidth="99.0" text="valorOfrecido" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="lblFueAceptada" layoutX="329.0" layoutY="20.0" prefHeight="57.0" prefWidth="84.0" text="fueAceptada" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <Line endX="451.77996826171875" endY="-8.272964477539062" layoutX="212.0" layoutY="99.0" startX="-212.0" startY="-8.272972106933594" stroke="#f2f2f2" />
+   </children>
 </AnchorPane>
