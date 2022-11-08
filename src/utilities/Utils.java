@@ -6,6 +6,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.enums.Language;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -155,6 +158,14 @@ public class Utils {
 
     public static Language stringToLanguage(String str) {
         return (str.equals("English") ? Language.ENGLISH : Language.SPANISH);
+    }
+
+    public static byte[] convertirImgAByteArray (String ruta) throws IOException {
+
+        BufferedImage bImage = ImageIO.read(new File(ruta));
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ImageIO.write(bImage, "jog", bos );
+        return bos.toByteArray();
     }
 
 

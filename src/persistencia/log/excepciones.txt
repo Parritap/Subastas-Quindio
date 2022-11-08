@@ -596,3 +596,23 @@ Nov 07, 2022 6:35:53 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de anuncio,se creo el anuncio 1:2,11-07
 Nov 07, 2022 6:35:53 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de producto,se creo el producto 1:2,11-07
+Nov 07, 2022 7:24:38 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario parra no encontrado,11-07
+Nov 07, 2022 7:24:38 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario parra no encontrado,11-07
+Nov 07, 2022 7:27:50 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Parra y correo parra ha iniciado sesión.,11-07
+Nov 07, 2022 7:28:04 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-07
+Nov 07, 2022 7:58:57 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Parra y correo parra ha iniciado sesión.,11-07
+Nov 07, 2022 7:59:11 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 3:1,11-07
+Nov 07, 2022 7:59:11 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:1,11-07
+Nov 07, 2022 8:01:15 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Parra y correo parra ha iniciado sesión.,11-07
+Nov 07, 2022 8:01:26 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-07
+Nov 08, 2022 11:44:03 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-08

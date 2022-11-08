@@ -70,6 +70,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
 
         inicializarApp();
+        ModelFactoryController.addDatosPrueba(); //Añade datos de prueba para no tener que perder tiempo creandolos una y otra vez. Solución temporal mientras se arregla la persistencia.
 
 
         //CARGO EL FRAME PRINCIPAL

@@ -5,8 +5,13 @@ import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import lombok.Getter;
 import lombok.Setter;
+import utilities.Utils;
+
+import java.io.IOException;
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
@@ -93,7 +98,6 @@ public class EmpresaSubasta implements Runnable, Serializable {
         iAnuncio.actualizarAnuncios(empresaSubastaAux.getIAnuncio());
         iProducto.actualizarProductos(empresaSubastaAux.getIProducto());
         iTransaccion.actualizarTransaccion(empresaSubastaAux.getITransaccion());
-
     }
 
     /**
