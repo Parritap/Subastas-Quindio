@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import java.io.Serializable;
 import lombok.ToString;
+import model.enums.Estado;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -19,6 +21,8 @@ public class Puja implements Serializable {
 	private Anuncio anuncio;
 
 	private boolean fueAceptada;
+
+	private Estado estado;
 
 
 	/**
@@ -37,14 +41,18 @@ public class Puja implements Serializable {
 		this.valorOfrecido = valorOfrecido;
 		this.idUsuario = usuario.getId();
 		this.anuncio = anuncio;
+		this.estado = Estado.ACTIVO;
 	}
 
 	public Puja(){
-		this.fechaDePuja = LocalDateTime.now();	}
+		this.fechaDePuja = LocalDateTime.now();
+		this.estado = Estado.ACTIVO;
+	}
 
 	public Puja(Integer idUsuario, Double valorOfrecido){
 		this.fechaDePuja = LocalDateTime.now();
 		this.idUsuario = idUsuario;
 		this.valorOfrecido = valorOfrecido;
+		this.estado = Estado.ACTIVO;
 	}
 }

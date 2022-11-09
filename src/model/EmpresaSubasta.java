@@ -5,6 +5,7 @@ import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import lombok.Getter;
 import lombok.Setter;
+import model.enums.Estado;
 import utilities.Utils;
 
 import java.io.IOException;
@@ -152,5 +153,9 @@ public class EmpresaSubasta implements Runnable, Serializable {
 
     public void hacerPuja(Usuario usuario, Anuncio anuncio, Double valorPuja) {
         iAnuncio.hacerPuja(usuario, anuncio, valorPuja);
+    }
+
+    public void eliminarPuja(Puja puja) {
+        puja.setEstado(Estado.ELIMINADO);
     }
 }

@@ -253,5 +253,5 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
         }
         return lista;
         }
-    }
+}
 

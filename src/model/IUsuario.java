@@ -27,6 +27,10 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
         listaUsuarios = new ArrayList<>();
     }
 
+    public  void eliminarpuja(Puja puja) {
+
+    }
+
 
     /**
      * Metodo que actualiza todos los usuarios, sirve para cuando se deserializar

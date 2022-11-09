@@ -3,11 +3,14 @@ package controllers;
 import application.App;
 import interfaces.IApplication;
 import interfaces.Inicializable;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import lombok.Getter;
 import lombok.Setter;
+import model.ModelFactoryController;
 import model.Puja;
 
 import java.time.format.DateTimeFormatter;
@@ -40,7 +43,6 @@ public class SubastaPujaController implements IApplication, Inicializable {
     private Label lblValorOfrecido;
 
 
-
     @Override
     public App getApplication() {
         return application;
@@ -52,7 +54,7 @@ public class SubastaPujaController implements IApplication, Inicializable {
     }
 
 
-    public void setData(Puja puja){
+    public void setData(Puja puja) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         this.lblNombreAnuncio.setText(puja.getAnuncio().getTitulo());
         this.lblFechaPuja.setText(puja.getFechaDePuja().format(formatter));
@@ -70,19 +72,30 @@ public class SubastaPujaController implements IApplication, Inicializable {
     }
 
 
-
     @FXML
-    private void setPujaClicked (MouseEvent event){
+    private void setPujaClicked(MouseEvent event) {
 //Do nothing
     }
 
     @FXML
-    private void MostrarOpciones (MouseEvent event){
+    private void MostrarOpciones(MouseEvent event) {
         //verifico si el evento fue generado por el boton derecho del mouse
-        if(event.getButton().toString().equals("SECONDARY")){
+        if (event.getButton().toString().equals("SECONDARY")) {
             //muestro el menu contextual
             application.mostrarMenuContextual(listadoSubastasController);
         }
     }
+
+    /**
+     * Método usado en el menú contextual (click derecho) el cual será usado para setear el estado de la
+     * puja clickeada a Estado.ELIMINADO:
+     * @param event
+     */
+    @FXML
+    void eliminarPuja(ActionEvent event) {
+        ModelFactoryController.eliminarPuja(puja);
+        listadoSubastasController.inicializarComponentes();
+    }
+
 
 }

@@ -61,13 +61,14 @@ public class ListadoSubastasController implements IApplication, Inicializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        VBoxMisPujas.getChildren().clear();
         //Lógica para listar las pujas del usuario activo.VBoxMisPujas.getChildren().clear();ArrayList<Puja> listadoPujas;
         try {
             listadoPujas = ModelFactoryController.getListaPujas(application.getClienteActivo());
             if (listadoPujas != null) {
                 for (Puja puja : listadoPujas) {
                     Estado e = puja.getAnuncio().getEstado();
-                    if (e != Estado.DESACTIVADO && e != Estado.ELIMINADO) {
+                    if (e != Estado.DESACTIVADO && e != Estado.ELIMINADO && puja.getEstado()== Estado.ACTIVO) {
                         AnchorPane pane = application.obtenerPanePuja(Utils.PUJA_ITEM, puja, this);
                         //Añado el pane al VBox
                         VBoxMisPujas.getChildren().add(pane);

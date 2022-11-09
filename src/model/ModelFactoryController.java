@@ -222,4 +222,7 @@ public class ModelFactoryController {
         return getInstance().getIUsuario().getListaPujas(clienteActivo);
     }
 
+    public static void eliminarPuja(Puja puja) {
+        empresaSubasta.eliminarPuja(puja);
+    }
 }
