@@ -17,3 +17,8 @@
 
 11/05/22
 -agregar byte[] como foto de perfil al uml en la clase usuario
+
+09/Nov/2022
+Aplicar serialización XML -> Averiguar cómo serializar el objeto LocalDate y LocalDateTime.
+Crear nuevas rutas dentro del equipo de los usuarios donde guardar la persistencia.
+Manejar la persistencia por medio de hilos (podriamos crear un hilo por cada IObjeto y que se serialicen en paralelo)
