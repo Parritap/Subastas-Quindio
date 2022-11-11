@@ -10,10 +10,11 @@
 - Permitir actualizar un anuncio [chulo]
 - Crear funcionalidad -> Chat [en proceso]
 - No mostrar los anuncios propios de un usuario [chulo]
-- Cuando se haga un puja, generar los registros de las pujas en la GUI.
-- Enlazar la aplicacion con un servidor externo.
+- Cuando se haga un puja, generar los registros de las pujas en la GUI. [chulo]
+- Enlazar la aplicacion con un servidor externo. []
 - Hacer el modelo de clases para el chat.
 - Revisar por qué el sonido solo funciona para MAC.
 
 11/05/22
 -agregar byte[] como foto de perfil al uml en la clase usuario
+-agregar el atributo Anuncio perteneciente a Puja en el UML.
