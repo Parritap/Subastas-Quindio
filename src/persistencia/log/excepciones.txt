@@ -694,3 +694,5 @@ Nov 08, 2022 9:09:27 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-08
 Nov 08, 2022 9:09:42 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-08
+Nov 09, 2022 11:46:52 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Parra y correo parra ha iniciado sesión.,11-09

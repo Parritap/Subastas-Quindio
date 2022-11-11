@@ -10,11 +10,15 @@
 - Permitir actualizar un anuncio [chulo]
 - Crear funcionalidad -> Chat [en proceso]
 - No mostrar los anuncios propios de un usuario [chulo]
-- Cuando se haga un puja, generar los registros de las pujas en la GUI. [chulo]
-- Enlazar la aplicacion con un servidor externo. []
+- Cuando se haga un puja, generar los registros de las pujas en la GUI.
+- Enlazar la aplicacion con un servidor externo.
 - Hacer el modelo de clases para el chat.
 - Revisar por qué el sonido solo funciona para MAC.
 
 11/05/22
 -agregar byte[] como foto de perfil al uml en la clase usuario
--agregar el atributo Anuncio perteneciente a Puja en el UML.
+
+09/Nov/2022
+Aplicar serialización XML -> Averiguar cómo serializar el objeto LocalDate y LocalDateTime.
+Crear nuevas rutas dentro del equipo de los usuarios donde guardar la persistencia.
+Manejar la persistencia por medio de hilos (podriamos crear un hilo por cada IObjeto y que se serialicen en paralelo)
