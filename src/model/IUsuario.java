@@ -198,4 +198,17 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
         }
         return stringUsuarios.toString();
     }
+
+    /**
+     * Metodo que permite crear un chat entre dos usuarios
+     * @param emisor usuario que realiza la puja
+     * @param vendedor dueño del anuncio
+     */
+    public void crearChat(Usuario emisor, Usuario vendedor) {
+        //creo el chat del vendedor
+        vendedor.crearChat(emisor, vendedor);
+        //creo el chat del cliente
+        emisor.crearChat(vendedor, emisor);
+
+    }
 }

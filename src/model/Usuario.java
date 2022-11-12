@@ -5,19 +5,14 @@ import lombok.Setter;
 import lombok.ToString;
 import model.enums.Estado;
 import model.enums.Rol;
-import utilities.Utils;
-
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.io.Serializable;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Objects;
 
 @Setter
 @Getter
 @ToString
-public class Usuario implements Serializable, Runnable {
+public class Usuario implements Serializable{
 	//VARIABLES GLOBALES
 	private String name;
 	private Integer age;
@@ -48,12 +43,6 @@ public class Usuario implements Serializable, Runnable {
 	//lista de chats, aquí se contienen los mensajes que se han enviado a este usuario,
 	//los usuarios que han enviado mensajes y los mensajes que ha enviado este usuario
 	private ArrayList<Chat> listaChats;
-	//La ip donde se encuentra el usuario
-	private String ip;
-	//El socket del usuario
-	private Socket socket;
-
-
 
 	//---------------------------------------CONSTRUCTOR PARA EL USUARIO---------------------------------------
 
@@ -74,24 +63,11 @@ public class Usuario implements Serializable, Runnable {
 		this.listaAnuncios = new ArrayList<>();
 		this.rol = Rol.CLIENTE;
 		this.listaChats = new ArrayList<>();
-		this.ip = Utils.getIp();
 	}
 
 	public Usuario(){}
 
 	//---------------------------------------METODOS---------------------------------------
-
-	/**
-	 * Metodo que me crea el socket del usuario
-	 */
-	public void crearSocket(){
-		try {
-			this.socket = new Socket(ip, 5000);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	/**
 	 * Metodo que permite comparar dos id, el del usuario actual y el
 	 * pasado por parametro
@@ -183,57 +159,10 @@ public class Usuario implements Serializable, Runnable {
 				rol;
 	}
 
-	public ArrayList<String> crearChat(Usuario vendedor) {
-		//creo un chat con el vendedor
-		Chat chat = new Chat(vendedor);
-		//agrego el chat a la lista de chats del usuario
+	public void crearChat(Usuario emisor, Usuario receptor) {
+		Chat chat = new Chat(emisor, receptor);
 		this.listaChats.add(chat);
-		return chat.getListaMensajes();
 	}
 
-	/**
-	 * Metodo que permite establecer la misma lista de mensajes que tiene el chat
-	 * para ambos usuarios
-	 * @param listaMensajes lista de mensajes que se va a establecer
-	 * @param clienteActivo el usuario que está activo
-	 */
-	public void setListaMensajes(ArrayList<String> listaMensajes, Usuario clienteActivo) {
-		for (Chat chat : this.listaChats) {
-			if (chat.getUsuarioReceptor().equals(clienteActivo)) {
-				chat.setListaMensajes(listaMensajes);
-				break;
-			}
-		}
-	}
 
-	/**
-	 * Metodo que permite conectarse a un servidor
-	 *
-	 */
-	@Override
-	public void run() {
-
-	}
-
-	/**
-	 * Metodo que permite actualizar la ip del usuario,
-	 * de manera que se pueda conectar a un servidor
-	 * @param ip la ip del usuario que se conecta
-	 */
-	public void updateIP(String ip) {
-		this.ip = ip;
-	}
-
-	public void enviarMensaje(String text) {
-		try {
-			socket = new Socket(ip, 5000);
-			DataOutputStream flujo_salida=new DataOutputStream(socket.getOutputStream ());
-			flujo_salida.writeUTF(text);
-			flujo_salida.close();
-			System.out.println("imprimiendo desde el cliente " + text);
-			System.out.println(socket.getPort());
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
 }

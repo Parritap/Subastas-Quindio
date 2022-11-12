@@ -254,19 +254,6 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
         return lista;
     }
 
-    /**
-     * Metodo que permite crear un chat entre dos usuarios
-     * @param clienteActivo usuario que realiza la puja
-     * @param vendedor dueño del anuncio
-     */
-    public void crearChat(Usuario clienteActivo, Usuario vendedor) {
-        //creo un chat entre el cliente y el vendedor, devuelve la misma lista
-        //para que se guarde en la lista de chats de los usuarios, ambos puedan guardar sus mensajes
-        ArrayList<String> listaMensajes = clienteActivo.crearChat(vendedor);
-        //creo el chat del vendedor
-        vendedor.crearChat(clienteActivo);
-        //actualizo la lista de mensajes para que ambos puedan acceder a la misma instancia
-        vendedor.setListaMensajes(listaMensajes, clienteActivo);
-    }
+
 }
 

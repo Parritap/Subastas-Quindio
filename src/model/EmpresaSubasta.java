@@ -171,6 +171,6 @@ public class EmpresaSubasta implements Runnable, Serializable {
      * @param vendedor cliente que publicó la puja
      */
     public void crearChat(Usuario clienteActivo, Usuario vendedor) {
-        iAnuncio.crearChat(clienteActivo, vendedor);
+        iUsuario.crearChat(clienteActivo, vendedor);
     }
 }

@@ -14,12 +14,20 @@ import java.util.ArrayList;
 @Getter
 public class Chat implements Serializable {
     private Usuario usuarioReceptor;
-    private ArrayList<String> listaMensajes;
+    private Usuario usuarioEmisor;
+    private ArrayList<Mensaje> listaMensajes;
 
     //---------------------------------------CONSTRUCTOR PARA EL CHAT---------------------------------------
     public Chat() {
         this.listaMensajes = new ArrayList<>();
     }
+
+    public Chat(Usuario usuarioReceptor, Usuario usuarioEmisor) {
+        this.usuarioReceptor = usuarioReceptor;
+        this.usuarioEmisor = usuarioEmisor;
+        this.listaMensajes = new ArrayList<>();
+    }
+
     public Chat(Usuario usuarioReceptor) {
         this.usuarioReceptor = usuarioReceptor;
         listaMensajes = new ArrayList<>();
@@ -30,9 +38,9 @@ public class Chat implements Serializable {
      * @return el último mensaje del chat
      */
     public String getUltimoMensaje() {
-        if(listaMensajes.size() > 0) {
+       /* if(listaMensajes.size() > 0) {
             return listaMensajes.get(listaMensajes.size() - 1);
-        }
+        }*/
         return "";
     }
 }

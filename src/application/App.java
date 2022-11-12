@@ -25,7 +25,6 @@ import model.*;
 import model.enums.Language;
 import persistencia.logic.ArchivoUtil;
 import persistencia.logic.Persistencia;
-import services.Server;
 import utilities.Utils;
 import java.awt.*;
 import java.io.IOException;
@@ -50,11 +49,6 @@ public class App extends Application {
     private CuentaController cuentaController;
 
     private Anuncio anuncioClicked;
-
-    private boolean isServerEnabled;
-
-    //Variable que va a contener el servidor
-    private Server server;
 
     //El lenguaje estará en español por defecto.
     //Variable es static para no tener que crear varios métodos que extraigan la misma de su instancia de App.
@@ -116,15 +110,6 @@ public class App extends Application {
      * APPLICATION NECESITE
      */
     private void inicializarApp(){
-        //Inicializo el servidor
-        try {
-            server = Server.getInstance(Utils.getIp());
-        } catch (IOException e) {
-            System.out.println("Error iniciando el servidor" );
-            e.printStackTrace();
-        }
-        Thread thread = new Thread(server);
-        thread.start();
         empresaSubasta = ModelFactoryController.getInstance();
     }
 
@@ -263,7 +248,6 @@ public class App extends Application {
         ArchivoUtil.guardarRegistroLog("El usuario de nombre " + clienteActivo.getName()+ " y correo "+ usuario.getCorreo() + " ha iniciado sesión.",
                 1, "Inicio de sesión",Utils.RUTA_LOG_TXT);
         //Actualizo la ip del usuario
-        clienteActivo.updateIP(Utils.getIp());
         loadScene(Utils.frameInicio);
     }
 
@@ -433,6 +417,7 @@ public class App extends Application {
             controller.setChat(chat);
             controller.inicializarComponentes();
             controller.setChatController(chatController);
+            controller.setChat(chat);
             return container;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -444,6 +429,6 @@ public class App extends Application {
     }
 
     public void enviarMensaje(String text) {
-        clienteActivo.enviarMensaje(text);
+
     }
 }

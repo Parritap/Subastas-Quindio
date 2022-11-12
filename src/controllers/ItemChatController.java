@@ -12,6 +12,8 @@ import javafx.scene.shape.Circle;
 import lombok.Getter;
 import lombok.Setter;
 import model.Chat;
+import model.Mensaje;
+import model.Usuario;
 
 import java.io.ByteArrayInputStream;
 
@@ -29,7 +31,6 @@ public class ItemChatController implements IApplication, Inicializable {
     private Chat chat;
 
     private ChatController chatController;
-
 
 
     @Override
@@ -54,7 +55,11 @@ public class ItemChatController implements IApplication, Inicializable {
     @FXML
     void cargarChat(MouseEvent event) {
 
-        //chatController.cargarChat(chat);
+        for (Mensaje mensaje : chat.getListaMensajes()) {
+
+
+        }
+
     }
 
 

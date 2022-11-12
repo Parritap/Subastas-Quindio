@@ -14,7 +14,7 @@ public class Puja implements Serializable {
 	private LocalDate fechaDePuja;
 	private Usuario usuario;
 	private Double valorOfrecido;
-	Integer idUsuario;
+	private Integer idUsuario;
 
 
 	/**
