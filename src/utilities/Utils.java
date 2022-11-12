@@ -12,6 +12,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
@@ -171,6 +172,23 @@ public class Utils {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ImageIO.write(bImage, "jog", bos );
         return bos.toByteArray();
+    }
+
+
+    /**
+     * Método que lee una ruta y crea un archivo de no existir, luego escribe el texto
+     * pasado como parametro dentro del mismo.
+     * @param ruta Archivo a escribir.
+     * @param texto Texto a escribir en el archivo.
+     */
+    public static void escribirEnArchivo (String ruta, String texto){
+        File f = new File(ruta);
+        try{
+            f.createNewFile();//Crea el archivo si este no existe. Si existe, simplemente no hace nada.
+            Files.writeString(Path.of(ruta), String.valueOf(texto)); //Escribo en el archivo.
+        }catch (IOException | NullPointerException e){
+            e.printStackTrace();
+        }
     }
 
 

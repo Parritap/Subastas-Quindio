@@ -229,7 +229,12 @@ public class ModelFactoryController {
     }
 
 
-    public static void generarRegistrosAnunciosCSV (String ruta) throws IOException {
+    /**
+     * Crea un archivo de extensión .csv (tipo excel) en la ruta especificada.
+     * @param ruta Ruta en la que se generará el archivo.
+     * @throws IOException
+     */
+    public static void generarRegistrosAnunciosCSV (String ruta) {
         empresaSubasta.getIAnuncio().generarCSV(ruta);
     }
 

@@ -262,23 +262,14 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
      * Es decir, lista los anuncios separados por comas tal cual como en un excel en la ruta especificada.
      * @param ruta Ruta a escribir el archivo CSV.
      */
-    public void generarCSV(String ruta) throws IOException {
+    public void generarCSV(String ruta)   {
         StringBuilder str = new StringBuilder();
         for(Anuncio a: listaAnuncios) {
             str.append(a.getCSV());
             str.append("\n"); //Salto de linea.
         }
-        //Bookmark
-        //System.out.println(str);
-
-
-        File f = new File(Utils.RUTA_ANUNCIOS_CSV);
-        try{
-            f.createNewFile();//Crea el archivo si este no existe. Si existe, simplemente no hace nada.
-            Files.writeString(Path.of(Utils.RUTA_ANUNCIOS_CSV), String.valueOf(str)); //Escribo en el archivo.
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+        Utils.escribirEnArchivo(ruta, String.valueOf(str)); //Escribe en la ruta especificada
+        Utils.escribirEnArchivo(Utils.RUTA_ANUNCIOS_CSV, String.valueOf(str)); //Escribe dentro del proyecto.
     }
 }
 
