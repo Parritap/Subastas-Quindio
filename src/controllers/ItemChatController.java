@@ -32,7 +32,6 @@ public class ItemChatController implements IApplication, Inicializable {
 
     private ChatController chatController;
 
-
     @Override
     public App getApplication() {
         return application;
@@ -50,16 +49,17 @@ public class ItemChatController implements IApplication, Inicializable {
         lblUltimoMensaje.setText(chat.getUltimoMensaje());
         Image img = new Image(new ByteArrayInputStream(chat.getUsuarioReceptor().getFotoPerfil()));
         circleImage.setFill(new ImagePattern(img));
+
+        chatController.setUsuarioEnElChat(chat.getUsuarioReceptor());
     }
 
+    /**
+     * Metodo que se ejecuta al pulsar sobre el item del chat
+     * @param event evento
+     */
     @FXML
     void cargarChat(MouseEvent event) {
-
-        for (Mensaje mensaje : chat.getListaMensajes()) {
-
-
-        }
-
+        chatController.cargarChat(chat);
     }
 
 

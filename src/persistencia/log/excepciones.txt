@@ -784,3 +784,41 @@ Nov 12, 2022 1:13:02 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de usuario,se creo el usuario 2:c,11-12
 Nov 12, 2022 1:13:23 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre b y correo b ha iniciado sesión.,11-12
+Nov 12, 2022 2:18:04 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-12
+Nov 12, 2022 2:18:04 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-12
+Nov 12, 2022 2:18:08 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario c no encontrado,11-12
+Nov 12, 2022 2:18:08 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario c no encontrado,11-12
+Nov 12, 2022 2:18:12 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-12
+Nov 12, 2022 2:18:12 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario b no encontrado,11-12
+Nov 12, 2022 2:18:29 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:a,11-12
+Nov 12, 2022 2:18:44 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:fdgs,11-12
+Nov 12, 2022 2:18:44 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:dfgs,11-12
+Nov 12, 2022 2:19:06 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 2:b,11-12
+Nov 12, 2022 2:28:08 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-12
+Nov 12, 2022 2:29:23 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-12
+Nov 12, 2022 2:30:12 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-12
+Nov 12, 2022 2:42:55 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-12
+Nov 12, 2022 2:43:58 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-12
+Nov 12, 2022 2:44:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-12
+Nov 12, 2022 2:49:08 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-12
+Nov 12, 2022 3:04:48 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre alejandro y correo admin ha iniciado sesión.,11-12
+Nov 12, 2022 3:05:27 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-12

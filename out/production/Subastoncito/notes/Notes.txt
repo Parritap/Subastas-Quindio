@@ -1,9 +1,5 @@
 //Este archivo contiene notas o ideas para agregar al proyecto, no eliminar
 
-
-
-
-
 11/04/2022
 
 - Hacer funcionar las pujas [chulo]
@@ -18,3 +14,11 @@
 11/05/22
 -agregar byte[] como foto de perfil al uml en la clase usuario
 -agregar una lista mensajes a un usuario
+
+11/12/22
+
+- investigar si un arreglo de bytes puede ser serializado en xml
+- permitir elegir cualquier puja, no necesariamente la mas alta
+- agregar un boton para aceptar la puja del item anterior
+- cuando se haga clic en ese boton la puja debe pasar a completada y no mostrarse mas
+- agregar la clase Mensaje al uml

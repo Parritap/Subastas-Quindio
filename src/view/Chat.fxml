@@ -47,7 +47,7 @@
                            <children>
                               <ScrollPane hbarPolicy="NEVER" prefHeight="647.0" prefWidth="394.0" style="-fx-background-color: White; -fx-border-color: White;" styleClass="barraScroll" stylesheets="@../resources/style.css">
                                  <content>
-                                    <VBox fx:id="vboxListaChats" prefHeight="641.0" prefWidth="373.0" style="-fx-background-color: WHITE;" />
+                                    <VBox fx:id="vboxListaChats" prefHeight="641.0" prefWidth="393.0" style="-fx-background-color: WHITE;" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -62,26 +62,26 @@
                   </AnchorPane>
                </children>
             </VBox>
-            <AnchorPane prefHeight="937.0" prefWidth="902.0">
+            <AnchorPane prefHeight="937.0" prefWidth="937.0">
                <children>
                   <AnchorPane layoutX="33.0" layoutY="92.0" prefHeight="807.0" prefWidth="865.0" style="-fx-background-color: WHITE;">
                      <children>
                         <HBox prefHeight="77.0" prefWidth="827.0">
                            <children>
-                              <ImageView fitHeight="68.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgProfile" fitHeight="79.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
-                                    <Insets left="30.0" />
+                                    <Insets left="45.0" top="15.0" />
                                  </HBox.margin>
                                  <image>
                                     <Image url="@../resources/crearCuenta.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="67.0" prefWidth="469.0" text="Nombre del anunciante">
+                              <Label fx:id="lblNombre" prefHeight="67.0" prefWidth="469.0" text="Nombre del anunciante">
                                  <font>
                                     <Font size="29.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets left="30.0" />
+                                    <Insets left="30.0" top="15.0" />
                                  </HBox.margin>
                               </Label>
                               <ImageView fitHeight="42.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
@@ -119,13 +119,25 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="647.0" layoutX="17.0" stroke="BLACK" strokeType="INSIDE" width="848.0" />
-                        <AnchorPane fx:id="paneChat" layoutX="30.0" layoutY="69.0" prefHeight="577.0" prefWidth="813.0" />
-                        <TextField fx:id="txtMensaje" layoutX="125.0" layoutY="673.0" prefHeight="31.0" prefWidth="306.0" style="-fx-background-color: GRAY;" />
-                        <Button layoutX="540.0" layoutY="676.0" mnemonicParsing="false" onAction="#enviarMensaje" text="Enviar" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="807.0" layoutX="17.0" stroke="BLACK" strokeType="INSIDE" width="848.0" />
+                        <TextField fx:id="txtMensaje" layoutX="170.0" layoutY="741.0" prefHeight="44.0" prefWidth="513.0" promptText="Escribe tú mensaje aquí" style="-fx-background-color: WHITE; -fx-border-color: Black; -fx-border-radius: 20;">
+                           <font>
+                              <Font size="19.0" />
+                           </font></TextField>
+                        <Button layoutX="728.0" layoutY="739.0" mnemonicParsing="false" onAction="#enviarMensaje" prefHeight="47.0" prefWidth="104.0" style="-fx-background-color: #252525; -fx-background-radius: 10;" text="Enviar" textFill="WHITE" />
+                        <ScrollPane hbarPolicy="NEVER" layoutX="42.0" layoutY="81.0" prefHeight="637.0" prefWidth="798.0">
+                           <content>
+                              <VBox fx:id="VBoxMensajes" prefHeight="632.0" prefWidth="795.0" />
+                           </content>
+                        </ScrollPane>
+                        <ImageView fitHeight="51.0" fitWidth="51.0" layoutX="72.0" layoutY="736.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/documento.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
-                  <Label layoutX="36.0" layoutY="-4.0" prefHeight="62.0" prefWidth="878.0" style="-fx-alignment: CENTER; -fx-background-color: White;" text="Habla con el anunciante">
+                  <Label layoutX="36.0" layoutY="-4.0" prefHeight="62.0" prefWidth="878.0" style="-fx-alignment: CENTER; -fx-background-color: White;" text="Chatea en linea con alguien de Subastas Quindío">
                      <font>
                         <Font size="37.0" />
                      </font>

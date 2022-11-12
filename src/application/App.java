@@ -415,8 +415,8 @@ public class App extends Application {
             ItemChatController controller = loader.getController();
             controller.setApplication(this);
             controller.setChat(chat);
-            controller.inicializarComponentes();
             controller.setChatController(chatController);
+            controller.inicializarComponentes();
             controller.setChat(chat);
             return container;
         } catch (IOException e) {
@@ -424,9 +424,6 @@ public class App extends Application {
         }
     }
 
-    public AnchorPane cargarChat(Chat chat) {
-        return null;
-    }
 
     public void enviarMensaje(String text) {
 

@@ -1,5 +1,7 @@
 package services;
 
+import model.Mensaje;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -26,12 +28,10 @@ public class AppCliente {
 		try {
 			crearConexion();
 			flujoSalidaObjeto = new ObjectOutputStream(socketComunicacion.getOutputStream());
-			//Envío de objeto CLIENTE
-			enviarObjeto();
 			//CIERRO EL FLUJO DE SALIDA
-			flujoSalidaObjeto.close();
+			/*flujoSalidaObjeto.close();
 			//CIERRO EL SOCKET
-			socketComunicacion.close();
+			socketComunicacion.close();*/
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -50,10 +50,9 @@ public class AppCliente {
 	 * Metodo que envía un objeto al servidor
 	 * @throws IOException lanzada por el flujo de salida
 	 */
-	private void enviarObjeto()throws IOException {
-		/*Cliente cliente = new Cliente("usuario", "contrasenia1");
-		System.out.println("Se envío el cliente: " + cliente);
-		flujoSalidaObjeto.writeObject(cliente);*/
+	public void enviarMensaje(Mensaje mensaje)throws IOException {
+		System.out.println("Se envío el cliente: " + mensaje);
+		flujoSalidaObjeto.writeObject(mensaje);
 	}
 
 	/**

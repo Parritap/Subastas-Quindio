@@ -1,6 +1,7 @@
 package model;
 
 import exceptions.LecturaException;
+import model.enums.Rol;
 import persistencia.logic.Persistencia;
 import java.util.ArrayList;
 import exceptions.CRUDExceptions;
@@ -27,7 +28,11 @@ public class ModelFactoryController {
         }
         return Objects.requireNonNullElseGet(empresaSubasta, () -> {
             try {
-                return empresaSubasta = new EmpresaSubasta();
+                Usuario usuario = new Usuario("alejandro", 25, "13243234", "admin", "as", "1232", "admin");
+                usuario.setRol(Rol.ADMINISTRADOR);
+                empresaSubasta = new EmpresaSubasta();
+                empresaSubasta.crearUsuario(usuario);
+                return empresaSubasta;
             } catch (CRUDExceptions e) {
                 throw new RuntimeException(e);
             }

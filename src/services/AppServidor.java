@@ -2,6 +2,7 @@ package services;
 
 import lombok.Getter;
 import lombok.Setter;
+import model.Mensaje;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -32,19 +33,18 @@ public class AppServidor {
 	        System.out.println("-------------------Esperando mensajes------------------------");
 			System.out.println("-------------------------------------------------------------");
 
-	        socketComunicacion = server.accept();
+			while (true) {
+				socketComunicacion = server.accept();
+				Thread.sleep(100);
+				// Se crea un flujo de entrada para leer los objetos que envía el cliente.
+				flujoEntradaObjeto = new ObjectInputStream(socketComunicacion.getInputStream());
+				recibirObjeto();
+			}
 
-			// Se crea un flujo de entrada para leer los objetos que envía el cliente.
-
-			flujoEntradaObjeto = new ObjectInputStream(socketComunicacion.getInputStream());
-
-			recibirObjeto();
-
-			flujoEntradaObjeto.close();
-
-			
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
 		}
 	}
 
