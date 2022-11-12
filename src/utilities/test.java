@@ -1,6 +1,18 @@
 package utilities;
 
+import exceptions.CRUDExceptions;
+import model.ModelFactoryController;
+
+import java.io.IOException;
+
 public class test {
+
+
+    public static void main(String[] args) throws CRUDExceptions, IOException {
+        ModelFactoryController.pruebaCrearEmpresa();
+        ModelFactoryController.addDatosPrueba();
+        ModelFactoryController.generarRegistrosAnunciosCSV("");
+    }
 
 
     //pruebas de codigo, por favor no borrarlas

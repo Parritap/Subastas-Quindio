@@ -1,6 +1,8 @@
 package model;
 
-import java.io.Serializable;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 import model.enums.Estado;
 import model.enums.TipoOrden;
+import utilities.Utils;
 
 @Getter
 @Setter
@@ -253,5 +256,29 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
         }
         return lista;
         }
+
+    /**
+     * Método que escribe en un archivo de texto los atributos de los anuncios en el formato CSV.
+     * Es decir, lista los anuncios separados por comas tal cual como en un excel en la ruta especificada.
+     * @param ruta Ruta a escribir el archivo CSV.
+     */
+    public void generarCSV(String ruta) throws IOException {
+        StringBuilder str = new StringBuilder();
+        for(Anuncio a: listaAnuncios) {
+            str.append(a.getCSV());
+            str.append("\n"); //Salto de linea.
+        }
+        //Bookmark
+        //System.out.println(str);
+
+
+        File f = new File(Utils.RUTA_ANUNCIOS_CSV);
+        try{
+            f.createNewFile();//Crea el archivo si este no existe. Si existe, simplemente no hace nada.
+            Files.writeString(Path.of(Utils.RUTA_ANUNCIOS_CSV), String.valueOf(str)); //Escribo en el archivo.
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }
 

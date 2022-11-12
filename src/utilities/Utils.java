@@ -17,6 +17,7 @@ import java.time.ZoneOffset;
 import java.util.*;
 
 public class Utils {
+
     private static final String[] auxClasesConTexto = {"Button", "Label", "TextField"};
     public static final ArrayList<String> CLASES_CON_TEXTO_FX = new ArrayList<>(List.of(auxClasesConTexto));
 
@@ -91,6 +92,8 @@ public class Utils {
     public static final String RUTA_USUARIOS_TXT = "src/persistencia/archivos/Usuario.txt";
     //Ruta de la serializacion de los anuncios en txt
     public static final String RUTA_ANUNCIOS_TXT = "src/persistencia/archivos/Anuncio.txt";
+    //Ruta para la generacion del CSV de los Anuncios.
+    public static final String RUTA_ANUNCIOS_CSV = "src/persistencia/archivos/Anuncio.csv";
     //Ruta de la serializacion de los productos en txt
     public static final String RUTA_PRODUCTOS_TXT = "src/persistencia/archivos/Producto.txt";
     //Ruta de la serializacion de las Transacciones en txt
