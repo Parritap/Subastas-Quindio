@@ -1,10 +1,14 @@
 package controllers;
 
+import application.App;
+import interfaces.IApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import model.Mensaje;
 
-public class MensajeEnviadoController {
+public class MensajeEnviadoController implements IApplication {
 
+    private App application;
     @FXML
     private Label lblMensaje;
 
@@ -14,4 +18,17 @@ public class MensajeEnviadoController {
     }
 
 
+    @Override
+    public App getApplication() {
+        return application;
+    }
+
+    @Override
+    public void setApplication(App application) {
+        this.application = application;
+    }
+
+    public void inicializarComponentes(Mensaje mensaje){
+        lblMensaje.setText(mensaje.getMensaje());
+    }
 }

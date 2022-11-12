@@ -173,4 +173,8 @@ public class EmpresaSubasta implements Runnable, Serializable {
     public void crearChat(Usuario clienteActivo, Usuario vendedor) {
         iUsuario.crearChat(clienteActivo, vendedor);
     }
+
+    public void anadirMensaje(Mensaje mensaje) {
+        iUsuario.anadirMensaje(mensaje);
+    }
 }

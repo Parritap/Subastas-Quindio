@@ -50,7 +50,6 @@ public class ItemChatController implements IApplication, Inicializable {
         Image img = new Image(new ByteArrayInputStream(chat.getUsuarioReceptor().getFotoPerfil()));
         circleImage.setFill(new ImagePattern(img));
 
-        chatController.setUsuarioEnElChat(chat.getUsuarioReceptor());
     }
 
     /**

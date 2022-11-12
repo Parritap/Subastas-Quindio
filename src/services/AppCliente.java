@@ -1,13 +1,19 @@
 package services;
 
+import lombok.Getter;
+import lombok.Setter;
 import model.Mensaje;
+import persistencia.logic.ArchivoUtil;
+import persistencia.logic.Persistencia;
+import utilities.Utils;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-
+@Getter
+@Setter
 public class AppCliente {
 	
 	
@@ -48,11 +54,15 @@ public class AppCliente {
 
 	/**
 	 * Metodo que envía un objeto al servidor
-	 * @throws IOException lanzada por el flujo de salida
 	 */
-	public void enviarMensaje(Mensaje mensaje)throws IOException {
-		System.out.println("Se envío el cliente: " + mensaje);
-		flujoSalidaObjeto.writeObject(mensaje);
+	public void enviarMensaje(Mensaje mensaje){
+		try {
+			flujoSalidaObjeto.writeObject(mensaje);
+			ArchivoUtil.guardarRegistroLog(("Se envió el mensaje: " + mensaje.getMensaje() + " al usuario: " +
+					mensaje.getUsuarioReceptor().getName()), 1, "Envío de mensaje", Utils.RUTA_LOG_TXT);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**

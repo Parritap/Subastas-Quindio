@@ -2,7 +2,11 @@ package services;
 
 import lombok.Getter;
 import lombok.Setter;
+import model.EmpresaSubasta;
 import model.Mensaje;
+import model.ModelFactoryController;
+import persistencia.logic.ArchivoUtil;
+import utilities.Utils;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -14,7 +18,7 @@ import java.net.Socket;
 @Getter
 public class AppServidor {
 	
-
+	private EmpresaSubasta empresaSubasta;
 	private int puerto = 8081;
 	private ServerSocket server;
 
@@ -53,18 +57,21 @@ public class AppServidor {
 	 * y se recibe en nuevo hilo
 	 */
 	private void recibirObjeto()throws IOException, ClassNotFoundException {
+		empresaSubasta = ModelFactoryController.getInstance();
 		//creo un hilo al vuelo
 		new Thread(() -> {
 			//recibo el objeto
-			Mensaje mensaje = null;
+			Mensaje mensaje;
 			try {
 				mensaje = (Mensaje) flujoEntradaObjeto.readObject();
+				ArchivoUtil.guardarRegistroLog(("Se recibió el mensaje: " + mensaje.getMensaje() + " del usuario: " +
+						mensaje.getUsuarioEmisor().getName()), 1, "Recepción de mensaje", Utils.RUTA_LOG_TXT);
+				ModelFactoryController.aniadirMensaje(mensaje);
 			} catch (IOException | ClassNotFoundException e) {
 				throw new RuntimeException(e);
 			}
 
 		}).start();
-
 
 	}
 

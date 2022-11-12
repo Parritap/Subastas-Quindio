@@ -165,4 +165,12 @@ public class Usuario implements Serializable{
 	}
 
 
+	public void anadirMensaje(Mensaje mensaje) {
+		for (Chat chat : this.listaChats) {
+			if (chat.getUsuarioReceptor().equals(mensaje.getUsuarioReceptor()) && chat.getUsuarioEmisor().equals(mensaje.getUsuarioReceptor())) {
+				chat.addMensaje(mensaje);
+				break;
+			}
+		}
+	}
 }

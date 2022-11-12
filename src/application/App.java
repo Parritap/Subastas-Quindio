@@ -424,8 +424,41 @@ public class App extends Application {
         }
     }
 
+    public AnchorPane obtenerMensajeItem(Mensaje mensaje) {
+        //verifico si el mensaje fue enviado por el usuario
+        if(mensaje.getUsuarioEmisor() == clienteActivo){
+            return obtenerMensajeEnviado(mensaje);
+        }else {
+            //verifico si el mensaje fue recibido por el usuario
+            return obtenerMensajeRecibido(mensaje);
+        }
+    }
 
-    public void enviarMensaje(String text) {
+    private AnchorPane obtenerMensajeRecibido(Mensaje mensaje) {
+        String ruta = Utils.MENSAJE_RECIBIDO;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
+        try {
+            AnchorPane container = loader.load();
+            MensajeRecibidoController controller = loader.getController();
+            controller.setApplication(this);
+            controller.inicializarComponentes(mensaje);
+            return container;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    private AnchorPane obtenerMensajeEnviado(Mensaje mensaje) {
+        String ruta = Utils.MENSAJE_ENVIADO;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
+        try {
+            AnchorPane container = loader.load();
+            MensajeEnviadoController controller = loader.getController();
+            controller.setApplication(this);
+            controller.inicializarComponentes(mensaje);
+            return container;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

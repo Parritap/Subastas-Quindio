@@ -211,4 +211,20 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
         emisor.crearChat(vendedor, emisor);
 
     }
+
+    /**
+     * Metodo que permite agregar un mensaje en los chats de los usuarios
+     * @param mensaje mensaje a agregar
+     */
+    public void anadirMensaje(Mensaje mensaje) {
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.equals(mensaje.getUsuarioEmisor())) {
+                usuario.anadirMensaje(mensaje);
+            }
+            if(usuario.equals(mensaje.getUsuarioReceptor())){
+                usuario.anadirMensaje(mensaje);
+            }
+        }
+
+    }
 }

@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import lombok.Getter;
 import lombok.Setter;
 import model.Chat;
+import model.Mensaje;
 import model.Usuario;
 import services.AppCliente;
 import utilities.Utils;
@@ -39,6 +40,8 @@ public class ChatController implements IApplication, Inicializable {
     private Label lblNombre;
     private AppCliente appCliente;
     private Usuario usuarioEnElChat;
+
+    private Chat chatActual;
 
 
     @Override
@@ -66,8 +69,6 @@ public class ChatController implements IApplication, Inicializable {
             appCliente = new AppCliente("localhost",8081);
             appCliente.iniciarCliente();
         }).start();
-
-        System.out.println("Cliente inicializado en ChatController");
     }
 
     @Override
@@ -94,20 +95,29 @@ public class ChatController implements IApplication, Inicializable {
     void enviarMensaje(ActionEvent event) {
 
         if(usuarioEnElChat != null){
-            System.out.println(usuarioEnElChat);
+            Mensaje mensaje = new Mensaje();
+            mensaje.setMensaje(txtMensaje.getText());
+            mensaje.setUsuarioEmisor(application.getClienteActivo());
+            mensaje.setUsuarioReceptor(usuarioEnElChat);
+            appCliente.enviarMensaje(mensaje);
+            txtMensaje.setText("");
+            cargarChat(chatActual);
         }
 
-
-       // appCliente.enviarMensaje();
-
-
-        //application.enviarMensaje(txtMensaje.getText());
     }
 
     public void cargarChat(Chat chat) {
-
+        chatActual = chat;
         imgProfile.setImage(new Image(new ByteArrayInputStream(chat.getUsuarioReceptor().getFotoPerfil())));
         lblNombre.setText(chat.getUsuarioReceptor().getName());
-
+        usuarioEnElChat = chat.getUsuarioReceptor();
+        VBoxMensajes.getChildren().clear();
+        ArrayList<Mensaje> listaMensajes = chat.getListaMensajes();
+        if (listaMensajes != null) {
+            for (Mensaje mensaje : listaMensajes) {
+                AnchorPane pane = application.obtenerMensajeItem(mensaje);
+                VBoxMensajes.getChildren().add(pane);
+            }
+        }
     }
 }

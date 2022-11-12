@@ -81,7 +81,7 @@
                                     <Font size="29.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets left="30.0" top="15.0" />
+                                    <Insets left="30.0" top="10.0" />
                                  </HBox.margin>
                               </Label>
                               <ImageView fitHeight="42.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
@@ -124,7 +124,10 @@
                            <font>
                               <Font size="19.0" />
                            </font></TextField>
-                        <Button layoutX="728.0" layoutY="739.0" mnemonicParsing="false" onAction="#enviarMensaje" prefHeight="47.0" prefWidth="104.0" style="-fx-background-color: #252525; -fx-background-radius: 10;" text="Enviar" textFill="WHITE" />
+                        <Button layoutX="728.0" layoutY="739.0" mnemonicParsing="false" onAction="#enviarMensaje" prefHeight="47.0" prefWidth="104.0" style="-fx-background-color: #252525; -fx-background-radius: 10;" text="Enviar" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                         <ScrollPane hbarPolicy="NEVER" layoutX="42.0" layoutY="81.0" prefHeight="637.0" prefWidth="798.0">
                            <content>
                               <VBox fx:id="VBoxMensajes" prefHeight="632.0" prefWidth="795.0" />

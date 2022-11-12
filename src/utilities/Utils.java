@@ -78,6 +78,10 @@ public class Utils {
     public static String LOGO_EMPRESA = "/resources/iconSubastaQuindio.png";
     //Ruta de las direcciones ip de los equipos
     public static final String RUTA_IP_TXT = "src/persistencia/archivos/IpConnected.txt";
+    //ruta de la vista de los mensajes enviados
+    public static final String MENSAJE_ENVIADO = "../view/MensajeEnviado.fxml";
+    //Ruta de la vista de los mensajes recibidos
+    public static final String MENSAJE_RECIBIDO = "../view/MensajeRecibido.fxml";
 
     //------------------------------------------METODOS UTILS------------------------------------------
     /**

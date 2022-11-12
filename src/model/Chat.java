@@ -38,9 +38,15 @@ public class Chat implements Serializable {
      * @return el último mensaje del chat
      */
     public String getUltimoMensaje() {
-       /* if(listaMensajes.size() > 0) {
-            return listaMensajes.get(listaMensajes.size() - 1);
-        }*/
-        return "";
+        if (listaMensajes.size() > 0) return listaMensajes.get(listaMensajes.size() - 1).getMensaje();
+        else return "";
+    }
+
+    /**
+     * Metodo que permite agregar un mensaje al chat
+     * @param mensaje mensaje que se desea agregar
+     */
+    public void addMensaje(Mensaje mensaje) {
+        listaMensajes.add(mensaje);
     }
 }

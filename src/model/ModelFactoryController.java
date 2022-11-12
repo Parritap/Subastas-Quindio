@@ -186,4 +186,8 @@ public class ModelFactoryController {
     public static void crearChat(Usuario clienteActivo, Usuario vendedor) {
         empresaSubasta.crearChat(clienteActivo, vendedor);
     }
+
+    public static void aniadirMensaje(Mensaje mensaje) {
+        empresaSubasta.anadirMensaje(mensaje);
+    }
 }

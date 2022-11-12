@@ -3,16 +3,22 @@ package model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
-public class Mensaje {
+public class Mensaje implements Serializable {
 
     private String mensaje;
-    private String usuarioEmisor;
+    private Usuario usuarioEmisor;
+
+    private Usuario usuarioReceptor;
     private String fecha;
     private String hora;
 
-    public Mensaje(String mensaje, String usuario, String fecha, String hora) {
+    public Mensaje() {}
+
+    public Mensaje(String mensaje, Usuario usuario, String fecha, String hora) {
         this.mensaje = mensaje;
         this.usuarioEmisor = usuario;
         this.fecha = fecha;
