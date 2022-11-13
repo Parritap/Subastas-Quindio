@@ -169,8 +169,12 @@ public class Usuario implements Serializable{
 		for (Chat chat : this.listaChats) {
 			if (chat.getUsuarioReceptor().equals(mensaje.getUsuarioReceptor()) && chat.getUsuarioEmisor().equals(mensaje.getUsuarioReceptor())) {
 				chat.addMensaje(mensaje);
-				break;
+				return;
 			}
 		}
+		Chat chat = new Chat(mensaje.getUsuarioEmisor(), mensaje.getUsuarioReceptor());
+		chat.addMensaje(mensaje);
+		listaChats.add(chat);
+
 	}
 }

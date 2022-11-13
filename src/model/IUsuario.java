@@ -227,4 +227,8 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
         }
 
     }
+
+    public void enviarMensaje(Mensaje mensaje) {
+        anadirMensaje(mensaje);
+    }
 }

@@ -461,4 +461,8 @@ public class App extends Application {
             throw new RuntimeException(e);
         }
     }
+
+    public void enviarMensaje(Mensaje mensaje) {
+        ModelFactoryController.enviarMensaje(mensaje);
+    }
 }
