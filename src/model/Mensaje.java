@@ -2,11 +2,8 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
-import utilities.Utils;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Comparator;
 
 @Getter
 @Setter
@@ -18,6 +15,9 @@ public class Mensaje implements Serializable, Comparable<Mensaje> {
     private Usuario usuarioReceptor;
     private LocalDateTime fecha;
 
+    private String hora;
+
+    private Integer orden;
 
     public Mensaje() {}
 
@@ -43,5 +43,12 @@ public class Mensaje implements Serializable, Comparable<Mensaje> {
         if(this.fecha.isBefore(o.fecha)) return -1;
         else if(this.fecha.isAfter(o.fecha)) return 1;
         else return 0;
+    }
+
+    /**
+     * Metodo que devuelve la hora del mensaje
+     */
+    public String getHora() {
+        return fecha.getHour() + ":" + fecha.getMinute();
     }
 }

@@ -221,6 +221,7 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
         for (Usuario usuario : listaUsuarios) {
             if (usuario.equals(mensaje.getUsuarioEmisor())) {
                 usuario.anadirMensaje(mensaje);
+                mensaje.setOrden(Chat.idOrden++);
             }
             if(usuario.equals(mensaje.getUsuarioReceptor())){
                 usuario.anadirMensaje(mensaje);

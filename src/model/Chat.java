@@ -2,10 +2,8 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 /**
  * Esta clase representa un chat, que es un conjunto de mensajes entre dos usuarios
@@ -17,6 +15,8 @@ public class Chat implements Serializable {
     private Usuario usuarioReceptor;
     private Usuario usuarioEmisor;
     private ArrayList<Mensaje> listaMensajes;
+
+    public static Integer idOrden = 0;
 
     //---------------------------------------CONSTRUCTOR PARA EL CHAT---------------------------------------
     public Chat() {
@@ -34,8 +34,10 @@ public class Chat implements Serializable {
         listaMensajes = new ArrayList<>();
     }
     //---------------------------------------METODOS---------------------------------------
+
     /**
      * Metodo que devuelve el último mensaje del chat
+     *
      * @return el último mensaje del chat
      */
     public String getUltimoMensaje() {
@@ -45,6 +47,7 @@ public class Chat implements Serializable {
 
     /**
      * Metodo que permite agregar un mensaje al chat
+     *
      * @param mensaje mensaje que se desea agregar
      */
     public void addMensaje(Mensaje mensaje) {
@@ -52,6 +55,14 @@ public class Chat implements Serializable {
     }
 
     public ArrayList<Mensaje> getListaMensajes() {
+        return listaMensajes;
+    }
+
+    /**
+     * Metodo que ordera los mensajes del chat por fecha
+     */
+    public ArrayList<Mensaje> ordenarMensajes() {
+        listaMensajes.sort(Mensaje::compareTo);
         return listaMensajes;
     }
 }

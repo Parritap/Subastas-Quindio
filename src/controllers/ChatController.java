@@ -27,7 +27,9 @@ import services.AppCliente;
 import utilities.Utils;
 
 import java.io.ByteArrayInputStream;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Objects;
 
 @Setter
@@ -152,17 +154,18 @@ public class ChatController implements IApplication, Inicializable {
         }
         VBoxMensajes.getChildren().clear();
         ArrayList<Mensaje> listaMensajes = chat.getListaMensajes();
-
-        if (listaMensajes != null) {
-            for (Mensaje mensaje : listaMensajes) {
-                if (Objects.equals(mensaje.getUsuarioEmisor().getId(), application.getClienteActivo().getId())) {
-                    addMessagePropio(mensaje.getMensaje());
-                } else {
-                    addMessageAjeno(mensaje.getMensaje());
-                }
+        listaMensajes.sort(Comparator.comparing(Mensaje::getFecha));
+        for (int i=listaMensajes.size()-1; i>=0; i--) {
+            Mensaje mensaje = listaMensajes.get(i);
+            if(mensaje.getUsuarioEmisor() == application.getClienteActivo()){
+                addMessagePropio(mensaje.getMensaje());
+            }
+            if(mensaje.getUsuarioEmisor() != application.getClienteActivo()){
+                addMessageAjeno(mensaje.getMensaje());
             }
         }
     }
+
 
     private void addMessageAjeno(String mensaje) {
         HBox hBox = new HBox();
