@@ -178,7 +178,4 @@ public class EmpresaSubasta implements Runnable, Serializable {
         iUsuario.anadirMensaje(mensaje);
     }
 
-    public void enviarMensaje(Mensaje mensaje) {
-        iUsuario.enviarMensaje(mensaje);
-    }
 }

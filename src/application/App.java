@@ -463,6 +463,6 @@ public class App extends Application {
     }
 
     public void enviarMensaje(Mensaje mensaje) {
-        ModelFactoryController.enviarMensaje(mensaje);
+        ModelFactoryController.aniadirMensaje(mensaje);
     }
 }

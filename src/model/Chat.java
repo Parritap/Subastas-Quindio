@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  * Esta clase representa un chat, que es un conjunto de mensajes entre dos usuarios
@@ -48,5 +49,9 @@ public class Chat implements Serializable {
      */
     public void addMensaje(Mensaje mensaje) {
         listaMensajes.add(mensaje);
+    }
+
+    public ArrayList<Mensaje> getListaMensajes() {
+        return listaMensajes;
     }
 }

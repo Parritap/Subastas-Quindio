@@ -62,11 +62,9 @@ public class ChatController implements IApplication, Inicializable {
             //filtro los chats que esten duplicados en listaChats
             for (Chat chat : listaChats) {
 
-                if(chat.getUsuarioEmisor() == application.getClienteActivo() ) {
-                    AnchorPane pane = application.obtenerChatItem(chat, this);
-                    //Añado el pane al VBox
-                    vboxListaChats.getChildren().add(pane);
-                }
+                AnchorPane pane = application.obtenerChatItem(chat, this);
+                //Añado el pane al VBox
+                vboxListaChats.getChildren().add(pane);
             }
         }
 
@@ -74,7 +72,7 @@ public class ChatController implements IApplication, Inicializable {
 
     private void iniciarCliente() {
         new Thread(() -> {
-            appCliente = new AppCliente("localhost",8081);
+            appCliente = new AppCliente("localhost", 8081);
             appCliente.iniciarCliente();
         }).start();
     }
@@ -102,7 +100,7 @@ public class ChatController implements IApplication, Inicializable {
     @FXML
     void enviarMensaje(ActionEvent event) {
 
-        if(usuarioEnElChat != null){
+        if (usuarioEnElChat != null) {
             Mensaje mensaje = new Mensaje();
             mensaje.setMensaje(txtMensaje.getText());
             mensaje.setUsuarioEmisor(application.getClienteActivo());
@@ -142,16 +140,24 @@ public class ChatController implements IApplication, Inicializable {
 
     public void cargarChat(Chat chat) {
         chatActual = chat;
-        imgProfile.setImage(new Image(new ByteArrayInputStream(chat.getUsuarioReceptor().getFotoPerfil())));
-        lblNombre.setText(chat.getUsuarioReceptor().getName());
-        usuarioEnElChat = chat.getUsuarioReceptor();
+
+        if(chat.getUsuarioReceptor() != application.getClienteActivo()) {
+            usuarioEnElChat = chat.getUsuarioReceptor();
+            imgProfile.setImage(new Image(new ByteArrayInputStream(chat.getUsuarioReceptor().getFotoPerfil())));
+            lblNombre.setText(chat.getUsuarioReceptor().getName());
+        }else{
+            usuarioEnElChat = chat.getUsuarioEmisor();
+            imgProfile.setImage(new Image(new ByteArrayInputStream(chat.getUsuarioEmisor().getFotoPerfil())));
+            lblNombre.setText(chat.getUsuarioEmisor().getName());
+        }
         VBoxMensajes.getChildren().clear();
         ArrayList<Mensaje> listaMensajes = chat.getListaMensajes();
+
         if (listaMensajes != null) {
             for (Mensaje mensaje : listaMensajes) {
-                if(Objects.equals(mensaje.getUsuarioEmisor().getId(), application.getClienteActivo().getId())) {
+                if (Objects.equals(mensaje.getUsuarioEmisor().getId(), application.getClienteActivo().getId())) {
                     addMessagePropio(mensaje.getMensaje());
-                }else{
+                } else {
                     addMessageAjeno(mensaje.getMensaje());
                 }
             }
@@ -165,7 +171,7 @@ public class ChatController implements IApplication, Inicializable {
 
         Text text = new Text(mensaje);
         TextFlow textFlow = new TextFlow(text);
-
+        text.setStyle("-fx-font-size: 20px;");
         textFlow.setStyle(
                 "-fx-background-color: rgb(233, 233, 235);" +
                         "-fx-background-radius: 20px;");

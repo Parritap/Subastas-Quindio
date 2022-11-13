@@ -45,10 +45,20 @@ public class ItemChatController implements IApplication, Inicializable {
     @Override
     public void inicializarComponentes() {
 
-        lblNameUsuario.setText(chat.getUsuarioReceptor().getName());
-        lblUltimoMensaje.setText(chat.getUltimoMensaje());
-        Image img = new Image(new ByteArrayInputStream(chat.getUsuarioReceptor().getFotoPerfil()));
-        circleImage.setFill(new ImagePattern(img));
+        if(chat.getUsuarioReceptor() == application.getClienteActivo()){
+            lblNameUsuario.setText(chat.getUsuarioEmisor().getName());
+            if(chat.getUsuarioEmisor().getFotoPerfil() != null) {
+                Image image = new Image(new ByteArrayInputStream(chat.getUsuarioEmisor().getFotoPerfil()));
+                circleImage.setFill(new ImagePattern(image));
+            }
+        }else{
+            lblNameUsuario.setText(chat.getUsuarioReceptor().getName());
+            lblUltimoMensaje.setText(chat.getUltimoMensaje());
+            Image img = new Image(new ByteArrayInputStream(chat.getUsuarioReceptor().getFotoPerfil()));
+            circleImage.setFill(new ImagePattern(img));
+        }
+
+
 
     }
 

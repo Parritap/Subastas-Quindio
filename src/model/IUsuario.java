@@ -205,10 +205,11 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
      * @param vendedor dueño del anuncio
      */
     public void crearChat(Usuario emisor, Usuario vendedor) {
+        Chat chat = new Chat(emisor, vendedor);
         //creo el chat del vendedor
-        vendedor.crearChat(emisor, vendedor);
+        vendedor.aniadirChat(chat);
         //creo el chat del cliente
-        emisor.crearChat(vendedor, emisor);
+        emisor.aniadirChat(chat);
 
     }
 
@@ -228,7 +229,4 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
 
     }
 
-    public void enviarMensaje(Mensaje mensaje) {
-        anadirMensaje(mensaje);
-    }
 }

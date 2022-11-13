@@ -191,7 +191,4 @@ public class ModelFactoryController {
         empresaSubasta.anadirMensaje(mensaje);
     }
 
-    public static void enviarMensaje(Mensaje mensaje) {
-        empresaSubasta.enviarMensaje(mensaje);
-    }
 }

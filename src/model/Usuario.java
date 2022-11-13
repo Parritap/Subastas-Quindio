@@ -159,8 +159,7 @@ public class Usuario implements Serializable{
 				rol;
 	}
 
-	public void crearChat(Usuario emisor, Usuario receptor) {
-		Chat chat = new Chat(emisor, receptor);
+	public void aniadirChat(Chat chat) {
 		this.listaChats.add(chat);
 	}
 
@@ -172,9 +171,5 @@ public class Usuario implements Serializable{
 				return;
 			}
 		}
-		Chat chat = new Chat(mensaje.getUsuarioEmisor(), mensaje.getUsuarioReceptor());
-		chat.addMensaje(mensaje);
-		listaChats.add(chat);
-
 	}
 }
