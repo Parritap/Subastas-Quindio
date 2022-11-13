@@ -718,3 +718,13 @@ Nov 13, 2022 2:07:21 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-13
 Nov 13, 2022 2:09:19 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-13
+Nov 13, 2022 2:43:32 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 3:lalo,11-13
+Nov 13, 2022 2:44:03 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 3:Arnold,11-13
+Nov 13, 2022 2:44:03 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 3:Arnold,11-13
+Nov 13, 2022 3:04:01 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre lalo y correo lalo ha iniciado sesión.,11-13
+Nov 13, 2022 3:07:06 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Parra y correo parra ha iniciado sesión.,11-13

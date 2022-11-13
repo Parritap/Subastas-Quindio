@@ -9,13 +9,20 @@ public class test {
 
 
     public static void main(String[] args) throws CRUDExceptions, IOException {
-        ModelFactoryController.pruebaCrearEmpresa();
-        ModelFactoryController.addDatosPrueba();
-        ModelFactoryController.generarRegistrosAnunciosCSV("");
+
+        getOperatingSystem();
+
     }
 
 
-    //pruebas de codigo, por favor no borrarlas
+    public static String getOperatingSystem() {
+        String os = System.getProperty("os.name");
+        System.out.println("Using System Property: " + os);
+        return os;
+}
+
+
+//pruebas de codigo, por favor no borrarlas
         /*
     	IAnuncio anuncio = new IAnuncio();
     	Anuncio ad = new Anuncio(25);
@@ -34,40 +41,40 @@ public class test {
             System.out.println(anuncio.listar(compararAnuncio, TipoOrden.ASCENDENTE).get(i).getId());
         }*/
 
-    //los que tengan el id cuyos digitos sumen mas van primero
+//los que tengan el id cuyos digitos sumen mas van primero
         /*
         Comparar<Integer> comparar = (a,  b)->{return a/10+a%10<b/10+b%10;};
         for(int i=0; i<anuncio.listar().size(); i++) {
             System.out.println(anuncio.listar("id", TipoOrden.ASCENDENTE, comparar).get(i).getId());
         }*/
 
-    //System.out.println(anuncio.listar((obj1, obj2)->{return obj1.getId() > obj2.getId();}, TipoOrden.ASCENDENTE).get(1).getId());
-    //System.out.println(anuncio.listar((obj1, obj2)->{return obj1.getId() > obj2.getId();}, TipoOrden.ASCENDENTE).get(2).getId());
-    //System.out.println(anuncio.listar((obj1, obj2)->{return obj1.getId() > obj2.getId();}, TipoOrden.ASCENDENTE).get(3).getId());
-    //System.out.println(e->{return ad.getNombreAnunciante()}.g());
-    //TipoOrden ord = TipoOrden.ASCENDENTE;
-    //System.out.println(ord == TipoOrden.DESCENDENTE);
+//System.out.println(anuncio.listar((obj1, obj2)->{return obj1.getId() > obj2.getId();}, TipoOrden.ASCENDENTE).get(1).getId());
+//System.out.println(anuncio.listar((obj1, obj2)->{return obj1.getId() > obj2.getId();}, TipoOrden.ASCENDENTE).get(2).getId());
+//System.out.println(anuncio.listar((obj1, obj2)->{return obj1.getId() > obj2.getId();}, TipoOrden.ASCENDENTE).get(3).getId());
+//System.out.println(e->{return ad.getNombreAnunciante()}.g());
+//TipoOrden ord = TipoOrden.ASCENDENTE;
+//System.out.println(ord == TipoOrden.DESCENDENTE);
 
-    //File archivoPrueba  =new File(ModelFactoryController.getRutaLogs()+"\\log1");
-    //System.out.println(archivoPrueba.getAbsolutePath());
-    //ArchivoUtil.guardarRegistroLog("mensaje de prueba", 1, "prueba", ModelFactoryController.getRutaLogs()+"\\log1");
+//File archivoPrueba  =new File(ModelFactoryController.getRutaLogs()+"\\log1");
+//System.out.println(archivoPrueba.getAbsolutePath());
+//ArchivoUtil.guardarRegistroLog("mensaje de prueba", 1, "prueba", ModelFactoryController.getRutaLogs()+"\\log1");
 //        IAnuncio ImplAnuncio = new IAnuncio();
 
-    //      ImplAnuncio.crear(new Anuncio(2));
-    //ImplAnuncio.buscarId(23);
+//      ImplAnuncio.crear(new Anuncio(2));
+//ImplAnuncio.buscarId(23);
         /*Usuario usr = new Usuario();
         usr.getListaPujas().add(new Puja());
         usr.getListaPujas().add(new Puja());
         usr.getListaPujas().add(new Puja());*/
-    //usr.getActivo();
-    //Usuario user = Persistencia.deserializarUsuario(usr, 1);
-    //System.out.println(user.getCedula());
-    //ArchivoUtil.guardarArchivo("C:\\td\\folder2\\prueba.txt", "prueba", true);
-    //Persistencia.serializarPuja(new Puja(LocalDate.now(), new Usuario(), 122));
-    //Persistencia.serializarUsuario(usr);
-    //Persistencia.deserializarObj();
+//usr.getActivo();
+//Usuario user = Persistencia.deserializarUsuario(usr, 1);
+//System.out.println(user.getCedula());
+//ArchivoUtil.guardarArchivo("C:\\td\\folder2\\prueba.txt", "prueba", true);
+//Persistencia.serializarPuja(new Puja(LocalDate.now(), new Usuario(), 122));
+//Persistencia.serializarUsuario(usr);
+//Persistencia.deserializarObj();
 
-    //ArchivoUtil.verificarRuta("C:\\td\\persistencia\\logs\\");
+//ArchivoUtil.verificarRuta("C:\\td\\persistencia\\logs\\");
         /*Usuario usr = new Usuario("diana", 21, "1003929434", "dianaM@gmail.com", "contraseniaDePrueba", "Cr1 23 Cll 19 Brr guayaquil");
         usr.getListaPujas().add(new Puja(1, 30));
         usr.getListaPujas().add(new Puja(1, 344));

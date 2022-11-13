@@ -2,6 +2,7 @@ package utilities;
 
 import application.App;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.ModelFactoryController;
@@ -193,12 +194,10 @@ public class Utils {
         }
     }
 
-    public static String retorarRutaConFileChooser (){
-        JFileChooser f = new JFileChooser();
-        f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        f.showSaveDialog(null);
-        System.out.println(f.getSelectedFile().toString());
-        return f.getSelectedFile().toString();
+    public static String retorarRutaConFileChooser () {
+        DirectoryChooser d = new DirectoryChooser();
+        d.setTitle("Elige una carpeta");
+        return d.showDialog(new Stage()).toString();
     }
 
 
