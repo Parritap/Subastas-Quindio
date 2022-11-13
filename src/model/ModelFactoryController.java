@@ -237,6 +237,9 @@ public class ModelFactoryController {
     public static void generarRegistrosAnunciosCSV (String ruta) {
         empresaSubasta.getIAnuncio().generarCSV(ruta);
     }
+    public static void generarRegistrosAnunciosCSV (Usuario usuario, String ruta) {
+        empresaSubasta.getIAnuncio().generarCSV(usuario, ruta);
+    }
 
     public static void pruebaCrearEmpresa () throws CRUDExceptions {
         empresaSubasta = new EmpresaSubasta();

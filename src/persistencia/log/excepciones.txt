@@ -696,3 +696,25 @@ Nov 08, 2022 9:09:42 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-08
 Nov 09, 2022 11:46:52 AM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Parra y correo parra ha iniciado sesión.,11-09
+Nov 13, 2022 11:07:38 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-13
+Nov 13, 2022 11:08:50 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-13
+Nov 13, 2022 11:08:50 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-13
+Nov 13, 2022 11:08:54 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-13
+Nov 13, 2022 11:12:00 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-13
+Nov 13, 2022 11:14:03 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-13
+Nov 13, 2022 11:23:24 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-13
+Nov 13, 2022 1:02:03 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-13
+Nov 13, 2022 1:06:27 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-13
+Nov 13, 2022 2:07:21 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-13
+Nov 13, 2022 2:09:19 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-13

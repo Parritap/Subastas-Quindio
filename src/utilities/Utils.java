@@ -4,9 +4,11 @@ import application.App;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.ModelFactoryController;
 import model.enums.Language;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -189,6 +191,14 @@ public class Utils {
         }catch (IOException | NullPointerException e){
             e.printStackTrace();
         }
+    }
+
+    public static String retorarRutaConFileChooser (){
+        JFileChooser f = new JFileChooser();
+        f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        f.showSaveDialog(null);
+        System.out.println(f.getSelectedFile().toString());
+        return f.getSelectedFile().toString();
     }
 
 
