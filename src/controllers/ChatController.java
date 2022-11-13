@@ -61,9 +61,12 @@ public class ChatController implements IApplication, Inicializable {
         if (listaChats != null) {
             //filtro los chats que esten duplicados en listaChats
             for (Chat chat : listaChats) {
+
+                if(chat.getUsuarioEmisor() == application.getClienteActivo() ) {
                     AnchorPane pane = application.obtenerChatItem(chat, this);
                     //Añado el pane al VBox
                     vboxListaChats.getChildren().add(pane);
+                }
             }
         }
 

@@ -970,3 +970,13 @@ Nov 12, 2022 9:21:06 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Envío de mensaje,Se envió el mensaje: sa al usuario: b,11-12
 Nov 12, 2022 9:21:20 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre b y correo b ha iniciado sesión.,11-12
+Nov 13, 2022 7:22:49 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-13
+Nov 13, 2022 7:25:45 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-13
+Nov 13, 2022 7:26:05 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre b y correo b ha iniciado sesión.,11-13
+Nov 13, 2022 7:26:14 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Envío de mensaje,Se envió el mensaje: ds al usuario: a,11-13
+Nov 13, 2022 7:26:14 AM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Recepción de mensaje,Se recibió el mensaje: ds del usuario: b,11-13
