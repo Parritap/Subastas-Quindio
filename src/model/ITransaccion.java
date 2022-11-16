@@ -19,6 +19,7 @@ public class ITransaccion implements CRUD<Transaccion>, Serializable {
     ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
 
 
+
     public ITransaccion() {}
     @Override
     public Transaccion buscarId(Integer id) throws CRUDExceptions {

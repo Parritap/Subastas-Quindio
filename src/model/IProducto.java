@@ -18,6 +18,7 @@ public class IProducto implements CRUD<Producto>, Serializable {
 	
     private ArrayList<Producto> listaProductos = new ArrayList<>();
 
+
     public IProducto() {}
     @Override
     public Producto buscarId(Integer id) throws LecturaException {

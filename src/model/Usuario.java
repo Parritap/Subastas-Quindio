@@ -39,6 +39,7 @@ public class Usuario implements Serializable {
 	private Estado estado;
 	private Integer id;
 
+
 	//private transient byte[] fotoPerfil;
 	private String rutaFotoPerfil;
 	private ArrayList<Anuncio> listaAnuncios;

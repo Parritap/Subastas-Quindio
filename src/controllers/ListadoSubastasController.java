@@ -3,9 +3,13 @@ package controllers;
 import application.App;
 import interfaces.IApplication;
 import interfaces.Inicializable;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
 import model.Anuncio;
@@ -14,6 +18,8 @@ import model.Puja;
 import model.enums.Estado;
 import utilities.Utils;
 
+import javax.swing.*;
+import java.io.File;
 import java.util.ArrayList;
 
 @Getter
@@ -97,5 +103,15 @@ public class ListadoSubastasController implements IApplication, Inicializable {
     public void actualizarAnuncio() {
         application.abrirActualizarAnuncio(anuncioClicked);
         actualizarVBox();
+
+    }
+
+    @FXML
+    void generarAnunciosCSV(ActionEvent event) {
+
+        String ruta = Utils.retorarRutaConFileChooser(); //esto devuelve unicamente la ubicación donde se guardará el archivo.
+        ruta+= "/anunciosCSV.csv";
+
+        ModelFactoryController.generarRegistrosAnunciosCSV(application.getClienteActivo(), ruta);
     }
 }

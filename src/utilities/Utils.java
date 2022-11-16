@@ -2,22 +2,28 @@ package utilities;
 
 import application.App;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.ModelFactoryController;
 import model.enums.Language;
 import persistencia.logic.ArchivoUtil;
 
 import javax.imageio.ImageIO;
+
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
 
 public class Utils {
+
     private static final String[] auxClasesConTexto = {"Button", "Label", "TextField"};
     public static final ArrayList<String> CLASES_CON_TEXTO_FX = new ArrayList<>(List.of(auxClasesConTexto));
 
@@ -92,10 +98,13 @@ public class Utils {
     public static final String RUTA_USUARIOS_TXT = "src/persistencia/archivos/Usuario.txt";
     //Ruta de la serializacion de los anuncios en txt
     public static final String RUTA_ANUNCIOS_TXT = "src/persistencia/archivos/Anuncio.txt";
+    //Ruta para la generacion del CSV de los Anuncios.
+    public static final String RUTA_ANUNCIOS_CSV = "src/persistencia/archivos/Anuncio.csv";
     //Ruta de la serializacion de los productos en txt
     public static final String RUTA_PRODUCTOS_TXT = "src/persistencia/archivos/Producto.txt";
     //Ruta de la serializacion de las Transacciones en txt
     public static final String RUTA_TRANSACCIONES_TXT = "src/persistencia/archivos/Transaccion.txt";
+
     //Ruta de la serializacion de las Transacciones en txt
     public static final String RUTA_EMPRESA_XML = "src/persistencia/archivos/empresa.xml";
     
@@ -178,11 +187,37 @@ public class Utils {
 
     public static byte[] convertirImgAByteArray (String ruta) throws IOException {
 
+
         BufferedImage bImage = ImageIO.read(new File(ruta));
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ImageIO.write(bImage, "jog", bos );
         return bos.toByteArray();
     }
+
+
+    /**
+     * Método que lee una ruta y crea un archivo de no existir, luego escribe el texto
+     * pasado como parametro dentro del mismo.
+     * @param ruta Archivo a escribir.
+     * @param texto Texto a escribir en el archivo.
+     */
+    public static void escribirEnArchivo (String ruta, String texto){
+        File f = new File(ruta);
+        try{
+            f.createNewFile();//Crea el archivo si este no existe. Si existe, simplemente no hace nada.
+            Files.writeString(Path.of(ruta), String.valueOf(texto)); //Escribo en el archivo.
+        }catch (IOException | NullPointerException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static String retorarRutaConFileChooser () {
+        DirectoryChooser d = new DirectoryChooser();
+        d.setTitle("Elige una carpeta");
+        return d.showDialog(new Stage()).toString();
+    }
+
+
     
     
     public static String getRutaFotoPerfil(String nombreArchivo)

@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Main-Class: application.App
 
+=======
+Manifest-Version: 1.0
+Main-Class: application.App
+
+>>>>>>> 8cceda971292e318b420da37fe9f5beba1252c5a

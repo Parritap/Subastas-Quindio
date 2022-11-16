@@ -153,6 +153,7 @@ public class PaneSubastaController implements IApplication, Inicializable {
             //creo el producto con los datos de la vista
             Producto producto = new Producto(nombreProducto, descripcion);
             Long l = Long.parseLong(String.valueOf(minutosSubasta));
+
             try {
 				ArchivoUtil.copiarArchivo(archivoProducto, new File("src"+Utils.getRutaFotoAnuncio(archivoProducto.getName())));
 			} catch (IOException e1) {
@@ -316,6 +317,7 @@ public class PaneSubastaController implements IApplication, Inicializable {
         txtValorMinimoPuja.setText(String.valueOf(anuncioClicked.getValorMinimo()));
         spinnerMinutos.getValueFactory().setValue(anuncioClicked.getMinutosSubasta());
         cmbBoxTipoProducto.getSelectionModel().select(anuncioClicked.getProducto().getTipoProducto().toString());
+
         imgAnuncio.setImage(new Image(anuncioClicked.getImagePath()));
         idAnuncioClicked = anuncioClicked.getId();
         idProductoClicked = anuncioClicked.getProducto().getId();

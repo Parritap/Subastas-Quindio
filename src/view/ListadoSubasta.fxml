@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -47,5 +48,6 @@
       <Label layoutX="250.0" layoutY="496.0" prefHeight="17.0" prefWidth="116.0" text="Fecha de la puja" />
       <Label layoutX="443.0" layoutY="496.0" prefHeight="17.0" prefWidth="116.0" text="Valor ofrecido" />
       <Label layoutX="596.0" layoutY="496.0" prefHeight="17.0" prefWidth="116.0" text="Fue aceptada" />
+      <Button fx:id="btnFiltrar" layoutX="477.0" layoutY="412.0" mnemonicParsing="false" onAction="#generarAnunciosCSV" prefHeight="40.0" prefWidth="286.0" style="-fx-background-color: #FF5733;" styleClass="search-button" stylesheets="@../resources/style.css" text="%btn.generarAnunciosCSV" textFill="WHITE" />
    </children>
 </AnchorPane>

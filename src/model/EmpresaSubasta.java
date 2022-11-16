@@ -164,8 +164,10 @@ public class EmpresaSubasta implements Runnable, Serializable {
         iAnuncio.actualizar(anuncio, producto);
     }
 
+
     public void hacerPuja(Usuario usuario, Anuncio anuncio, Double valorPuja) throws EscrituraException {
         iAnuncio.hacerPuja(usuario, anuncio, valorPuja, iPuja);
+
     }
 
     public void eliminarPuja(Puja puja) {

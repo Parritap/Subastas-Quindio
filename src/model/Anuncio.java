@@ -18,6 +18,7 @@ import java.util.Objects;
 @Setter
 public class Anuncio implements Serializable {
 
+
 	private static final long serialVersionUID = 65L;
 	//El anuncio contiene un producto
 	private Producto producto;
@@ -34,25 +35,20 @@ public class Anuncio implements Serializable {
 
 	private Double valorMinimo;
 	private  Usuario usuario; //El usuario que realiza el anuncio
-	/**
-	 * creo la variable Estado para indicar cuando un Anuncio ha sido eliminado, actualizado
-	 */
-	private Estado estado;
+    /**
+     * creo la variable Estado para indicar cuando un Anuncio ha sido eliminado, actualizado
+     */
+    private Estado estado;
 
-	private boolean fueMostrado;
-	/*
-	cada anuncio esta relacionado a un id de tipo entero
-	ya que solo vamos a manejar una lista de anuncios podemos hacerlo static
-	NUEVA MANERA DE GENERAR IDS, USANDO EL SINGLE RESPONSIBILITY PRINCIPLE
-	*/
-	private static int idAux;
-	private Integer id;
+    private boolean fueMostrado;
+    /*
+    cada anuncio esta relacionado a un id de tipo entero
+    ya que solo vamos a manejar una lista de anuncios podemos hacerlo static
+    NUEVA MANERA DE GENERAR IDS, USANDO EL SINGLE RESPONSIBILITY PRINCIPLE
+    */
+    private static int idAux;
+    private Integer id;
 
-	/**
-	 * CONSTRUCTOR NECESARIO PARA PRUEBAS
-	 */
-
-	public Anuncio(){}
 
 	public Anuncio(String tituloAnuncio, Double valorInicialAnuncio, Long minutosDuracionAnuncio, String imagePath) {
 		this.imagePath = imagePath;
@@ -69,106 +65,143 @@ public class Anuncio implements Serializable {
 		this.id = ++idAux;
 
 	}
+    /**
+     * CONSTRUCTOR NECESARIO PARA PRUEBAS
+     */
+
+    public Anuncio() {
+    }
 
 
-	/**
-	 * METODO QUE PERMITE COMPARAR IDS DADO UNO POR PARAMETRO
-	 * @param id CON EL QUE SE DESEA COMPARAR
-	 * @return TRUE || FALSE
-	 */
-	public boolean compararId(Integer id) {
-		return this.id.compareTo(id) == 0;
-	}
 
-	/**
-	 * metodo que devuelve el nombre del producto asociado con este anuncio
-	 * @return el nombre del producto
-	 */
-	public String getNameProducto() {
-		return producto.getNombre();
-	}
 
-	/**
-	 * Este metodo devuelve la cantidad de pujas que se ha hecho en ese anuncio
-	 * @return el total de pujas en el anuncio
-	 */
-	public String getTotalPujas() {
-		return listaPujas.size()+"";
-	}
+    /**
+     * METODO QUE PERMITE COMPARAR IDS DADO UNO POR PARAMETRO Y SERIALIZACION
+     *
+     * @param id CON EL QUE SE DESEA COMPARAR
+     * @return TRUE || FALSE
+     */
+    public boolean compararId(Integer id) {
+        return this.id.compareTo(id) == 0;
+    }
 
-	/**
-	 * Este metodo devuelve el valor de la puja más alta
-	 * @return el string del valor de la puja mas alta
-	 */
-	public String getValorMasAlto() {
-		//El valor de la puja más alta será 0
-		Double masAlto = 0.0;
-		for (Puja aux : listaPujas) {
-			//si el valor de la puja es mayor entonces cambio el valor de la puja más alta
-			if (aux.getValorOfrecido().compareTo(masAlto) == 0) {
-				masAlto = aux.getValorOfrecido();
-			}
-		}
-		return masAlto+"";
-	}
+    /**
+     * metodo que devuelve el nombre del producto asociado con este anuncio
+     *
+     * @return el nombre del producto
+     */
+    public String getNameProducto() {
+        return producto.getNombre();
+    }
 
-	@Override
-	public String toString() {
-		return "producto=" + producto.getNombre() +
-				", titulo='" + titulo + '\'' +
-				", fechaPublicacion=" + fechaPublicacion +
-				", fechaTerminacion=" + fechaTerminacion.toString() +
-				", valorInicial=" + valorInicial +
-				", idListaPujas=" + idListaPujas +
-				", usuario=" + usuario.getName() +
-				", estado=" + estado +
-				", fueMostrado=" + fueMostrado +
-				", id=" + id;
-	}
+    /**
+     * Este metodo devuelve la cantidad de pujas que se ha hecho en ese anuncio
+     *
+     * @return el total de pujas en el anuncio
+     */
+    public String getTotalPujas() {
+        return listaPujas.size() + "";
+    }
 
-	public String getStringAnuncio() {
-		StringBuilder arrobas = new StringBuilder("@@");
-		//concateno todos los atributos separados por arroba
-		return arrobas + producto.getNombre() + arrobas
-				+ titulo + arrobas +
-				fechaPublicacion +
-				arrobas + fechaTerminacion.toString()
-				+ arrobas + valorInicial + arrobas
-				+ idListaPujas + arrobas + usuario.getName()
-				+ arrobas + estado + arrobas + fueMostrado + arrobas + id + arrobas;
-	}
+    /**
+     * Este metodo devuelve el valor de la puja más alta
+     *
+     * @return el string del valor de la puja mas alta
+     */
+    public String getValorMasAlto() {
+        //El valor de la puja más alta será 0
+        Double masAlto = 0.0;
+        for (Puja aux : listaPujas) {
+            //si el valor de la puja es mayor entonces cambio el valor de la puja más alta
+            if (aux.getValorOfrecido().compareTo(masAlto) == 0) {
+                masAlto = aux.getValorOfrecido();
+            }
+        }
+        return masAlto + "";
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		Anuncio anuncio = (Anuncio) o;
-		return titulo.equals(anuncio.titulo) && valorInicial.equals(anuncio.valorInicial) && usuario.equals(anuncio.usuario);
-	}
+    @Override
+    public String toString() {
+        return "producto=" + producto.getNombre() +
+                ", titulo='" + titulo + '\'' +
+                ", fechaPublicacion=" + fechaPublicacion +
+                ", fechaTerminacion=" + fechaTerminacion.toString() +
+                ", valorInicial=" + valorInicial +
+                ", idListaPujas=" + idListaPujas +
+                ", usuario=" + usuario.getName() +
+                ", estado=" + estado +
+                ", fueMostrado=" + fueMostrado +
+                ", id=" + id;
+    }
 
-	@Override
-	public int hashCode() {
-		int result = Objects.hash(titulo, fechaPublicacion, fechaTerminacion, valorInicial, usuario);
-		result = 31 * result + Objects.hash(imagePath);
-		return result;
-	}
 
-	/**
-	 * Metodo que devuelve el tiempo restante para que termine el anuncio
-	 * @return el tiempo restante en formato MM
-	 */
-	public Integer getMinutosSubasta() {
-		return (int) ChronoUnit.MINUTES.between(fechaPublicacion, fechaTerminacion);
-	}
-	
-	public byte[] getImageSrcBytes() {
 
-        try {
-			return Files.readAllBytes(Path.of(imagePath));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return new byte[0];
-		}
-	}
+    public String getStringAnuncio() {
+        StringBuilder arrobas = new StringBuilder("@@");
+        //concateno todos los atributos separados por arroba
+        return arrobas + producto.getNombre() + arrobas
+                + titulo + arrobas +
+                fechaPublicacion +
+                arrobas + fechaTerminacion.toString()
+                + arrobas + valorInicial + arrobas
+                + idListaPujas + arrobas + usuario.getName()
+                + arrobas + estado + arrobas + fueMostrado + arrobas + id + arrobas;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Anuncio anuncio = (Anuncio) o;
+        return titulo.equals(anuncio.titulo) && valorInicial.equals(anuncio.valorInicial) && usuario.equals(anuncio.usuario);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(titulo, fechaPublicacion, fechaTerminacion, valorInicial, usuario);
+        result = 31 * result + Objects.hash(imagePath);
+        return result;
+    }
+
+    /**
+     * Metodo que devuelve el tiempo restante para que termine el anuncio
+     *
+     * @return el tiempo restante en formato MM
+     */
+    public Integer getMinutosSubasta() {
+        return (int) ChronoUnit.MINUTES.between(fechaPublicacion, fechaTerminacion);
+    }
+
+    public String getCSV() {
+
+        return titulo + ","
+                + producto.getNombre() + ","
+                + fechaPublicacion.toString() + ","
+                + fechaTerminacion.toString() + ","
+                + valorInicial + ","
+                + valorActual + ","
+                + estado + ","
+                + getListaPujasCSV(); //Al final de este String  no hay coma.
+    }
+
+    /**
+     * Método que devuelve un String con el formato CSV de las pujas de un anuncio.
+     *
+     * @return Texto en formato CSV con el
+     */
+    private String getListaPujasCSV() {
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < this.listaPujas.size(); i++) {
+            str.append(listaPujas.get(i).getCSV());
+            if (i != listaPujas.size() - 1) str.append(",");
+        }
+
+
+        //for (Puja puja : listaPujas) {
+        //    str.append(puja.getCSV());
+        //    str.append(",");
+        //}
+        return str.toString();
+    }
+
 }

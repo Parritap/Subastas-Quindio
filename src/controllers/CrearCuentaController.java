@@ -95,7 +95,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
     private String contrasenia;
 
     private byte[] fotoPerfil;
-    
+
     private String rutaFoto;
     //objeto File que referencia la foto de perfil
     private File archivoFoto;
@@ -109,6 +109,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
     @FXML
     void cargarPerfil(MouseEvent ignoredEvent) {
         Utils.playSound(Utils.URL_CLICK_BUTTON);
+
         archivoFoto = Utils.seleccionarArchivo();
         rutaFoto = Utils.getRutaFotoPerfil(archivoFoto.getPath());
         fotoPerfil = Utils.obtenerBytesImagen(archivoFoto);
@@ -131,6 +132,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
         if(cargarCampos() && application.getClienteActivo() == null){
             //creo el usuario con los datos obtenidos en el txt
             Usuario usuario = new Usuario(name, edad, cedula, correo, direccion, telefono, contrasenia);
+
             usuario.setRutaFotoPerfil(rutaFoto);
             //el singleton agrega el usuario a la lista
             try {

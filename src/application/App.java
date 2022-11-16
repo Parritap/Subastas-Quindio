@@ -1,6 +1,7 @@
 package application;
 
 import controllers.*;
+
 import exceptions.CRUDExceptions;
 import exceptions.LecturaException;
 import interfaces.IApplication;
@@ -81,9 +82,10 @@ public class App extends Application {
            }
     	
         inicializarApp();
+
       
         //ModelFactoryController.addDatosPrueba(); //Añade datos de prueba para no tener que perder tiempo creandolos una y otra vez. Solución temporal mientras se arregla la persistencia.
-        
+       
         //CARGO EL FRAME PRINCIPAL
         //cambié la obtención del bundle para no acoplarlo a este metodo
         //y generalizarlo para todos los frames
@@ -108,6 +110,7 @@ public class App extends Application {
         stage.setOnCloseRequest(event->{
             try {
                 //Persistencia.serializarEmpresaUnificado();
+
             	HiloSerializadorTXT hilotxt = new HiloSerializadorTXT();
             	HiloSerializadorBinario hiloBinario = new HiloSerializadorBinario();
             	HiloSerializadorXML hiloXML = new HiloSerializadorXML(ModelFactoryController.getInstance());

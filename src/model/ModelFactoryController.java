@@ -148,6 +148,7 @@ public class ModelFactoryController {
     }
 
     public static void hacerPuja (Usuario usuario, Anuncio anuncio, Double valorPuja) {
+
         try {
 			empresaSubasta.hacerPuja(usuario, anuncio, valorPuja);
 		} catch (EscrituraException e) {
@@ -161,6 +162,7 @@ public class ModelFactoryController {
         return empresaSubasta.getIAnuncio().filtrarAnuncioPorAsuario(u);
 
     }
+
 
 
     public static void addDatosPrueba(){
@@ -188,7 +190,11 @@ public class ModelFactoryController {
 
         Producto p1 = new Producto("Beagle", "Este es un beagle");
         Producto p2 = new Producto("MasterCard", "Este es una Mastercard");
+        
 
+        //Anuncio a1 = new Anuncio("Flying Beagle", img1, 100D, 60L);
+        //Anuncio a2 = new Anuncio("MasterCard", img2, 100D, 60L);
+        
         Anuncio a1 = new Anuncio("Flying Beagle", 100D, 60L, "src/resources/visa.png");
         Anuncio a2 = new Anuncio("MasterCard", 100D, 60L, "src/resources/beagle.jpg");
 
@@ -199,6 +205,7 @@ public class ModelFactoryController {
         } catch (CRUDExceptions e) {
             e.printStackTrace();
         }
+
 
 
         Puja  p11 = new Puja(LocalDateTime.now(), u1, 200D, a1);
@@ -218,6 +225,9 @@ public class ModelFactoryController {
 
         a2.getListaPujas().add(p21);
         a2.getListaPujas().add(p22);
+
+        iAnuncio.getListaAnuncio().add(a1);
+        iAnuncio.getListaAnuncio().add(a2);
     }
 
     /**
@@ -232,4 +242,24 @@ public class ModelFactoryController {
     public static void eliminarPuja(Puja puja) {
         empresaSubasta.eliminarPuja(puja);
     }
+
+
+
+    /**
+     * Crea un archivo de extensión .csv (tipo excel) en la ruta especificada.
+     * @param ruta Ruta en la que se generará el archivo.
+     * @throws IOException
+     */
+    public static void generarRegistrosAnunciosCSV (String ruta) {
+        empresaSubasta.getIAnuncio().generarCSV(ruta);
+    }
+    public static void generarRegistrosAnunciosCSV (Usuario usuario, String ruta) {
+        empresaSubasta.getIAnuncio().generarCSV(usuario, ruta);
+    }
+
+    public static void pruebaCrearEmpresa () throws CRUDExceptions {
+        empresaSubasta = new EmpresaSubasta();
+        addDatosPrueba();
+    }
+
 }
