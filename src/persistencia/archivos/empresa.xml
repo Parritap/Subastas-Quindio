@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="19" class="java.beans.XMLDecoder">
+ <object class="model.EmpresaSubasta" id="EmpresaSubasta0">
+  <void id="IAnuncio0" property="IAnuncio"/>
+  <void id="IProducto0" property="IProducto">
+   <void property="listaProductos">
+    <void method="add">
+     <object class="model.Producto" id="Producto0">
+      <void property="descripcion">
+       <string>casa nueva</string>
+      </void>
+      <void property="estado">
+       <object class="java.lang.Enum" id="Estado0" method="valueOf">
+        <class>model.enums.Estado</class>
+        <string>NUEVO</string>
+       </object>
+      </void>
+      <void property="id">
+       <int>1</int>
+      </void>
+      <void property="nombre">
+       <string>casa</string>
+      </void>
+      <void property="tipoProducto">
+       <object class="java.lang.Enum" id="TipoProducto0" method="valueOf">
+        <class>model.enums.TipoProducto</class>
+        <string>BIEN_RAIZ</string>
+       </object>
+      </void>
+     </object>
+    </void>
+   </void>
+  </void>
+  <void id="IUsuario0" property="IUsuario">
+   <void property="listaUsuarios">
+    <void method="add">
+     <object class="model.Usuario" id="Usuario0">
+      <void property="activo">
+       <boolean>true</boolean>
+      </void>
+      <void property="age">
+       <int>20</int>
+      </void>
+      <void property="cantAnuncios">
+       <int>0</int>
+      </void>
+      <void property="cedula">
+       <string>1004871322</string>
+      </void>
+      <void property="correo">
+       <string>anubis@gmail.com</string>
+      </void>
+      <void property="direccion">
+       <string>wqkqwjk</string>
+      </void>
+      <void property="estado">
+       <object idref="Estado0"/>
+      </void>
+      <void property="id">
+       <int>1</int>
+      </void>
+      <void property="idListaPujas">
+       <int>1</int>
+      </void>
+      <void property="listaAnuncios">
+       <object class="java.util.ArrayList">
+        <void method="add">
+         <object class="model.Anuncio" id="Anuncio0">
+          <void property="estado">
+           <object idref="Estado0"/>
+          </void>
+          <void property="fechaPublicacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T12:03:12.068645900</string>
+           </object>
+          </void>
+          <void property="fechaTerminacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T12:08:12.068645900</string>
+           </object>
+          </void>
+          <void property="id">
+           <int>1</int>
+          </void>
+          <void property="idListaPujas">
+           <int>2</int>
+          </void>
+          <void property="imagePath">
+           <string>src/resources/FotosAnuncios/istockphoto-1415886888-170667a.jpg</string>
+          </void>
+          <void property="listaPujas">
+           <object class="java.util.ArrayList"/>
+          </void>
+          <void property="producto">
+           <object idref="Producto0"/>
+          </void>
+          <void property="titulo">
+           <string>casa nueva</string>
+          </void>
+          <void property="usuario">
+           <object idref="Usuario0"/>
+          </void>
+          <void property="valorActual">
+           <double>100.0</double>
+          </void>
+          <void property="valorInicial">
+           <double>100.0</double>
+          </void>
+          <void property="valorMinimo">
+           <double>1.0E7</double>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object idref="Anuncio0"/>
+        </void>
+        <void method="add">
+         <object class="model.Anuncio" id="Anuncio1">
+          <void property="estado">
+           <object idref="Estado0"/>
+          </void>
+          <void property="fechaPublicacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T19:30:57.778778100</string>
+           </object>
+          </void>
+          <void property="fechaTerminacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T19:47:57.778778100</string>
+           </object>
+          </void>
+          <void property="id">
+           <int>1</int>
+          </void>
+          <void property="idListaPujas">
+           <int>1</int>
+          </void>
+          <void property="imagePath">
+           <string>src/resources/FotosAnuncios/images (1).jfif</string>
+          </void>
+          <void property="listaPujas">
+           <object class="java.util.ArrayList"/>
+          </void>
+          <void property="producto">
+           <object class="model.Producto">
+            <void property="descripcion">
+             <string>reloj antiguo		</string>
+            </void>
+            <void property="estado">
+             <object idref="Estado0"/>
+            </void>
+            <void property="id">
+             <int>1</int>
+            </void>
+            <void property="nombre">
+             <string>reloj</string>
+            </void>
+            <void property="tipoProducto">
+             <object class="java.lang.Enum" id="TipoProducto1" method="valueOf">
+              <class>model.enums.TipoProducto</class>
+              <string>HOGAR</string>
+             </object>
+            </void>
+           </object>
+          </void>
+          <void property="titulo">
+           <string>reloj antiguo</string>
+          </void>
+          <void property="usuario">
+           <object idref="Usuario0"/>
+          </void>
+          <void property="valorActual">
+           <double>10000.0</double>
+          </void>
+          <void property="valorInicial">
+           <double>10000.0</double>
+          </void>
+          <void property="valorMinimo">
+           <double>2000000.0</double>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object idref="Anuncio1"/>
+        </void>
+        <void method="add">
+         <object class="model.Anuncio" id="Anuncio2">
+          <void property="estado">
+           <object idref="Estado0"/>
+          </void>
+          <void property="fechaPublicacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T20:05:22.916595400</string>
+           </object>
+          </void>
+          <void property="fechaTerminacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T20:21:22.916595400</string>
+           </object>
+          </void>
+          <void property="id">
+           <int>1</int>
+          </void>
+          <void property="idListaPujas">
+           <int>1</int>
+          </void>
+          <void property="imagePath">
+           <string>/resources/FotosAnuncios/descarga (1).jfif</string>
+          </void>
+          <void property="listaPujas">
+           <object class="java.util.ArrayList"/>
+          </void>
+          <void property="producto">
+           <object class="model.Producto">
+            <void property="descripcion">
+             <string>universidad del quindio</string>
+            </void>
+            <void property="estado">
+             <object idref="Estado0"/>
+            </void>
+            <void property="id">
+             <int>1</int>
+            </void>
+            <void property="nombre">
+             <string>universidad</string>
+            </void>
+            <void property="tipoProducto">
+             <object class="java.lang.Enum" method="valueOf">
+              <class>model.enums.TipoProducto</class>
+              <string>OTROS</string>
+             </object>
+            </void>
+           </object>
+          </void>
+          <void property="titulo">
+           <string>universidad</string>
+          </void>
+          <void property="usuario">
+           <object idref="Usuario0"/>
+          </void>
+          <void property="valorActual">
+           <double>1000.0</double>
+          </void>
+          <void property="valorInicial">
+           <double>1000.0</double>
+          </void>
+          <void property="valorMinimo">
+           <double>1.0E11</double>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object idref="Anuncio2"/>
+        </void>
+        <void method="add">
+         <object class="model.Anuncio" id="Anuncio3">
+          <void property="estado">
+           <object idref="Estado0"/>
+          </void>
+          <void property="fechaPublicacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T20:24:20.795502900</string>
+           </object>
+          </void>
+          <void property="fechaTerminacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T20:37:20.795502900</string>
+           </object>
+          </void>
+          <void property="id">
+           <int>1</int>
+          </void>
+          <void property="idListaPujas">
+           <int>1</int>
+          </void>
+          <void property="imagePath">
+           <string>/resources/FotosAnuncios/new-sail-sedan_0.jpg</string>
+          </void>
+          <void property="listaPujas">
+           <object class="java.util.ArrayList"/>
+          </void>
+          <void property="producto">
+           <object class="model.Producto">
+            <void property="descripcion">
+             <string>carro</string>
+            </void>
+            <void property="estado">
+             <object idref="Estado0"/>
+            </void>
+            <void property="id">
+             <int>1</int>
+            </void>
+            <void property="nombre">
+             <string>carro</string>
+            </void>
+            <void property="tipoProducto">
+             <object class="java.lang.Enum" id="TipoProducto2" method="valueOf">
+              <class>model.enums.TipoProducto</class>
+              <string>VEHICULOS</string>
+             </object>
+            </void>
+           </object>
+          </void>
+          <void property="titulo">
+           <string>carro</string>
+          </void>
+          <void property="usuario">
+           <object idref="Usuario0"/>
+          </void>
+          <void property="valorActual">
+           <double>1000.0</double>
+          </void>
+          <void property="valorInicial">
+           <double>1000.0</double>
+          </void>
+          <void property="valorMinimo">
+           <double>2.0E7</double>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object idref="Anuncio3"/>
+        </void>
+        <void method="add">
+         <object class="model.Anuncio" id="Anuncio4">
+          <void property="estado">
+           <object idref="Estado0"/>
+          </void>
+          <void property="fechaPublicacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T20:32:12.896018800</string>
+           </object>
+          </void>
+          <void property="fechaTerminacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T20:40:12.896018800</string>
+           </object>
+          </void>
+          <void property="id">
+           <int>1</int>
+          </void>
+          <void property="idListaPujas">
+           <int>1</int>
+          </void>
+          <void property="imagePath">
+           <string>/resources/FotosAnuncios/images (1).jfif</string>
+          </void>
+          <void property="listaPujas">
+           <object class="java.util.ArrayList"/>
+          </void>
+          <void property="producto">
+           <object class="model.Producto">
+            <void property="descripcion">
+             <string>reloj antiguo</string>
+            </void>
+            <void property="estado">
+             <object idref="Estado0"/>
+            </void>
+            <void property="id">
+             <int>1</int>
+            </void>
+            <void property="nombre">
+             <string>reloj viejo</string>
+            </void>
+            <void property="tipoProducto">
+             <object idref="TipoProducto1"/>
+            </void>
+           </object>
+          </void>
+          <void property="titulo">
+           <string>reloj</string>
+          </void>
+          <void property="usuario">
+           <object idref="Usuario0"/>
+          </void>
+          <void property="valorActual">
+           <double>1000.0</double>
+          </void>
+          <void property="valorInicial">
+           <double>1000.0</double>
+          </void>
+          <void property="valorMinimo">
+           <double>20000.0</double>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object idref="Anuncio4"/>
+        </void>
+       </object>
+      </void>
+      <void property="listaPujas">
+       <object class="java.util.ArrayList"/>
+      </void>
+      <void property="name">
+       <string>anubis</string>
+      </void>
+      <void property="password">
+       <string>anubis</string>
+      </void>
+      <void property="rol">
+       <object class="java.lang.Enum" id="Rol0" method="valueOf">
+        <class>model.enums.Rol</class>
+        <string>CLIENTE</string>
+       </object>
+      </void>
+      <void property="rutaFotoPerfil">
+       <string>src/resources/FotosPerfil/C:\Users\corre\Downloads\1800.jfif</string>
+      </void>
+      <void property="telefono">
+       <string>weqkjqw</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="model.Usuario" id="Usuario1">
+      <void property="activo">
+       <boolean>true</boolean>
+      </void>
+      <void property="age">
+       <int>40</int>
+      </void>
+      <void property="cantAnuncios">
+       <int>0</int>
+      </void>
+      <void property="cedula">
+       <string>1000398838</string>
+      </void>
+      <void property="correo">
+       <string>ramonHernandezGuerrero@gmail.com</string>
+      </void>
+      <void property="direccion">
+       <string>Cra 10 Cll 111</string>
+      </void>
+      <void property="estado">
+       <object idref="Estado0"/>
+      </void>
+      <void property="id">
+       <int>1</int>
+      </void>
+      <void property="idListaPujas">
+       <int>1</int>
+      </void>
+      <void property="listaAnuncios">
+       <object class="java.util.ArrayList">
+        <void method="add">
+         <object class="model.Anuncio" id="Anuncio5">
+          <void property="estado">
+           <object idref="Estado0"/>
+          </void>
+          <void property="fechaPublicacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T20:34:57.742029800</string>
+           </object>
+          </void>
+          <void property="fechaTerminacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T20:45:57.742029800</string>
+           </object>
+          </void>
+          <void property="id">
+           <int>1</int>
+          </void>
+          <void property="idListaPujas">
+           <int>2</int>
+          </void>
+          <void property="imagePath">
+           <string>/resources/FotosAnuncios/istockphoto-1415886888-170667a.jpg</string>
+          </void>
+          <void property="listaPujas">
+           <object class="java.util.ArrayList"/>
+          </void>
+          <void property="producto">
+           <object class="model.Producto">
+            <void property="descripcion">
+             <string>casa</string>
+            </void>
+            <void property="estado">
+             <object idref="Estado0"/>
+            </void>
+            <void property="id">
+             <int>1</int>
+            </void>
+            <void property="nombre">
+             <string>casa</string>
+            </void>
+            <void property="tipoProducto">
+             <object idref="TipoProducto0"/>
+            </void>
+           </object>
+          </void>
+          <void property="titulo">
+           <string>casa</string>
+          </void>
+          <void property="usuario">
+           <object idref="Usuario1"/>
+          </void>
+          <void property="valorActual">
+           <double>1000.0</double>
+          </void>
+          <void property="valorInicial">
+           <double>1000.0</double>
+          </void>
+          <void property="valorMinimo">
+           <double>200000.0</double>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object idref="Anuncio5"/>
+        </void>
+       </object>
+      </void>
+      <void property="listaPujas">
+       <object class="java.util.ArrayList"/>
+      </void>
+      <void property="name">
+       <string>ramon</string>
+      </void>
+      <void property="password">
+       <string>RamonHG</string>
+      </void>
+      <void property="rol">
+       <object idref="Rol0"/>
+      </void>
+      <void property="rutaFotoPerfil">
+       <string>/resources/FotosPerfil/C:\Users\corre\Downloads\descarga (1).jfif</string>
+      </void>
+      <void property="telefono">
+       <string>3116592853</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="model.Usuario" id="Usuario2">
+      <void property="activo">
+       <boolean>true</boolean>
+      </void>
+      <void property="age">
+       <int>18</int>
+      </void>
+      <void property="cantAnuncios">
+       <int>0</int>
+      </void>
+      <void property="cedula">
+       <string>100388292</string>
+      </void>
+      <void property="correo">
+       <string>camiloLosada@gmail.com</string>
+      </void>
+      <void property="direccion">
+       <string>Cra 10 Cll 11</string>
+      </void>
+      <void property="estado">
+       <object idref="Estado0"/>
+      </void>
+      <void property="id">
+       <int>1</int>
+      </void>
+      <void property="idListaPujas">
+       <int>1</int>
+      </void>
+      <void property="listaAnuncios">
+       <object class="java.util.ArrayList">
+        <void method="add">
+         <object class="model.Anuncio" id="Anuncio6">
+          <void property="estado">
+           <object idref="Estado0"/>
+          </void>
+          <void property="fechaPublicacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T20:41:45.762276600</string>
+           </object>
+          </void>
+          <void property="fechaTerminacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T20:50:45.762276600</string>
+           </object>
+          </void>
+          <void property="id">
+           <int>1</int>
+          </void>
+          <void property="idListaPujas">
+           <int>2</int>
+          </void>
+          <void property="imagePath">
+           <string>/resources/FotosAnuncios/barco-4.jpg</string>
+          </void>
+          <void property="listaPujas">
+           <object class="java.util.ArrayList"/>
+          </void>
+          <void property="producto">
+           <object class="model.Producto">
+            <void property="descripcion">
+             <string>barco de carga</string>
+            </void>
+            <void property="estado">
+             <object idref="Estado0"/>
+            </void>
+            <void property="id">
+             <int>1</int>
+            </void>
+            <void property="nombre">
+             <string>barco</string>
+            </void>
+            <void property="tipoProducto">
+             <object idref="TipoProducto2"/>
+            </void>
+           </object>
+          </void>
+          <void property="titulo">
+           <string>barco</string>
+          </void>
+          <void property="usuario">
+           <object idref="Usuario2"/>
+          </void>
+          <void property="valorActual">
+           <double>10000.0</double>
+          </void>
+          <void property="valorInicial">
+           <double>10000.0</double>
+          </void>
+          <void property="valorMinimo">
+           <double>2000000.0</double>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object idref="Anuncio6"/>
+        </void>
+        <void method="add">
+         <object class="model.Anuncio" id="Anuncio7">
+          <void property="estado">
+           <object idref="Estado0"/>
+          </void>
+          <void property="fechaPublicacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T21:42:01.616210700</string>
+           </object>
+          </void>
+          <void property="fechaTerminacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-15T21:53:01.616210700</string>
+           </object>
+          </void>
+          <void property="id">
+           <int>1</int>
+          </void>
+          <void property="idListaPujas">
+           <int>1</int>
+          </void>
+          <void property="imagePath">
+           <string>/resources/FotosAnuncios/barco-4.jpg</string>
+          </void>
+          <void property="listaPujas">
+           <object class="java.util.ArrayList"/>
+          </void>
+          <void property="producto">
+           <object class="model.Producto">
+            <void property="descripcion">
+             <string>barco de carga</string>
+            </void>
+            <void property="estado">
+             <object idref="Estado0"/>
+            </void>
+            <void property="id">
+             <int>1</int>
+            </void>
+            <void property="nombre">
+             <string>barco</string>
+            </void>
+            <void property="tipoProducto">
+             <object idref="TipoProducto2"/>
+            </void>
+           </object>
+          </void>
+          <void property="titulo">
+           <string>barco </string>
+          </void>
+          <void property="usuario">
+           <object idref="Usuario2"/>
+          </void>
+          <void property="valorActual">
+           <double>200.0</double>
+          </void>
+          <void property="valorInicial">
+           <double>200.0</double>
+          </void>
+          <void property="valorMinimo">
+           <double>200000.0</double>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object idref="Anuncio7"/>
+        </void>
+       </object>
+      </void>
+      <void property="listaPujas">
+       <object class="java.util.ArrayList"/>
+      </void>
+      <void property="name">
+       <string>camilo </string>
+      </void>
+      <void property="password">
+       <string>CamiloLos</string>
+      </void>
+      <void property="rol">
+       <object idref="Rol0"/>
+      </void>
+      <void property="rutaFotoPerfil">
+       <string>/resources/FotosPerfil/C:\Users\corre\Downloads\JG3WECEHNNCWRAPI6MXWPKBYHE.png</string>
+      </void>
+      <void property="telefono">
+       <string>314256128</string>
+      </void>
+     </object>
+    </void>
+   </void>
+  </void>
+ </object>
+<void class="model.IAnuncio" id="Field0" method="getField">
+ <string>listaAnuncios</string>
+ <void id="ArrayList0" method="get">
+  <object idref="IAnuncio0"/>
+  <void method="add">
+   <object idref="Anuncio1"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio3"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio6"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio0"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio7"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio4"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio2"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio5"/>
+  </void>
+ </void>
+</void>
+<void idref="ArrayList0"/>
+</java>

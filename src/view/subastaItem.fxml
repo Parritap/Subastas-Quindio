@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane onMouseClicked="#setAnuncioClicked" prefHeight="0.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SubastaItemController">
+   <children>
+      <HBox onMouseClicked="#MostrarOpciones" prefHeight="77.0" prefWidth="672.0" style="-fx-background-color: #252525; -fx-background-radius: 20;" styleClass="border-image" stylesheets="@../resources/style.css">
+         <children>
+            <Label fx:id="lblNameAnuncio" prefHeight="57.0" prefWidth="142.0" text="Anuncio" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="lblNomProducto" layoutX="20.0" layoutY="20.0" prefHeight="57.0" prefWidth="116.0" text="Nom producto" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="lblFechaPublicado" layoutX="20.0" layoutY="20.0" prefHeight="57.0" prefWidth="141.0" text="30-12-25" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="lblValorInicial" layoutX="123.0" layoutY="20.0" prefHeight="57.0" prefWidth="88.0" text="10000 i" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="lblValorMasAlto" layoutX="226.0" layoutY="20.0" prefHeight="57.0" prefWidth="102.0" text="50000" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="lblTotalPujas" layoutX="329.0" layoutY="20.0" prefHeight="57.0" prefWidth="69.0" text="20" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <Line endX="451.77996826171875" endY="-8.272964477539062" layoutX="212.0" layoutY="99.0" startX="-212.0" startY="-8.272972106933594" stroke="#f2f2f2" />
+   </children>
+</AnchorPane>

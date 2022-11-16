@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="83.0" prefWidth="420.0" stylesheets="@../resources/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ItemChatController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="74.0" layoutX="6.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="411.0" />
+      <ImageView fx:id="imgFotoChat" fitHeight="46.0" fitWidth="49.0" layoutX="17.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/actualizar-signo-de-usuario.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblNameUsuario" layoutX="95.0" layoutY="13.0" prefHeight="22.0" prefWidth="241.0" text="Nombre del usuario">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblUltimoMensaje" layoutX="90.0" layoutY="37.0" prefHeight="28.0" prefWidth="264.0" style="-fx-alignment: CENTER;" text="Ultimo mensaje" textFill="#837d7d" />
+      <Circle fill="#95ec85" layoutX="368.0" layoutY="39.0" radius="14.0" stroke="WHITE" strokeType="INSIDE" styleClass="shadow" />
+   </children>
+</AnchorPane>
