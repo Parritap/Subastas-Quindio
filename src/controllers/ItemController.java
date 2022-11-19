@@ -13,8 +13,6 @@ import lombok.Getter;
 import lombok.Setter;
 import model.Anuncio;
 import utilities.Utils;
-
-import java.io.ByteArrayInputStream;
 import java.time.LocalDateTime;
 @Getter
 @Setter
@@ -59,7 +57,15 @@ public class ItemController implements IApplication, Inicializable {
         this.anuncio = anuncio;
         nameLabel.setText(anuncio.getTitulo());
         priceLable.setText(anuncio.getValorInicial()+"");
-        Image srcImg = new Image(Utils.getRutaAbsoluta()+anuncio.getImagePath());
+        System.out.println("anuncio.getImagePath() = " + anuncio.getImagePath());
+        //verifico el sistema operativo para cargar la imagen
+        //veifico el sistema operativo para cargar la imagen
+        Image srcImg = null;
+        if(System.getProperty("os.name").toLowerCase().contains("windows")) {
+            srcImg = new Image(Utils.getRutaAbsoluta()+anuncio.getImagePath());
+        }else {
+            srcImg = new Image(anuncio.getImagePath());
+        }
         img.setImage(srcImg);
         lblTiempo.setText("Tiempo restante "+horas+" "+minutos+" "+segundos);
         actualizarTiempo();

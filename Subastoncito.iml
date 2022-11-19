@@ -11,8 +11,8 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="AnimateFX-1.2.1" level="project" />
     <orderEntry type="library" name="javafx.graphics" level="project" />
-    <orderEntry type="library" exported="" name="JavaFX_Linux" level="application" />
+    <orderEntry type="library" name="JavaFX_Linux" level="application" />
     <orderEntry type="library" name="JavaFX" level="application" />
-    <orderEntry type="library" name="Lombok" level="application" />
+    <orderEntry type="library" exported="" name="lombok" level="project" />
   </component>
 </module>

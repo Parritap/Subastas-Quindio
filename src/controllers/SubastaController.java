@@ -180,8 +180,13 @@ public class SubastaController implements IApplication, Inicializable {
 
         //cargo la ruta de la imagen y la cargo en el anuncio
         System.out.println("RUTA IMAGEN: " + anuncioSeleccionado.getImagePath());
-        Image image = new Image(Utils.getRutaAbsoluta()+ anuncioSeleccionado.getImagePath());
-
+        //veifico el sistema operativo para cargar la imagen
+        Image image = null;
+        if(System.getProperty("os.name").toLowerCase().contains("windows")) {
+            image = new Image(Utils.getRutaAbsoluta()+anuncioSeleccionado.getImagePath());
+        }else {
+            image = new Image(anuncioSeleccionado.getImagePath());
+        }
         this.adSelectedImage.setImage(image);
     }
 

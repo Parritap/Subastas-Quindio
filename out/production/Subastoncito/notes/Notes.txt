@@ -22,3 +22,12 @@
 - agregar un boton para aceptar la puja del item anterior
 - cuando se haga clic en ese boton la puja debe pasar a completada y no mostrarse mas
 - agregar la clase Mensaje al uml
+
+
+19/oct/2022
+
+Validar la info de los usuarios al actualizar
+Enviar una alerta al actualizar la info de los usuarios.
+Filtrar por Keyevent los anuncios.
+Poner la hpta musica.
+
