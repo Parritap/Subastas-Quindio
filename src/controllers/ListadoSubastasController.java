@@ -7,9 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
 import model.Anuncio;
@@ -17,9 +14,6 @@ import model.ModelFactoryController;
 import model.Puja;
 import model.enums.Estado;
 import utilities.Utils;
-
-import javax.swing.*;
-import java.io.File;
 import java.util.ArrayList;
 
 @Getter
@@ -69,20 +63,24 @@ public class ListadoSubastasController implements IApplication, Inicializable {
         }
         VBoxMisPujas.getChildren().clear();
         //Lógica para listar las pujas del usuario activo.VBoxMisPujas.getChildren().clear();ArrayList<Puja> listadoPujas;
-        try {
-            listadoPujas = ModelFactoryController.getListaPujas(application.getClienteActivo());
-            if (listadoPujas != null) {
-                for (Puja puja : listadoPujas) {
-                    Estado e = puja.getAnuncio().getEstado();
-                    if (e != Estado.DESACTIVADO && e != Estado.ELIMINADO && puja.getEstado()== Estado.ACTIVO) {
-                        AnchorPane pane = application.obtenerPanePuja(Utils.PUJA_ITEM, puja, this);
-                        //Añado el pane al VBox
-                        VBoxMisPujas.getChildren().add(pane);
+
+        if (application.getClienteActivo() != null) {
+            try {
+                listadoPujas = ModelFactoryController.getListaPujas(application.getClienteActivo());
+                if (listadoPujas != null) {
+                    for (Puja puja : listadoPujas) {
+                        Estado e = puja.getAnuncio().getEstado();
+                        if (e != Estado.DESACTIVADO && e != Estado.ELIMINADO && puja.getEstado() == Estado.ACTIVO) {
+                            AnchorPane pane = application.obtenerPanePuja(Utils.PUJA_ITEM, puja, this);
+                            //Añado el pane al VBox
+                            VBoxMisPujas.getChildren().add(pane);
+                        }
                     }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+
         }
 
 
@@ -110,7 +108,7 @@ public class ListadoSubastasController implements IApplication, Inicializable {
     void generarAnunciosCSV(ActionEvent event) {
 
         String ruta = Utils.retorarRutaConFileChooser(); //esto devuelve unicamente la ubicación donde se guardará el archivo.
-        ruta+= "/anunciosCSV.csv";
+        ruta += "/anunciosCSV.csv";
 
         ModelFactoryController.generarRegistrosAnunciosCSV(application.getClienteActivo(), ruta);
     }

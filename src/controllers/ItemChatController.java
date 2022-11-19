@@ -12,8 +12,6 @@ import javafx.scene.shape.Circle;
 import lombok.Getter;
 import lombok.Setter;
 import model.Chat;
-import model.Mensaje;
-import model.Usuario;
 
 import java.io.ByteArrayInputStream;
 
@@ -47,14 +45,14 @@ public class ItemChatController implements IApplication, Inicializable {
 
         if(chat.getUsuarioReceptor() == application.getClienteActivo()){
             lblNameUsuario.setText(chat.getUsuarioEmisor().getName());
-            if(chat.getUsuarioEmisor().getFotoPerfil() != null) {
-                Image image = new Image(new ByteArrayInputStream(chat.getUsuarioEmisor().getFotoPerfil()));
+            if(chat.getUsuarioEmisor().getFotoPerfilBytes() != null) {
+                Image image = new Image(new ByteArrayInputStream(chat.getUsuarioEmisor().getFotoPerfilBytes()));
                 circleImage.setFill(new ImagePattern(image));
             }
         }else{
             lblNameUsuario.setText(chat.getUsuarioReceptor().getName());
             lblUltimoMensaje.setText(chat.getUltimoMensaje());
-            Image img = new Image(new ByteArrayInputStream(chat.getUsuarioReceptor().getFotoPerfil()));
+            Image img = new Image(new ByteArrayInputStream(chat.getUsuarioReceptor().getFotoPerfilBytes()));
             circleImage.setFill(new ImagePattern(img));
         }
 

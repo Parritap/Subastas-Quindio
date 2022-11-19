@@ -3,14 +3,11 @@ package model;
 import lombok.Getter;
 import lombok.Setter;
 import model.enums.Estado;
-import java.io.IOException;
+import java.io.Serial;
 import java.io.Serializable;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 @Getter
@@ -18,6 +15,7 @@ import java.util.Objects;
 public class Anuncio implements Serializable {
 
 
+	@Serial
 	private static final long serialVersionUID = 65L;
 	//El anuncio contiene un producto
 	private Producto producto;
@@ -67,7 +65,7 @@ public class Anuncio implements Serializable {
 		this.id = ++idAux;
 
 	}
-	}
+
     /**
      * CONSTRUCTOR NECESARIO PARA PRUEBAS
      */

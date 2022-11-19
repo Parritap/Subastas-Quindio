@@ -28,10 +28,8 @@ import persistencia.logic.ArchivoUtil;
 import persistencia.logic.HiloSerializadorBinario;
 import persistencia.logic.HiloSerializadorTXT;
 import persistencia.logic.HiloSerializadorXML;
-import persistencia.logic.Persistencia;
 import utilities.Utils;
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -118,8 +116,6 @@ public class App extends Application {
             	hilotxt.start();
             	hiloBinario.start();
             	hiloXML.start();
-            	//Persistencia.serializarEmpresaBinario();
-                //Persistencia.serializarEmpresaTXT();
                 if (stageAlerta != null ) stageAlerta.close();
 
             }
@@ -129,12 +125,7 @@ public class App extends Application {
             if (stageAlerta != null ) stageAlerta.close();
         });
         
-        //imprime los usuarios
-        /*
-        for(Usuario usr: ModelFactoryController.getInstance().getIUsuario().getListaUsuarios()) {
-        	System.out.println(usr.getCorreo()+", "+usr.getPassword());
-        }
-        */
+
         stage.show();
     }
     /**

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .search-box{
     -fx-background-color:#FFFFFF;
     -fx-background-radius: 100;
@@ -232,11 +231,13 @@
     -fx-border-color: Black;
     -fx-cursor: Hand;
 }
+
 .paneViewChat{
     -fx-background-color: White;
     -fx-background-radius: 30;
     -fx-border-radius: 30;
-=======
+}
+
 .search-box{
     -fx-background-color:#FFFFFF;
     -fx-background-radius: 100;
@@ -495,5 +496,5 @@
     -fx-background-color: White;
     -fx-background-radius: 30;
     -fx-border-radius: 30;
->>>>>>> 8cceda971292e318b420da37fe9f5beba1252c5a
+
 }

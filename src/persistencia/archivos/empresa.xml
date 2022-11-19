@@ -1,4 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="19" class="java.beans.XMLDecoder">
- <object class="model.EmpresaSubasta"/>
+<java version="18.0.2.1" class="java.beans.XMLDecoder">
+ <object class="model.EmpresaSubasta" id="EmpresaSubasta0">
+  <void id="IAnuncio0" property="IAnuncio"/>
+  <void id="IProducto0" property="IProducto">
+   <void property="listaProductos">
+    <void method="add">
+     <object class="model.Producto" id="Producto0">
+      <void property="descripcion">
+       <string>a</string>
+      </void>
+      <void property="estado">
+       <object class="java.lang.Enum" id="Estado0" method="valueOf">
+        <class>model.enums.Estado</class>
+        <string>NUEVO</string>
+       </object>
+      </void>
+      <void property="id">
+       <int>1</int>
+      </void>
+      <void property="nombre">
+       <string>a</string>
+      </void>
+      <void property="tipoProducto">
+       <object class="java.lang.Enum" method="valueOf">
+        <class>model.enums.TipoProducto</class>
+        <string>HOGAR</string>
+       </object>
+      </void>
+     </object>
+    </void>
+   </void>
+  </void>
+  <void id="IUsuario0" property="IUsuario">
+   <void property="listaUsuarios">
+    <void method="add">
+     <object class="model.Usuario" id="Usuario0">
+      <void property="activo">
+       <boolean>true</boolean>
+      </void>
+      <void property="age">
+       <int>18</int>
+      </void>
+      <void property="cantAnuncios">
+       <int>0</int>
+      </void>
+      <void property="cedula">
+       <string>prueba</string>
+      </void>
+      <void property="correo">
+       <string>prueba</string>
+      </void>
+      <void property="direccion">
+       <string>prueba</string>
+      </void>
+      <void property="estado">
+       <object idref="Estado0"/>
+      </void>
+      <void property="id">
+       <int>1</int>
+      </void>
+      <void property="idListaPujas">
+       <int>1</int>
+      </void>
+      <void property="listaAnuncios">
+       <object class="java.util.ArrayList">
+        <void method="add">
+         <object class="model.Anuncio" id="Anuncio0">
+          <void property="estado">
+           <object idref="Estado0"/>
+          </void>
+          <void property="fechaPublicacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-19T16:46:45.599528</string>
+           </object>
+          </void>
+          <void property="fechaTerminacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-19T17:46:45.599528</string>
+           </object>
+          </void>
+          <void property="id">
+           <int>1</int>
+          </void>
+          <void property="idListaPujas">
+           <int>2</int>
+          </void>
+          <void property="imagePath">
+           <string>/resources/FotosAnuncios/actualizar-signo-de-usuario.png</string>
+          </void>
+          <void property="listaPujas">
+           <object class="java.util.ArrayList"/>
+          </void>
+          <void property="producto">
+           <object idref="Producto0"/>
+          </void>
+          <void property="titulo">
+           <string>a</string>
+          </void>
+          <void property="usuario">
+           <object idref="Usuario0"/>
+          </void>
+          <void property="valorActual">
+           <double>12.0</double>
+          </void>
+          <void property="valorInicial">
+           <double>12.0</double>
+          </void>
+          <void property="valorMinimo">
+           <double>12.0</double>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object idref="Anuncio0"/>
+        </void>
+       </object>
+      </void>
+      <void property="listaChats">
+       <object class="java.util.ArrayList"/>
+      </void>
+      <void property="listaPujas">
+       <object class="java.util.ArrayList"/>
+      </void>
+      <void property="name">
+       <string>prueba</string>
+      </void>
+      <void property="password">
+       <string>prueba</string>
+      </void>
+      <void property="rol">
+       <object class="java.lang.Enum" method="valueOf">
+        <class>model.enums.Rol</class>
+        <string>CLIENTE</string>
+       </object>
+      </void>
+      <void property="rutaFotoPerfil">
+       <string>/resources/FotosPerfil//Users/alejandroarias/Downloads/5a272ca1839aa02856ea3fc1849cc7ff--computer-hacking-computer-programming.jpg</string>
+      </void>
+      <void property="telefono">
+       <string>prueba</string>
+      </void>
+     </object>
+    </void>
+   </void>
+  </void>
+ </object>
+<void class="model.IAnuncio" id="Field0" method="getField">
+ <string>listaAnuncios</string>
+ <void id="ArrayList0" method="get">
+  <object idref="IAnuncio0"/>
+  <void method="add">
+   <object idref="Anuncio0"/>
+  </void>
+ </void>
+</void>
+<void idref="ArrayList0"/>
 </java>

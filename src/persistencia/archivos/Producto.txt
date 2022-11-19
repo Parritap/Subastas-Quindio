@@ -1,3 +1,1 @@
-@@1@@Beagle@@Este es un beagle@@NUEVO@@
-@@2@@MasterCard@@Este es una Mastercard@@NUEVO@@
-@@3@@dfgfdg@@dgfdfgdfg@@NUEVO@@
+@@1@@a@@a@@NUEVO@@

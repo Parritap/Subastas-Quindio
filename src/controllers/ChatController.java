@@ -25,12 +25,8 @@ import model.Mensaje;
 import model.Usuario;
 import services.AppCliente;
 import utilities.Utils;
-
 import java.io.ByteArrayInputStream;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Objects;
 
 @Setter
 @Getter
@@ -145,11 +141,11 @@ public class ChatController implements IApplication, Inicializable {
 
         if(chat.getUsuarioReceptor() != application.getClienteActivo()) {
             usuarioEnElChat = chat.getUsuarioReceptor();
-            imgProfile.setImage(new Image(new ByteArrayInputStream(chat.getUsuarioReceptor().getFotoPerfil())));
+            imgProfile.setImage(new Image(new ByteArrayInputStream(chat.getUsuarioReceptor().getFotoPerfilBytes())));
             lblNombre.setText(chat.getUsuarioReceptor().getName());
         }else{
             usuarioEnElChat = chat.getUsuarioEmisor();
-            imgProfile.setImage(new Image(new ByteArrayInputStream(chat.getUsuarioEmisor().getFotoPerfil())));
+            imgProfile.setImage(new Image(new ByteArrayInputStream(chat.getUsuarioEmisor().getFotoPerfilBytes())));
             lblNombre.setText(chat.getUsuarioEmisor().getName());
         }
         VBoxMensajes.getChildren().clear();

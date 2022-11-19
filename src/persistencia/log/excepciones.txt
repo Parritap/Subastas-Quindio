@@ -1358,3 +1358,13 @@ Nov 19, 2022 4:19:07 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 WARNING: Excepcion,LecturaException, usuario Ana no encontrado,11-19
 Nov 19, 2022 4:19:12 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre Ana y correo ana ha iniciado sesión.,11-19
+Nov 19, 2022 4:41:55 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-19
+Nov 19, 2022 4:41:55 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-19
+Nov 19, 2022 4:45:52 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:prueba,11-19
+Nov 19, 2022 4:46:45 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:a,11-19
+Nov 19, 2022 4:46:45 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:a,11-19
