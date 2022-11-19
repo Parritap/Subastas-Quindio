@@ -5,7 +5,10 @@ import lombok.Setter;
 import lombok.ToString;
 import model.enums.Estado;
 import model.enums.Rol;
+import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -13,6 +16,7 @@ import java.util.Objects;
 @Getter
 @ToString
 public class Usuario implements Serializable{
+	private static final long serialVersionUID = 10L;
 	//VARIABLES GLOBALES
 	private String name;
 	private Integer age;
@@ -34,16 +38,14 @@ public class Usuario implements Serializable{
 	private Estado estado;
 	//id del usuario
 	private Integer id;
-	//arreglo que contiene los bytes de una imagen
-	private byte[] fotoPerfil;
-	//
+	//private transient byte[] fotoPerfil;
+	private String rutaFotoPerfil;
 	private ArrayList<Anuncio> listaAnuncios;
 	//si es un admin o un cliente
 	private Rol rol;
 	//lista de chats, aquí se contienen los mensajes que se han enviado a este usuario,
 	//los usuarios que han enviado mensajes y los mensajes que ha enviado este usuario
 	private ArrayList<Chat> listaChats;
-
 	//---------------------------------------CONSTRUCTOR PARA EL USUARIO---------------------------------------
 
 	public Usuario(String name, Integer age, String cedula, String correo, String direccion, String telefono, String password) {
@@ -77,7 +79,7 @@ public class Usuario implements Serializable{
 	public boolean compararId(Integer id) {return this.id.compareTo(id) == 0;}
 
 
-	public boolean compararCorreo (String correo) {return this.correo.compareTo(correo) == 0;}
+	public boolean compararCorreo (String correo) {System.out.println(this.correo);return this.correo.compareTo(correo) == 0;}
 
 	/**
 	 * METODO QUE PERMITE ACTUALIZAR ATRIBUTOS DE UN USUARIO SIN CAMBIAR EL
@@ -172,4 +174,14 @@ public class Usuario implements Serializable{
 			}
 		}
 	}
+
+	public byte[] getFotoPerfilBytes() {
+        try {
+			return Files.readAllBytes(Path.of(rutaFotoPerfil));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new byte[0];
+		}
+      }
 }

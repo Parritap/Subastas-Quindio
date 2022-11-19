@@ -1,7 +1,16 @@
 package persistencia.logic;
 
 import model.EmpresaSubasta;
+
+import java.beans.Encoder;
+import java.beans.Expression;
+import java.beans.PersistenceDelegate;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
 import java.io.*;
+import java.nio.file.Files;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -15,7 +24,14 @@ import java.util.logging.SimpleFormatter;
 public class ArchivoUtil {
     //variable que contiene la fecha del sistema
     private static String fechaSistema = "";
-
+    
+    
+    //devuelve true o false dependiendo si el archivo esta vacio o no, 
+    //puede pasar que el archivo no exista y retorne true
+    public static Boolean archivoVacio(String ruta) {
+    	File archivo = new File(ruta);
+    	return archivo.length() == 0;
+    }
     //-------------------------SERIALIZACION BINARIA-------------------------
     /**
      * Metodo que permite serializar un objeto en un archivo,
@@ -124,5 +140,86 @@ public class ArchivoUtil {
         }
         fechaSistema = mesN+"-"+diaN;
     }
+    
+    
+    public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException {
+
+		XMLDecoder decodificadorXML;
+		Object objetoXML;
+		FileInputStream stream = new FileInputStream(rutaArchivo);
+		decodificadorXML = new XMLDecoder(stream);
+		objetoXML = decodificadorXML.readObject();
+		decodificadorXML.close();
+		return objetoXML;
+		
+	}
+
+	public static void salvarRecursoSerializadoXML(String rutaArchivo, Object objeto) throws IOException {
+		
+		XMLEncoder codificadorXML;
+		
+		codificadorXML = new XMLEncoder(new FileOutputStream(rutaArchivo));
+		 codificadorXML.setPersistenceDelegate(LocalDateTime.class, new PersistenceDelegate() {
+             @Override
+             protected Expression instantiate(Object oldInstance, Encoder out) {
+                 LocalDateTime date = (LocalDateTime) oldInstance;
+                  
+                 return new Expression(date, LocalDateTime.class, "parse", new Object[] {date.toString()});
+             }
+         });
+		codificadorXML.writeObject(objeto);
+		codificadorXML.close();
+		
+	}
+	
+	/*public static void copiarArchivo(File source, File dest) throws IOException {
+	    InputStream is = null;
+	    OutputStream os = null;
+    System.out.println(dest.getAbsolutePath());
+	    try {
+	        is = new FileInputStream(source);
+	        if(!dest.exists()) dest.createNewFile();
+	        System.out.println("crea el archivo");
+	        os = new FileOutputStream(dest);
+	        byte[] buffer = new byte[1024];
+	        int length;
+	        while ((length = is.read(buffer)) > 0) {
+	            os.write(buffer, 0, length);
+	        }
+	    } 
+	    catch(Exception e) {
+	    	System.out.println("_________________________________________");
+	    	e.printStackTrace();
+	    	System.out.println("_________________________________________");
+	    }
+	    finally {
+	        is.close();
+	        os.close();
+	}*/
+
+	
+	
+	public static void copiarArchivo(File source, File dest) throws IOException {
+	    InputStream is = null;
+	    OutputStream os = null;
+	    try {
+	    	System.out.println(dest.getAbsolutePath());
+			if(!dest.exists()) dest.createNewFile();
+
+	    	
+	        is = new FileInputStream(source);
+	        os = new FileOutputStream(dest);
+	        
+	        byte[] buffer = new byte[1024];
+	        int length;
+	        while ((length = is.read(buffer)) > 0) {
+	            os.write(buffer, 0, length);
+	        }
+	    } finally {
+	        is.close();
+	        os.close();
+	    }
+
+	}
 
 }

@@ -31,6 +31,7 @@ public class EmpresaSubasta implements Runnable, Serializable {
     private IUsuario iUsuario;
     private IProducto iProducto;
     private ITransaccion iTransaccion;
+    private IPuja iPuja;
 
     /**
      * CONSTRUCTOR
@@ -40,6 +41,7 @@ public class EmpresaSubasta implements Runnable, Serializable {
         iProducto = new IProducto();
         iUsuario = new IUsuario();
         iTransaccion = new ITransaccion();
+        iPuja = new IPuja();
     }
 
     /**
@@ -99,7 +101,6 @@ public class EmpresaSubasta implements Runnable, Serializable {
         iAnuncio.actualizarAnuncios(empresaSubastaAux.getIAnuncio());
         iProducto.actualizarProductos(empresaSubastaAux.getIProducto());
         iTransaccion.actualizarTransaccion(empresaSubastaAux.getITransaccion());
-
     }
 
     /**
@@ -109,6 +110,17 @@ public class EmpresaSubasta implements Runnable, Serializable {
     public String getStringUsuarios() {
         return iUsuario.getStringUsuarios();
     }
+
+
+    /**
+     * Metodo que devuelve la informacion de los usuarios contenidos en un string
+     * @return string con la informacion de los usuarios
+     */
+    public String getStringPujas() {
+        return iPuja.getStringPujas();
+    }
+
+
 
     /**
      * Metodo que devuelve la informacion de los productos contenidos en un string
@@ -167,8 +179,9 @@ public class EmpresaSubasta implements Runnable, Serializable {
      * @param anuncio anuncio sobre el que se puja
      * @param valorPuja valor con el que puja
      */
-    public void hacerPuja(Usuario usuario, Anuncio anuncio, Double valorPuja) {
-        iAnuncio.hacerPuja(usuario, anuncio, valorPuja);
+    public void hacerPuja(Usuario usuario, Anuncio anuncio, Double valorPuja) throws EscrituraException {
+        iAnuncio.hacerPuja(usuario, anuncio, valorPuja, iPuja);
+
     }
 
     /**

@@ -3,7 +3,10 @@ package model;
 import lombok.Getter;
 import lombok.Setter;
 import model.enums.Estado;
+import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -14,10 +17,13 @@ import java.util.Objects;
 @Setter
 public class Anuncio implements Serializable {
 
+
+	private static final long serialVersionUID = 65L;
 	//El anuncio contiene un producto
 	private Producto producto;
 	private String titulo;
-	private byte[] imageSrc; //Es necesario cambiar la imagen a String, y contener solo la ruta para tener flexibilidad
+	//private transient byte[] imageSrc; //Es necesario cambiar la imagen a String, y contener solo la ruta para tener flexibilidad
+	private String imagePath;
 	private LocalDateTime fechaPublicacion;
 	private LocalDateTime fechaTerminacion;
 	private Double valorInicial;
@@ -27,7 +33,7 @@ public class Anuncio implements Serializable {
 	private Integer idListaPujas;
 
 	private Double valorMinimo;
-	private  Usuario usuario; //El usuario que realiza el anuncio
+	private Usuario usuario; //El usuario que realiza el anuncio
 	/**
 	 * creo la variable Estado para indicar cuando un Anuncio ha sido eliminado, actualizado
 	 */
@@ -42,26 +48,34 @@ public class Anuncio implements Serializable {
 	private static int idAux;
 	private Integer id;
 
-	/**
-	 * CONSTRUCTOR NECESARIO PARA PRUEBAS
-	 */
+    /**
+     * CONSTRUCTOR
+     */
 
-	public Anuncio(){}
-
-    public Anuncio(String tituloAnuncio, byte[] bytesImg, Double valorInicialAnuncio, Long minutosDuracionAnuncio) {
-        this.titulo = tituloAnuncio;
-        this.imageSrc = bytesImg;
-        this.valorInicial = valorInicialAnuncio;
-        this.valorActual = valorInicial; //Creo que aun no se ha hecho un método para actualizar el valor actual. TRABAJAR EN ELLO.
-        this.fechaPublicacion = LocalDateTime.now();
-        this.fechaTerminacion = this.fechaPublicacion.plusMinutes(minutosDuracionAnuncio);
-        this.idListaPujas = ModelFactoryController.darIdListaPuja();
-        this.listaPujas = new ArrayList<>();
-        this.fueMostrado = false;
-        this.estado = Estado.NUEVO;
-        this.id = ++idAux;
+	public Anuncio(String tituloAnuncio, Double valorInicialAnuncio, Long minutosDuracionAnuncio, String imagePath) {
+		this.imagePath = imagePath;
+		this.titulo = tituloAnuncio;
+	//	this.imageSrc = bytesImg;
+		this.valorInicial = valorInicialAnuncio;
+		this.valorActual = valorInicial; //Creo que aun no se ha hecho un método para actualizar el valor actual. TRABAJAR EN ELLO.
+		this.fechaPublicacion = LocalDateTime.now();
+		this.fechaTerminacion = this.fechaPublicacion.plusMinutes(minutosDuracionAnuncio);
+		this.idListaPujas = ModelFactoryController.darIdListaPuja();
+		this.listaPujas = new ArrayList<>();
+		this.fueMostrado = false;
+		this.estado = Estado.NUEVO;
+		this.id = ++idAux;
 
 	}
+	}
+    /**
+     * CONSTRUCTOR NECESARIO PARA PRUEBAS
+     */
+
+    public Anuncio() {
+    }
+
+
 
 
 	/**
@@ -113,23 +127,25 @@ public class Anuncio implements Serializable {
 				", fechaTerminacion=" + fechaTerminacion.toString() +
 				", valorInicial=" + valorInicial +
 				", idListaPujas=" + idListaPujas +
-				", usuario=" + usuario.getName() +
+				//", usuario=" + usuario.getName() +
 				", estado=" + estado +
 				", fueMostrado=" + fueMostrado +
 				", id=" + id;
 	}
 
-	public String getStringAnuncio() {
-		StringBuilder arrobas = new StringBuilder("@@");
-		//concateno todos los atributos separados por arroba
-		return arrobas + producto.getNombre() + arrobas
-				+ titulo + arrobas +
-				fechaPublicacion +
-				arrobas + fechaTerminacion.toString()
-				+ arrobas + valorInicial + arrobas
-				+ idListaPujas + arrobas + usuario.getName()
-				+ arrobas + estado + arrobas + fueMostrado + arrobas + id + arrobas;
-	}
+
+
+    public String getStringAnuncio() {
+        StringBuilder arrobas = new StringBuilder("@@");
+        //concateno todos los atributos separados por arroba
+        return arrobas + producto.getNombre() + arrobas
+                + titulo + arrobas +
+                fechaPublicacion +
+                arrobas + fechaTerminacion.toString()
+                + arrobas + valorInicial + arrobas
+                + idListaPujas + arrobas //+ usuario.get
+                + arrobas + estado + arrobas + fueMostrado + arrobas + id + arrobas;
+    }
 
 	@Override
 	public boolean equals(Object o) {
@@ -139,12 +155,13 @@ public class Anuncio implements Serializable {
 		return titulo.equals(anuncio.titulo) && valorInicial.equals(anuncio.valorInicial) && usuario.equals(anuncio.usuario);
 	}
 
-	@Override
-	public int hashCode() {
-		int result = Objects.hash(titulo, fechaPublicacion, fechaTerminacion, valorInicial, usuario);
-		result = 31 * result + Arrays.hashCode(imageSrc);
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(titulo, fechaPublicacion, fechaTerminacion, valorInicial, usuario);
+        result = 31 * result + Objects.hash(imagePath);
+        return result;
+    }
+
 
     public String getCSV() {
 
@@ -169,7 +186,6 @@ public class Anuncio implements Serializable {
             str.append(listaPujas.get(i).getCSV());
             if (i != listaPujas.size() - 1) str.append(",");
         }
-
         return str.toString();
     }
 	/**

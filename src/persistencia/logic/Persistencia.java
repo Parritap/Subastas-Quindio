@@ -1,5 +1,8 @@
 package persistencia.logic;
 
+import java.io.IOException;
+
+import exceptions.CRUDExceptions;
 import model.*;
 import utilities.Utils;
 
@@ -10,8 +13,11 @@ public class Persistencia {
      * Este metodo permite serializar la empresa en binario.
      * Se guarda en el archivo "empresa. Ser" ubicado en la carpeta "archivos"
      * @return una instancia de la empresa
+     * @throws CRUDExceptions 
      */
-    public static EmpresaSubasta deserializarEmpresaBinario(){
+    public static EmpresaSubasta deserializarEmpresaBinario() throws CRUDExceptions{
+    	//si el archivo de serializacion esta vacio devuelve un objeto vacio
+    	if(ArchivoUtil.archivoVacio(Utils.RUTA_EMPRESA_SER)) { return new EmpresaSubasta();}
         return (EmpresaSubasta) ArchivoUtil.deserializarBinario(Utils.RUTA_EMPRESA_SER);
     }
 
@@ -40,5 +46,20 @@ public class Persistencia {
         //obtengo el string de los anuncios
         String anunciosTxt = ModelFactoryController.getStringAnuncios();
         ArchivoUtil.serializarTxt(Utils.RUTA_ANUNCIOS_TXT, anunciosTxt);
+        //obtengo el string de las pujas
+        String pujasTxt = ModelFactoryController.getStringPujas();
+        ArchivoUtil.serializarTxt(Utils.RUTA_PUJAS_TXT, pujasTxt);
+        
+    }
+    
+    
+    public static void serializarEmpresaXML() throws IOException {
+    	ArchivoUtil.salvarRecursoSerializadoXML(Utils.RUTA_EMPRESA_XML, ModelFactoryController.getInstance());
+    }
+    
+    public static EmpresaSubasta deserializarEmpresaXML() throws IOException, CRUDExceptions {
+    	if(!ArchivoUtil.archivoVacio(Utils.RUTA_EMPRESA_XML))
+    		return (EmpresaSubasta) ArchivoUtil.cargarRecursoSerializadoXML(Utils.RUTA_EMPRESA_XML);
+    	return new EmpresaSubasta();
     }
 }

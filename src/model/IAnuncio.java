@@ -1,5 +1,7 @@
 package model;
 
+
+import java.io.Serializable;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,9 +23,11 @@ import utilities.Utils;
 @Setter
 public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
-    //SE CAMBIA EL HASHMAP POR UN ARRAYLIST, DEBIDO A QUE SE INVIRTIO LA DEPENDENCIA DEL ID
-    public ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
 
+    private static final long serialVersionUID = 6730L;
+	//SE CAMBIA EL HASHMAP POR UN ARRAYLIST, DEBIDO A QUE SE INVIRTIO LA DEPENDENCIA DEL ID
+    public ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
+    public IAnuncio() {}
     /**
      * Metodo que actualiza la lista de anuncios, se actualiza
      * con la lista contenida en el objeto pasado por parametro
@@ -215,7 +219,7 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
                 anuncio1.setProducto(producto);
                 //actualizo todos los datos del anuncio1 con los datos del anuncio pasado por parametro
                 anuncio1.setValorMinimo(anuncio.getValorMinimo());
-                anuncio1.setImageSrc(anuncio.getImageSrc());
+                //anuncio1.setImageSrc(anuncio.getImageSrc());
                 anuncio1.setTitulo(anuncio.getTitulo());
                 anuncio1.setEstado(Estado.ACTUALIZADO);
                 break;
@@ -237,10 +241,12 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
      * @param usuario
      * @param anuncio
      * @param valorPuja
+     * @throws EscrituraException
      */
-    public void hacerPuja(Usuario usuario, Anuncio anuncio, Double valorPuja) {
+    public void hacerPuja(Usuario usuario, Anuncio anuncio, Double valorPuja, IPuja iPuja) throws EscrituraException {
 
-        Puja puja = new Puja(LocalDateTime.now(), usuario, valorPuja, anuncio);
+        Puja puja = new Puja(LocalDateTime.now(), usuario,  valorPuja, anuncio);
+        iPuja.crear(puja);
         anuncio.getListaPujas().add(puja);
         anuncio.setValorActual(valorPuja);
         usuario.getListaPujas().add(puja);

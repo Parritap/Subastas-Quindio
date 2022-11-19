@@ -29,11 +29,7 @@ public class ModelFactoryController {
      * @return LA INSTANCIA DE LA EMPRESA
      */
     public static EmpresaSubasta getInstance(){
-        try {
-            deserializarEmpresa();
-        } catch (CRUDExceptions e) {
-            throw new RuntimeException(e);
-        }
+   
         return Objects.requireNonNullElseGet(empresaSubasta, () -> {
             try {
                 Usuario usuario = new Usuario("alejandro", 25, "13243234", "admin", "as", "1232", "admin");
@@ -47,10 +43,11 @@ public class ModelFactoryController {
         });
     }
 
-    public static void deserializarEmpresa() throws CRUDExceptions {
-        EmpresaSubasta empresaSubastaAux = Persistencia.deserializarEmpresaBinario();
+    public static void deserializarEmpresa() throws CRUDExceptions, IOException {
+//       EmpresaSubasta empresaSubastaAux = Persistencia.deserializarEmpresaBinario();
+    	empresaSubasta = Persistencia.deserializarEmpresaXML();
         //actualizo las variables inscritas dentro de empresa
-        if(empresaSubasta != null && empresaSubastaAux != null) empresaSubasta.actualizarImplementaciones(empresaSubastaAux);
+        //if(empresaSubasta != null && empresaSubastaAux != null) empresaSubasta.actualizarImplementaciones(empresaSubastaAux);
 
         //hace una copia de seguridad del xml
     }
@@ -132,7 +129,12 @@ public class ModelFactoryController {
     public static String getStringAnuncios() {
         return empresaSubasta.getStringAnuncios();
     }
-
+    
+    
+    public static String getStringPujas() {
+        return empresaSubasta.getStringPujas();
+    }
+    
     /**
      * Metodo que devuelve todos los anuncios de un cliente
      * @param clienteActivo el cliente que creo los anuncios
@@ -174,7 +176,13 @@ public class ModelFactoryController {
      * @param valorPuja cuanto puja
      */
     public static void hacerPuja (Usuario usuario, Anuncio anuncio, Double valorPuja) {
-        empresaSubasta.hacerPuja(usuario, anuncio, valorPuja);
+
+        try {
+			empresaSubasta.hacerPuja(usuario, anuncio, valorPuja);
+		} catch (EscrituraException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     /**
@@ -201,10 +209,12 @@ public class ModelFactoryController {
     }
 
 
-    public static void addDatosPrueba() {
+
+    public static void addDatosPrueba(){
 
         IUsuario iUsuario = empresaSubasta.getIUsuario();
         IAnuncio iAnuncio = empresaSubasta.getIAnuncio();
+
 
 
         /////ESTO ES PARA NO ESTAR CREANDO USUARIOS TODO EL TIEMPO MIENTRAS ARREGLAMOS LA PERSISTENCIA -- COLOCAR UN BOOKMARK////////
@@ -214,8 +224,8 @@ public class ModelFactoryController {
         iUsuario.getListaUsuarios().add(u1);
         iUsuario.getListaUsuarios().add(u2);
 
-        byte[] img1 = new byte[0];
-        byte[] img2 = new byte[0];
+        byte [] img1 = new byte[0];
+        byte [] img2 = new byte[0];
         try {
             img1 = Files.readAllBytes(Path.of("src/resources/visa.png"));
             img2 = Files.readAllBytes(Path.of("src/resources/beagle.jpg"));
@@ -225,24 +235,29 @@ public class ModelFactoryController {
 
         Producto p1 = new Producto("Beagle", "Este es un beagle");
         Producto p2 = new Producto("MasterCard", "Este es una Mastercard");
+        
 
-        Anuncio a1 = new Anuncio("Flying Beagle", img1, 100D, 60L);
-        Anuncio a2 = new Anuncio("MasterCard", img2, 100D, 60L);
+        //Anuncio a1 = new Anuncio("Flying Beagle", img1, 100D, 60L);
+        //Anuncio a2 = new Anuncio("MasterCard", img2, 100D, 60L);
+        
+        Anuncio a1 = new Anuncio("Flying Beagle", 100D, 60L, "src/resources/visa.png");
+        Anuncio a2 = new Anuncio("MasterCard", 100D, 60L, "src/resources/beagle.jpg");
 
 
         try {
-            ModelFactoryController.crearAnuncio(a1, p1, u1);
-            ModelFactoryController.crearAnuncio(a2, p2, u2);
+            ModelFactoryController.crearAnuncio(a1, p1,  u1);
+            ModelFactoryController.crearAnuncio(a2, p2,  u2);
         } catch (CRUDExceptions e) {
             e.printStackTrace();
         }
 
 
-        Puja p11 = new Puja(LocalDateTime.now(), u1, 200D, a1);
-        Puja p12 = new Puja(LocalDateTime.now(), u1, 300D, a1);
 
-        Puja p21 = new Puja(LocalDateTime.now(), u2, 200D, a2);
-        Puja p22 = new Puja(LocalDateTime.now(), u2, 300D, a2);
+        Puja  p11 = new Puja(LocalDateTime.now(), u1, 200D, a1);
+        Puja  p12 = new Puja(LocalDateTime.now(), u1, 300D, a1);
+
+        Puja  p21 = new Puja(LocalDateTime.now(), u2, 200D, a2);
+        Puja  p22 = new Puja(LocalDateTime.now(), u2, 300D, a2);
 
         u1.getListaPujas().add(p11);
         u1.getListaPujas().add(p12);
@@ -274,6 +289,7 @@ public class ModelFactoryController {
     }
 
 
+
     /**
      * Crea un archivo de extensión .csv (tipo excel) en la ruta especificada.
      * @param ruta Ruta en la que se generará el archivo.
@@ -290,4 +306,5 @@ public class ModelFactoryController {
         empresaSubasta = new EmpresaSubasta();
         addDatosPrueba();
     }
+
 }

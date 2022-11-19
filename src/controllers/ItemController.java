@@ -59,7 +59,8 @@ public class ItemController implements IApplication, Inicializable {
         this.anuncio = anuncio;
         nameLabel.setText(anuncio.getTitulo());
         priceLable.setText(anuncio.getValorInicial()+"");
-        img.setImage(new Image(new ByteArrayInputStream(anuncio.getImageSrc())));
+        Image srcImg = new Image(Utils.getRutaAbsoluta()+anuncio.getImagePath());
+        img.setImage(srcImg);
         lblTiempo.setText("Tiempo restante "+horas+" "+minutos+" "+segundos);
         actualizarTiempo();
     }

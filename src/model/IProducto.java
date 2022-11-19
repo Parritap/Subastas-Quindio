@@ -14,8 +14,12 @@ import java.util.ArrayList;
 @Setter
 public class IProducto implements CRUD<Producto>, Serializable {
 
+	private static final long serialVersionUID = 60L;
+	
     private ArrayList<Producto> listaProductos = new ArrayList<>();
 
+
+    public IProducto() {}
     @Override
     public Producto buscarId(Integer id) throws LecturaException {
         for (Producto producto : listaProductos) {

@@ -116,6 +116,23 @@ public class Utils {
     //Ruta de la vista de los mensajes recibidos
     public static final String MENSAJE_RECIBIDO = "../view/MensajeRecibido.fxml";
 
+    //Ruta de la serializacion de las Transacciones en txt
+    public static final String RUTA_EMPRESA_XML = "src/persistencia/archivos/empresa.xml";
+
+    //Ruta de la serializacion de las pujas en txt
+    public static final String RUTA_PUJAS_TXT = "src/persistencia/archivos/Puja.txt";
+
+
+   /**
+    * permite seleccionar un archivo del explorador
+    * */
+    public static File seleccionarArchivo() {
+        //el file chooser permite abrir el explorador
+        FileChooser dc = new FileChooser();
+        File file = dc.showOpenDialog(new Stage());
+        return file;
+    }
+
     //------------------------------------------METODOS UTILS------------------------------------------
     /**
      * Metodo que permite obtener la ip del equipo
@@ -138,10 +155,8 @@ public class Utils {
      *
      * @return btImagen arreglo con los bits de la imagen
      */
-    public static byte[] obtenerBytesImagen() {
-        //el file chooser permite abrir el explorador
-        FileChooser dc = new FileChooser();
-        File file = dc.showOpenDialog(new Stage());
+    public static byte[] obtenerBytesImagen(File file) {
+
         //obtengo el arreglo de bits de la imagen
         byte[] btImagen = new byte[0];
         //cargo los bits de la imagen
@@ -197,7 +212,6 @@ public class Utils {
         return (str.equals("English") ? Language.ENGLISH : Language.SPANISH);
     }
 
-
     public static byte[] convertirImgAByteArray (String ruta) throws IOException {
 
         BufferedImage bImage = ImageIO.read(new File(ruta));
@@ -230,6 +244,22 @@ public class Utils {
     }
 
 
+
+
+    public static String getRutaFotoPerfil(String nombreArchivo)
+    {
+    	return "/resources/FotosPerfil/"+nombreArchivo;
+    }
+
+    public static String getRutaFotoAnuncio(String nombreArchivo)
+    {
+    	return "/resources/FotosAnuncios/"+nombreArchivo;
+    }
+
+	public static String getRutaAbsoluta() {
+		File file = new File("");
+		return file.getAbsolutePath()+"\\src";
+	}
 }
 
 

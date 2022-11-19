@@ -16,6 +16,8 @@ import model.enums.TipoProducto;
 import persistencia.logic.ArchivoUtil;
 import utilities.Utils;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
 
 public class PaneSubastaController implements IApplication, Inicializable {
 
@@ -51,6 +53,8 @@ public class PaneSubastaController implements IApplication, Inicializable {
 
     //Estas variables contendrán la informacion ya filtrada de los campos de textos
     private byte[] bytesImg;
+    
+    private String rutaArchivo;
 
     //Atributos del anuncio
     private String descripcion;
@@ -70,8 +74,9 @@ public class PaneSubastaController implements IApplication, Inicializable {
     private Integer idAnuncioClicked;
 
     private Integer idProductoClicked;
-
-
+    
+    
+    private File archivoProducto;
     /**
      * Metodo que carga una imagen a la vista
      *
@@ -81,7 +86,9 @@ public class PaneSubastaController implements IApplication, Inicializable {
     void cargarImagen(ActionEvent ignoredEvent) {
         Utils.playSound(Utils.URL_CLICK_BUTTON);
         try {
-            byte[] imageByte = Utils.obtenerBytesImagen();
+        	archivoProducto = Utils.seleccionarArchivo();
+            byte[] imageByte = Utils.obtenerBytesImagen(archivoProducto);
+            this.rutaArchivo = Utils.getRutaFotoAnuncio(archivoProducto.getName());
             imgAnuncio.setImage(new Image(new ByteArrayInputStream(imageByte), 199, 199, false, false));
             this.bytesImg = imageByte;
         }catch (Exception ignored){}
@@ -116,7 +123,7 @@ public class PaneSubastaController implements IApplication, Inicializable {
             producto.setId(idProductoClicked);
             Long l = Long.parseLong(String.valueOf(minutosSubasta));
             //creo el anuncio con los datos de la vista
-            Anuncio anuncio = new Anuncio(tituloAnuncio, bytesImg, valorInicialAnuncio,l);
+            Anuncio anuncio = new Anuncio(tituloAnuncio, valorInicialAnuncio,l, rutaArchivo);
             anuncio.setValorMinimo(valorMinimoPuja);
             producto.setTipoProducto(tipoProductoSelected);
             anuncio.setId(idAnuncioClicked);
@@ -146,8 +153,15 @@ public class PaneSubastaController implements IApplication, Inicializable {
             //creo el producto con los datos de la vista
             Producto producto = new Producto(nombreProducto, descripcion);
             Long l = Long.parseLong(String.valueOf(minutosSubasta));
+
+            try {
+				ArchivoUtil.copiarArchivo(archivoProducto, new File("src"+Utils.getRutaFotoAnuncio(archivoProducto.getName())));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
             //creo el anuncio con los datos de la vista
-            Anuncio anuncio = new Anuncio(tituloAnuncio, bytesImg, valorInicialAnuncio,l);
+            Anuncio anuncio = new Anuncio(tituloAnuncio,  valorInicialAnuncio,l, rutaArchivo);
             anuncio.setValorMinimo(valorMinimoPuja);
             producto.setTipoProducto(tipoProductoSelected);
             //agrego el producto al anuncio
@@ -303,7 +317,8 @@ public class PaneSubastaController implements IApplication, Inicializable {
         txtValorMinimoPuja.setText(String.valueOf(anuncioClicked.getValorMinimo()));
         spinnerMinutos.getValueFactory().setValue(anuncioClicked.getMinutosSubasta());
         cmbBoxTipoProducto.getSelectionModel().select(anuncioClicked.getProducto().getTipoProducto().toString());
-        imgAnuncio.setImage(new Image(new ByteArrayInputStream(anuncioClicked.getImageSrc())));
+
+        imgAnuncio.setImage(new Image(anuncioClicked.getImagePath()));
         idAnuncioClicked = anuncioClicked.getId();
         idProductoClicked = anuncioClicked.getProducto().getId();
     }

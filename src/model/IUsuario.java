@@ -18,7 +18,7 @@ import model.enums.TipoOrden;
 //pero para Usuarios
 @Data
 public class IUsuario implements CRUD<Usuario>, Serializable {
-
+	private static final long serialVersionUID = 40L;
     //Variables globales
     private ArrayList<Usuario> listaUsuarios;
 

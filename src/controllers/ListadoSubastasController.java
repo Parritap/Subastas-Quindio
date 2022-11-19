@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import lombok.Getter;
@@ -73,7 +74,7 @@ public class ListadoSubastasController implements IApplication, Inicializable {
             if (listadoPujas != null) {
                 for (Puja puja : listadoPujas) {
                     Estado e = puja.getAnuncio().getEstado();
-                    if (e != Estado.DESACTIVADO && e != Estado.ELIMINADO && puja.getEstado() == Estado.ACTIVO) {
+                    if (e != Estado.DESACTIVADO && e != Estado.ELIMINADO && puja.getEstado()== Estado.ACTIVO) {
                         AnchorPane pane = application.obtenerPanePuja(Utils.PUJA_ITEM, puja, this);
                         //Añado el pane al VBox
                         VBoxMisPujas.getChildren().add(pane);
@@ -102,6 +103,7 @@ public class ListadoSubastasController implements IApplication, Inicializable {
     public void actualizarAnuncio() {
         application.abrirActualizarAnuncio(anuncioClicked);
         actualizarVBox();
+
     }
 
     @FXML

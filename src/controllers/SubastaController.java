@@ -135,8 +135,8 @@ public class SubastaController implements IApplication, Inicializable {
                     AnchorPane anchorPane = fxmlLoader.load();
                     ItemController itemController = fxmlLoader.getController();
                     itemController.setSubastaController(this);
-                    itemController.setData(anuncio);
                     //si he llegado a tres columnas que salte a la siguiente fila
+                    itemController.setData(anuncio);
                     if (column == 2) {
                         column = 0;
                         ++row;
@@ -179,7 +179,7 @@ public class SubastaController implements IApplication, Inicializable {
         this.lblTelAnunciante.setText(anuncioSeleccionado.getUsuario().getTelefono());
 
         //cargo la ruta de la imagen y la cargo en el anuncio
-        Image image = new Image(new ByteArrayInputStream(anuncioSeleccionado.getImageSrc()));
+        Image image = new Image(anuncioSeleccionado.getImagePath());
         this.adSelectedImage.setImage(image);
     }
 

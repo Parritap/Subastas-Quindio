@@ -12,7 +12,8 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 public class Transaccion implements Serializable {
-    private Integer id;
+    private static final long serialVersionUID = 20L;
+	private Integer id;
     private Estado estado;
     private Integer valorPago;
     private static Integer idAux = 0;

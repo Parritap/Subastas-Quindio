@@ -14,9 +14,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="833.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaneSubastaController">
+<AnchorPane prefHeight="833.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaneSubastaController">
    <children>
-      <Button fx:id="btnCrearAnuncio" layoutX="355.0" layoutY="771.0" mnemonicParsing="false" onAction="#crearAnuncio" styleClass="btnCrearCuenta" stylesheets="@../resources/style.css" text="%btn.crearAnuncio">
+      <Button fx:id="btnCrearAnuncio" layoutX="348.0" layoutY="727.0" mnemonicParsing="false" onAction="#crearAnuncio" styleClass="btnCrearCuenta" stylesheets="@../resources/style.css" text="%btn.crearAnuncio">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

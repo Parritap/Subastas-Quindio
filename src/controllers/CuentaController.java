@@ -40,6 +40,7 @@ public class CuentaController implements IApplication, Inicializable {
     @FXML
     void irAlInicio(ActionEvent ignoredEvent) {
         application.loadScene(Utils.frameInicio);
+        
     }
 
     /**

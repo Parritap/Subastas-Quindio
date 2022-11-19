@@ -1,6 +1,8 @@
 package application;
 
 import controllers.*;
+
+import exceptions.CRUDExceptions;
 import exceptions.LecturaException;
 import interfaces.IApplication;
 import interfaces.Inicializable;
@@ -23,9 +25,13 @@ import lombok.Setter;
 import model.*;
 import model.enums.Language;
 import persistencia.logic.ArchivoUtil;
+import persistencia.logic.HiloSerializadorBinario;
+import persistencia.logic.HiloSerializadorTXT;
+import persistencia.logic.HiloSerializadorXML;
 import persistencia.logic.Persistencia;
 import utilities.Utils;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -69,15 +75,24 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
+    	  try {
+              ModelFactoryController.deserializarEmpresa();
+           } catch (CRUDExceptions | IOException e) {
+               throw new RuntimeException(e);
+           }
+    	
         inicializarApp();
-        ModelFactoryController.addDatosPrueba(); //Añade datos de prueba para no tener que perder tiempo creandolos una y otra vez. Solución temporal mientras se arregla la persistencia.
 
-
+      
+        //ModelFactoryController.addDatosPrueba(); //Añade datos de prueba para no tener que perder tiempo creandolos una y otra vez. Solución temporal mientras se arregla la persistencia.
+       
         //CARGO EL FRAME PRINCIPAL
         //cambié la obtención del bundle para no acoplarlo a este metodo
         //y generalizarlo para todos los frames
         //también cree una variable de instancia para el idioma
         //se inicia en inglés y se encuentra en el metodo inicializarApp
+        //String name, Integer age, String cedula, String correo, String direccion, String telefono, String password
+        //ArchivoUtil.salvarRecursoSerializadoXML(Utils.RUTA_EMPRESA_XML, new Usuario("anubis", 23, "111", "correo", "Cra 11", "11112222333", "3333"));
         String ruta = Utils.frameInicio;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
         Parent root = loader.load();
@@ -91,11 +106,20 @@ public class App extends Application {
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
         stage.minWidthProperty();
+        
         stage.setOnCloseRequest(event->{
             try {
                 //Persistencia.serializarEmpresaUnificado();
-                Persistencia.serializarEmpresaBinario();
-                Persistencia.serializarEmpresaTXT();
+
+            	HiloSerializadorTXT hilotxt = new HiloSerializadorTXT();
+            	HiloSerializadorBinario hiloBinario = new HiloSerializadorBinario();
+            	HiloSerializadorXML hiloXML = new HiloSerializadorXML(ModelFactoryController.getInstance());
+            	
+            	hilotxt.start();
+            	hiloBinario.start();
+            	hiloXML.start();
+            	//Persistencia.serializarEmpresaBinario();
+                //Persistencia.serializarEmpresaTXT();
                 if (stageAlerta != null ) stageAlerta.close();
 
             }
@@ -104,6 +128,13 @@ public class App extends Application {
             }
             if (stageAlerta != null ) stageAlerta.close();
         });
+        
+        //imprime los usuarios
+        /*
+        for(Usuario usr: ModelFactoryController.getInstance().getIUsuario().getListaUsuarios()) {
+        	System.out.println(usr.getCorreo()+", "+usr.getPassword());
+        }
+        */
         stage.show();
     }
     /**
@@ -257,10 +288,10 @@ public class App extends Application {
      * @throws LecturaException De haber algún error en las credenciales.
      */
     public void iniciarSesion(String email, String contrasenia) throws LecturaException {
+    	
         //"Handler" dado que handle es "lidiar con algo".
-        IUsuario handler = empresaSubasta.getIUsuario();
+        IUsuario handler = ModelFactoryController.getInstance().getIUsuario();
         Usuario usuario = handler.buscarPorCorreo(email);
-
         if (!handler.verificarContrasenia(usuario, contrasenia)) {
             throw new LecturaException("La contraseña es incorrecta", "La contraseña pasada no es valida");
         }

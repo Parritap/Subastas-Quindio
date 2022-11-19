@@ -14,10 +14,13 @@ import java.util.Objects;
 @Getter
 @Setter
 public class ITransaccion implements CRUD<Transaccion>, Serializable {
-
+	
+	private static final long serialVersionUID = 50L;
     ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
 
 
+
+    public ITransaccion() {}
     @Override
     public Transaccion buscarId(Integer id) throws CRUDExceptions {
         for (Transaccion transaccion : listaTransacciones) {

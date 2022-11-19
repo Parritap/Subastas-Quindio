@@ -17,6 +17,8 @@ import model.Usuario;
 import persistencia.logic.ArchivoUtil;
 import utilities.Utils;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
 
 public class CrearCuentaController implements IApplication, Inicializable {
 
@@ -94,6 +96,10 @@ public class CrearCuentaController implements IApplication, Inicializable {
 
     private byte[] fotoPerfil;
 
+    private String rutaFoto;
+    //objeto File que referencia la foto de perfil
+    private File archivoFoto;
+
     private CuentaController cuentaController;
 
     /**
@@ -103,7 +109,10 @@ public class CrearCuentaController implements IApplication, Inicializable {
     @FXML
     void cargarPerfil(MouseEvent ignoredEvent) {
         Utils.playSound(Utils.URL_CLICK_BUTTON);
-        fotoPerfil = Utils.obtenerBytesImagen();
+
+        archivoFoto = Utils.seleccionarArchivo();
+        rutaFoto = Utils.getRutaFotoPerfil(archivoFoto.getPath());
+        fotoPerfil = Utils.obtenerBytesImagen(archivoFoto);
         if(fotoPerfil != null){
             Image img = new Image(new ByteArrayInputStream(fotoPerfil), 199, 199, false, false);
             circleImage.setFill(new ImagePattern(img));
@@ -123,13 +132,16 @@ public class CrearCuentaController implements IApplication, Inicializable {
         if(cargarCampos() && application.getClienteActivo() == null){
             //creo el usuario con los datos obtenidos en el txt
             Usuario usuario = new Usuario(name, edad, cedula, correo, direccion, telefono, contrasenia);
-            usuario.setFotoPerfil(fotoPerfil);
+
+            usuario.setRutaFotoPerfil(rutaFoto);
             //el singleton agrega el usuario a la lista
             try {
                 ModelFactoryController.crearUsuario(usuario);
                 limpiarCamposTexto();
                 application.abrirAlerta("El usuario se agregó correctamente");
                 application.setClienteActivo(usuario);
+                //copia la foto de perfil
+                ArchivoUtil.copiarArchivo(archivoFoto, new File("src"+Utils.getRutaFotoPerfil(archivoFoto.getName())));
                 btnCrearCuenta.setVisible(false);
                 ArchivoUtil.guardarRegistroLog("se creo el usuario "+usuario.getId()+":"+usuario.getName(), 1,
                         "Creacion de usuario", Utils.RUTA_LOG_TXT);
@@ -141,8 +153,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            //lo establezco como usuario activo
-
+            
         }
     }
 
