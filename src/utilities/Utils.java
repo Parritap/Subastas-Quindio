@@ -2,20 +2,31 @@ package utilities;
 
 import application.App;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.ModelFactoryController;
 import model.enums.Language;
 import persistencia.logic.ArchivoUtil;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
 
 public class Utils {
+
+    private static final String[] auxClasesConTexto = {"Button", "Label", "TextField"};
+    public static final ArrayList<String> CLASES_CON_TEXTO_FX = new ArrayList<>(List.of(auxClasesConTexto));
 
     // Circle colors
     public static final Color[] colors = {
@@ -24,6 +35,22 @@ public class Utils {
             new Color(0.8, 0.3, 0.9, 1.0).saturate().brighter().brighter(),
             new Color(0.4, 0.3, 0.9, 1.0).saturate().brighter().brighter(),
             new Color(0.2, 0.5, 0.7, 1.0).saturate().brighter().brighter()};
+
+
+    /**
+     * DEVUELVE TRUE SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS
+     * EN LOS DEMOS ARGUMENTOS
+     *
+     * @param source  CADENA QUE SE COMPARA
+     * @param targets CADENAS A LAS QUE PODRÍA SER IGUAL SOURCE
+     * @return SI LA CADENA SOURCE NO ES IGUAL A NINGUNA DE LAS CADENAS EN TARGET
+     */
+    public static Boolean isNot(String source, String[] targets) {
+        for (String target : targets) {
+            if (source.equals(target)) return false;
+        }
+        return true;
+    }
 
     public static String[] lenguajes = {"English", "Español"};
     //Url del sonido al hacer clic
@@ -38,6 +65,10 @@ public class Utils {
     public static final String frameMenuContextual = "../view/menuContextual.fxml";
     //Url de los item mostrados en mis subastas
     public static final String SUBASTA_ITEM = "../view/subastaItem.fxml";
+
+    //Url de los panel de pujas mostrado en mis ListadoSubastas.fxml
+    public static final String PUJA_ITEM = "../view/PujaItem.fxml";
+
     //url del frame del panel de cuenta
     public static final String frameCuenta = "../view/Cuenta.fxml";
 
@@ -68,6 +99,8 @@ public class Utils {
     public static final String RUTA_USUARIOS_TXT = "src/persistencia/archivos/Usuario.txt";
     //Ruta de la serializacion de los anuncios en txt
     public static final String RUTA_ANUNCIOS_TXT = "src/persistencia/archivos/Anuncio.txt";
+    //Ruta para la generacion del CSV de los Anuncios.
+    public static final String RUTA_ANUNCIOS_CSV = "src/persistencia/archivos/Anuncio.csv";
     //Ruta de la serializacion de los productos en txt
     public static final String RUTA_PRODUCTOS_TXT = "src/persistencia/archivos/Producto.txt";
     //Ruta de la serializacion de las Transacciones en txt
@@ -163,7 +196,40 @@ public class Utils {
     public static Language stringToLanguage(String str) {
         return (str.equals("English") ? Language.ENGLISH : Language.SPANISH);
     }
-    
+
+
+    public static byte[] convertirImgAByteArray (String ruta) throws IOException {
+
+        BufferedImage bImage = ImageIO.read(new File(ruta));
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ImageIO.write(bImage, "jog", bos );
+        return bos.toByteArray();
+    }
+
+
+    /**
+     * Método que lee una ruta y crea un archivo de no existir, luego escribe el texto
+     * pasado como parametro dentro del mismo.
+     * @param ruta Archivo a escribir.
+     * @param texto Texto a escribir en el archivo.
+     */
+    public static void escribirEnArchivo (String ruta, String texto){
+        File f = new File(ruta);
+        try{
+            f.createNewFile();//Crea el archivo si este no existe. Si existe, simplemente no hace nada.
+            Files.writeString(Path.of(ruta), String.valueOf(texto)); //Escribo en el archivo.
+        }catch (IOException | NullPointerException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static String retorarRutaConFileChooser () {
+        DirectoryChooser d = new DirectoryChooser();
+        d.setTitle("Elige una carpeta");
+        return d.showDialog(new Stage()).toString();
+    }
+
+
 }
 
 

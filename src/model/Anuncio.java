@@ -48,18 +48,18 @@ public class Anuncio implements Serializable {
 
 	public Anuncio(){}
 
-	public Anuncio(String tituloAnuncio, byte[] bytesImg, Double valorInicialAnuncio, Long minutosDuracionAnuncio) {
-		this.titulo = tituloAnuncio;
-		this.imageSrc = bytesImg;
-		this.valorInicial = valorInicialAnuncio;
-		this.valorActual = valorInicial; //Creo que aún no se ha hecho un método para actualizar el valor actual. TRABAJAR EN ELLO.
-		this.fechaPublicacion = LocalDateTime.now();
-		this.fechaTerminacion = this.fechaPublicacion.plusMinutes(minutosDuracionAnuncio);
-		this.idListaPujas = ModelFactoryController.darIdListaPuja();
-		this.listaPujas = new ArrayList<>();
-		this.fueMostrado = false;
-		this.estado = Estado.NUEVO;
-		this.id = ++idAux;
+    public Anuncio(String tituloAnuncio, byte[] bytesImg, Double valorInicialAnuncio, Long minutosDuracionAnuncio) {
+        this.titulo = tituloAnuncio;
+        this.imageSrc = bytesImg;
+        this.valorInicial = valorInicialAnuncio;
+        this.valorActual = valorInicial; //Creo que aun no se ha hecho un método para actualizar el valor actual. TRABAJAR EN ELLO.
+        this.fechaPublicacion = LocalDateTime.now();
+        this.fechaTerminacion = this.fechaPublicacion.plusMinutes(minutosDuracionAnuncio);
+        this.idListaPujas = ModelFactoryController.darIdListaPuja();
+        this.listaPujas = new ArrayList<>();
+        this.fueMostrado = false;
+        this.estado = Estado.NUEVO;
+        this.id = ++idAux;
 
 	}
 
@@ -146,6 +146,46 @@ public class Anuncio implements Serializable {
 		return result;
 	}
 
+    /**
+     * Metodo que devuelve el tiempo restante para que termine el anuncio
+     *
+     * @return el tiempo restante en formato MM
+     */
+    public Integer getMinutosSubasta() {
+        return (int) ChronoUnit.MINUTES.between(fechaPublicacion, fechaTerminacion);
+    }
+
+    public String getCSV() {
+
+        return titulo + ","
+                + producto.getNombre() + ","
+                + fechaPublicacion.toString() + ","
+                + fechaTerminacion.toString() + ","
+                + valorInicial + ","
+                + valorActual + ","
+                + estado + ","
+                + getListaPujasCSV(); //Al final de este String  no hay coma.
+    }
+
+    /**
+     * Método que devuelve un String con el formato CSV de las pujas de un anuncio.
+     *
+     * @return Texto en formato CSV con el
+     */
+    private String getListaPujasCSV() {
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < this.listaPujas.size(); i++) {
+            str.append(listaPujas.get(i).getCSV());
+            if (i != listaPujas.size() - 1) str.append(",");
+        }
+
+
+        //for (Puja puja : listaPujas) {
+        //    str.append(puja.getCSV());
+        //    str.append(",");
+        //}
+        return str.toString();
+    }
 	/**
 	 * Metodo que devuelve el tiempo restante para que termine el anuncio
 	 * @return el tiempo restante en formato MM

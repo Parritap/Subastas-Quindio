@@ -5,8 +5,14 @@ import exceptions.EscrituraException;
 import exceptions.LecturaException;
 import lombok.Getter;
 import lombok.Setter;
+import model.enums.Estado;
+import utilities.Utils;
+
+import java.io.IOException;
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
@@ -178,4 +184,8 @@ public class EmpresaSubasta implements Runnable, Serializable {
         iUsuario.anadirMensaje(mensaje);
     }
 
+
+    public void eliminarPuja(Puja puja) {
+        puja.setEstado(Estado.ELIMINADO);
+    }
 }

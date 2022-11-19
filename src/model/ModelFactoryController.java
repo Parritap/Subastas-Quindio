@@ -3,9 +3,17 @@ package model;
 import exceptions.LecturaException;
 import model.enums.Rol;
 import persistencia.logic.Persistencia;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import exceptions.CRUDExceptions;
 import exceptions.EscrituraException;
+
+
 import java.util.Objects;
 
 /**
@@ -175,6 +183,7 @@ public class ModelFactoryController {
      * @return la lista de pujas
      */
     public static ArrayList<Anuncio> obtenerListaAnunciosSegunUsuario(Usuario u) {
+
         return empresaSubasta.getIAnuncio().filtrarAnuncioPorAsuario(u);
     }
 
@@ -191,4 +200,94 @@ public class ModelFactoryController {
         empresaSubasta.anadirMensaje(mensaje);
     }
 
+
+    public static void addDatosPrueba() {
+
+        IUsuario iUsuario = empresaSubasta.getIUsuario();
+        IAnuncio iAnuncio = empresaSubasta.getIAnuncio();
+
+
+        /////ESTO ES PARA NO ESTAR CREANDO USUARIOS TODO EL TIEMPO MIENTRAS ARREGLAMOS LA PERSISTENCIA -- COLOCAR UN BOOKMARK////////
+
+        Usuario u1 = new Usuario("Parra", 21, "1002656555", "parra", "Cr14#09-18", "3243585508", "parra");
+        Usuario u2 = new Usuario("Ana", 21, "1002656556", "ana", "Cr14#09-18", "3243585508", "ana");
+        iUsuario.getListaUsuarios().add(u1);
+        iUsuario.getListaUsuarios().add(u2);
+
+        byte[] img1 = new byte[0];
+        byte[] img2 = new byte[0];
+        try {
+            img1 = Files.readAllBytes(Path.of("src/resources/visa.png"));
+            img2 = Files.readAllBytes(Path.of("src/resources/beagle.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Producto p1 = new Producto("Beagle", "Este es un beagle");
+        Producto p2 = new Producto("MasterCard", "Este es una Mastercard");
+
+        Anuncio a1 = new Anuncio("Flying Beagle", img1, 100D, 60L);
+        Anuncio a2 = new Anuncio("MasterCard", img2, 100D, 60L);
+
+
+        try {
+            ModelFactoryController.crearAnuncio(a1, p1, u1);
+            ModelFactoryController.crearAnuncio(a2, p2, u2);
+        } catch (CRUDExceptions e) {
+            e.printStackTrace();
+        }
+
+
+        Puja p11 = new Puja(LocalDateTime.now(), u1, 200D, a1);
+        Puja p12 = new Puja(LocalDateTime.now(), u1, 300D, a1);
+
+        Puja p21 = new Puja(LocalDateTime.now(), u2, 200D, a2);
+        Puja p22 = new Puja(LocalDateTime.now(), u2, 300D, a2);
+
+        u1.getListaPujas().add(p11);
+        u1.getListaPujas().add(p12);
+
+        u2.getListaPujas().add(p21);
+        u2.getListaPujas().add(p22);
+
+        a1.getListaPujas().add(p11);
+        a1.getListaPujas().add(p12);
+
+        a2.getListaPujas().add(p21);
+        a2.getListaPujas().add(p22);
+
+        iAnuncio.getListaAnuncio().add(a1);
+        iAnuncio.getListaAnuncio().add(a2);
+    }
+
+    /**
+     * Retorna una lista de pujas de un usuario pasado como parámetro.
+     * @param clienteActivo cliente que se supone es el activo.
+     * @return Lista pujas
+     */
+    public static ArrayList<Puja> getListaPujas(Usuario clienteActivo) {
+        return getInstance().getIUsuario().getListaPujas(clienteActivo);
+    }
+
+    public static void eliminarPuja(Puja puja) {
+        empresaSubasta.eliminarPuja(puja);
+    }
+
+
+    /**
+     * Crea un archivo de extensión .csv (tipo excel) en la ruta especificada.
+     * @param ruta Ruta en la que se generará el archivo.
+     * @throws IOException
+     */
+    public static void generarRegistrosAnunciosCSV (String ruta) {
+        empresaSubasta.getIAnuncio().generarCSV(ruta);
+    }
+    public static void generarRegistrosAnunciosCSV (Usuario usuario, String ruta) {
+        empresaSubasta.getIAnuncio().generarCSV(usuario, ruta);
+    }
+
+    public static void pruebaCrearEmpresa () throws CRUDExceptions {
+        empresaSubasta = new EmpresaSubasta();
+        addDatosPrueba();
+    }
 }

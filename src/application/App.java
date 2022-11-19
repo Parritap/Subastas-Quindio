@@ -69,7 +69,11 @@ public class App extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
+
         inicializarApp();
+        ModelFactoryController.addDatosPrueba(); //Añade datos de prueba para no tener que perder tiempo creandolos una y otra vez. Solución temporal mientras se arregla la persistencia.
+
+
         //CARGO EL FRAME PRINCIPAL
         //cambié la obtención del bundle para no acoplarlo a este metodo
         //y generalizarlo para todos los frames
@@ -84,8 +88,6 @@ public class App extends Application {
         inicializableController.inicializarComponentes();
         Scene scene = new Scene(root);
         this.stage = stage;
-        //cambio el icono principal de la app
-        stage.getIcons().add(new Image(Utils.LOGO_EMPRESA));
         stage.setScene(scene);
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
@@ -189,6 +191,25 @@ public class App extends Application {
     }
 
 
+    public AnchorPane obtenerPanePuja (String ruta, Puja puja, ListadoSubastasController listadoSubastasController){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
+        try {
+            //Me pregunto por qué tengo que castear tantas veces un objeto si su forma natural ya implemente los métodos buscados...
+            AnchorPane root = loader.load();
+            IApplication controller = loader.getController();
+            controller.setApplication(this);
+            SubastaPujaController controllerAnuncio = (SubastaPujaController) controller;
+            controllerAnuncio.setListadoSubastasController(listadoSubastasController);
+            SubastaPujaController controller1 = (SubastaPujaController) controller;
+            controller1.setPuja(puja);
+            ((Inicializable) controller).inicializarComponentes();
+            return root;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     /**
      * Metodo que abre un stage con un mensaje
      * @param mensaje el mensaje que se quiere mostrar
@@ -247,7 +268,6 @@ public class App extends Application {
         clienteActivo = usuario;
         ArchivoUtil.guardarRegistroLog("El usuario de nombre " + clienteActivo.getName()+ " y correo "+ usuario.getCorreo() + " ha iniciado sesión.",
                 1, "Inicio de sesión",Utils.RUTA_LOG_TXT);
-        //Actualizo la ip del usuario
         loadScene(Utils.frameInicio);
     }
 
@@ -406,52 +426,6 @@ public class App extends Application {
     public void closeUpdateAdd() {
         actualizarAdd.close();
     }
-
-    public AnchorPane obtenerChatItem(Chat chat, ChatController chatController) {
-        String ruta = Utils.CHAT_ITEM;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
-        try {
-            AnchorPane container = loader.load();
-            ItemChatController controller = loader.getController();
-            controller.setApplication(this);
-            controller.setChat(chat);
-            controller.setChatController(chatController);
-            controller.inicializarComponentes();
-            controller.setChat(chat);
-            return container;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private AnchorPane obtenerMensajeRecibido(Mensaje mensaje) {
-        String ruta = Utils.MENSAJE_RECIBIDO;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
-        try {
-            AnchorPane container = loader.load();
-            MensajeRecibidoController controller = loader.getController();
-            controller.setApplication(this);
-            controller.inicializarComponentes(mensaje);
-            return container;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private AnchorPane obtenerMensajeEnviado(Mensaje mensaje) {
-        String ruta = Utils.MENSAJE_ENVIADO;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
-        try {
-            AnchorPane container = loader.load();
-            MensajeEnviadoController controller = loader.getController();
-            controller.setApplication(this);
-            controller.inicializarComponentes(mensaje);
-            return container;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public void enviarMensaje(Mensaje mensaje) {
         ModelFactoryController.aniadirMensaje(mensaje);
     }

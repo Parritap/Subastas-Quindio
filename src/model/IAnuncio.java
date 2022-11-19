@@ -1,7 +1,10 @@
 package model;
 
-import java.io.Serializable;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import exceptions.CRUDExceptions;
@@ -12,6 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 import model.enums.Estado;
 import model.enums.TipoOrden;
+import utilities.Utils;
 
 @Getter
 @Setter
@@ -230,14 +234,13 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
     /**
      * Método que permite añadir un puja al anuncio indicado por parámetro
-     *
      * @param usuario
      * @param anuncio
      * @param valorPuja
      */
     public void hacerPuja(Usuario usuario, Anuncio anuncio, Double valorPuja) {
 
-        Puja puja = new Puja(LocalDate.now(), usuario, valorPuja);
+        Puja puja = new Puja(LocalDateTime.now(), usuario, valorPuja, anuncio);
         anuncio.getListaPujas().add(puja);
         anuncio.setValorActual(valorPuja);
         usuario.getListaPujas().add(puja);
@@ -245,15 +248,46 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
     public ArrayList<Anuncio> filtrarAnuncioPorAsuario(Usuario u) {
         //En caso de que no haya ningún usuario activo, esto es, que no haya iniciado sesión, se devolverá la lista de anuncios completa.
-        if (u == null) return this.listaAnuncios;
+        if(u==null) return this.listaAnuncios;
 
         ArrayList<Anuncio> lista = new ArrayList<>();
-        for (Anuncio a : listaAnuncios) {
+        for (Anuncio a: listaAnuncios) {
             if (!a.getUsuario().equals(u)) lista.add(a);
         }
         return lista;
     }
 
+    /**
+     * Método que escribe en un archivo de texto los atributos de los anuncios en el formato CSV.
+     * Es decir, lista los anuncios separados por comas tal cual como en un excel en la ruta especificada.
+     *
+     * @param ruta Ruta a escribir el archivo CSV.
+     */
+    public void generarCSV(String ruta) {
+        StringBuilder str = new StringBuilder();
+        for (Anuncio a : listaAnuncios) {
+            str.append(a.getCSV());
+            str.append("\n"); //Salto de linea.
+        }
+        Utils.escribirEnArchivo(ruta, String.valueOf(str)); //Escribe en la ruta especificada
+        Utils.escribirEnArchivo(Utils.RUTA_ANUNCIOS_CSV, String.valueOf(str)); //Escribe dentro del proyecto.
+    }
 
+    /**
+     * Genera un archivo CSV en la ruta indicada con la info de todos los anuncios de un usuario.
+     * @param ruta Ruta a escribir el archivo.
+     * @param usuario Usuario al cual se le extraen sus 4
+     */
+    public void generarCSV(Usuario usuario, String ruta) {
+        StringBuilder str = new StringBuilder();
+        for (Anuncio a : listaAnuncios) {
+            if (a.getUsuario().equals(usuario)) {
+                str.append(a.getCSV());
+                str.append("\n"); //Salto de linea.
+            }
+        }
+        Utils.escribirEnArchivo(ruta, String.valueOf(str)); //Escribe en la ruta especificada
+        Utils.escribirEnArchivo(Utils.RUTA_ANUNCIOS_CSV, String.valueOf(str)); //Escribe dentro del proyecto.
+    }
 }
 

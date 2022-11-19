@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane onMouseClicked="#setAnuncioClicked" prefHeight="110.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SubastaItemController">
+<AnchorPane onMouseClicked="#setAnuncioClicked" prefHeight="0.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SubastaItemController">
    <children>
       <HBox onMouseClicked="#MostrarOpciones" prefHeight="77.0" prefWidth="672.0" style="-fx-background-color: #252525; -fx-background-radius: 20;" styleClass="border-image" stylesheets="@../resources/style.css">
          <children>

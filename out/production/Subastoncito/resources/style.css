@@ -11,7 +11,28 @@
     -fx-background-color: #828282;
     -fx-background-radius: 50;
     -fx-cursor: HAND;
+    -fx-animated: true;
 }
+
+.search-button:hover{
+    -fx-background-color: #b7ffa6;
+    -fx-background-radius: 50;
+    -fx-cursor: HAND;
+    -fx-animated: true;
+    -fx-transition: 1.0s;
+    -fx-text-fill: #000000;
+}
+
+.search-button:pressed{
+    -fx-background-color: #5da583;
+    -fx-background-radius: 50;
+    -fx-cursor: HAND;
+    -fx-animated: true;
+    -fx-transition: 1.0s;
+    -fx-text-fill: #000000;
+}
+
+
 
 .right-bar{
     -fx-background-color: #252525;

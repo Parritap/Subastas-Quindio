@@ -26,6 +26,14 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
         listaUsuarios = new ArrayList<>();
     }
 
+    /**
+     * to do
+     * @param puja
+     */
+    public  void eliminarpuja(Puja puja) {
+
+    }
+
 
     /**
      * Metodo que actualiza todos los usuarios, sirve para cuando se deserializar
@@ -230,4 +238,14 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
 
     }
 
+
+    /**
+     * Retorna una lista de pujas se
+     * @param clienteActivo|
+     * @return
+     */
+    public ArrayList<Puja> getListaPujas(Usuario clienteActivo) {
+        ArrayList<Puja> lista = new ArrayList<>(clienteActivo.getListaPujas());
+        return lista;
+    }
 }

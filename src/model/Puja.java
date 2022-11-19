@@ -4,40 +4,65 @@ import lombok.Getter;
 import lombok.Setter;
 import java.io.Serializable;
 import lombok.ToString;
+import model.enums.Estado;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @ToString
 public class Puja implements Serializable {
-	//VARIABLES GLOBALES
-	private LocalDate fechaDePuja;
-	private Usuario usuario;
-	private Double valorOfrecido;
-	private Integer idUsuario;
+    //VARIABLES GLOBALES
+    private LocalDateTime fechaDePuja;
+    private Usuario usuario;
+    private Double valorOfrecido;
+    private Integer idUsuario;
+
+    private Anuncio anuncio;
+
+    private boolean fueAceptada;
+
+    private Estado estado;
 
 
-	/**
-	 * CONSTRUCTOR
-	 * @param fechaDePuja MOMENTO EN QUE SE HIZO LA PUJA
-	 * @param usuario USUARIO QUE REALIZO LA PUJA
-	 * @param valorOfrecido CANTIDAD DE DINERO OFRECIDA
-	 */
-	public Puja(LocalDate fechaDePuja, Usuario usuario, Double valorOfrecido) {
-		
-		this.fechaDePuja = fechaDePuja;
-	    this.usuario = usuario;
-	    this.valorOfrecido = valorOfrecido;
-		this.idUsuario = usuario.getId();
-	}
+    /**
+     * CONSTRUCTOR
+     *
+     * @param fechaDePuja   MOMENTO EN QUE SE HIZO LA PUJA
+     * @param usuario       USUARIO QUE REALIZO LA PUJA
+     * @param valorOfrecido CANTIDAD DE DINERO OFRECIDA
+     */
 
-	public Puja(){
-		this.fechaDePuja = LocalDate.now();
-	}
 
-	public Puja(Integer idUsuario, Double valorOfrecido){
-		this.fechaDePuja = LocalDate.now();
-		this.idUsuario = idUsuario;
-		this.valorOfrecido = valorOfrecido;
-	}
+    public Puja(LocalDateTime fechaDePuja, Usuario usuario, Double valorOfrecido, Anuncio anuncio) {
+
+        this.fechaDePuja = fechaDePuja;
+        this.usuario = usuario;
+        this.valorOfrecido = valorOfrecido;
+        this.idUsuario = usuario.getId();
+        this.anuncio = anuncio;
+        this.estado = Estado.ACTIVO;
+    }
+
+    public Puja() {
+        this.fechaDePuja = LocalDateTime.now();
+        this.estado = Estado.ACTIVO;
+    }
+
+    public Puja(Integer idUsuario, Double valorOfrecido) {
+        this.fechaDePuja = LocalDateTime.now();
+        this.idUsuario = idUsuario;
+        this.valorOfrecido = valorOfrecido;
+        this.estado = Estado.ACTIVO;
+    }
+
+    public String getCSV() {
+
+        return (this.fechaDePuja + ","
+                + this.usuario.getCorreo() + ","
+                + this.valorOfrecido + ","
+                + this.fueAceptada + ","
+                + this.estado);
+    }
 }

@@ -55,20 +55,20 @@ public class SubastaPujaController implements IApplication, Inicializable {
 
 
     public void setData(Puja puja) {
-      /*  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        this.lblNombreAnuncio.setText(puja.);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        this.lblNombreAnuncio.setText(puja.getAnuncio().getTitulo());
         this.lblFechaPuja.setText(puja.getFechaDePuja().format(formatter));
         this.lblValorOfrecido.setText(puja.getValorOfrecido().toString());
-        this.lblFueAceptada.setText(puja.isFueAceptada() ? "Aceptada" : "Sin aceptar");*/
+        this.lblFueAceptada.setText(puja.isFueAceptada() ? "Aceptada" : "Sin aceptar");
     }
 
     @Override
     public void inicializarComponentes() {
-       /* DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         this.lblNombreAnuncio.setText(puja.getAnuncio().getTitulo());
         this.lblFechaPuja.setText(puja.getFechaDePuja().format(formatter));
         this.lblValorOfrecido.setText(puja.getValorOfrecido().toString());
-        this.lblFueAceptada.setText(puja.isFueAceptada() ? "Aceptada" : "Sin aceptar");*/
+        this.lblFueAceptada.setText(puja.isFueAceptada() ? "Aceptada" : "Sin aceptar");
     }
 
 
@@ -89,11 +89,13 @@ public class SubastaPujaController implements IApplication, Inicializable {
     /**
      * Método usado en el menú contextual (clic derecho) el cual será usado para setear el estado de la
      * puja clickeado a Estado ELIMINADO:
+     * Método usado en el menú contextual (click derecho) el cual será usado para setear el estado de la
+     * puja clickeada a Estado.ELIMINADO:
      * @param event
      */
     @FXML
     void eliminarPuja(ActionEvent event) {
-       // ModelFactoryController.eliminarPuja(puja);
+        ModelFactoryController.eliminarPuja(puja);
         listadoSubastasController.inicializarComponentes();
     }
 
