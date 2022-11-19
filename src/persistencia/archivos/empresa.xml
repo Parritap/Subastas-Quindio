@@ -29,6 +29,28 @@
       </void>
      </object>
     </void>
+    <void method="add">
+     <object class="model.Producto" id="Producto1">
+      <void property="descripcion">
+       <string>g</string>
+      </void>
+      <void property="estado">
+       <object idref="Estado0"/>
+      </void>
+      <void property="id">
+       <int>2</int>
+      </void>
+      <void property="nombre">
+       <string>w</string>
+      </void>
+      <void property="tipoProducto">
+       <object class="java.lang.Enum" id="TipoProducto1" method="valueOf">
+        <class>model.enums.TipoProducto</class>
+        <string>TECNOLOGIA</string>
+       </object>
+      </void>
+     </object>
+    </void>
    </void>
   </void>
   <void id="IPuja0" property="IPuja"/>
@@ -190,7 +212,124 @@
                  <int>2</int>
                 </void>
                 <void property="listaAnuncios">
-                 <object class="java.util.ArrayList"/>
+                 <object class="java.util.ArrayList">
+                  <void method="add">
+                   <object class="model.Anuncio" id="Anuncio2">
+                    <void property="estado">
+                     <object idref="Estado0"/>
+                    </void>
+                    <void property="fechaPublicacion">
+                     <object class="java.time.LocalDateTime" method="parse">
+                      <string>2022-11-19T17:54:40.495097</string>
+                     </object>
+                    </void>
+                    <void property="fechaTerminacion">
+                     <object class="java.time.LocalDateTime" method="parse">
+                      <string>2022-11-19T18:54:40.495097</string>
+                     </object>
+                    </void>
+                    <void property="id">
+                     <int>1</int>
+                    </void>
+                    <void property="idListaPujas">
+                     <int>1</int>
+                    </void>
+                    <void property="imagePath">
+                     <string>/resources/FotosAnuncios/actualizar-signo-de-usuario.png</string>
+                    </void>
+                    <void property="listaPujas">
+                     <object class="java.util.ArrayList"/>
+                    </void>
+                    <void property="producto">
+                     <object class="model.Producto">
+                      <void property="descripcion">
+                       <string>fds</string>
+                      </void>
+                      <void property="estado">
+                       <object idref="Estado0"/>
+                      </void>
+                      <void property="id">
+                       <int>1</int>
+                      </void>
+                      <void property="nombre">
+                       <string>fsd</string>
+                      </void>
+                      <void property="tipoProducto">
+                       <object idref="TipoProducto1"/>
+                      </void>
+                     </object>
+                    </void>
+                    <void property="titulo">
+                     <string>dsf</string>
+                    </void>
+                    <void property="usuario">
+                     <object idref="Usuario1"/>
+                    </void>
+                    <void property="valorActual">
+                     <double>12.0</double>
+                    </void>
+                    <void property="valorInicial">
+                     <double>12.0</double>
+                    </void>
+                    <void property="valorMinimo">
+                     <double>12.0</double>
+                    </void>
+                   </object>
+                  </void>
+                  <void method="add">
+                   <object idref="Anuncio2"/>
+                  </void>
+                  <void method="add">
+                   <object class="model.Anuncio" id="Anuncio3">
+                    <void property="estado">
+                     <object idref="Estado0"/>
+                    </void>
+                    <void property="fechaPublicacion">
+                     <object class="java.time.LocalDateTime" method="parse">
+                      <string>2022-11-19T17:55:07.826113</string>
+                     </object>
+                    </void>
+                    <void property="fechaTerminacion">
+                     <object class="java.time.LocalDateTime" method="parse">
+                      <string>2022-11-19T18:53:07.826113</string>
+                     </object>
+                    </void>
+                    <void property="id">
+                     <int>2</int>
+                    </void>
+                    <void property="idListaPujas">
+                     <int>2</int>
+                    </void>
+                    <void property="imagePath">
+                     <string>/resources/FotosAnuncios/concepto.png</string>
+                    </void>
+                    <void property="listaPujas">
+                     <object class="java.util.ArrayList"/>
+                    </void>
+                    <void property="producto">
+                     <object idref="Producto1"/>
+                    </void>
+                    <void property="titulo">
+                     <string>sfd</string>
+                    </void>
+                    <void property="usuario">
+                     <object idref="Usuario1"/>
+                    </void>
+                    <void property="valorActual">
+                     <double>1.0</double>
+                    </void>
+                    <void property="valorInicial">
+                     <double>1.0</double>
+                    </void>
+                    <void property="valorMinimo">
+                     <double>1.0</double>
+                    </void>
+                   </object>
+                  </void>
+                  <void method="add">
+                   <object idref="Anuncio3"/>
+                  </void>
+                 </object>
                 </void>
                 <void property="listaChats">
                  <object class="java.util.ArrayList">
@@ -329,10 +468,16 @@
  <void id="ArrayList1" method="get">
   <object idref="IAnuncio0"/>
   <void method="add">
-   <object idref="Anuncio1"/>
+   <object idref="Anuncio3"/>
   </void>
   <void method="add">
    <object idref="Anuncio0"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio1"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio2"/>
   </void>
  </void>
 </void>

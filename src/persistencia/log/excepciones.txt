@@ -1402,3 +1402,13 @@ Nov 19, 2022 5:05:48 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
 Nov 19, 2022 5:05:58 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-19
+Nov 19, 2022 5:54:18 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 5:54:40 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:dsf,11-19
+Nov 19, 2022 5:54:40 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:fsd,11-19
+Nov 19, 2022 5:55:07 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 2:sfd,11-19
+Nov 19, 2022 5:55:07 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 2:w,11-19

@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -24,8 +24,6 @@ import model.ModelFactoryController;
 import model.enums.Estado;
 import model.enums.Language;
 import utilities.Utils;
-
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -107,6 +105,8 @@ public class SubastaController implements IApplication, Inicializable {
     @FXML
     private TextField txtfValorAPujar;
 
+    private int vecesCargado = 0;
+
     //Contiene los anuncios de la empresa en un momento dado
     private final ArrayList<Anuncio> listaAnuncios = new ArrayList<>();
 
@@ -119,7 +119,10 @@ public class SubastaController implements IApplication, Inicializable {
      * Metodo que recorre la lista de anuncios y los carga al pane scroll
      */
     private void cargarAnuncioAlScroll() {
-        actualizarListaAnuncios();
+        if(vecesCargado == 0) {
+            actualizarListaAnuncios();
+            vecesCargado++;
+        }
         //elimino todos los elementos del grid
         this.grid.getChildren().clear();
         //defino la columna y la fila del gridPane
@@ -129,30 +132,13 @@ public class SubastaController implements IApplication, Inicializable {
         try {
             //recorro la lista de anuncios y los convierto en un item controller
             for (Anuncio anuncio : ModelFactoryController.obtenerListaAnunciosSegunUsuario(application.getClienteActivo())) {
-                if (anuncio != null && LocalDateTime.now().isBefore(anuncio.getFechaTerminacion()) && (anuncio.getEstado() != Estado.ELIMINADO)) {
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
-                    AnchorPane anchorPane = fxmlLoader.load();
-                    ItemController itemController = fxmlLoader.getController();
-                    itemController.setSubastaController(this);
-                    //si he llegado a tres columnas que salte a la siguiente fila
-                    itemController.setData(anuncio);
-                    if (column == 2) {
-                        column = 0;
-                        ++row;
-                    }
-                    //propiedades de grid pane para que pueda adaptarse a la pantalla
-                    //es decir que sea responsive
-                    this.grid.add(anchorPane, column++, row);
-                    this.grid.setMinWidth(-1.0);
-                    this.grid.setPrefWidth(-1.0);
-                    this.grid.setMaxWidth(Double.NEGATIVE_INFINITY);
-                    this.grid.setMinHeight(-1.0);
-                    this.grid.setPrefHeight(-1.0);
-                    this.grid.setMaxHeight(Double.NEGATIVE_INFINITY);
-                    GridPane.setMargin(anchorPane, new Insets(10.0));
+               addToGridPane(anuncio, column, row);
+                if (column == 2) {
+                    column = 0;
+                    ++row;
+                } else {
+                    ++column;
                 }
-
             }
         } catch (IOException var9) {
             var9.printStackTrace();
@@ -178,9 +164,7 @@ public class SubastaController implements IApplication, Inicializable {
         this.lblNombreAnunciante.setText(anuncioSeleccionado.getUsuario().getName());
         this.lblTelAnunciante.setText(anuncioSeleccionado.getUsuario().getTelefono());
 
-        //cargo la ruta de la imagen y la cargo en el anuncio
-        System.out.println("RUTA IMAGEN: " + anuncioSeleccionado.getImagePath());
-        //veifico el sistema operativo para cargar la imagen
+        //verifico el sistema operativo para cargar la imagen
         Image image = null;
         if(System.getProperty("os.name").toLowerCase().contains("windows")) {
             image = new Image(Utils.getRutaAbsoluta()+anuncioSeleccionado.getImagePath());
@@ -344,9 +328,69 @@ public class SubastaController implements IApplication, Inicializable {
      * Metodo que filtra los anuncios por categoria
      */
     @FXML
-    void filtrarAnuncios(InputMethodEvent event) {
+    void filtrarAnuncios(KeyEvent event) {
+        if(txtfBarraBusqueda.getText().isEmpty()) {
+            grid.getChildren().clear();
+            actualizarListaAnuncios();
+            cargarAnuncioAlScrollfiltrados();
+        }else {
+            grid.getChildren().clear();
+            listaAnuncios.clear();
+            listaAnuncios.addAll(ModelFactoryController.getlistaAnuncios().stream()
+                    .filter(anuncio -> anuncio.getTitulo().toLowerCase()
+                            .startsWith(txtfBarraBusqueda.getText().toLowerCase())).toList());
+            cargarAnuncioAlScrollfiltrados();
+        }
+    }
+
+    private void cargarAnuncioAlScrollfiltrados() {
+
+        //elimino todos los elementos del grid
+        this.grid.getChildren().clear();
+
+        try {
+            //defino la columna y la fila del gridPane
+            int column = 0;
+            Integer row = 1;
+
+            //recorro la lista de anuncios y los convierto en un item controller
+            for (Anuncio anuncio : listaAnuncios) {
+                addToGridPane(anuncio, column, row);
+                column++;
+                if (column == 2) {
+                    column = 0;
+                    ++row;
+                }
+            }
+        } catch (IOException var9) {
+            var9.printStackTrace();
+        }
 
     }
+
+    public void addToGridPane(Anuncio anuncio, Integer column, Integer row) throws IOException {
+        if (anuncio != null && LocalDateTime.now().isBefore(anuncio.getFechaTerminacion()) && (anuncio.getEstado() != Estado.ELIMINADO)) {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
+            AnchorPane anchorPane = fxmlLoader.load();
+            ItemController itemController = fxmlLoader.getController();
+            itemController.setSubastaController(this);
+            //si he llegado a tres columnas que salte a la siguiente fila
+            itemController.setData(anuncio);
+            //propiedades de grid pane para que pueda adaptarse a la pantalla
+            //es decir que sea responsive
+            this.grid.add(anchorPane, column, row);
+            this.grid.setMinWidth(-1.0);
+            this.grid.setPrefWidth(-1.0);
+            this.grid.setMaxWidth(Double.NEGATIVE_INFINITY);
+            this.grid.setMinHeight(-1.0);
+            this.grid.setPrefHeight(-1.0);
+            this.grid.setMaxHeight(Double.NEGATIVE_INFINITY);
+            GridPane.setMargin(anchorPane, new Insets(10.0));
+        }
+
+    }
+
 
     /**
      * Metodo que permite cambiar el idioma de la app

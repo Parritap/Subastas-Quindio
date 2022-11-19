@@ -57,7 +57,6 @@ public class ItemController implements IApplication, Inicializable {
         this.anuncio = anuncio;
         nameLabel.setText(anuncio.getTitulo());
         priceLable.setText(anuncio.getValorInicial()+"");
-        System.out.println("anuncio.getImagePath() = " + anuncio.getImagePath());
         //verifico el sistema operativo para cargar la imagen
         //veifico el sistema operativo para cargar la imagen
         Image srcImg = null;

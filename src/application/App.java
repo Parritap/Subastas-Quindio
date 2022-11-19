@@ -380,7 +380,6 @@ public class App extends Application {
 
         // timeline shall be executed once
         timeline.setCycleCount(1);
-
         // when we are done we spawn another node
         timeline.setOnFinished(evt -> {
             container.getChildren().remove(node);

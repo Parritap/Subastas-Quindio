@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SubastaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SubastaController">
    <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../resources/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <left>
          <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../resources/style.css" BorderPane.alignment="CENTER">
@@ -39,7 +39,7 @@
                   <String fx:value="search-box" />
                   <String fx:value="shadow" />
                </styleClass>
-               <TextField fx:id="txtfBarraBusqueda" onInputMethodTextChanged="#filtrarAnuncios" prefHeight="40.0" prefWidth="235.0" promptText="%filtrarAnuncios" styleClass="transparent" stylesheets="@../resources/style.css">
+               <TextField fx:id="txtfBarraBusqueda" onKeyReleased="#filtrarAnuncios" prefHeight="40.0" prefWidth="235.0" promptText="%filtrarAnuncios" styleClass="transparent" stylesheets="@../resources/style.css">
                   <HBox.margin>
                      <Insets left="20.0" />
                   </HBox.margin>
