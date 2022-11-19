@@ -424,16 +424,6 @@ public class App extends Application {
         }
     }
 
-    public AnchorPane obtenerMensajeItem(Mensaje mensaje) {
-        //verifico si el mensaje fue enviado por el usuario
-        if(mensaje.getUsuarioEmisor() == clienteActivo){
-            return obtenerMensajeEnviado(mensaje);
-        }else {
-            //verifico si el mensaje fue recibido por el usuario
-            return obtenerMensajeRecibido(mensaje);
-        }
-    }
-
     private AnchorPane obtenerMensajeRecibido(Mensaje mensaje) {
         String ruta = Utils.MENSAJE_RECIBIDO;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
