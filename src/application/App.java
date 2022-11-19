@@ -11,7 +11,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -421,12 +420,42 @@ public class App extends Application {
     }
 
     /**
+     * Metodo que permite abrir el stage de la subasta
+     * @param chat chat
+     * @param chatController chatController
+     * @return stage
+     */
+    public AnchorPane obtenerChatItem(Chat chat, ChatController chatController) {
+        String ruta = Utils.CHAT_ITEM;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
+        try {
+            AnchorPane container = loader.load();
+            ItemChatController controller = loader.getController();
+            controller.setApplication(this);
+            controller.setChat(chat);
+            controller.setChatController(chatController);
+            controller.inicializarComponentes();
+            controller.setChat(chat);
+            return container;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      * Metodo que permite cerrar el stage de actualizar anuncio
      */
     public void closeUpdateAdd() {
         actualizarAdd.close();
     }
+
+    /**
+     * Metodo que permite enviar un mensaje
+     * @param mensaje mensaje a enviar
+     */
     public void enviarMensaje(Mensaje mensaje) {
         ModelFactoryController.aniadirMensaje(mensaje);
     }
+
+
 }

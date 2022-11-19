@@ -1310,3 +1310,37 @@ Nov 19, 2022 3:31:15 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Envío de mensaje,Se envió el mensaje: sd al usuario: b,11-19
 Nov 19, 2022 3:31:31 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre b y correo b ha iniciado sesión.,11-19
+Nov 19, 2022 4:09:55 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-19
+Nov 19, 2022 4:09:55 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-19
+Nov 19, 2022 4:10:14 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 4:a,11-19
+Nov 19, 2022 4:10:47 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 5:b,11-19
+Nov 19, 2022 4:11:18 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 3:dfggdfdfg,11-19
+Nov 19, 2022 4:11:18 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 3:dfgfdg,11-19
+Nov 19, 2022 4:12:06 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre b y correo b ha iniciado sesión.,11-19
+Nov 19, 2022 4:12:18 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-19
+Nov 19, 2022 4:12:42 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Envío de mensaje,Se envió el mensaje: svd al usuario: b,11-19
+Nov 19, 2022 4:12:42 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Recepción de mensaje,Se recibió el mensaje: svd del usuario: a,11-19
+Nov 19, 2022 4:12:54 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre b y correo b ha iniciado sesión.,11-19
+Nov 19, 2022 4:13:12 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Envío de mensaje,Se envió el mensaje: aaaaaaa al usuario: a,11-19
+Nov 19, 2022 4:13:12 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Recepción de mensaje,Se recibió el mensaje: aaaaaaa del usuario: b,11-19
+Nov 19, 2022 4:13:23 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-19
+Nov 19, 2022 4:13:40 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre b y correo b ha iniciado sesión.,11-19
+Nov 19, 2022 4:14:50 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-19
+Nov 19, 2022 4:15:04 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre b y correo b ha iniciado sesión.,11-19

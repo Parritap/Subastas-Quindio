@@ -154,7 +154,6 @@ public class ChatController implements IApplication, Inicializable {
         }
         VBoxMensajes.getChildren().clear();
         ArrayList<Mensaje> listaMensajes = chat.getListaMensajes();
-        listaMensajes.sort(Comparator.comparing(Mensaje::getFecha));
         for (int i=listaMensajes.size()-1; i>=0; i--) {
             Mensaje mensaje = listaMensajes.get(i);
             if(mensaje.getUsuarioEmisor() == application.getClienteActivo()){

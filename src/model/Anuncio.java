@@ -146,15 +146,6 @@ public class Anuncio implements Serializable {
 		return result;
 	}
 
-    /**
-     * Metodo que devuelve el tiempo restante para que termine el anuncio
-     *
-     * @return el tiempo restante en formato MM
-     */
-    public Integer getMinutosSubasta() {
-        return (int) ChronoUnit.MINUTES.between(fechaPublicacion, fechaTerminacion);
-    }
-
     public String getCSV() {
 
         return titulo + ","
@@ -179,11 +170,6 @@ public class Anuncio implements Serializable {
             if (i != listaPujas.size() - 1) str.append(",");
         }
 
-
-        //for (Puja puja : listaPujas) {
-        //    str.append(puja.getCSV());
-        //    str.append(",");
-        //}
         return str.toString();
     }
 	/**
@@ -195,8 +181,7 @@ public class Anuncio implements Serializable {
 	}
 
 	/**
-	 * Metodo que retorna el creador del anuncio
-	 * se usa para crear el chat
+	 * Metodo que retorna el creador del anuncio se usa para crear el chat
 	 * @return el usuario creador del anuncio
 	 */
     public Usuario getVendedor() {
