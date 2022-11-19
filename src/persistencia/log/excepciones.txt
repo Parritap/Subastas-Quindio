@@ -1368,3 +1368,37 @@ Nov 19, 2022 4:46:45 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de anuncio,se creo el anuncio 1:a,11-19
 Nov 19, 2022 4:46:45 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de producto,se creo el producto 1:a,11-19
+Nov 19, 2022 4:51:29 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre prueba y correo prueba ha iniciado sesión.,11-19
+Nov 19, 2022 4:52:12 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:MyBonsaiKun,11-19
+Nov 19, 2022 4:52:12 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:Bonsay,11-19
+Nov 19, 2022 4:52:21 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-19
+Nov 19, 2022 4:52:21 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-19
+Nov 19, 2022 4:52:33 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre prueba y correo prueba ha iniciado sesión.,11-19
+Nov 19, 2022 4:53:02 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:parra,11-19
+Nov 19, 2022 5:01:38 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre prueba y correo prueba ha iniciado sesión.,11-19
+Nov 19, 2022 5:03:08 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:fox,11-19
+Nov 19, 2022 5:03:08 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:fox,11-19
+Nov 19, 2022 5:04:49 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre eren y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 5:05:06 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario prueba no encontrado,11-19
+Nov 19, 2022 5:05:06 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario prueba no encontrado,11-19
+Nov 19, 2022 5:05:10 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre eren y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 5:05:37 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-19
+Nov 19, 2022 5:05:48 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 5:05:58 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre a y correo a ha iniciado sesión.,11-19

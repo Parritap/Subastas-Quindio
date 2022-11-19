@@ -179,7 +179,9 @@ public class SubastaController implements IApplication, Inicializable {
         this.lblTelAnunciante.setText(anuncioSeleccionado.getUsuario().getTelefono());
 
         //cargo la ruta de la imagen y la cargo en el anuncio
-        Image image = new Image(anuncioSeleccionado.getImagePath());
+        System.out.println("RUTA IMAGEN: " + anuncioSeleccionado.getImagePath());
+        Image image = new Image(Utils.getRutaAbsoluta()+ anuncioSeleccionado.getImagePath());
+
         this.adSelectedImage.setImage(image);
     }
 
