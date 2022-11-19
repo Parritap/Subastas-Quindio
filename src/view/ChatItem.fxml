@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onMouseClicked="#cargarChat" prefHeight="82.0" prefWidth="373.0" stylesheets="@../resources/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ItemChatController">
+   <children>
+      <AnchorPane layoutX="8.0" layoutY="6.0" prefHeight="68.0" prefWidth="354.0" style="-fx-border-color: BLACK; -fx-background-radius: 50; -fx-border-radius: 20;" />
+      <Label fx:id="lblNameUsuario" layoutX="147.0" layoutY="14.0" prefHeight="26.0" prefWidth="210.0" text="Nombre del usuario">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblUltimoMensaje" layoutX="125.0" layoutY="37.0" prefHeight="28.0" prefWidth="248.0" style="-fx-alignment: CENTER;" text="Ultimo mensaje" textFill="#837d7d" />
+      <Circle fill="#95ec85" layoutX="95.0" layoutY="51.0" radius="14.0" stroke="WHITE" strokeType="INSIDE" styleClass="shadow" />
+      <Circle fx:id="circleImage" fill="DODGERBLUE" layoutX="46.0" layoutY="40.0" radius="29.0" stroke="#838383" strokeType="INSIDE" styleClass="border-image" />
+   </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</AnchorPane>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="67.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.MensajeRecibidoController">
+   <Label fx:id="lblMensaje" layoutY="-1.0" prefHeight="67.0" prefWidth="482.0"
+          style="-fx-alignment: CENTER; -fx-background-color: GRAY; -fx-background-radius: 30;" text="Mensaje"
+          textFill="WHITE"/>
+</AnchorPane>
