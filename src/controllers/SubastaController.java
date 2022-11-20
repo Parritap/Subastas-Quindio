@@ -135,7 +135,7 @@ public class SubastaController implements IApplication, Inicializable {
             for (Anuncio anuncio : ModelFactoryController.obtenerListaAnunciosSegunUsuario(application.getClienteActivo())) {
                boolean flag = addToGridPane(anuncio, column, row);
                if(flag){
-                   if (column == 2) {
+                   if (column == 1) {
                        column = 0;
                        ++row;
                    } else {
