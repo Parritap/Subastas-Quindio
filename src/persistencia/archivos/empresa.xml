@@ -463,7 +463,7 @@
              <string>dfg</string>
             </void>
             <void property="tipoProducto">
-             <object class="java.lang.Enum" method="valueOf">
+             <object class="java.lang.Enum" id="TipoProducto2" method="valueOf">
               <class>model.enums.TipoProducto</class>
               <string>VEHICULOS</string>
              </object>
@@ -489,6 +489,72 @@
         </void>
         <void method="add">
          <object idref="Anuncio4"/>
+        </void>
+        <void method="add">
+         <object class="model.Anuncio" id="Anuncio5">
+          <void property="estado">
+           <object idref="Estado0"/>
+          </void>
+          <void property="fechaPublicacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-19T19:15:04.859303</string>
+           </object>
+          </void>
+          <void property="fechaTerminacion">
+           <object class="java.time.LocalDateTime" method="parse">
+            <string>2022-11-19T20:15:04.859303</string>
+           </object>
+          </void>
+          <void property="id">
+           <int>1</int>
+          </void>
+          <void property="idListaPujas">
+           <int>1</int>
+          </void>
+          <void property="imagePath">
+           <string>/resources/FotosAnuncios/actualizar-signo-de-usuario.png</string>
+          </void>
+          <void property="listaPujas">
+           <object class="java.util.ArrayList"/>
+          </void>
+          <void property="producto">
+           <object class="model.Producto">
+            <void property="descripcion">
+             <string>fdsfdssdf</string>
+            </void>
+            <void property="estado">
+             <object idref="Estado0"/>
+            </void>
+            <void property="id">
+             <int>1</int>
+            </void>
+            <void property="nombre">
+             <string>sdfsd</string>
+            </void>
+            <void property="tipoProducto">
+             <object idref="TipoProducto2"/>
+            </void>
+           </object>
+          </void>
+          <void property="titulo">
+           <string>fsdfds</string>
+          </void>
+          <void property="usuario">
+           <object idref="Usuario0"/>
+          </void>
+          <void property="valorActual">
+           <double>11.0</double>
+          </void>
+          <void property="valorInicial">
+           <double>11.0</double>
+          </void>
+          <void property="valorMinimo">
+           <double>11.0</double>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object idref="Anuncio5"/>
         </void>
        </object>
       </void>
@@ -540,12 +606,6 @@
  <void id="ArrayList1" method="get">
   <object idref="IAnuncio0"/>
   <void method="add">
-   <object idref="Anuncio2"/>
-  </void>
-  <void method="add">
-   <object idref="Anuncio3"/>
-  </void>
-  <void method="add">
    <object idref="Anuncio4"/>
   </void>
   <void method="add">
@@ -553,6 +613,15 @@
   </void>
   <void method="add">
    <object idref="Anuncio1"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio2"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio5"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio3"/>
   </void>
  </void>
 </void>

@@ -1432,3 +1432,9 @@ Nov 19, 2022 6:59:49 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de producto,se creo el producto 1:dfg,11-19
 Nov 19, 2022 7:00:13 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre prueba y correo prueba ha iniciado sesión.,11-19
+Nov 19, 2022 7:14:18 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre prueba y correo prueba ha iniciado sesión.,11-19
+Nov 19, 2022 7:15:04 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:fsdfds,11-19
+Nov 19, 2022 7:15:04 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:sdfsd,11-19
