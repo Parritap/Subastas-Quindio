@@ -936,10 +936,10 @@
              <int>0</int>
             </void>
             <void property="cedula">
-             <string>b</string>
+             <string>e</string>
             </void>
             <void property="correo">
-             <string>b</string>
+             <string>e</string>
             </void>
             <void property="direccion">
              <string>b</string>
@@ -1111,12 +1111,312 @@
                        <int>1</int>
                       </void>
                       <void property="listaAnuncios">
-                       <object class="java.util.ArrayList"/>
+                       <object class="java.util.ArrayList">
+                        <void method="add">
+                         <object class="model.Anuncio" id="Anuncio8">
+                          <void property="estado">
+                           <object idref="Estado0"/>
+                          </void>
+                          <void property="fechaPublicacion">
+                           <object class="java.time.LocalDateTime" method="parse">
+                            <string>2022-11-19T22:36:44.569536</string>
+                           </object>
+                          </void>
+                          <void property="fechaTerminacion">
+                           <object class="java.time.LocalDateTime" method="parse">
+                            <string>2022-11-19T23:36:44.569536</string>
+                           </object>
+                          </void>
+                          <void property="id">
+                           <int>1</int>
+                          </void>
+                          <void property="idListaPujas">
+                           <int>1</int>
+                          </void>
+                          <void property="imagePath">
+                           <string>/resources/FotosAnuncios/actualizar-signo-de-usuario.png</string>
+                          </void>
+                          <void property="listaPujas">
+                           <object class="java.util.ArrayList">
+                            <void method="add">
+                             <object class="model.Puja" id="Puja9">
+                              <void property="anuncio">
+                               <object idref="Anuncio8"/>
+                              </void>
+                              <void property="estado">
+                               <object idref="Estado0"/>
+                              </void>
+                              <void property="fechaDePuja">
+                               <object class="java.time.LocalDateTime" method="parse">
+                                <string>2022-11-19T22:49:23.032170</string>
+                               </object>
+                              </void>
+                              <void property="id">
+                               <int>1</int>
+                              </void>
+                              <void property="idUsuario">
+                               <int>2</int>
+                              </void>
+                              <void property="usuario">
+                               <object class="model.Usuario" id="Usuario6">
+                                <void property="activo">
+                                 <boolean>true</boolean>
+                                </void>
+                                <void property="age">
+                                 <int>18</int>
+                                </void>
+                                <void property="cantAnuncios">
+                                 <int>0</int>
+                                </void>
+                                <void property="cedula">
+                                 <string>z</string>
+                                </void>
+                                <void property="correo">
+                                 <string>z</string>
+                                </void>
+                                <void property="direccion">
+                                 <string>z</string>
+                                </void>
+                                <void property="estado">
+                                 <object idref="Estado0"/>
+                                </void>
+                                <void property="id">
+                                 <int>2</int>
+                                </void>
+                                <void property="idListaPujas">
+                                 <int>3</int>
+                                </void>
+                                <void property="listaAnuncios">
+                                 <object class="java.util.ArrayList"/>
+                                </void>
+                                <void property="listaChats">
+                                 <object class="java.util.ArrayList">
+                                  <void method="add">
+                                   <object class="model.Chat" id="Chat6">
+                                    <void property="usuarioEmisor">
+                                     <object idref="Usuario5"/>
+                                    </void>
+                                    <void property="usuarioReceptor">
+                                     <object idref="Usuario6"/>
+                                    </void>
+                                   </object>
+                                  </void>
+                                 </object>
+                                </void>
+                                <void property="listaPujas">
+                                 <object class="java.util.ArrayList">
+                                  <void method="add">
+                                   <object idref="Puja9"/>
+                                  </void>
+                                 </object>
+                                </void>
+                                <void property="name">
+                                 <string>z</string>
+                                </void>
+                                <void property="password">
+                                 <string>z</string>
+                                </void>
+                                <void property="rol">
+                                 <object idref="Rol0"/>
+                                </void>
+                                <void property="rutaFotoPerfil">
+                                 <string>/resources/FotosPerfil//Users/alejandroarias/Downloads/pngegg.png</string>
+                                </void>
+                                <void property="telefono">
+                                 <string>z</string>
+                                </void>
+                               </object>
+                              </void>
+                              <void property="valorOfrecido">
+                               <double>4.0</double>
+                              </void>
+                             </object>
+                            </void>
+                            <void method="add">
+                             <object idref="Puja9"/>
+                            </void>
+                           </object>
+                          </void>
+                          <void property="producto">
+                           <object class="model.Producto">
+                            <void property="descripcion">
+                             <string>dsf</string>
+                            </void>
+                            <void property="estado">
+                             <object idref="Estado0"/>
+                            </void>
+                            <void property="id">
+                             <int>1</int>
+                            </void>
+                            <void property="nombre">
+                             <string>a</string>
+                            </void>
+                            <void property="tipoProducto">
+                             <object class="java.lang.Enum" id="TipoProducto2" method="valueOf">
+                              <class>model.enums.TipoProducto</class>
+                              <string>DEPORTES</string>
+                             </object>
+                            </void>
+                           </object>
+                          </void>
+                          <void property="titulo">
+                           <string>asd</string>
+                          </void>
+                          <void property="usuario">
+                           <object idref="Usuario5"/>
+                          </void>
+                          <void property="valorActual">
+                           <double>4.0</double>
+                          </void>
+                          <void property="valorInicial">
+                           <double>1.0</double>
+                          </void>
+                          <void property="valorMinimo">
+                           <double>1.0</double>
+                          </void>
+                         </object>
+                        </void>
+                        <void method="add">
+                         <object idref="Anuncio8"/>
+                        </void>
+                        <void method="add">
+                         <object class="model.Anuncio" id="Anuncio9">
+                          <void property="estado">
+                           <object idref="Estado0"/>
+                          </void>
+                          <void property="fechaPublicacion">
+                           <object class="java.time.LocalDateTime" method="parse">
+                            <string>2022-11-19T22:37:02.662405</string>
+                           </object>
+                          </void>
+                          <void property="fechaTerminacion">
+                           <object class="java.time.LocalDateTime" method="parse">
+                            <string>2022-11-19T23:37:02.662405</string>
+                           </object>
+                          </void>
+                          <void property="id">
+                           <int>2</int>
+                          </void>
+                          <void property="idListaPujas">
+                           <int>2</int>
+                          </void>
+                          <void property="imagePath">
+                           <string>/resources/FotosAnuncios/actualizar-signo-de-usuario.png</string>
+                          </void>
+                          <void property="listaPujas">
+                           <object class="java.util.ArrayList"/>
+                          </void>
+                          <void property="producto">
+                           <object class="model.Producto">
+                            <void property="descripcion">
+                             <string>bfdb</string>
+                            </void>
+                            <void property="estado">
+                             <object idref="Estado0"/>
+                            </void>
+                            <void property="id">
+                             <int>2</int>
+                            </void>
+                            <void property="nombre">
+                             <string>b</string>
+                            </void>
+                            <void property="tipoProducto">
+                             <object idref="TipoProducto2"/>
+                            </void>
+                           </object>
+                          </void>
+                          <void property="titulo">
+                           <string>b</string>
+                          </void>
+                          <void property="usuario">
+                           <object idref="Usuario5"/>
+                          </void>
+                          <void property="valorActual">
+                           <double>1.0</double>
+                          </void>
+                          <void property="valorInicial">
+                           <double>1.0</double>
+                          </void>
+                          <void property="valorMinimo">
+                           <double>1.0</double>
+                          </void>
+                         </object>
+                        </void>
+                        <void method="add">
+                         <object idref="Anuncio9"/>
+                        </void>
+                        <void method="add">
+                         <object class="model.Anuncio" id="Anuncio10">
+                          <void property="estado">
+                           <object idref="Estado0"/>
+                          </void>
+                          <void property="fechaPublicacion">
+                           <object class="java.time.LocalDateTime" method="parse">
+                            <string>2022-11-19T22:47:15.280547</string>
+                           </object>
+                          </void>
+                          <void property="fechaTerminacion">
+                           <object class="java.time.LocalDateTime" method="parse">
+                            <string>2022-11-19T23:47:15.280547</string>
+                           </object>
+                          </void>
+                          <void property="id">
+                           <int>1</int>
+                          </void>
+                          <void property="idListaPujas">
+                           <int>1</int>
+                          </void>
+                          <void property="imagePath">
+                           <string>/resources/FotosAnuncios/actualizar-signo-de-usuario.png</string>
+                          </void>
+                          <void property="listaPujas">
+                           <object class="java.util.ArrayList"/>
+                          </void>
+                          <void property="producto">
+                           <object class="model.Producto">
+                            <void property="descripcion">
+                             <string>sdf</string>
+                            </void>
+                            <void property="estado">
+                             <object idref="Estado0"/>
+                            </void>
+                            <void property="id">
+                             <int>1</int>
+                            </void>
+                            <void property="nombre">
+                             <string>sfdsf</string>
+                            </void>
+                            <void property="tipoProducto">
+                             <object idref="TipoProducto2"/>
+                            </void>
+                           </object>
+                          </void>
+                          <void property="titulo">
+                           <string>sdf</string>
+                          </void>
+                          <void property="usuario">
+                           <object idref="Usuario5"/>
+                          </void>
+                          <void property="valorActual">
+                           <double>1.0</double>
+                          </void>
+                          <void property="valorInicial">
+                           <double>1.0</double>
+                          </void>
+                          <void property="valorMinimo">
+                           <double>1.0</double>
+                          </void>
+                         </object>
+                        </void>
+                        <void method="add">
+                         <object idref="Anuncio10"/>
+                        </void>
+                       </object>
                       </void>
                       <void property="listaChats">
                        <object class="java.util.ArrayList">
                         <void method="add">
-                         <object class="model.Chat" id="Chat6">
+                         <object class="model.Chat" id="Chat7">
                           <void property="usuarioEmisor">
                            <object idref="Usuario4"/>
                           </void>
@@ -1124,6 +1424,9 @@
                            <object idref="Usuario5"/>
                           </void>
                          </object>
+                        </void>
+                        <void method="add">
+                         <object idref="Chat6"/>
                         </void>
                        </object>
                       </void>
@@ -1133,7 +1436,7 @@
                          <object idref="Puja8"/>
                         </void>
                         <void method="add">
-                         <object class="model.Puja" id="Puja9">
+                         <object class="model.Puja" id="Puja10">
                           <void property="anuncio">
                            <object idref="Anuncio7"/>
                           </void>
@@ -1160,7 +1463,7 @@
                          </object>
                         </void>
                         <void method="add">
-                         <object class="model.Puja" id="Puja10">
+                         <object class="model.Puja" id="Puja11">
                           <void property="anuncio">
                            <object idref="Anuncio7"/>
                           </void>
@@ -1211,13 +1514,13 @@
                    </object>
                   </void>
                   <void method="add">
-                   <object idref="Puja9"/>
-                  </void>
-                  <void method="add">
                    <object idref="Puja10"/>
                   </void>
                   <void method="add">
-                   <object class="model.Puja" id="Puja11">
+                   <object idref="Puja11"/>
+                  </void>
+                  <void method="add">
+                   <object class="model.Puja" id="Puja12">
                     <void property="anuncio">
                      <object idref="Anuncio7"/>
                     </void>
@@ -1236,7 +1539,7 @@
                      <int>1</int>
                     </void>
                     <void property="usuario">
-                     <object class="model.Usuario" id="Usuario6">
+                     <object class="model.Usuario" id="Usuario7">
                       <void property="activo">
                        <boolean>true</boolean>
                       </void>
@@ -1270,12 +1573,12 @@
                       <void property="listaChats">
                        <object class="java.util.ArrayList">
                         <void method="add">
-                         <object class="model.Chat" id="Chat7">
+                         <object class="model.Chat" id="Chat8">
                           <void property="usuarioEmisor">
                            <object idref="Usuario4"/>
                           </void>
                           <void property="usuarioReceptor">
-                           <object idref="Usuario6"/>
+                           <object idref="Usuario7"/>
                           </void>
                          </object>
                         </void>
@@ -1284,10 +1587,10 @@
                       <void property="listaPujas">
                        <object class="java.util.ArrayList">
                         <void method="add">
-                         <object idref="Puja11"/>
+                         <object idref="Puja12"/>
                         </void>
                         <void method="add">
-                         <object class="model.Puja" id="Puja12">
+                         <object class="model.Puja" id="Puja13">
                           <void property="anuncio">
                            <object idref="Anuncio7"/>
                           </void>
@@ -1306,7 +1609,7 @@
                            <int>1</int>
                           </void>
                           <void property="usuario">
-                           <object idref="Usuario6"/>
+                           <object idref="Usuario7"/>
                           </void>
                           <void property="valorOfrecido">
                            <double>20.0</double>
@@ -1338,13 +1641,13 @@
                    </object>
                   </void>
                   <void method="add">
-                   <object idref="Puja11"/>
-                  </void>
-                  <void method="add">
                    <object idref="Puja12"/>
                   </void>
                   <void method="add">
-                   <object idref="Puja12"/>
+                   <object idref="Puja13"/>
+                  </void>
+                  <void method="add">
+                   <object idref="Puja13"/>
                   </void>
                  </object>
                 </void>
@@ -1395,16 +1698,6 @@
                <object idref="Chat5"/>
               </void>
               <void method="add">
-               <object class="model.Chat" id="Chat8">
-                <void property="usuarioEmisor">
-                 <object idref="Usuario4"/>
-                </void>
-                <void property="usuarioReceptor">
-                 <object idref="Usuario3"/>
-                </void>
-               </object>
-              </void>
-              <void method="add">
                <object class="model.Chat" id="Chat9">
                 <void property="usuarioEmisor">
                  <object idref="Usuario4"/>
@@ -1415,10 +1708,20 @@
                </object>
               </void>
               <void method="add">
-               <object idref="Chat6"/>
+               <object class="model.Chat" id="Chat10">
+                <void property="usuarioEmisor">
+                 <object idref="Usuario4"/>
+                </void>
+                <void property="usuarioReceptor">
+                 <object idref="Usuario3"/>
+                </void>
+               </object>
               </void>
               <void method="add">
                <object idref="Chat7"/>
+              </void>
+              <void method="add">
+               <object idref="Chat8"/>
               </void>
              </object>
             </void>
@@ -1426,10 +1729,10 @@
              <object class="java.util.ArrayList"/>
             </void>
             <void property="name">
-             <string>b</string>
+             <string>e</string>
             </void>
             <void property="password">
-             <string>b</string>
+             <string>e</string>
             </void>
             <void property="rol">
              <object idref="Rol0"/>
@@ -1448,10 +1751,10 @@
          </object>
         </void>
         <void method="add">
-         <object idref="Chat8"/>
+         <object idref="Chat9"/>
         </void>
         <void method="add">
-         <object idref="Chat9"/>
+         <object idref="Chat10"/>
         </void>
        </object>
       </void>
@@ -1492,67 +1795,14 @@
      <object idref="Usuario5"/>
     </void>
     <void method="add">
+     <object idref="Usuario7"/>
+    </void>
+    <void method="add">
      <object idref="Usuario6"/>
     </void>
    </void>
   </void>
  </object>
-<void class="model.IAnuncio" id="Field0" method="getField">
- <string>listaAnuncios</string>
- <void id="ArrayList0" method="get">
-  <object idref="IAnuncio0"/>
-  <void method="add">
-   <object idref="Anuncio4"/>
-  </void>
-  <void method="add">
-   <object idref="Anuncio7"/>
-  </void>
-  <void method="add">
-   <object idref="Anuncio5"/>
-  </void>
-  <void method="add">
-   <object idref="Anuncio6"/>
-  </void>
-  <void method="add">
-   <object idref="Anuncio0"/>
-  </void>
-  <void method="add">
-   <object idref="Anuncio1"/>
-  </void>
-  <void method="add">
-   <object idref="Anuncio2"/>
-  </void>
-  <void method="add">
-   <object idref="Anuncio3"/>
-  </void>
- </void>
-</void>
-<void idref="ArrayList0"/>
-<void class="model.Puja" id="Puja13">
- <void property="estado">
-  <object idref="Estado0"/>
- </void>
- <void property="fechaDePuja">
-  <object class="java.time.LocalDateTime" method="parse">
-   <string>2022-11-19T22:32:44.565165</string>
-  </object>
- </void>
- <void property="id">
-  <int>4</int>
- </void>
- <void property="idUsuario">
-  <int>1</int>
- </void>
- <void property="usuario">
-  <object idref="Usuario6"/>
- </void>
- <void property="valorOfrecido">
-  <double>22.0</double>
- </void>
- <void property="anuncio">
-  <object idref="Anuncio7"/>
- </void>
-</void>
 <void class="model.Puja" id="Puja14">
  <void property="estado">
   <object idref="Estado0"/>
@@ -1569,7 +1819,7 @@
   <int>1</int>
  </void>
  <void property="usuario">
-  <object idref="Usuario6"/>
+  <object idref="Usuario7"/>
  </void>
  <void property="valorOfrecido">
   <double>21.0</double>
@@ -1578,19 +1828,100 @@
   <object idref="Anuncio7"/>
  </void>
 </void>
+<void class="model.Puja" id="Puja15">
+ <void property="estado">
+  <object idref="Estado0"/>
+ </void>
+ <void property="fechaDePuja">
+  <object class="java.time.LocalDateTime" method="parse">
+   <string>2022-11-19T22:33:37.267323</string>
+  </object>
+ </void>
+ <void property="id">
+  <int>1</int>
+ </void>
+ <void property="idUsuario">
+  <int>1</int>
+ </void>
+ <void property="usuario">
+  <object idref="Usuario7"/>
+ </void>
+ <void property="valorOfrecido">
+  <double>22.0</double>
+ </void>
+ <void property="anuncio">
+  <object idref="Anuncio7"/>
+ </void>
+</void>
+<void class="model.Puja" id="Puja16">
+ <void property="estado">
+  <object idref="Estado0"/>
+ </void>
+ <void property="fechaDePuja">
+  <object class="java.time.LocalDateTime" method="parse">
+   <string>2022-11-19T22:32:44.565165</string>
+  </object>
+ </void>
+ <void property="id">
+  <int>4</int>
+ </void>
+ <void property="idUsuario">
+  <int>1</int>
+ </void>
+ <void property="usuario">
+  <object idref="Usuario7"/>
+ </void>
+ <void property="valorOfrecido">
+  <double>22.0</double>
+ </void>
+ <void property="anuncio">
+  <object idref="Anuncio7"/>
+ </void>
+</void>
+<void class="model.IAnuncio" id="Field0" method="getField">
+ <string>listaAnuncios</string>
+ <void id="ArrayList0" method="get">
+  <object idref="IAnuncio0"/>
+  <void method="add">
+   <object idref="Anuncio6"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio0"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio1"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio2"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio3"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio4"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio8"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio9"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio7"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio10"/>
+  </void>
+  <void method="add">
+   <object idref="Anuncio5"/>
+  </void>
+ </void>
+</void>
+<void idref="ArrayList0"/>
 <void class="model.IPuja" id="Field1" method="getField">
  <string>listaPujas</string>
  <void id="ArrayList1" method="get">
   <object idref="IPuja0"/>
-  <void method="add">
-   <object idref="Puja6"/>
-  </void>
-  <void method="add">
-   <object idref="Puja7"/>
-  </void>
-  <void method="add">
-   <object idref="Puja3"/>
-  </void>
   <void method="add">
    <object idref="Puja4"/>
   </void>
@@ -1598,10 +1929,10 @@
    <object idref="Puja8"/>
   </void>
   <void method="add">
-   <object idref="Puja9"/>
+   <object idref="Puja10"/>
   </void>
   <void method="add">
-   <object idref="Puja10"/>
+   <object idref="Puja11"/>
   </void>
   <void method="add">
    <object idref="Puja0"/>
@@ -1613,19 +1944,34 @@
    <object idref="Puja1"/>
   </void>
   <void method="add">
-   <object idref="Puja11"/>
-  </void>
-  <void method="add">
    <object idref="Puja12"/>
-  </void>
-  <void method="add">
-   <object idref="Puja14"/>
   </void>
   <void method="add">
    <object idref="Puja13"/>
   </void>
   <void method="add">
+   <object idref="Puja14"/>
+  </void>
+  <void method="add">
+   <object idref="Puja16"/>
+  </void>
+  <void method="add">
    <object idref="Puja5"/>
+  </void>
+  <void method="add">
+   <object idref="Puja15"/>
+  </void>
+  <void method="add">
+   <object idref="Puja6"/>
+  </void>
+  <void method="add">
+   <object idref="Puja7"/>
+  </void>
+  <void method="add">
+   <object idref="Puja9"/>
+  </void>
+  <void method="add">
+   <object idref="Puja3"/>
   </void>
  </void>
 </void>
