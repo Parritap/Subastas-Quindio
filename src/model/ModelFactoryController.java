@@ -210,70 +210,6 @@ public class ModelFactoryController {
 
 
 
-    public static void addDatosPrueba(){
-
-        IUsuario iUsuario = empresaSubasta.getIUsuario();
-        IAnuncio iAnuncio = empresaSubasta.getIAnuncio();
-
-
-
-        /////ESTO ES PARA NO ESTAR CREANDO USUARIOS TODO EL TIEMPO MIENTRAS ARREGLAMOS LA PERSISTENCIA -- COLOCAR UN BOOKMARK////////
-
-        Usuario u1 = new Usuario("Parra", 21, "1002656555", "parra", "Cr14#09-18", "3243585508", "parra");
-        Usuario u2 = new Usuario("Ana", 21, "1002656556", "ana", "Cr14#09-18", "3243585508", "ana");
-        iUsuario.getListaUsuarios().add(u1);
-        iUsuario.getListaUsuarios().add(u2);
-
-        byte [] img1 = new byte[0];
-        byte [] img2 = new byte[0];
-        try {
-            img1 = Files.readAllBytes(Path.of("src/resources/visa.png"));
-            img2 = Files.readAllBytes(Path.of("src/resources/beagle.jpg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Producto p1 = new Producto("Beagle", "Este es un beagle");
-        Producto p2 = new Producto("MasterCard", "Este es una Mastercard");
-        
-
-        //Anuncio a1 = new Anuncio("Flying Beagle", img1, 100D, 60L);
-        //Anuncio a2 = new Anuncio("MasterCard", img2, 100D, 60L);
-        
-        Anuncio a1 = new Anuncio("Flying Beagle", 100D, 60L, "src/resources/visa.png");
-        Anuncio a2 = new Anuncio("MasterCard", 100D, 60L, "src/resources/beagle.jpg");
-
-
-        try {
-            ModelFactoryController.crearAnuncio(a1, p1,  u1);
-            ModelFactoryController.crearAnuncio(a2, p2,  u2);
-        } catch (CRUDExceptions e) {
-            e.printStackTrace();
-        }
-
-
-
-        Puja  p11 = new Puja(LocalDateTime.now(), u1, 200D, a1);
-        Puja  p12 = new Puja(LocalDateTime.now(), u1, 300D, a1);
-
-        Puja  p21 = new Puja(LocalDateTime.now(), u2, 200D, a2);
-        Puja  p22 = new Puja(LocalDateTime.now(), u2, 300D, a2);
-
-        u1.getListaPujas().add(p11);
-        u1.getListaPujas().add(p12);
-
-        u2.getListaPujas().add(p21);
-        u2.getListaPujas().add(p22);
-
-        a1.getListaPujas().add(p11);
-        a1.getListaPujas().add(p12);
-
-        a2.getListaPujas().add(p21);
-        a2.getListaPujas().add(p22);
-
-        iAnuncio.getListaAnuncio().add(a1);
-        iAnuncio.getListaAnuncio().add(a2);
-    }
 
     /**
      * Retorna una lista de pujas de un usuario pasado como parámetro.
@@ -302,9 +238,6 @@ public class ModelFactoryController {
         empresaSubasta.getIAnuncio().generarCSV(usuario, ruta);
     }
 
-    public static void pruebaCrearEmpresa () throws CRUDExceptions {
-        empresaSubasta = new EmpresaSubasta();
-        addDatosPrueba();
-    }
+
 
 }

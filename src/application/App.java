@@ -80,17 +80,6 @@ public class App extends Application {
            }
     	
         inicializarApp();
-
-      
-        //ModelFactoryController.addDatosPrueba(); //Añade datos de prueba para no tener que perder tiempo creandolos una y otra vez. Solución temporal mientras se arregla la persistencia.
-       
-        //CARGO EL FRAME PRINCIPAL
-        //cambié la obtención del bundle para no acoplarlo a este metodo
-        //y generalizarlo para todos los frames
-        //también cree una variable de instancia para el idioma
-        //se inicia en inglés y se encuentra en el metodo inicializarApp
-        //String name, Integer age, String cedula, String correo, String direccion, String telefono, String password
-        //ArchivoUtil.salvarRecursoSerializadoXML(Utils.RUTA_EMPRESA_XML, new Usuario("anubis", 23, "111", "correo", "Cra 11", "11112222333", "3333"));
         String ruta = Utils.frameInicio;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));
         Parent root = loader.load();
@@ -107,8 +96,6 @@ public class App extends Application {
         
         stage.setOnCloseRequest(event->{
             try {
-                //Persistencia.serializarEmpresaUnificado();
-
             	HiloSerializadorTXT hilotxt = new HiloSerializadorTXT();
             	HiloSerializadorBinario hiloBinario = new HiloSerializadorBinario();
             	HiloSerializadorXML hiloXML = new HiloSerializadorXML(ModelFactoryController.getInstance());
@@ -211,6 +198,13 @@ public class App extends Application {
         }
     }
 
+    /**
+     * Metodo que permite obtener el pane de una puja
+     * @param ruta donde se encuentra el pane
+     * @param puja que se va a mostrar
+     * @param listadoSubastasController controlador del listado de subastas
+     * @return el pane que se encuentra en la ruta
+     */
 
     public AnchorPane obtenerPanePuja (String ruta, Puja puja, ListadoSubastasController listadoSubastasController){
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
@@ -421,6 +415,10 @@ public class App extends Application {
         }
     }
 
+    /**
+     * Metodo que permite actualizar un anuncio
+     * @param anuncioClicked anuncio seleccionado
+     */
     public void abrirActualizarAnuncio(Anuncio anuncioClicked) {
         String ruta = Utils.realizarSubasta;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta), Utils.getBundle(ruta));

@@ -126,20 +126,21 @@ public class SubastaController implements IApplication, Inicializable {
         //elimino todos los elementos del grid
         this.grid.getChildren().clear();
         //defino la columna y la fila del gridPane
-
-
         try {
             int column = 0;
             int row = 1;
             //recorro la lista de anuncios y los convierto en un item controller
             for (Anuncio anuncio : ModelFactoryController.obtenerListaAnunciosSegunUsuario(application.getClienteActivo())) {
-               addToGridPane(anuncio, column, row);
-                if (column == 2) {
-                    column = 0;
-                    ++row;
-                } else {
-                    ++column;
-                }
+               boolean flag = addToGridPane(anuncio, column, row);
+               if(flag){
+                   if (column == 2) {
+                       column = 0;
+                       ++row;
+                   } else {
+                       ++column;
+                   }
+               }
+
             }
         } catch (IOException var9) {
             var9.printStackTrace();
@@ -166,7 +167,7 @@ public class SubastaController implements IApplication, Inicializable {
         this.lblTelAnunciante.setText(anuncioSeleccionado.getUsuario().getTelefono());
 
         //verifico el sistema operativo para cargar la imagen
-        Image image = null;
+        Image image;
         if(System.getProperty("os.name").toLowerCase().contains("windows")) {
             image = new Image(Utils.getRutaAbsoluta()+anuncioSeleccionado.getImagePath());
         }else {
@@ -206,7 +207,12 @@ public class SubastaController implements IApplication, Inicializable {
      */
     @FXML
     void verPujasCompletas(MouseEvent ignoredEvent) {
-        application.loadScene(Utils.frameChat);
+        if (application.getClienteActivo().getListaChats().size()==0){
+            application.abrirAlerta("No tienes pujas completadas");
+        }else{
+            application.loadScene(Utils.frameChat);
+        }
+
     }
 
     //metodos implementados por la interfaz
@@ -356,11 +362,13 @@ public class SubastaController implements IApplication, Inicializable {
 
             //recorro la lista de anuncios y los convierto en un item controller
             for (Anuncio anuncio : listaAnuncios) {
-                addToGridPane(anuncio, column, row);
-                column++;
-                if (column == 2) {
-                    column = 0;
-                    ++row;
+                boolean flag = addToGridPane(anuncio, column, row);
+                if(flag){
+                    column++;
+                    if (column == 2) {
+                        column = 0;
+                        ++row;
+                    }
                 }
             }
         } catch (IOException var9) {
@@ -369,7 +377,7 @@ public class SubastaController implements IApplication, Inicializable {
 
     }
 
-    public void addToGridPane(Anuncio anuncio, Integer column, Integer row) throws IOException {
+    public boolean addToGridPane(Anuncio anuncio, Integer column, Integer row) throws IOException {
         if (anuncio != null && LocalDateTime.now().isBefore(anuncio.getFechaTerminacion()) && (anuncio.getEstado() != Estado.ELIMINADO)) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(this.getClass().getResource(Utils.anuncioItem));
@@ -388,8 +396,9 @@ public class SubastaController implements IApplication, Inicializable {
             this.grid.setPrefHeight(-1.0);
             this.grid.setMaxHeight(Double.NEGATIVE_INFINITY);
             GridPane.setMargin(anchorPane, new Insets(10.0));
+            return true;
         }
-
+        return false;
     }
 
 

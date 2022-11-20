@@ -5,7 +5,6 @@ import lombok.Setter;
 import lombok.ToString;
 import model.enums.Estado;
 import model.enums.Rol;
-
 import java.io.IOException;
 import java.io.Serializable;
 import java.nio.file.Files;
@@ -85,17 +84,13 @@ public class Usuario implements Serializable {
     }
 
 
-    public boolean compararCorreo(String correo) {
-        System.out.println(this.correo);
-        return this.correo.compareTo(correo) == 0;
-    }
+	public boolean compararCorreo (String correo) {System.out.println(this.correo);return this.correo.compareTo(correo) == 0;}
 
-    /**
-     * METODO QUE PERMITE ACTUALIZAR ATRIBUTOS DE UN USUARIO SIN CAMBIAR EL
-     * ID
-     *
-     * @param nuevoUsuario EL USUARIO QUE CONTIENE LOS ATRIBUTOS A ACTUALIZAR
-     */
+	/**
+	 * METODO QUE PERMITE ACTUALIZAR ATRIBUTOS DE UN USUARIO SIN CAMBIAR EL
+	 * ID
+	 * @param nuevoUsuario EL USUARIO QUE CONTIENE LOS ATRIBUTOS A ACTUALIZAR
+	 */
     public void actualizarAtributos(Usuario nuevoUsuario) {
         this.name = nuevoUsuario.getName();
         this.age = nuevoUsuario.getAge();
@@ -135,61 +130,57 @@ public class Usuario implements Serializable {
         listaAnuncios.add(anuncio);
     }
 
-    /**
-     * Verifica si un usuario tiene el rol de admin
-     *
-     * @return true || false
-     */
-    public boolean isAdmin() {
-        return this.rol == Rol.ADMINISTRADOR;
-    }
+	/**
+	 * Verifica si un usuario tiene el rol de admin
+	 * @return true || false
+	 */
+	public boolean isAdmin() {return this.rol == Rol.ADMINISTRADOR;}
 
-    /**
-     * Este metodo devuelve toda la info del usuario en un string
-     * para serializarlo en un txt
-     *
-     * @return string con la info del usuario
-     */
-    public String getStringUsuario() {
-        StringBuilder arrobas = new StringBuilder("@@");
-        //concateno todos los atributos separados por arroba
-        return arrobas +
-                name +
-                arrobas +
-                age +
-                arrobas +
-                cedula +
-                arrobas +
-                correo +
-                arrobas +
-                cantAnuncios +
-                arrobas +
-                direccion +
-                arrobas +
-                password +
-                arrobas +
-                telefono +
-                arrobas +
-                estado +
-                arrobas +
-                id +
-                arrobas +
-                rol;
-    }
+	/**
+	 *Este metodo devuelve toda la info del usuario en un string
+	 * para serializarlo en un txt
+	 * @return string con la info del usuario
+	 */
+	public String getStringUsuario() {
+		StringBuilder arrobas = new StringBuilder("@@");
+		//concateno todos los atributos separados por arroba
+		return arrobas +
+				name +
+				arrobas +
+				age +
+				arrobas +
+				cedula +
+				arrobas +
+				correo +
+				arrobas +
+				cantAnuncios +
+				arrobas +
+				direccion +
+				arrobas +
+				password +
+				arrobas +
+				telefono +
+				arrobas +
+				estado +
+				arrobas +
+				id +
+				arrobas +
+				rol;
+	}
 
-    public void aniadirChat(Chat chat) {
-        this.listaChats.add(chat);
-    }
+	public void aniadirChat(Chat chat) {
+		this.listaChats.add(chat);
+	}
 
 
-    public void anadirMensaje(Mensaje mensaje) {
-        for (Chat chat : this.listaChats) {
-            if (chat.getUsuarioReceptor().equals(mensaje.getUsuarioReceptor()) && chat.getUsuarioEmisor().equals(mensaje.getUsuarioReceptor())) {
-                chat.addMensaje(mensaje);
-                return;
-            }
-        }
-    }
+	public void anadirMensaje(Mensaje mensaje) {
+		for (Chat chat : this.listaChats) {
+			if (chat.getUsuarioReceptor().equals(mensaje.getUsuarioReceptor()) && chat.getUsuarioEmisor().equals(mensaje.getUsuarioReceptor())) {
+				chat.addMensaje(mensaje);
+				return;
+			}
+		}
+	}
 
     public byte[] getFotoPerfilBytes() {
         try {

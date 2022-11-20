@@ -175,9 +175,9 @@ public class Utils {
      */
 
     public static void playSound(String url) {
-      // javafx.scene.media.Media media = new javafx.scene.media.Media(new File(url).toURI().toString());
-      // javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
-      // mediaPlayer.play();
+        javafx.scene.media.Media media = new javafx.scene.media.Media(new File(url).toURI().toString());
+        javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
+        mediaPlayer.play();
     }
 
 
@@ -267,6 +267,9 @@ public class Utils {
         return "resources/FotosPerfil/"+arreglo[arreglo.length-1];
     }
 
+    public static boolean isWindows(){
+        return System.getProperty("os.name").toLowerCase().contains("windows");
+    }
 
 }
 
