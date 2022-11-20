@@ -29,7 +29,7 @@ public class IPuja implements CRUD<Puja>, Serializable {
      * con la lista contenida en el objeto pasado por parametro
      * se filtra para no aniadir los que ya están en la lista
      *
-     * @param iPuja objeto que contiene la lista de pujas
+     * @param ipuja objeto que contiene la lista de pujas
      */
     public void actualizarPujas(IPuja ipuja) {
         for (Puja puja : ipuja.getListaPujas()) {
@@ -64,7 +64,7 @@ public class IPuja implements CRUD<Puja>, Serializable {
      */
     @Override
     public void crear(Puja puja) throws EscrituraException {
-        if (existePuja(puja)) {
+        if (noExistePuja(puja)) {
             puja.setEstado(Estado.NUEVO);
             listaPujas.add(puja);
         }
@@ -88,7 +88,7 @@ public class IPuja implements CRUD<Puja>, Serializable {
      * @param puja Puja a comparar.
      * @return True si el puja NO EXISTE
      */
-    private boolean existePuja(Puja puja) {
+    private boolean noExistePuja(Puja puja) {
         for (Puja aux : listaPujas) {
             if (aux.equals(puja)) {
                 return false;

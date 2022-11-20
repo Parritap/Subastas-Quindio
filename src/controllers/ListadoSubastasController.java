@@ -70,7 +70,7 @@ public class ListadoSubastasController implements IApplication, Inicializable {
                 if (listadoPujas != null) {
                     for (Puja puja : listadoPujas) {
                         Estado e = puja.getAnuncio().getEstado();
-                        if (e != Estado.DESACTIVADO && e != Estado.ELIMINADO && puja.getEstado() == Estado.ACTIVO) {
+                        if (e != Estado.DESACTIVADO && e != Estado.ELIMINADO /*&& puja.getEstado() == Estado.ACTIVO*/) {
                             AnchorPane pane = application.obtenerPanePuja(Utils.PUJA_ITEM, puja, this);
                             //Añado el pane al VBox
                             VBoxMisPujas.getChildren().add(pane);

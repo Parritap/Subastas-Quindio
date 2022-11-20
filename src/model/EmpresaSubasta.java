@@ -82,12 +82,13 @@ public class EmpresaSubasta implements Runnable, Serializable {
 
     @Override
     public String toString() {
-        return "EmpresaSubasta{" +
-                "iAnuncio=" + iAnuncio.toString() +
-                ", iUsuario=" + iUsuario.toString() +
-                ", iProducto=" + iProducto.toString() +
-                ", iTransaccion=" + iTransaccion.toString() +
-                '}';
+        return "ThisISNombreEmpresa (TODO)";
+        // return "EmpresaSubasta{" +
+       //         "iAnuncio=" + iAnuncio.toString() +
+       //         ", iUsuario=" + iUsuario.toString() +
+       //         ", iProducto=" + iProducto.toString() +
+       //         ", iTransaccion=" + iTransaccion.toString() +
+       //         '}';
     }
 
     /**

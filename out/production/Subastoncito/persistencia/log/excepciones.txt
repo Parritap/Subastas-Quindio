@@ -1432,3 +1432,63 @@ Nov 19, 2022 6:59:49 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de producto,se creo el producto 1:dfg,11-19
 Nov 19, 2022 7:00:13 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Inicio de sesión,El usuario de nombre prueba y correo prueba ha iniciado sesión.,11-19
+Nov 19, 2022 7:39:38 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-19
+Nov 19, 2022 7:39:38 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-19
+Nov 19, 2022 7:40:03 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,EscrituraException, se intento crear un usuario ya existente (parra),11-19
+Nov 19, 2022 7:40:03 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,EscrituraException, se intento crear un usuario ya existente (parra),11-19
+Nov 19, 2022 7:40:13 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 7:41:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 7:42:04 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:JOJO,11-19
+Nov 19, 2022 7:42:04 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:JOJO,11-19
+Nov 19, 2022 7:54:54 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 8:02:02 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 8:02:34 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:admin,11-19
+Nov 19, 2022 8:03:07 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:MyJOJO,11-19
+Nov 19, 2022 8:03:07 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:MyJOJO,11-19
+Nov 19, 2022 8:03:29 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre admin y correo admin ha iniciado sesión.,11-19
+Nov 19, 2022 8:07:29 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario admin no encontrado,11-19
+Nov 19, 2022 8:07:29 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario admin no encontrado,11-19
+Nov 19, 2022 8:08:06 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de usuario,se creo el usuario 1:admin,11-19
+Nov 19, 2022 8:08:45 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:JOJO2,11-19
+Nov 19, 2022 8:08:45 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:jojo2,11-19
+Nov 19, 2022 8:14:46 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 8:16:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-19
+Nov 19, 2022 8:16:28 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-19
+Nov 19, 2022 8:16:33 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-19
+Nov 19, 2022 8:16:33 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, La contraseña pasada no es valida,11-19
+Nov 19, 2022 8:16:37 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 8:18:37 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 8:19:49 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 8:24:49 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 8:31:11 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 8:32:47 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
