@@ -1412,3 +1412,23 @@ Nov 19, 2022 5:55:07 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de anuncio,se creo el anuncio 2:sfd,11-19
 Nov 19, 2022 5:55:07 PM persistencia.logic.ArchivoUtil guardarRegistroLog
 INFO: Creacion de producto,se creo el producto 2:w,11-19
+Nov 19, 2022 6:57:58 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre parra y correo parra ha iniciado sesión.,11-19
+Nov 19, 2022 6:58:23 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-19
+Nov 19, 2022 6:58:23 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario a no encontrado,11-19
+Nov 19, 2022 6:58:34 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario pruebas no encontrado,11-19
+Nov 19, 2022 6:58:34 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+WARNING: Excepcion,LecturaException, usuario pruebas no encontrado,11-19
+Nov 19, 2022 6:58:44 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre prueba y correo prueba ha iniciado sesión.,11-19
+Nov 19, 2022 6:59:07 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre prueba y correo prueba ha iniciado sesión.,11-19
+Nov 19, 2022 6:59:49 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de anuncio,se creo el anuncio 1:dgf,11-19
+Nov 19, 2022 6:59:49 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Creacion de producto,se creo el producto 1:dfg,11-19
+Nov 19, 2022 7:00:13 PM persistencia.logic.ArchivoUtil guardarRegistroLog
+INFO: Inicio de sesión,El usuario de nombre prueba y correo prueba ha iniciado sesión.,11-19

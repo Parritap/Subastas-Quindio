@@ -27,7 +27,6 @@
 19/oct/2022
 
 Validar la info de los usuarios al actualizar
-Enviar una alerta al actualizar la info de los usuarios.
-Filtrar por Keyevent los anuncios.
-Poner la hpta musica.
-
+Enviar una alerta al actualizar la info de los usuarios. good
+Filtrar por Keyevent los anuncios. good
+Poner la hpta musica. good

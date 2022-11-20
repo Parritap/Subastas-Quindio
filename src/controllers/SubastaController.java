@@ -126,10 +126,11 @@ public class SubastaController implements IApplication, Inicializable {
         //elimino todos los elementos del grid
         this.grid.getChildren().clear();
         //defino la columna y la fila del gridPane
-        int column = 0;
-        int row = 1;
+
 
         try {
+            int column = 0;
+            int row = 1;
             //recorro la lista de anuncios y los convierto en un item controller
             for (Anuncio anuncio : ModelFactoryController.obtenerListaAnunciosSegunUsuario(application.getClienteActivo())) {
                addToGridPane(anuncio, column, row);
@@ -332,7 +333,7 @@ public class SubastaController implements IApplication, Inicializable {
         if(txtfBarraBusqueda.getText().isEmpty()) {
             grid.getChildren().clear();
             actualizarListaAnuncios();
-            cargarAnuncioAlScrollfiltrados();
+            cargarAnuncioAlScroll();
         }else {
             grid.getChildren().clear();
             listaAnuncios.clear();
@@ -351,7 +352,7 @@ public class SubastaController implements IApplication, Inicializable {
         try {
             //defino la columna y la fila del gridPane
             int column = 0;
-            Integer row = 1;
+            int row = 1;
 
             //recorro la lista de anuncios y los convierto en un item controller
             for (Anuncio anuncio : listaAnuncios) {

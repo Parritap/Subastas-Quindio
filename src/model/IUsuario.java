@@ -107,8 +107,19 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
      * @throws LecturaException SI NO ENCUENTRA EL OBJETO LANZA UNA EXCEPCION
      */
     public void actualizar(Integer id, Usuario nuevoUsuario) throws LecturaException {
-        Usuario usuarioAlmacenado = buscarId(id);
-        usuarioAlmacenado.actualizarAtributos(nuevoUsuario);
+        boolean existeEseUsuario = false;
+        for (Usuario usuarioAux : listaUsuarios) {
+            if (usuarioAux.getCorreo().equals(nuevoUsuario.getCorreo())) {
+                existeEseUsuario = true;
+                break;
+            }
+        }
+        if(existeEseUsuario){
+            throw new LecturaException("Ya existe un usuario con ese correo", "se intento actualizar un usuario con un correo ya existente ("+nuevoUsuario.getCorreo()+")");
+        }else{
+            Usuario usuarioAlmacenado = buscarId(id);
+            usuarioAlmacenado.actualizarAtributos(nuevoUsuario);
+        }
     }
     /**
      * Este método permite ordenar por un atributo y el tipo de orden,

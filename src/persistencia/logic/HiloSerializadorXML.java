@@ -26,7 +26,6 @@ public class HiloSerializadorXML extends Thread {
 			try {
 				ArchivoUtil.salvarRecursoSerializadoXML(Utils.RUTA_EMPRESA_XML, this.empresa);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

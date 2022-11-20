@@ -168,6 +168,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
         Usuario usuario = new Usuario(name, edad, cedula, correo, direccion, telefono, contrasenia);
         try {
             ModelFactoryController.actualizarUsuario(application.getClienteActivo(), usuario);
+            application.abrirAlerta("El usuario se actualizó correctamente");
         } catch (LecturaException e) {
             application.abrirAlerta(e.getMessage());
         }
