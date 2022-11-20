@@ -207,7 +207,12 @@ public class SubastaController implements IApplication, Inicializable {
      */
     @FXML
     void verPujasCompletas(MouseEvent ignoredEvent) {
-        application.loadScene(Utils.frameChat);
+        if (application.getClienteActivo().getListaChats().size()==0){
+            application.abrirAlerta("No tienes pujas completadas");
+        }else{
+            application.loadScene(Utils.frameChat);
+        }
+
     }
 
     //metodos implementados por la interfaz

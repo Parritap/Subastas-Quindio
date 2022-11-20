@@ -179,7 +179,6 @@ public class Usuario implements Serializable{
         try {
 			return Files.readAllBytes(Path.of(rutaFotoPerfil));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return new byte[0];
 		}

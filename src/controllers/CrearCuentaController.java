@@ -142,6 +142,7 @@ public class CrearCuentaController implements IApplication, Inicializable {
                 application.setClienteActivo(usuario);
                 //copia la foto de perfil
                 ArchivoUtil.copiarArchivo(archivoFoto, new File("src"+Utils.getRutaFotoPerfil(archivoFoto.getName())));
+
                 btnCrearCuenta.setVisible(false);
                 ArchivoUtil.guardarRegistroLog("se creo el usuario "+usuario.getId()+":"+usuario.getName(), 1,
                         "Creacion de usuario", Utils.RUTA_LOG_TXT);

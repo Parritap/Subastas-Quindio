@@ -12,8 +12,8 @@ import javafx.scene.shape.Circle;
 import lombok.Getter;
 import lombok.Setter;
 import model.Chat;
-
-import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -45,19 +45,40 @@ public class ItemChatController implements IApplication, Inicializable {
 
         if(chat.getUsuarioReceptor() == application.getClienteActivo()){
             lblNameUsuario.setText(chat.getUsuarioEmisor().getName());
-            if(chat.getUsuarioEmisor().getFotoPerfilBytes() != null) {
-                Image image = new Image(new ByteArrayInputStream(chat.getUsuarioEmisor().getFotoPerfilBytes()));
-                circleImage.setFill(new ImagePattern(image));
+            if(chat.getUsuarioEmisor().getRutaFotoPerfil() != null) {
+                String ruta = chat.getUsuarioReceptor().getRutaFotoPerfil();
+                String rutaFinal = obtenerRutPerfilRelativa(ruta);
+                String[] rutaSplit = rutaFinal.split("/");
+                String rutaFinal2 = rutaSplit[rutaSplit.length - 1];
+                try {
+                    Image image = new Image(Objects.requireNonNull(getClass().getResource(("/resources/FotosPerfil/" + rutaFinal2))).openStream());
+                    circleImage.setFill(new ImagePattern(image));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
             }
         }else{
             lblNameUsuario.setText(chat.getUsuarioReceptor().getName());
             lblUltimoMensaje.setText(chat.getUltimoMensaje());
-            Image img = new Image(new ByteArrayInputStream(chat.getUsuarioReceptor().getFotoPerfilBytes()));
-            circleImage.setFill(new ImagePattern(img));
+            String ruta = chat.getUsuarioReceptor().getRutaFotoPerfil();
+            String rutaFinal = obtenerRutPerfilRelativa(ruta);
+            String[] rutaSplit = rutaFinal.split("/");
+            String rutaFinal2 = rutaSplit[rutaSplit.length - 1];
+            try {
+                Image image = new Image(Objects.requireNonNull(getClass().getResource(("/resources/FotosPerfil/" + rutaFinal2))).openStream());
+                circleImage.setFill(new ImagePattern(image));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
+    }
 
-
+    public String obtenerRutPerfilRelativa (String ruta){
+        String[] arreglo = ruta.split("\\\\");
+        System.out.println(arreglo[arreglo.length-1]);
+        return "/src/resources/FotosPerfil/"+arreglo[arreglo.length-1];
     }
 
     /**
