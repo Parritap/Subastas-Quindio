@@ -26,7 +26,9 @@ import model.Usuario;
 import services.AppCliente;
 import utilities.Utils;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 @Setter
 @Getter
@@ -140,11 +142,27 @@ public class ChatController implements IApplication, Inicializable {
 
         if(chat.getUsuarioReceptor() != application.getClienteActivo()) {
             usuarioEnElChat = chat.getUsuarioReceptor();
-            imgProfile.setImage(new Image(new ByteArrayInputStream(chat.getUsuarioReceptor().getFotoPerfilBytes())));
+            String ruta = chat.getUsuarioReceptor().getRutaFotoPerfil();
+            String rutaFinal = Utils.obtenerRutPerfilRelativa(ruta);
+            String[] rutaSplit = rutaFinal.split("/");
+            String rutaFinal2 = rutaSplit[rutaSplit.length - 1];
+            try {
+                imgProfile.setImage(new Image(Objects.requireNonNull(getClass().getResource(("/resources/FotosPerfil/" + rutaFinal2))).openStream()));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             lblNombre.setText(chat.getUsuarioReceptor().getName());
         }else{
-            usuarioEnElChat = chat.getUsuarioEmisor();
-            imgProfile.setImage(new Image(new ByteArrayInputStream(chat.getUsuarioEmisor().getFotoPerfilBytes())));
+            usuarioEnElChat = chat.getUsuarioReceptor();
+            String ruta = chat.getUsuarioReceptor().getRutaFotoPerfil();
+            String rutaFinal = Utils.obtenerRutPerfilRelativa(ruta);
+            String[] rutaSplit = rutaFinal.split("/");
+            String rutaFinal2 = rutaSplit[rutaSplit.length - 1];
+            try {
+                imgProfile.setImage(new Image(Objects.requireNonNull(getClass().getResource(("/resources/FotosPerfil/" + rutaFinal2))).openStream()));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             lblNombre.setText(chat.getUsuarioEmisor().getName());
         }
         VBoxMensajes.getChildren().clear();

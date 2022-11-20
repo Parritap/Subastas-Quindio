@@ -201,4 +201,18 @@ public class Anuncio implements Serializable {
     public Usuario getVendedor() {
 		return usuario;
     }
+
+	public boolean addPuja(Puja puja) {
+		int contador = 0;
+		for (Puja aux : listaPujas) {
+			if (aux.getUsuario().equals(puja.getUsuario())) {
+				contador ++;
+				if (contador == 3) {
+					return false;
+				}
+			}
+		}
+		listaPujas.add(puja);
+		return true;
+	}
 }

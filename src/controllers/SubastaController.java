@@ -1,6 +1,7 @@
 package controllers;
 
 import application.App;
+import exceptions.EscrituraException;
 import interfaces.IApplication;
 import interfaces.Inicializable;
 import javafx.event.ActionEvent;
@@ -448,7 +449,13 @@ public class SubastaController implements IApplication, Inicializable {
         }
         //si no se cumple ninguna de las condiciones anteriores
         //se procede a realizar la puja
-        ModelFactoryController.hacerPuja(application.getClienteActivo(), this.anuncioSeleccionado, valorPuja);
+        try {
+            ModelFactoryController.hacerPuja(application.getClienteActivo(), this.anuncioSeleccionado, valorPuja);
+        } catch (EscrituraException e) {
+            application.loadScene(Utils.frameInicio);
+            application.abrirAlerta(e.getMessage());
+            return;
+        }
         ModelFactoryController.crearChat(application.getClienteActivo(), this.anuncioSeleccionado.getVendedor());
         //refresco la lista de anuncios
         application.loadScene(Utils.frameInicio);

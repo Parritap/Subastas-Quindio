@@ -247,9 +247,14 @@ public class IAnuncio implements CRUD<Anuncio>, Serializable {
 
         Puja puja = new Puja(LocalDateTime.now(), usuario,  valorPuja, anuncio);
         iPuja.crear(puja);
-        anuncio.getListaPujas().add(puja);
-        anuncio.setValorActual(valorPuja);
-        usuario.getListaPujas().add(puja);
+        if(anuncio.addPuja(puja)){
+            anuncio.getListaPujas().add(puja);
+            anuncio.setValorActual(valorPuja);
+            usuario.getListaPujas().add(puja);
+        }else {
+            throw new EscrituraException("No se puede hacer la puja porque ya se ha superado el número máximo de pujas", "Puja");
+        }
+
     }
 
     public ArrayList<Anuncio> filtrarAnuncioPorAsuario(Usuario u) {

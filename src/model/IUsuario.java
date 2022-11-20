@@ -224,12 +224,18 @@ public class IUsuario implements CRUD<Usuario>, Serializable {
      * @param vendedor dueño del anuncio
      */
     public void crearChat(Usuario emisor, Usuario vendedor) {
-        Chat chat = new Chat(emisor, vendedor);
-        //creo el chat del vendedor
-        vendedor.aniadirChat(chat);
-        //creo el chat del cliente
-        emisor.aniadirChat(chat);
+        boolean flag1 = false;
+        boolean flag2 = false;
 
+        flag1 = emisor.existeChat(vendedor);
+        flag2 = vendedor.existeChat(emisor);
+        if(!flag1 && !flag2){
+            Chat chat = new Chat(emisor, vendedor);
+            //creo el chat del vendedor
+            vendedor.aniadirChat(chat);
+            //creo el chat del cliente
+            emisor.aniadirChat(chat);
+        }
     }
 
     /**

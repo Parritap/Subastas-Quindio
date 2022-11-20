@@ -263,7 +263,6 @@ public class Utils {
 
     public static  String obtenerRutPerfilRelativa (String ruta){
         String[] arreglo = ruta.split("\\\\");
-        //System.out.println(arreglo[arreglo.length-1]);
         return "resources/FotosPerfil/"+arreglo[arreglo.length-1];
     }
 

@@ -2,6 +2,8 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -11,6 +13,7 @@ import java.util.ArrayList;
  */
 @Setter
 @Getter
+@ToString
 public class Chat implements Serializable {
     private Usuario usuarioReceptor;
     private Usuario usuarioEmisor;
@@ -65,4 +68,6 @@ public class Chat implements Serializable {
         listaMensajes.sort(Mensaje::compareTo);
         return listaMensajes;
     }
+
+
 }

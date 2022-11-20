@@ -12,6 +12,8 @@ import javafx.scene.shape.Circle;
 import lombok.Getter;
 import lombok.Setter;
 import model.Chat;
+import utilities.Utils;
+
 import java.io.IOException;
 import java.util.Objects;
 
@@ -47,7 +49,7 @@ public class ItemChatController implements IApplication, Inicializable {
             lblNameUsuario.setText(chat.getUsuarioEmisor().getName());
             if(chat.getUsuarioEmisor().getRutaFotoPerfil() != null) {
                 String ruta = chat.getUsuarioReceptor().getRutaFotoPerfil();
-                String rutaFinal = obtenerRutPerfilRelativa(ruta);
+                String rutaFinal = Utils.obtenerRutPerfilRelativa(ruta);
                 String[] rutaSplit = rutaFinal.split("/");
                 String rutaFinal2 = rutaSplit[rutaSplit.length - 1];
                 try {
@@ -62,7 +64,7 @@ public class ItemChatController implements IApplication, Inicializable {
             lblNameUsuario.setText(chat.getUsuarioReceptor().getName());
             lblUltimoMensaje.setText(chat.getUltimoMensaje());
             String ruta = chat.getUsuarioReceptor().getRutaFotoPerfil();
-            String rutaFinal = obtenerRutPerfilRelativa(ruta);
+            String rutaFinal = Utils.obtenerRutPerfilRelativa(ruta);
             String[] rutaSplit = rutaFinal.split("/");
             String rutaFinal2 = rutaSplit[rutaSplit.length - 1];
             try {
@@ -75,11 +77,6 @@ public class ItemChatController implements IApplication, Inicializable {
 
     }
 
-    public String obtenerRutPerfilRelativa (String ruta){
-        String[] arreglo = ruta.split("\\\\");
-        System.out.println(arreglo[arreglo.length-1]);
-        return "/src/resources/FotosPerfil/"+arreglo[arreglo.length-1];
-    }
 
     /**
      * Metodo que se ejecuta al pulsar sobre el item del chat

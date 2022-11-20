@@ -196,4 +196,14 @@ public class Usuario implements Serializable {
     public String toString() {
 		return this.name;
     }
+
+
+    public boolean existeChat(Usuario vendedor) {
+        for (Chat chat : this.listaChats) {
+            if (chat.getUsuarioReceptor().equals(vendedor) || chat.getUsuarioEmisor().equals(vendedor)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

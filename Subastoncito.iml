@@ -7,8 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Lombok" level="application" />
-    <orderEntry type="library" name="Themes" level="application" />
-    <orderEntry type="library" name="JavaFX" level="application" />
+    <orderEntry type="library" exported="" name="AnimateFX-1.2.1" level="project" />
+    <orderEntry type="library" exported="" name="javafx-swt" level="project" />
+    <orderEntry type="library" exported="" name="JavaFX_Windows" level="project" />
+    <orderEntry type="library" exported="" name="lombok" level="project" />
   </component>
 </module>
