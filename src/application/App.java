@@ -100,6 +100,7 @@ public class App extends Application {
             	HiloSerializadorBinario hiloBinario = new HiloSerializadorBinario();
             	HiloSerializadorXML hiloXML = new HiloSerializadorXML(ModelFactoryController.getInstance());
             	
+            	
             	hilotxt.start();
             	hiloBinario.start();
             	hiloXML.start();
