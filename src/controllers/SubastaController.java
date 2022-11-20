@@ -24,6 +24,7 @@ import model.Anuncio;
 import model.ModelFactoryController;
 import model.enums.Estado;
 import model.enums.Language;
+import persistencia.logic.HiloSerializadorXML;
 import utilities.Utils;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -460,6 +461,9 @@ public class SubastaController implements IApplication, Inicializable {
         //refresco la lista de anuncios
         application.loadScene(Utils.frameInicio);
         application.abrirAlerta("Puja realizada con éxito");
+        //serializa la empresa en mediante hilos
+        Utils.serializarUnificado();
+        
     }
 
 }

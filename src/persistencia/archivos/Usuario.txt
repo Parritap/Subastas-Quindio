@@ -5,3 +5,8 @@
 @@b@@18@@b@@b@@0@@b@@b@@b@@NUEVO@@2@@CLIENTE
 @@c@@18@@c@@c@@0@@c@@c@@c@@NUEVO@@1@@CLIENTE
 @@d@@18@@d@@d@@0@@d@@d@@d@@NUEVO@@1@@CLIENTE
+@@usuario1@@18@@1004817@@gen@gmail.com@@0@@Cra 10@@121@@3116592853@@NUEVO@@1@@CLIENTE
+@@luisa@@20@@1002221111@@luisa@gmail.com@@0@@Cra 10 Cll 14@@1003939@@311659283@@NUEVO@@1@@CLIENTE
+@@ernesto@@23@@100982213392@@ernestogch@gmail.com@@0@@Cra 10 cll 11@@ernestgh@@`3116592853@@NUEVO@@1@@CLIENTE
+@@milena@@18@@10039299@@ksks@gmail.com@@0@@Cra 10 cll11@@1009129120@@311659862@@NUEVO@@1@@CLIENTE
+@@rocio@@18@@1009383882@@rociolc@gmail.com@@0@@Cra 10 Cll 11@@12091092@@3116592853@@NUEVO@@1@@CLIENTE

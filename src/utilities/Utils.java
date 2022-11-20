@@ -1,6 +1,8 @@
 package utilities;
 
 import application.App;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -8,6 +10,9 @@ import javafx.stage.Stage;
 import model.ModelFactoryController;
 import model.enums.Language;
 import persistencia.logic.ArchivoUtil;
+import persistencia.logic.HiloSerializadorBinario;
+import persistencia.logic.HiloSerializadorTXT;
+import persistencia.logic.HiloSerializadorXML;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -175,8 +180,12 @@ public class Utils {
      */
 
     public static void playSound(String url) {
-        javafx.scene.media.Media media = new javafx.scene.media.Media(new File(url).toURI().toString());
-        javafx.scene.media.MediaPlayer mediaPlayer = new javafx.scene.media.MediaPlayer(media);
+    	/*antes estaba asi
+    	javafx.scene.Media media = new javafx.scene.Media(new File(url).toURI().toString());
+        javafx.scene.MediaPlayer mediaPlayer = new javafx.scene.MediaPlayer(media);
+        */
+        Media media = new Media(new File(url).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
     }
 
@@ -242,8 +251,16 @@ public class Utils {
         d.setTitle("Elige una carpeta");
         return d.showDialog(new Stage()).toString();
     }
-
-
+    
+    public static void serializarUnificado() {
+    	HiloSerializadorTXT hilotxt = new HiloSerializadorTXT();
+    	HiloSerializadorBinario hiloBinario = new HiloSerializadorBinario();
+    	HiloSerializadorXML hiloXML = new HiloSerializadorXML(ModelFactoryController.getInstance());
+    	
+    	hilotxt.start();
+    	hiloBinario.start();
+    	hiloXML.start();
+    }
 
 
     public static String getRutaFotoPerfil(String nombreArchivo)

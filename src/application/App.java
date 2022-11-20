@@ -34,7 +34,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 @Getter
-@Setter
+@Setter	
 
 public class App extends Application {
     //Instancia del singleton
